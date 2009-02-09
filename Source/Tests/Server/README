@@ -1,0 +1,7 @@
+Runs a local server on port 4567.
+
+Requirements
+ * sinatra [sudo gem install sinatra]
+ * sequel  [sudo gem install sequel]
+ * faker   [sudo gem install faker]
+ * json    [sudo gem install json]

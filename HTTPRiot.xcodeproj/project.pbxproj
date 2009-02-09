@@ -51,6 +51,7 @@
 		D0298A980F3FFF2E00EC8C01 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A850F3FFF2E00EC8C01 /* NSString+SBJSON.m */; };
 		D0298A990F3FFF2E00EC8C01 /* SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A860F3FFF2E00EC8C01 /* SBJSON.h */; };
 		D0298A9A0F3FFF2E00EC8C01 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A870F3FFF2E00EC8C01 /* SBJSON.m */; };
+		D0298B440F40D0FB00EC8C01 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D029897A0F3FBFF800EC8C01 /* libcrypto.dylib */; };
 		D03DB6660F3163BB00F18796 /* HTTPRiot.h in Headers */ = {isa = PBXBuildFile; fileRef = D03DB6650F3163BB00F18796 /* HTTPRiot.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D03DB66C0F31654200F18796 /* HTTPRiotRestModel.h in Headers */ = {isa = PBXBuildFile; fileRef = D03DB66A0F31654200F18796 /* HTTPRiotRestModel.h */; settings = {ATTRIBUTES = (); }; };
 		D03DB66D0F31654200F18796 /* HTTPRiotRestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D03DB66B0F31654200F18796 /* HTTPRiotRestModel.m */; };
@@ -161,6 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D09E4A4E0F33A12700C9E26E /* SenTestingKit.framework in Frameworks */,
+				D0298B440F40D0FB00EC8C01 /* libcrypto.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +297,13 @@
 			path = JSON;
 			sourceTree = "<group>";
 		};
+		D0298B370F4038C500EC8C01 /* Server */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Server;
+			sourceTree = "<group>";
+		};
 		D03DB6630F315F9E00F18796 /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -325,6 +334,7 @@
 		D09E4A0F0F339D5200C9E26E /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				D0298B370F4038C500EC8C01 /* Server */,
 				D09E4A1C0F339E0600C9E26E /* RestModelTest.h */,
 				D09E4A1D0F339E0600C9E26E /* RestModelTest.m */,
 			);
@@ -514,8 +524,8 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+			shellPath = "/usr/bin/env ruby";
+			shellScript = "# Start test server\nThread.new do\n  system(\"/usr/bin/env ruby /Users/justin/dev/me/cocoa/HTTPRiot/Source/Tests/Server/testserver.rb\")\nend\n\n# Run the unit tests in this test bundle.\nsystem(\"sh #{ENV['SYSTEM_DEVELOPER_DIR']}/Tools/RunUnitTests\")\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
