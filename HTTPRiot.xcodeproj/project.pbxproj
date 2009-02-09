@@ -38,11 +38,11 @@
 		D09E4A1E0F339E0600C9E26E /* RestModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4A1D0F339E0600C9E26E /* RestModelTest.m */; };
 		D09E4A2A0F339E6900C9E26E /* HTTPRiotRestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D03DB66B0F31654200F18796 /* HTTPRiotRestModel.m */; };
 		D09E4A4E0F33A12700C9E26E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D09E4A4D0F33A12700C9E26E /* SenTestingKit.framework */; };
-		D09E4AB60F33CCB900C9E26E /* HTTPRiot.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* HTTPRiot.framework */; };
+		D09E4AB60F33CCB900C9E26E /* HTTPRiot in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* HTTPRiot */; };
 		D09E4ADA0F33CDB600C9E26E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4AD90F33CDB600C9E26E /* main.m */; };
 		D09E4ADF0F33CEBC00C9E26E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D09E4ADE0F33CEBC00C9E26E /* MainMenu.xib */; };
 		D09E4AE20F33CEF600C9E26E /* SAApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4AE10F33CEF600C9E26E /* SAApplicationDelegate.m */; };
-		D09E4AFC0F33D61400C9E26E /* HTTPRiot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* HTTPRiot.framework */; };
+		D09E4AFC0F33D61400C9E26E /* HTTPRiot in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* HTTPRiot */; };
 		D09E4B390F33EB1D00C9E26E /* HTTPRiotRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4B360F33EB0E00C9E26E /* HTTPRiotRequest.m */; };
 		D09E4B3A0F33EB1F00C9E26E /* HTTPRiotRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4B360F33EB0E00C9E26E /* HTTPRiotRequest.m */; };
 /* End PBXBuildFile section */
@@ -64,7 +64,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D09E4AB60F33CCB900C9E26E /* HTTPRiot.framework in CopyFiles */,
+				D09E4AB60F33CCB900C9E26E /* HTTPRiot in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,7 +76,7 @@
 		089C1667FE841158C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8DC2EF5B0486A6940098B216 /* HTTPRiot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HTTPRiot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DC2EF5B0486A6940098B216 /* HTTPRiot */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.framework; path = HTTPRiot; sourceTree = BUILT_PRODUCTS_DIR; };
 		D02988630F3F7F1200EC8C01 /* HTTPRiot_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRiot_Prefix.pch; sourceTree = "<group>"; };
 		D02988FE0F3FB63F00EC8C01 /* HTTPRiotConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRiotConstants.h; sourceTree = "<group>"; };
 		D02989310F3FBEDC00EC8C01 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
@@ -93,6 +93,7 @@
 		D0298A2E0F3FF4FD00EC8C01 /* HTTPRiotFormatJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRiotFormatJSON.m; sourceTree = "<group>"; };
 		D0298A320F3FF50800EC8C01 /* HTTPRiotFormatXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRiotFormatXML.h; sourceTree = "<group>"; };
 		D0298A330F3FF50800EC8C01 /* HTTPRiotFormatXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRiotFormatXML.m; sourceTree = "<group>"; };
+		D0298A650F3FFBBD00EC8C01 /* liblibhttpriot.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibhttpriot.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D03DB6650F3163BB00F18796 /* HTTPRiot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRiot.h; sourceTree = "<group>"; };
 		D03DB66A0F31654200F18796 /* HTTPRiotRestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRiotRestModel.h; sourceTree = "<group>"; };
 		D03DB66B0F31654200F18796 /* HTTPRiotRestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRiotRestModel.m; sourceTree = "<group>"; };
@@ -121,6 +122,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D0298A630F3FFBBD00EC8C01 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D09E4A140F339D7900C9E26E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -133,7 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D09E4AFC0F33D61400C9E26E /* HTTPRiot.framework in Frameworks */,
+				D09E4AFC0F33D61400C9E26E /* HTTPRiot in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,9 +151,10 @@
 		034768DFFF38A50411DB9C8B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8DC2EF5B0486A6940098B216 /* HTTPRiot.framework */,
+				8DC2EF5B0486A6940098B216 /* HTTPRiot */,
 				D09E4A170F339D7900C9E26E /* UnitTests.octest */,
 				D09E4AAA0F33CB7F00C9E26E /* SampleApp.app */,
+				D0298A650F3FFBBD00EC8C01 /* liblibhttpriot.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -311,6 +320,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D0298A610F3FFBBD00EC8C01 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -330,8 +346,25 @@
 			name = HTTPRiot;
 			productInstallPath = "$(HOME)/Library/Frameworks";
 			productName = HTTPRiot;
-			productReference = 8DC2EF5B0486A6940098B216 /* HTTPRiot.framework */;
+			productReference = 8DC2EF5B0486A6940098B216 /* HTTPRiot */;
 			productType = "com.apple.product-type.framework";
+		};
+		D0298A640F3FFBBD00EC8C01 /* libhttpriot */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0298A680F3FFBE600EC8C01 /* Build configuration list for PBXNativeTarget "libhttpriot" */;
+			buildPhases = (
+				D0298A610F3FFBBD00EC8C01 /* Headers */,
+				D0298A620F3FFBBD00EC8C01 /* Sources */,
+				D0298A630F3FFBBD00EC8C01 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = libhttpriot;
+			productName = libhttpriot;
+			productReference = D0298A650F3FFBBD00EC8C01 /* liblibhttpriot.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 		D09E4A160F339D7900C9E26E /* UnitTests */ = {
 			isa = PBXNativeTarget;
@@ -386,6 +419,7 @@
 				8DC2EF4F0486A6940098B216 /* HTTPRiot */,
 				D09E4A160F339D7900C9E26E /* UnitTests */,
 				D09E4AA90F33CB7F00C9E26E /* SampleApp */,
+				D0298A640F3FFBBD00EC8C01 /* libhttpriot */,
 			);
 		};
 /* End PBXProject section */
@@ -445,6 +479,13 @@
 				D02989400F3FBEDC00EC8C01 /* NSString+URI.m in Sources */,
 				D0298A310F3FF4FD00EC8C01 /* HTTPRiotFormatJSON.m in Sources */,
 				D0298A360F3FF50800EC8C01 /* HTTPRiotFormatXML.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0298A620F3FFBBD00EC8C01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,14 +578,14 @@
 		1DEB91B208733DA50010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PREBINDING = NO;
-				SDKROOT = macosx10.5;
+				PREBINDING = YES;
+				SDKROOT = "";
 			};
 			name = Debug;
 		};
@@ -556,7 +597,49 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = macosx10.5;
+				SDKROOT = "";
+			};
+			name = Release;
+		};
+		D0298A660F3FFBBE00EC8C01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+				);
+				PREBINDING = NO;
+				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include/HTTPRiot;
+				PRODUCT_NAME = libhttpriot;
+				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/HTTPRiot;
+				SDKROOT = "";
+			};
+			name = Debug;
+		};
+		D0298A670F3FFBBE00EC8C01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+				);
+				PREBINDING = NO;
+				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include/HTTPRiot;
+				PRODUCT_NAME = libhttpriot;
+				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/HTTPRiot;
+				SDKROOT = "";
+				SKIP_INSTALL = NO;
+				ZERO_LINK = NO;
 			};
 			name = Release;
 		};
@@ -679,6 +762,15 @@
 			buildConfigurations = (
 				1DEB91B208733DA50010E9CD /* Debug */,
 				1DEB91B308733DA50010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0298A680F3FFBE600EC8C01 /* Build configuration list for PBXNativeTarget "libhttpriot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0298A660F3FFBBE00EC8C01 /* Debug */,
+				D0298A670F3FFBBE00EC8C01 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
