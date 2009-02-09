@@ -7,6 +7,7 @@
 //
 
 #import "HTTPRiotFormatJSON.h"
+#import "JSON.h"
 
 @implementation HTTPRiotFormatJSON
 + (NSString *)extension
@@ -30,6 +31,6 @@
 
 + (NSString *)encode:(id)data
 {
-    return [json JSONRepresentation];
+    return [data JSONRepresentation];
 }
 @end

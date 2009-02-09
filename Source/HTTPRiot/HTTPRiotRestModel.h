@@ -16,6 +16,7 @@
 + (void)setBaseURI:(NSURL *)uri;
 + (NSDictionary *)headers;
 + (void)setHeaders:(NSDictionary *)hdrs;
-
-+ (NSData *)getWithPath:(NSString *)path options:(NSDictionary *)options;
++ (void)setFormat:(kHTTPRiotFormat)format;
++ (kHTTPRiotFormat)format;
++ (NSArray *)getWithPath:(NSString *)path options:(NSDictionary *)options;
 @end

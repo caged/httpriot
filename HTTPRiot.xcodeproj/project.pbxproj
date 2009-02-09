@@ -32,17 +32,36 @@
 		D0298A340F3FF50800EC8C01 /* HTTPRiotFormatXML.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A330F3FF50800EC8C01 /* HTTPRiotFormatXML.m */; };
 		D0298A350F3FF50800EC8C01 /* HTTPRiotFormatXML.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A320F3FF50800EC8C01 /* HTTPRiotFormatXML.h */; };
 		D0298A360F3FF50800EC8C01 /* HTTPRiotFormatXML.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A330F3FF50800EC8C01 /* HTTPRiotFormatXML.m */; };
+		D0298A880F3FFF2E00EC8C01 /* CREDITS in Resources */ = {isa = PBXBuildFile; fileRef = D0298A800F3FFF2E00EC8C01 /* CREDITS */; };
+		D0298A890F3FFF2E00EC8C01 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A830F3FFF2E00EC8C01 /* NSObject+SBJSON.m */; };
+		D0298A8A0F3FFF2E00EC8C01 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A850F3FFF2E00EC8C01 /* NSString+SBJSON.m */; };
+		D0298A8B0F3FFF2E00EC8C01 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A870F3FFF2E00EC8C01 /* SBJSON.m */; };
+		D0298A8C0F3FFF2E00EC8C01 /* CREDITS in Resources */ = {isa = PBXBuildFile; fileRef = D0298A800F3FFF2E00EC8C01 /* CREDITS */; };
+		D0298A8D0F3FFF2E00EC8C01 /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A810F3FFF2E00EC8C01 /* JSON.h */; };
+		D0298A8E0F3FFF2E00EC8C01 /* NSObject+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A820F3FFF2E00EC8C01 /* NSObject+SBJSON.h */; };
+		D0298A8F0F3FFF2E00EC8C01 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A830F3FFF2E00EC8C01 /* NSObject+SBJSON.m */; };
+		D0298A900F3FFF2E00EC8C01 /* NSString+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A840F3FFF2E00EC8C01 /* NSString+SBJSON.h */; };
+		D0298A910F3FFF2E00EC8C01 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A850F3FFF2E00EC8C01 /* NSString+SBJSON.m */; };
+		D0298A920F3FFF2E00EC8C01 /* SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A860F3FFF2E00EC8C01 /* SBJSON.h */; };
+		D0298A930F3FFF2E00EC8C01 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A870F3FFF2E00EC8C01 /* SBJSON.m */; };
+		D0298A940F3FFF2E00EC8C01 /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A810F3FFF2E00EC8C01 /* JSON.h */; };
+		D0298A950F3FFF2E00EC8C01 /* NSObject+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A820F3FFF2E00EC8C01 /* NSObject+SBJSON.h */; };
+		D0298A960F3FFF2E00EC8C01 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A830F3FFF2E00EC8C01 /* NSObject+SBJSON.m */; };
+		D0298A970F3FFF2E00EC8C01 /* NSString+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A840F3FFF2E00EC8C01 /* NSString+SBJSON.h */; };
+		D0298A980F3FFF2E00EC8C01 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A850F3FFF2E00EC8C01 /* NSString+SBJSON.m */; };
+		D0298A990F3FFF2E00EC8C01 /* SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A860F3FFF2E00EC8C01 /* SBJSON.h */; };
+		D0298A9A0F3FFF2E00EC8C01 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A870F3FFF2E00EC8C01 /* SBJSON.m */; };
 		D03DB6660F3163BB00F18796 /* HTTPRiot.h in Headers */ = {isa = PBXBuildFile; fileRef = D03DB6650F3163BB00F18796 /* HTTPRiot.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D03DB66C0F31654200F18796 /* HTTPRiotRestModel.h in Headers */ = {isa = PBXBuildFile; fileRef = D03DB66A0F31654200F18796 /* HTTPRiotRestModel.h */; settings = {ATTRIBUTES = (); }; };
 		D03DB66D0F31654200F18796 /* HTTPRiotRestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D03DB66B0F31654200F18796 /* HTTPRiotRestModel.m */; };
 		D09E4A1E0F339E0600C9E26E /* RestModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4A1D0F339E0600C9E26E /* RestModelTest.m */; };
 		D09E4A2A0F339E6900C9E26E /* HTTPRiotRestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D03DB66B0F31654200F18796 /* HTTPRiotRestModel.m */; };
 		D09E4A4E0F33A12700C9E26E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D09E4A4D0F33A12700C9E26E /* SenTestingKit.framework */; };
-		D09E4AB60F33CCB900C9E26E /* HTTPRiot in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* HTTPRiot */; };
+		D09E4AB60F33CCB900C9E26E /* HTTPRiot.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* HTTPRiot.framework */; };
 		D09E4ADA0F33CDB600C9E26E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4AD90F33CDB600C9E26E /* main.m */; };
 		D09E4ADF0F33CEBC00C9E26E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D09E4ADE0F33CEBC00C9E26E /* MainMenu.xib */; };
 		D09E4AE20F33CEF600C9E26E /* SAApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4AE10F33CEF600C9E26E /* SAApplicationDelegate.m */; };
-		D09E4AFC0F33D61400C9E26E /* HTTPRiot in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* HTTPRiot */; };
+		D09E4AFC0F33D61400C9E26E /* HTTPRiot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* HTTPRiot.framework */; };
 		D09E4B390F33EB1D00C9E26E /* HTTPRiotRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4B360F33EB0E00C9E26E /* HTTPRiotRequest.m */; };
 		D09E4B3A0F33EB1F00C9E26E /* HTTPRiotRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4B360F33EB0E00C9E26E /* HTTPRiotRequest.m */; };
 /* End PBXBuildFile section */
@@ -64,7 +83,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D09E4AB60F33CCB900C9E26E /* HTTPRiot in CopyFiles */,
+				D09E4AB60F33CCB900C9E26E /* HTTPRiot.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,7 +95,7 @@
 		089C1667FE841158C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8DC2EF5B0486A6940098B216 /* HTTPRiot */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.framework; path = HTTPRiot; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DC2EF5B0486A6940098B216 /* HTTPRiot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HTTPRiot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D02988630F3F7F1200EC8C01 /* HTTPRiot_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRiot_Prefix.pch; sourceTree = "<group>"; };
 		D02988FE0F3FB63F00EC8C01 /* HTTPRiotConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRiotConstants.h; sourceTree = "<group>"; };
 		D02989310F3FBEDC00EC8C01 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
@@ -94,6 +113,14 @@
 		D0298A320F3FF50800EC8C01 /* HTTPRiotFormatXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRiotFormatXML.h; sourceTree = "<group>"; };
 		D0298A330F3FF50800EC8C01 /* HTTPRiotFormatXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRiotFormatXML.m; sourceTree = "<group>"; };
 		D0298A650F3FFBBD00EC8C01 /* liblibhttpriot.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibhttpriot.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0298A800F3FFF2E00EC8C01 /* CREDITS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CREDITS; sourceTree = "<group>"; };
+		D0298A810F3FFF2E00EC8C01 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		D0298A820F3FFF2E00EC8C01 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		D0298A830F3FFF2E00EC8C01 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		D0298A840F3FFF2E00EC8C01 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		D0298A850F3FFF2E00EC8C01 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		D0298A860F3FFF2E00EC8C01 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		D0298A870F3FFF2E00EC8C01 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
 		D03DB6650F3163BB00F18796 /* HTTPRiot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRiot.h; sourceTree = "<group>"; };
 		D03DB66A0F31654200F18796 /* HTTPRiotRestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRiotRestModel.h; sourceTree = "<group>"; };
 		D03DB66B0F31654200F18796 /* HTTPRiotRestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRiotRestModel.m; sourceTree = "<group>"; };
@@ -141,7 +168,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D09E4AFC0F33D61400C9E26E /* HTTPRiot in Frameworks */,
+				D09E4AFC0F33D61400C9E26E /* HTTPRiot.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,7 +178,7 @@
 		034768DFFF38A50411DB9C8B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8DC2EF5B0486A6940098B216 /* HTTPRiot */,
+				8DC2EF5B0486A6940098B216 /* HTTPRiot.framework */,
 				D09E4A170F339D7900C9E26E /* UnitTests.octest */,
 				D09E4AAA0F33CB7F00C9E26E /* SampleApp.app */,
 				D0298A650F3FFBBD00EC8C01 /* liblibhttpriot.a */,
@@ -236,6 +263,7 @@
 		D02989300F3FBEB800EC8C01 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				D0298A7F0F3FFF2E00EC8C01 /* JSON */,
 			);
 			path = Vendor;
 			sourceTree = "<group>";
@@ -250,6 +278,21 @@
 				D0298A330F3FF50800EC8C01 /* HTTPRiotFormatXML.m */,
 			);
 			path = Formatters;
+			sourceTree = "<group>";
+		};
+		D0298A7F0F3FFF2E00EC8C01 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				D0298A800F3FFF2E00EC8C01 /* CREDITS */,
+				D0298A810F3FFF2E00EC8C01 /* JSON.h */,
+				D0298A820F3FFF2E00EC8C01 /* NSObject+SBJSON.h */,
+				D0298A830F3FFF2E00EC8C01 /* NSObject+SBJSON.m */,
+				D0298A840F3FFF2E00EC8C01 /* NSString+SBJSON.h */,
+				D0298A850F3FFF2E00EC8C01 /* NSString+SBJSON.m */,
+				D0298A860F3FFF2E00EC8C01 /* SBJSON.h */,
+				D0298A870F3FFF2E00EC8C01 /* SBJSON.m */,
+			);
+			path = JSON;
 			sourceTree = "<group>";
 		};
 		D03DB6630F315F9E00F18796 /* Source */ = {
@@ -317,6 +360,10 @@
 				D0298A2B0F3FCA8800EC8C01 /* HTTPRiotFormatterProtocol.h in Headers */,
 				D0298A300F3FF4FD00EC8C01 /* HTTPRiotFormatJSON.h in Headers */,
 				D0298A350F3FF50800EC8C01 /* HTTPRiotFormatXML.h in Headers */,
+				D0298A8D0F3FFF2E00EC8C01 /* JSON.h in Headers */,
+				D0298A8E0F3FFF2E00EC8C01 /* NSObject+SBJSON.h in Headers */,
+				D0298A900F3FFF2E00EC8C01 /* NSString+SBJSON.h in Headers */,
+				D0298A920F3FFF2E00EC8C01 /* SBJSON.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +371,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0298A940F3FFF2E00EC8C01 /* JSON.h in Headers */,
+				D0298A950F3FFF2E00EC8C01 /* NSObject+SBJSON.h in Headers */,
+				D0298A970F3FFF2E00EC8C01 /* NSString+SBJSON.h in Headers */,
+				D0298A990F3FFF2E00EC8C01 /* SBJSON.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,7 +397,7 @@
 			name = HTTPRiot;
 			productInstallPath = "$(HOME)/Library/Frameworks";
 			productName = HTTPRiot;
-			productReference = 8DC2EF5B0486A6940098B216 /* HTTPRiot */;
+			productReference = 8DC2EF5B0486A6940098B216 /* HTTPRiot.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		D0298A640F3FFBBD00EC8C01 /* libhttpriot */ = {
@@ -430,6 +481,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */,
+				D0298A8C0F3FFF2E00EC8C01 /* CREDITS in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +489,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0298A880F3FFF2E00EC8C01 /* CREDITS in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,6 +532,9 @@
 				D02989400F3FBEDC00EC8C01 /* NSString+URI.m in Sources */,
 				D0298A310F3FF4FD00EC8C01 /* HTTPRiotFormatJSON.m in Sources */,
 				D0298A360F3FF50800EC8C01 /* HTTPRiotFormatXML.m in Sources */,
+				D0298A8F0F3FFF2E00EC8C01 /* NSObject+SBJSON.m in Sources */,
+				D0298A910F3FFF2E00EC8C01 /* NSString+SBJSON.m in Sources */,
+				D0298A930F3FFF2E00EC8C01 /* SBJSON.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +542,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0298A960F3FFF2E00EC8C01 /* NSObject+SBJSON.m in Sources */,
+				D0298A980F3FFF2E00EC8C01 /* NSString+SBJSON.m in Sources */,
+				D0298A9A0F3FFF2E00EC8C01 /* SBJSON.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,6 +561,9 @@
 				D02989440F3FBEDC00EC8C01 /* NSString+URI.m in Sources */,
 				D0298A2F0F3FF4FD00EC8C01 /* HTTPRiotFormatJSON.m in Sources */,
 				D0298A340F3FF50800EC8C01 /* HTTPRiotFormatXML.m in Sources */,
+				D0298A890F3FFF2E00EC8C01 /* NSObject+SBJSON.m in Sources */,
+				D0298A8A0F3FFF2E00EC8C01 /* NSString+SBJSON.m in Sources */,
+				D0298A8B0F3FFF2E00EC8C01 /* SBJSON.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,10 +11,13 @@
 #import "NSDictionary+URI.h"
 #import "NSData+Base64.h"
 #import "NSString+Base64.h"
+#import "HTTPRiotFormatJSON.h"
+#import "HTTPRiotFormatXML.h"
 
 @interface HTTPRiotRequest (PrivateMethods)
 - (NSMutableURLRequest *)http;
 - (id)handleResponse:(NSHTTPURLResponse *)response;
+- (NSArray *)formattedResults:(NSData *)data;
 @end
 
 @implementation HTTPRiotRequest
@@ -46,7 +49,7 @@
     return self;
 }
 
-+ (NSData*)requestWithMethod:(kHTTPRiotMethod)method
++ (NSArray *)requestWithMethod:(kHTTPRiotMethod)method
                         path:(NSString*)urlPath
                      options:(NSDictionary*)requestOptions
 {
@@ -62,10 +65,28 @@
                                                          error:&error];
         [instance handleResponse:response];
     }
-
+    
+    id results = [instance formattedResults:body];
     [instance release];
     
-    return body;
+    return results;
+}
+
+-(NSArray *)formattedResults:(NSData *)data
+{   
+    NSNumber *format = [[self options] objectForKey:@"format"];
+    switch([format intValue])
+    {
+        case kHTTPRiotJSONFormat:
+            return [HTTPRiotFormatJSON decode:data];
+        break;
+        case kHTTPRiotXMLFormat:
+            return [HTTPRiotFormatXML decode:data];
+        break;
+    }
+    
+    [NSException raise:@"InvalidFormatException" format:@"Unsupported format.  Format must be json or xml"];
+    return nil;
 }
 
 + (NSString *)buildQueryString:(NSDictionary *)theParams

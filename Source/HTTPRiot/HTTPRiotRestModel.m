@@ -38,16 +38,11 @@ static NSMutableDictionary *attributes;
     } 
     else
     {
-        newDict = [NSMutableDictionary dictionary];
+        newDict = [NSMutableDictionary dictionaryWithObject:[NSNumber numberWithInt:kHTTPRiotJSONFormat] forKey:@"format"];
         [attributes setObject:newDict forKey:className];
     }
     
     return newDict;
-}
-
-+ (void)setAttributeValue:(id)attr forKey:(NSString *)key
-{
-    [[self classAttributes] setObject:attr forKey:key];
 }
 
 + (NSURL *)baseURI
@@ -70,6 +65,17 @@ static NSMutableDictionary *attributes;
     [self setAttributeValue:hdrs forKey:@"headers"];
 }
 
++ (kHTTPRiotFormat)format
+{
+    kHTTPRiotFormat f = (int)[[self classAttributes] objectForKey:@"format"];
+    return f;
+}
+
++ (void)setFormat:(kHTTPRiotFormat)format
+{
+    [[self classAttributes] setValue:[NSNumber numberWithInt:format] forKey:@"format"];
+}
+
 + (NSDictionary *)defaultParams
 {
     return [[self classAttributes] objectForKey:@"defaultParams"];
@@ -80,7 +86,12 @@ static NSMutableDictionary *attributes;
     [self setAttributeValue:params forKey:@"defaultParams"];
 }
 
-+ (NSData *)getWithPath:(NSString *)path options:(NSDictionary *)options
++ (void)setAttributeValue:(id)attr forKey:(NSString *)key
+{
+    [[self classAttributes] setObject:attr forKey:key];
+}
+
++ (NSArray *)getWithPath:(NSString *)path options:(NSDictionary *)options
 {
     NSMutableDictionary *opts = [NSMutableDictionary dictionaryWithDictionary:[self classAttributes]];
     [opts addEntriesFromDictionary:options];

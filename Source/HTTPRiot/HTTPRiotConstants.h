@@ -1,6 +1,11 @@
 typedef enum {
-    kHTTPRiotMethodGet = 0,
+    kHTTPRiotMethodGet = 1,
     kHTTPRiotMethodPost,
     kHTTPRiotMethodPut,
     kHTTPRiotMethodPush
 } kHTTPRiotMethod;
+
+typedef enum {
+    kHTTPRiotJSONFormat = 1,
+    kHTTPRiotXMLFormat
+} kHTTPRiotFormat;

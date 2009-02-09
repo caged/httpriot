@@ -38,7 +38,7 @@ categories added to existing Objective-C classes.
 Learn more on the http://code.google.com/p/json-framework project site.
 */
 
-#import <JSON/SBJSON.h>
-#import <JSON/NSObject+SBJSON.h>
-#import <JSON/NSString+SBJSON.h>
+#import "SBJSON.h"
+#import "NSObject+SBJSON.h"
+#import "NSString+SBJSON.h"
 

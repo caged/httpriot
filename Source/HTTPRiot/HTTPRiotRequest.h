@@ -23,6 +23,6 @@
 @property (nonatomic, readonly, retain) NSURL *fullURL;
 @property (nonatomic, readonly, retain) NSDictionary *options;
 
-+ (NSData*)requestWithMethod:(kHTTPRiotMethod)method path:(NSString*)urlPath options:(NSDictionary*)requestOptions;
++ (NSArray *)requestWithMethod:(kHTTPRiotMethod)method path:(NSString*)urlPath options:(NSDictionary*)requestOptions;
 - (NSDictionary *)params;
 @end

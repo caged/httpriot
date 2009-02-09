@@ -33,8 +33,10 @@
 @implementation SAApplicationDelegate
 - (void)awakeFromNib
 {
-    NSDictionary *params = [NSDictionary dictionaryWithObject:@"2" forKey:@"page"];
-    NSData *tweets = [SATweet getWithPath:@"statuses/public_timeline.json" options:[NSDictionary dictionaryWithObject:params forKey:@"params"]];
-    NSLog(@"%s tweets:%@", _cmd, tweets);
+    NSArray *tweets = [SATweet getWithPath:@"statuses/public_timeline.json" options:nil];
+    for(NSDictionary *tweet in tweets)
+    {
+        NSLog(@"%s TWEET:%@", _cmd, [tweet valueForKey:@"text"]);
+    }
 }
 @end
