@@ -525,7 +525,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/usr/bin/env ruby";
-			shellScript = "# Start test server\nThread.new do\n  system(\"/usr/bin/env ruby /Users/justin/dev/me/cocoa/HTTPRiot/Source/Tests/Server/testserver.rb\")\nend\n\n# Run the unit tests in this test bundle.\nsystem(\"sh #{ENV['SYSTEM_DEVELOPER_DIR']}/Tools/RunUnitTests\")\n";
+			shellScript = "# Start test server\npid = fork do\n  system(\"#{ENV['PROJECT_DIR']}/Source/Tests/Server/testserver.rb\")\n  exit 99\nend\n\n# Run the unit tests in this test bundle.\nsystem(\"sh #{ENV['SYSTEM_DEVELOPER_DIR']}/Tools/RunUnitTests\")\n\nProcess.kill(\"TERM\", pid)\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
