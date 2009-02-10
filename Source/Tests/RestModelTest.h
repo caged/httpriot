@@ -6,11 +6,4 @@
 //  Copyright 2009 Alternateidea. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
 
-
-@interface RestModelTest : SenTestCase {
-
-}
-
-@end

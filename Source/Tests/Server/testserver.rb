@@ -18,6 +18,7 @@ DB.create_table :people do
   column :created_at, :date
 end
 
+
 # simple person model
 class Person < Sequel::Model
   validates_presence_of :name, :email, :address

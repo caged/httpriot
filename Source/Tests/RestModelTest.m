@@ -6,22 +6,26 @@
 //  Copyright 2009 Alternateidea. All rights reserved.
 //
 
-#import "RestModelTest.h"
-#import "HTTPRiotRestModel.h"
+#import <HTTPRiot/HTTPRiot.h>
+#import <SenTestingKit/SenTestingKit.h>
 
-@interface SomeTestRestModel : HTTPRiotRestModel {} @end
-@implementation SomeTestRestModel
+
+@interface RestModelTest : SenTestCase {} @end
+@interface HRTestPerson : HTTPRiotRestModel {} @end
+@interface HRTestPerson2 : HTTPRiotRestModel {} @end
+
+
+@implementation HRTestPerson
 + (void)initialize
 {
-    [self setBaseURI:[NSURL URLWithString:@"http://foo.com"]];
+    [self setBaseURI:[NSURL URLWithString:@"http://localhost:4567"]];
 }
 @end
 
-@interface SomeOtherTestRestModel : HTTPRiotRestModel {} @end
-@implementation SomeOtherTestRestModel
+@implementation HRTestPerson2
 + (void)initialize
 {
-    [self setBaseURI:[NSURL URLWithString:@"http://foobar.com"]];
+    [self setBaseURI:[NSURL URLWithString:@"http://localhost:4567/people"]];
 }
 @end
 
@@ -30,13 +34,12 @@
 @implementation RestModelTest
 - (void) testSetsDefaultVariables 
 {
-    [[SomeTestRestModel alloc] init];
-    [[SomeOtherTestRestModel alloc] init];
+    // [[HRTestPerson alloc] init];
+    // [[HRTestPerson2 alloc] init];
     
     STAssertNotNil(@"foo", nil);
     
-    // STAssertEqualObjects([SomeTestRestModel baseURI], [NSURL URLWithString:@"http://foo.com"], nil);
-    // STAssertEqualObjects([SomeOtherTestRestModel baseURI], [NSURL URLWithString:@"http://foobar.com"], nil);
-    // STAssertEqualObjects([SomeTestRestModel baseURI], [NSURL URLWithString:@"http://foo.com"], nil);   
+    //STAssertEqualObjects(@"http://localhost:4567", [[HRTestPerson baseURI] absoluteString], nil);
+    //STAssertEqualObjects([NSURL URLWithString:@"http://foo.com"], [NSURL URLWithString:@"http://foobar.com"], nil);
 }
 @end

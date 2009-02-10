@@ -20,22 +20,13 @@
 		D029893E0F3FBEDC00EC8C01 /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = D02989360F3FBEDC00EC8C01 /* NSString+Base64.m */; };
 		D029893F0F3FBEDC00EC8C01 /* NSString+URI.h in Headers */ = {isa = PBXBuildFile; fileRef = D02989370F3FBEDC00EC8C01 /* NSString+URI.h */; };
 		D02989400F3FBEDC00EC8C01 /* NSString+URI.m in Sources */ = {isa = PBXBuildFile; fileRef = D02989380F3FBEDC00EC8C01 /* NSString+URI.m */; };
-		D02989410F3FBEDC00EC8C01 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = D02989320F3FBEDC00EC8C01 /* NSData+Base64.m */; };
-		D02989420F3FBEDC00EC8C01 /* NSDictionary+URI.m in Sources */ = {isa = PBXBuildFile; fileRef = D02989340F3FBEDC00EC8C01 /* NSDictionary+URI.m */; };
-		D02989430F3FBEDC00EC8C01 /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = D02989360F3FBEDC00EC8C01 /* NSString+Base64.m */; };
-		D02989440F3FBEDC00EC8C01 /* NSString+URI.m in Sources */ = {isa = PBXBuildFile; fileRef = D02989380F3FBEDC00EC8C01 /* NSString+URI.m */; };
 		D029897B0F3FBFF800EC8C01 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D029897A0F3FBFF800EC8C01 /* libcrypto.dylib */; };
 		D0298A2B0F3FCA8800EC8C01 /* HTTPRiotFormatterProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A280F3FCA8800EC8C01 /* HTTPRiotFormatterProtocol.h */; };
-		D0298A2F0F3FF4FD00EC8C01 /* HTTPRiotFormatJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A2E0F3FF4FD00EC8C01 /* HTTPRiotFormatJSON.m */; };
 		D0298A300F3FF4FD00EC8C01 /* HTTPRiotFormatJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A2D0F3FF4FD00EC8C01 /* HTTPRiotFormatJSON.h */; };
 		D0298A310F3FF4FD00EC8C01 /* HTTPRiotFormatJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A2E0F3FF4FD00EC8C01 /* HTTPRiotFormatJSON.m */; };
-		D0298A340F3FF50800EC8C01 /* HTTPRiotFormatXML.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A330F3FF50800EC8C01 /* HTTPRiotFormatXML.m */; };
 		D0298A350F3FF50800EC8C01 /* HTTPRiotFormatXML.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A320F3FF50800EC8C01 /* HTTPRiotFormatXML.h */; };
 		D0298A360F3FF50800EC8C01 /* HTTPRiotFormatXML.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A330F3FF50800EC8C01 /* HTTPRiotFormatXML.m */; };
 		D0298A880F3FFF2E00EC8C01 /* CREDITS in Resources */ = {isa = PBXBuildFile; fileRef = D0298A800F3FFF2E00EC8C01 /* CREDITS */; };
-		D0298A890F3FFF2E00EC8C01 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A830F3FFF2E00EC8C01 /* NSObject+SBJSON.m */; };
-		D0298A8A0F3FFF2E00EC8C01 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A850F3FFF2E00EC8C01 /* NSString+SBJSON.m */; };
-		D0298A8B0F3FFF2E00EC8C01 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A870F3FFF2E00EC8C01 /* SBJSON.m */; };
 		D0298A8C0F3FFF2E00EC8C01 /* CREDITS in Resources */ = {isa = PBXBuildFile; fileRef = D0298A800F3FFF2E00EC8C01 /* CREDITS */; };
 		D0298A8D0F3FFF2E00EC8C01 /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A810F3FFF2E00EC8C01 /* JSON.h */; };
 		D0298A8E0F3FFF2E00EC8C01 /* NSObject+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A820F3FFF2E00EC8C01 /* NSObject+SBJSON.h */; };
@@ -52,11 +43,11 @@
 		D0298A990F3FFF2E00EC8C01 /* SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A860F3FFF2E00EC8C01 /* SBJSON.h */; };
 		D0298A9A0F3FFF2E00EC8C01 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A870F3FFF2E00EC8C01 /* SBJSON.m */; };
 		D0298B440F40D0FB00EC8C01 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D029897A0F3FBFF800EC8C01 /* libcrypto.dylib */; };
+		D0298B710F40EEB500EC8C01 /* HTTPRiot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* HTTPRiot.framework */; };
 		D03DB6660F3163BB00F18796 /* HTTPRiot.h in Headers */ = {isa = PBXBuildFile; fileRef = D03DB6650F3163BB00F18796 /* HTTPRiot.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D03DB66C0F31654200F18796 /* HTTPRiotRestModel.h in Headers */ = {isa = PBXBuildFile; fileRef = D03DB66A0F31654200F18796 /* HTTPRiotRestModel.h */; settings = {ATTRIBUTES = (); }; };
 		D03DB66D0F31654200F18796 /* HTTPRiotRestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D03DB66B0F31654200F18796 /* HTTPRiotRestModel.m */; };
 		D09E4A1E0F339E0600C9E26E /* RestModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4A1D0F339E0600C9E26E /* RestModelTest.m */; };
-		D09E4A2A0F339E6900C9E26E /* HTTPRiotRestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D03DB66B0F31654200F18796 /* HTTPRiotRestModel.m */; };
 		D09E4A4E0F33A12700C9E26E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D09E4A4D0F33A12700C9E26E /* SenTestingKit.framework */; };
 		D09E4AB60F33CCB900C9E26E /* HTTPRiot.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* HTTPRiot.framework */; };
 		D09E4ADA0F33CDB600C9E26E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4AD90F33CDB600C9E26E /* main.m */; };
@@ -64,10 +55,16 @@
 		D09E4AE20F33CEF600C9E26E /* SAApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4AE10F33CEF600C9E26E /* SAApplicationDelegate.m */; };
 		D09E4AFC0F33D61400C9E26E /* HTTPRiot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* HTTPRiot.framework */; };
 		D09E4B390F33EB1D00C9E26E /* HTTPRiotRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4B360F33EB0E00C9E26E /* HTTPRiotRequest.m */; };
-		D09E4B3A0F33EB1F00C9E26E /* HTTPRiotRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4B360F33EB0E00C9E26E /* HTTPRiotRequest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D0298B6A0F40EE7700EC8C01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216 /* HTTPRiot */;
+			remoteInfo = HTTPRiot;
+		};
 		D09E4AB10F33CCAA00C9E26E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
@@ -163,6 +160,7 @@
 			files = (
 				D09E4A4E0F33A12700C9E26E /* SenTestingKit.framework in Frameworks */,
 				D0298B440F40D0FB00EC8C01 /* libcrypto.dylib in Frameworks */,
+				D0298B710F40EEB500EC8C01 /* HTTPRiot.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,9 +305,9 @@
 		D03DB6630F315F9E00F18796 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				D03DB6640F31639000F18796 /* HTTPRiot */,
 				D09E4AA30F33CB4700C9E26E /* SampleApp */,
 				D09E4A0F0F339D5200C9E26E /* Tests */,
-				D03DB6640F31639000F18796 /* HTTPRiot */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -439,6 +437,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D0298B6B0F40EE7700EC8C01 /* PBXTargetDependency */,
 			);
 			name = UnitTests;
 			productName = UnitTests;
@@ -563,17 +562,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D09E4A1E0F339E0600C9E26E /* RestModelTest.m in Sources */,
-				D09E4A2A0F339E6900C9E26E /* HTTPRiotRestModel.m in Sources */,
-				D09E4B3A0F33EB1F00C9E26E /* HTTPRiotRequest.m in Sources */,
-				D02989410F3FBEDC00EC8C01 /* NSData+Base64.m in Sources */,
-				D02989420F3FBEDC00EC8C01 /* NSDictionary+URI.m in Sources */,
-				D02989430F3FBEDC00EC8C01 /* NSString+Base64.m in Sources */,
-				D02989440F3FBEDC00EC8C01 /* NSString+URI.m in Sources */,
-				D0298A2F0F3FF4FD00EC8C01 /* HTTPRiotFormatJSON.m in Sources */,
-				D0298A340F3FF50800EC8C01 /* HTTPRiotFormatXML.m in Sources */,
-				D0298A890F3FFF2E00EC8C01 /* NSObject+SBJSON.m in Sources */,
-				D0298A8A0F3FFF2E00EC8C01 /* NSString+SBJSON.m in Sources */,
-				D0298A8B0F3FFF2E00EC8C01 /* SBJSON.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -589,6 +577,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D0298B6B0F40EE7700EC8C01 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DC2EF4F0486A6940098B216 /* HTTPRiot */;
+			targetProxy = D0298B6A0F40EE7700EC8C01 /* PBXContainerItemProxy */;
+		};
 		D09E4AB20F33CCAA00C9E26E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8DC2EF4F0486A6940098B216 /* HTTPRiot */;
