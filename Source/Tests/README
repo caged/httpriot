@@ -1,0 +1,13 @@
+## Running the Unit Tests
+
+### Install Prerequisites 
+* sudo gem install sinatra
+* sudo gem install sequel
+* sudo gem install faker
+* sudo gem install json
+
+### Run them
+1. From the command line start the test server `ruby testserver.rb`
+2. Set the Active Executable to 'otest'
+3. Set the Active Target to 'UnitTests'
+4. ⌘B to Build then  ⌘ ⌥Y to Debug
