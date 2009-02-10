@@ -16,7 +16,7 @@
 
 @interface HTTPRiotRequest (PrivateMethods)
 - (NSMutableURLRequest *)http;
-- (id)handleResponse:(NSHTTPURLResponse *)response;
+- (id)handleResponse:(NSHTTPURLResponse *)response error:(NSError **)error;
 - (NSArray *)formattedResults:(NSData *)data;
 @end
 
@@ -52,22 +52,22 @@
 + (NSArray *)requestWithMethod:(kHTTPRiotMethod)method
                         path:(NSString*)urlPath
                      options:(NSDictionary*)requestOptions
+                     error:(NSError **)error
 {
+    NSArray *results = [NSArray array];
     NSData *body;
     id instance = [[self alloc] initWithMethod:method path:urlPath options:requestOptions];
     //NSLog(@"%@ %@%@", [method uppercaseString], site, path);
     if(instance)
     {
         NSHTTPURLResponse *response;
-        NSError *error;
         body = [NSURLConnection sendSynchronousRequest:[instance http]
                                              returningResponse:&response
-                                                         error:&error];
-        [instance handleResponse:response];
+                                                         error:nil];
+        [instance handleResponse:response error:error];
+        results = [instance formattedResults:body];
+        [instance release];
     }
-    
-    id results = [instance formattedResults:body];
-    [instance release];
     
     return results;
 }
@@ -105,15 +105,15 @@
 {
     NSMutableURLRequest *tmpHTTP = [NSMutableURLRequest requestWithURL:[self fullURL]];
     [tmpHTTP setTimeoutInterval:60.0];
-    
+        
     switch([self httpMethod])
     {
         case kHTTPRiotMethodGet: 
-            [tmpHTTP setHTTPMethod:@"get"];
+            [tmpHTTP setHTTPMethod:@"GET"];
         break;
         // TODO: POST BODY STUFF
         case kHTTPRiotMethodPost:
-            [tmpHTTP setHTTPMethod:@"post"];
+            [tmpHTTP setHTTPMethod:@"POST"];
         break;
     }
     
@@ -151,39 +151,59 @@
    return [options objectForKey:@"params"];
 }
 
-- (id)handleResponse:(NSHTTPURLResponse *)response
+- (id)handleResponse:(NSHTTPURLResponse *)response error:(NSError **)error
 {
-    unsigned int code = [response statusCode];
-    NSRange okRange = NSMakeRange(200, 400);
-    NSRange clientErrorRange = NSMakeRange(401, 500);
-    NSRange serverErrorRange = NSMakeRange(500, 600);
+    NSInteger code = [response statusCode];
+    NSUInteger ucode = [[NSNumber numberWithInt:code] unsignedIntValue];
+    NSRange okRange = NSMakeRange(200, 200);
+    NSRange clientErrorRange = NSMakeRange(401, 99);
+    NSRange serverErrorRange = NSMakeRange(500, 100);
     
-    if(code == 300 || code == 302)
-        [NSException raise:@"RedirectNotHandled" format:@"STATUS:%i Redirection not handled", code];
-    else if(NSLocationInRange(code, okRange))
+    NSString *errorReason = [NSString stringWithFormat:@"%d Error: ", code];
+    NSString *errorDescription;
+    
+    NSLog(@"%s CODE:%i, %i", _cmd, code, ucode);
+    if(code == 300 || code == 302) {
+        errorReason = [errorReason stringByAppendingString:@"RedirectNotHandled"];
+        errorDescription = @"Redirection not handled";
+    } else if(NSLocationInRange(ucode, okRange)) {
         return response;
-    else if(code == 400)
-        [NSException raise:@"BadRequest" format:@"STATUS:%i Bad request", code];
-    else if(code == 401)
-        [NSException raise:@"UnauthrizedAccess" format:@"STATUS:%i Unauthorized access to resource", code];
-    else if(code == 403)
-        [NSException raise:@"ForbiddenAccess" format:@"STATUS:%i Forbidden access to resource", code];
-    else if(code == 404)
-        [NSException raise:@"ResourceNotFound" format:@"STATUS:%i Unable to locate resource", code];
-    else if(code == 405)
-        [NSException raise:@"MethodNotAllowed" format:@"STATUS:%i Method not allowed", code];
-    else if(code == 409)
-        [NSException raise:@"ResourceConflict" format:@"STATUS:%i Resource conflict", code];
-    else if(code == 422)
-        [NSException raise:@"ResourceInvalid" format:@"STATUS:%i Invalid resource", code];
-    else if(NSLocationInRange(code, clientErrorRange))
-        [NSException raise:@"ClientError" format:@"STATUS:%i Unknown Client Error", code];
-    else if(NSLocationInRange(code, serverErrorRange))
-        [NSException raise:@"ServerError" format:@"STATUS:%i Unknown Server Error", code];
-    else
-        [NSException raise:@"ConnectionError" format:@"STATUS:%i Unknown status code"];
-
+    } else if(code == 400) {
+        errorReason = [errorReason stringByAppendingString:@"BadRequest"];
+        errorDescription = @"Bad request";
+    } else if(code == 401) {
+        errorReason = [errorReason stringByAppendingString:@"UnauthrizedAccess"];
+        errorDescription = @"Unauthorized access to resource";
+    } else if(code == 403) {
+        errorReason = [errorReason stringByAppendingString:@"ForbiddenAccess"];
+        errorDescription = @"Forbidden access to resource";
+    } else if(code == 404) {
+        errorReason = [errorReason stringByAppendingString:@"ResourceNotFound"];
+        errorDescription = @"Unable to locate resource";
+    } else if(code == 405) {
+        errorReason = [errorReason stringByAppendingString:@"MethodNotAllowed"];
+        errorDescription = @"Method not allowed";
+    } else if(code == 409) {
+        errorReason = [errorReason stringByAppendingString:@"ResourceConflict"];
+        errorDescription = @"Resource conflict";
+    } else if(code == 422) {
+        errorReason = [errorReason stringByAppendingString:@"ResourceInvalid"];
+        errorDescription = @"Invalid resource";
+    } else if(NSLocationInRange(code, clientErrorRange)) {
+        errorReason = [errorReason stringByAppendingString:@"ClientError"];
+        errorDescription = @"Unknown Client Error";
+    } else if(NSLocationInRange(code, serverErrorRange)) {
+        errorReason = [errorReason stringByAppendingString:@"ServerError"];
+        errorDescription = @"Unknown Server Error";
+    } else {
+        errorReason = [errorReason stringByAppendingString:@"ConnectionError"];
+        errorDescription = @"Unknown status code";
+    }
     
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                                errorReason, NSLocalizedFailureReasonErrorKey,
+                                errorDescription, NSLocalizedDescriptionKey, nil];
+    *error = [NSError errorWithDomain:HTTPRiotErrorDomain code:code userInfo:userInfo];
     return nil;
 }
 @end

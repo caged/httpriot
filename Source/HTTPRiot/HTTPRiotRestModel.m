@@ -20,7 +20,7 @@ static NSMutableDictionary *attributes;
 + (void)initialize
 {
     if(!attributes)
-        attributes = [NSMutableDictionary dictionary];
+        attributes = [[NSMutableDictionary dictionary] retain];
 }
 
 // Given that we want to allow classes to define default attributes we need to create 
@@ -67,8 +67,7 @@ static NSMutableDictionary *attributes;
 
 + (kHTTPRiotFormat)format
 {
-    kHTTPRiotFormat f = (int)[[self classAttributes] objectForKey:@"format"];
-    return f;
+    return [[[self classAttributes] objectForKey:@"format"] intValue];
 }
 
 + (void)setFormat:(kHTTPRiotFormat)format
@@ -91,11 +90,11 @@ static NSMutableDictionary *attributes;
     [[self classAttributes] setObject:attr forKey:key];
 }
 
-+ (NSArray *)getWithPath:(NSString *)path options:(NSDictionary *)options
++ (NSArray *)getPath:(NSString *)path withOptions:(NSDictionary *)options error:(NSError **)error
 {
     NSMutableDictionary *opts = [NSMutableDictionary dictionaryWithDictionary:[self classAttributes]];
     [opts addEntriesFromDictionary:options];
     
-    return [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet path:path options:opts];
+    return [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet path:path options:opts error:error];
 }
 @end

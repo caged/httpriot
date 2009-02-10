@@ -30,16 +30,20 @@
 @end
 
 
-// WHY IS THIS SHIT BROKEN?
 @implementation RestModelTest
-- (void) testSetsDefaultVariables 
+- (void) testSetsBaseURI 
+{   
+    STAssertEqualObjects(@"http://localhost:4567", [[HRTestPerson baseURI] absoluteString], nil);
+    STAssertEqualObjects([NSURL URLWithString:@"http://localhost:4567/people"], [HRTestPerson2 baseURI], nil);
+}
+
+- (void)testDefaultFormatIsJSON
 {
-    // [[HRTestPerson alloc] init];
-    // [[HRTestPerson2 alloc] init];
-    
-    STAssertNotNil(@"foo", nil);
-    
-    //STAssertEqualObjects(@"http://localhost:4567", [[HRTestPerson baseURI] absoluteString], nil);
-    //STAssertEqualObjects([NSURL URLWithString:@"http://foo.com"], [NSURL URLWithString:@"http://foobar.com"], nil);
+    STAssertEquals([HRTestPerson format], kHTTPRiotJSONFormat, nil);
+}
+
+- (void)test404Error
+{
+    [HRTestPerson getPath:@"/invalidpath" withOptions:nil];
 }
 @end

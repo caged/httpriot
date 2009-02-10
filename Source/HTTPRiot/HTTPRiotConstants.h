@@ -9,3 +9,5 @@ typedef enum {
     kHTTPRiotJSONFormat = 1,
     kHTTPRiotXMLFormat
 } kHTTPRiotFormat;
+
+#define HTTPRiotErrorDomain @"com.labratrevenge.HTTPRiot.ErroDomain"

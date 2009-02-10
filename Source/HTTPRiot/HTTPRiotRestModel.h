@@ -18,5 +18,5 @@
 + (void)setHeaders:(NSDictionary *)hdrs;
 + (void)setFormat:(kHTTPRiotFormat)format;
 + (kHTTPRiotFormat)format;
-+ (NSArray *)getWithPath:(NSString *)path options:(NSDictionary *)options;
++ (NSArray *)getPath:(NSString *)path withOptions:(NSDictionary *)options error:(NSError **)error;
 @end

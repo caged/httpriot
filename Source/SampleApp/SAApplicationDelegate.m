@@ -21,11 +21,11 @@
 // }
 // @end
 // 
-@interface SATweet : HTTPRiotRestModel {} @end
-@implementation SATweet
+@interface SAPerson : HTTPRiotRestModel {} @end
+@implementation SAPerson
 + (void)initialize
 {
-    [self setBaseURI:[NSURL URLWithString:@"http://twitter.com"]];
+    [self setBaseURI:[NSURL URLWithString:@"http://localhost:4567"]];
 }
 @end
 
@@ -33,10 +33,14 @@
 @implementation SAApplicationDelegate
 - (void)awakeFromNib
 {
-    NSArray *tweets = [SATweet getWithPath:@"statuses/public_timeline.json" options:nil];
-    for(NSDictionary *tweet in tweets)
-    {
-        NSLog(@"%s TWEET:%@", _cmd, [tweet valueForKey:@"text"]);
-    }
+    // NSArray *tweets = [SATweet getPath:@"statuses/public_timeline.json" withOptions:nil];
+    // for(NSDictionary *tweet in tweets)
+    // {
+    //     NSLog(@"%s TWEET:%@", _cmd, [tweet valueForKey:@"text"]);
+    // }
+    
+    NSError *error = nil;
+    [SAPerson getPath:@"/foobar" withOptions:nil error:&error];
+    NSLog(@"%s ERROR:%@", _cmd, error);
 }
 @end
