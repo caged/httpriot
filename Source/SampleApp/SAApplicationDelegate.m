@@ -39,8 +39,12 @@
     //     NSLog(@"%s TWEET:%@", _cmd, [tweet valueForKey:@"text"]);
     // }
     
-    NSError *error = nil;
-    [SAPerson getPath:@"/foobar" withOptions:nil error:&error];
-    NSLog(@"%s ERROR:%@", _cmd, error);
+    NSError *error;
+    // NSArray *people = [SAPerson getPath:@"/people" withOptions:nil error:&error];
+    // NSDictionary *person = [SAPerson getPath:@"/person/1" withOptions:nil error:&error];
+    NSDictionary *person2 = [SAPerson getPath:@"/invalidstuffz" withOptions:nil error:&error];
+    
+    // NSLog(@"%s PEOPLE:%@", _cmd, people);
+    // NSLog(@"%s PERSON:%@", _cmd, person);
 }
 @end

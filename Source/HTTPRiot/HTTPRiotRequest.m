@@ -43,7 +43,7 @@
     {
         httpMethod = method;
         path = urlPath;
-        options = [requestOptions retain];
+        options = [[requestOptions retain] autorelease];
     }
 
     return self;
@@ -54,7 +54,7 @@
                      options:(NSDictionary*)requestOptions
                      error:(NSError **)error
 {
-    NSArray *results = [NSArray array];
+    id results;
     NSData *body;
     id instance = [[self alloc] initWithMethod:method path:urlPath options:requestOptions];
     //NSLog(@"%@ %@%@", [method uppercaseString], site, path);
@@ -64,9 +64,20 @@
         body = [NSURLConnection sendSynchronousRequest:[instance http]
                                              returningResponse:&response
                                                          error:nil];
-        [instance handleResponse:response error:error];
+        [instance handleResponse:response error:&error];
+
+        // FIXME: Releasing the instance here results in a double free error.  Wonder what the best 
+        // way to handle this is considering I need to release it if there is an error and I need to 
+        // keep it around a little longer if there is no error.
+        if(error)
+        {
+            //[instance release];
+            return;
+        } 
+
         results = [instance formattedResults:body];
         [instance release];
+
     }
     
     return results;
@@ -153,6 +164,7 @@
 
 - (id)handleResponse:(NSHTTPURLResponse *)response error:(NSError **)error
 {
+    NSError *responseError = nil;
     NSInteger code = [response statusCode];
     NSUInteger ucode = [[NSNumber numberWithInt:code] unsignedIntValue];
     NSRange okRange = NSMakeRange(200, 200);
@@ -162,7 +174,6 @@
     NSString *errorReason = [NSString stringWithFormat:@"%d Error: ", code];
     NSString *errorDescription;
     
-    NSLog(@"%s CODE:%i, %i", _cmd, code, ucode);
     if(code == 300 || code == 302) {
         errorReason = [errorReason stringByAppendingString:@"RedirectNotHandled"];
         errorDescription = @"Redirection not handled";
@@ -189,10 +200,10 @@
     } else if(code == 422) {
         errorReason = [errorReason stringByAppendingString:@"ResourceInvalid"];
         errorDescription = @"Invalid resource";
-    } else if(NSLocationInRange(code, clientErrorRange)) {
+    } else if(NSLocationInRange(ucode, clientErrorRange)) {
         errorReason = [errorReason stringByAppendingString:@"ClientError"];
         errorDescription = @"Unknown Client Error";
-    } else if(NSLocationInRange(code, serverErrorRange)) {
+    } else if(NSLocationInRange(ucode, serverErrorRange)) {
         errorReason = [errorReason stringByAppendingString:@"ServerError"];
         errorDescription = @"Unknown Server Error";
     } else {
@@ -200,9 +211,9 @@
         errorDescription = @"Unknown status code";
     }
     
-    NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                                errorReason, NSLocalizedFailureReasonErrorKey,
-                                errorDescription, NSLocalizedDescriptionKey, nil];
+    NSDictionary *userInfo = [[[NSDictionary dictionaryWithObjectsAndKeys:
+                               errorReason, NSLocalizedFailureReasonErrorKey,
+                               errorDescription, NSLocalizedDescriptionKey, nil] retain] autorelease];
     *error = [NSError errorWithDomain:HTTPRiotErrorDomain code:code userInfo:userInfo];
     return nil;
 }
