@@ -18,7 +18,11 @@ DB.create_table :people do
   column :created_at, :date
 end
 
-
+class Sequel::Model
+  def to_json
+    values.to_json
+  end
+end
 # simple person model
 class Person < Sequel::Model
   validates_presence_of :name, :email, :address
@@ -33,9 +37,9 @@ class Person < Sequel::Model
     puts params.inspect
     data = JSON.parse(params[:data])
     if person.update(data)
-      { :status => 'OK', :name => person.name }
+      {:status => 200, :name => person.name}
     else
-      { :status => 'FAIL' }
+      {:status => 500}
     end
   end
 end
@@ -54,17 +58,26 @@ end
 
 # Set every request to JSON
 before do
-  content_type 'text/json'
+  content_type 'application/json'
+end
+
+#GET /status/500 returns the given status code
+get '/status/:code' do
+  status params[:code].to_i
+end
+
+get '/search' do
+  Person.find('id > ?', params[:limit]).to_json
 end
 
 #GET /people returns all posts as json
 get '/people' do
-  Person.all.collect {|p| p.values }.to_json
+  Person.all.to_json
 end
  
 #GET /person/1 returns that post as json
 get '/person/:id' do
-  Person.find(params[:id]).values.to_json
+  Person.find(params[:id]).to_json
 end
  
 #PUT /person/1 update that puts with json
@@ -74,16 +87,13 @@ end
  
 #POST /post body with data field set to JSON: { "title": "test", "body": "body test" }
 post '/person' do
-  Person.respond(params).to_json
+  st = Person.respond(params)
+  status st[:status]
+  st.to_json
 end
  
 #DELETE /post/1 deletes post
 delete '/person/:id' do
   person = Person.find(params[:id])
   ok if person.destroy
-end
-
-get '/status/:code' do
-  status params[:code].to_i
-  "omg"
 end

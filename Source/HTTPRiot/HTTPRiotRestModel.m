@@ -12,6 +12,7 @@
 @interface HTTPRiotRestModel (PrivateMethods)
 + (void)setAttributeValue:(id)attr forKey:(NSString *)key;
 + (NSMutableDictionary *)classAttributes;
++ (NSMutableDictionary *)mergedOptions:(NSDictionary *)options;
 @end
 
 @implementation HTTPRiotRestModel
@@ -92,9 +93,14 @@ static NSMutableDictionary *attributes;
 
 + (NSArray *)getPath:(NSString *)path withOptions:(NSDictionary *)options error:(NSError **)error
 {
+    NSMutableDictionary *opts = [self mergedOptions:options];
+    return [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet path:path options:opts error:error];        
+}
+
++ (NSMutableDictionary *)mergedOptions:(NSDictionary *)options
+{
     NSMutableDictionary *opts = [NSMutableDictionary dictionaryWithDictionary:[self classAttributes]];
     [opts addEntriesFromDictionary:options];
-    
-    return [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet path:path options:opts error:error];        
+    return opts;
 }
 @end

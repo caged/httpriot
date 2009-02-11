@@ -10,23 +10,21 @@
 
 @interface HTTPRiotRequest : NSObject {
     CGFloat timeout;
-    NSURL *fullURL;
+    kHTTPRiotMethod httpMethod;
     NSString *path;
     NSDictionary *options;
     NSArray *methodStrings;
-    
-    kHTTPRiotMethod httpMethod;
+    id formatter;
 }
 
 @property (nonatomic) CGFloat timeout;
-@property (nonatomic, readonly) kHTTPRiotMethod httpMethod;
+@property (nonatomic) kHTTPRiotMethod httpMethod;
 @property (nonatomic, readonly, copy) NSString *path;
-@property (nonatomic, readonly, retain) NSURL *fullURL;
 @property (nonatomic, readonly, retain) NSDictionary *options;
+@property (nonatomic, retain) id formatter;
 
 + (id)requestWithMethod:(kHTTPRiotMethod)method
                          path:(NSString*)urlPath
                       options:(NSDictionary*)requestOptions
                         error:(NSError **)error;
-- (NSDictionary *)params;
 @end

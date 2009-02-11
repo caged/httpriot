@@ -17,7 +17,12 @@
 @interface HTTPRiotRequest (PrivateMethods)
 - (NSMutableURLRequest *)http;
 - (NSArray *)formattedResults:(NSData *)data;
+- (void)setDefaultHeadersForRequest:(NSMutableURLRequest *)request;
+- (NSMutableURLRequest *)configuredRequest;
+- (id)formatterFromFormat;
+- (NSURL *)composedURI;
 + (id)handleResponse:(NSHTTPURLResponse *)response error:(NSError **)error;
++ (NSString *)buildQueryStringFromParams:(NSDictionary *)params;
 @end
 
 static NSArray *httpMethods;
@@ -28,7 +33,7 @@ static NSArray *httpMethods;
 @synthesize httpMethod;
 @synthesize path;
 @synthesize options;
-@synthesize fullURL;
+@synthesize formatter;
 
 + (void)initialize
 {
@@ -52,11 +57,87 @@ static NSArray *httpMethods;
         httpMethod = method;
         path = urlPath;
         options = [requestOptions retain];
+        [self setFormatter:[self formatterFromFormat]];
     }
 
     return self;
 }
 
+- (id)formatterFromFormat
+{
+    NSNumber *format = [[self options] objectForKey:@"format"];
+    switch([format intValue])
+    {
+        case kHTTPRiotJSONFormat:
+            return [HTTPRiotFormatJSON class];
+        break;
+        case kHTTPRiotXMLFormat:
+            return [HTTPRiotFormatXML class];
+        break;
+    }
+    
+    [NSException raise:@"InvalidFormatException" format:@"Unsupported format.  Format must be json or xml"];     
+    return nil;  
+}
+
+
+- (void)setDefaultHeadersForRequest:(NSMutableURLRequest *)request
+{
+    NSDictionary *headers = [[self options] valueForKey:@"headers"];
+
+    [request setValue:[[self formatter] mimeType] forHTTPHeaderField:@"Content-Type"];  
+    [request addValue:[[self formatter] mimeType] forHTTPHeaderField:@"Accept"];
+
+    if(headers)
+        [request setAllHTTPHeaderFields:headers];
+}
+
+- (NSMutableURLRequest *)configuredRequest
+{
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    [request setTimeoutInterval:60.0];
+    [self setDefaultHeadersForRequest:request];
+    
+    NSString *urlString = [[self composedURI] absoluteString];
+    NSDictionary *params = [[self options] valueForKey:@"params"];
+    
+    switch([self httpMethod])
+    {
+        case kHTTPRiotMethodGet: 
+            [request setHTTPMethod:@"GET"];
+            NSString *queryString = [[self class] buildQueryStringFromParams:params];
+            [urlString stringByAppendingString:queryString];
+            NSURL *url = [NSURL URLWithString:urlString];
+            [request setURL:url];
+        break;
+        // TODO: POST BODY STUFF
+        case kHTTPRiotMethodPost:
+            [request setHTTPMethod:@"POST"];
+        break;
+    }
+    
+    return request;
+}
+
+- (NSURL *)composedURI
+{
+    NSURL *tmpURI = [NSURL URLWithString:path];
+    NSURL *baseURI = [options objectForKey:@"baseURI"];
+    
+    if([tmpURI host] == nil && [baseURI host] == nil)
+        [NSException raise:@"UnspecifiedHost" format:@"host wasn't provided in baseURI or path"];
+    
+    if([tmpURI host])
+        tmpURI = [NSURL URLWithString:path relativeToURL:tmpURI];
+    else
+        tmpURI = [NSURL URLWithString:path relativeToURL:baseURI];
+
+    
+    return tmpURI;
+}
+
+#pragma mark - Class Methods
 + (id)requestWithMethod:(kHTTPRiotMethod)method
                         path:(NSString*)urlPath
                      options:(NSDictionary*)requestOptions
@@ -69,8 +150,8 @@ static NSArray *httpMethods;
     if(instance)
     {
         NSHTTPURLResponse *response;
-        NSMutableURLRequest *request = [instance http];
-        NSLog(@"%@ %@", [httpMethods objectAtIndex:method], [[request URL] absoluteString]);
+        NSMutableURLRequest *request = [instance configuredRequest];
+        //NSLog(@"%@ %@", [httpMethods objectAtIndex:method], [[request URL] absoluteString]);
         
         body = [NSURLConnection sendSynchronousRequest:request
                                              returningResponse:&response
@@ -87,12 +168,11 @@ static NSArray *httpMethods;
             return results;
         } 
 
-        results = [instance formattedResults:body];
+        results = [[instance formatter] decode:body];
         [instance release];
     }
     return results;
 }
-
 
 + (id)handleResponse:(NSHTTPURLResponse *)response error:(NSError **)error
 {
@@ -102,9 +182,10 @@ static NSArray *httpMethods;
     NSRange clientErrorRange = NSMakeRange(401, 99);
     NSRange serverErrorRange = NSMakeRange(500, 100);
     
+    NSDictionary *headers = [response allHeaderFields];
     NSString *errorReason = [NSString stringWithFormat:@"%d Error: ", code];
     NSString *errorDescription;
-    NSLog(@"%s CODE:%i, %d, %f", _cmd, code, code, code);
+    // NSLog(@"%s CODE:%i, %d, %f", _cmd, code, code, code);
     
     if(code == 300 || code == 302) {
         errorReason = [errorReason stringByAppendingString:@"RedirectNotHandled"];
@@ -145,29 +226,13 @@ static NSArray *httpMethods;
     
     NSDictionary *userInfo = [[[NSDictionary dictionaryWithObjectsAndKeys:
                                errorReason, NSLocalizedFailureReasonErrorKey,
-                               errorDescription, NSLocalizedDescriptionKey, nil] retain] autorelease];
+                               errorDescription, NSLocalizedDescriptionKey, 
+                               headers, @"headers", nil] retain] autorelease];
     *error = [NSError errorWithDomain:HTTPRiotErrorDomain code:code userInfo:userInfo];
     return nil;
 }
 
--(NSArray *)formattedResults:(NSData *)data
-{   
-    NSNumber *format = [[self options] objectForKey:@"format"];
-    switch([format intValue])
-    {
-        case kHTTPRiotJSONFormat:
-            return [HTTPRiotFormatJSON decode:data];
-        break;
-        case kHTTPRiotXMLFormat:
-            return [HTTPRiotFormatXML decode:data];
-        break;
-    }
-    
-    [NSException raise:@"InvalidFormatException" format:@"Unsupported format.  Format must be json or xml"];
-    return nil;
-}
-
-+ (NSString *)buildQueryString:(NSDictionary *)theParams
++ (NSString *)buildQueryStringFromParams:(NSDictionary *)theParams
 {
     NSString *query = @"";
     if(theParams)
@@ -177,54 +242,5 @@ static NSArray *httpMethods;
     }
     
     return query;
-}
-
-- (NSMutableURLRequest *)http
-{
-    NSMutableURLRequest *tmpHTTP = [NSMutableURLRequest requestWithURL:[self fullURL]];
-    [tmpHTTP setTimeoutInterval:60.0];
-        
-    switch([self httpMethod])
-    {
-        case kHTTPRiotMethodGet: 
-            [tmpHTTP setHTTPMethod:@"GET"];
-        break;
-        // TODO: POST BODY STUFF
-        case kHTTPRiotMethodPost:
-            [tmpHTTP setHTTPMethod:@"POST"];
-        break;
-    }
-    
-    return tmpHTTP;
-}
-
-- (NSURL *)fullURL
-{
-    // NSLog(@"%s options:%@", _cmd, options);
-    NSURL *tmpURI = [NSURL URLWithString:path];
-    NSURL *baseURI = [options objectForKey:@"baseURI"];
-    
-    if([tmpURI host] == nil && [baseURI host] == nil)
-        [NSException raise:@"UnspecifiedHost" format:@"host wasn't provided in baseURI or path"];
-    
-    // NSLog(@"%s query:%@", _cmd, pathWithQuery);
-    
-    // If a host is provided in the path, give it precedence over the default baseURI
-    // TODO: merge query params if they are specified as part of the url and also provided 
-    // via the params option.
-    NSString *pathWithQuery = [path stringByAppendingString:[[self class] buildQueryString:[self params]]];
-    
-    if([tmpURI host])
-        tmpURI = [NSURL URLWithString:pathWithQuery relativeToURL:tmpURI];
-    else
-        tmpURI = [NSURL URLWithString:pathWithQuery relativeToURL:baseURI];
-
-    
-    return tmpURI;
-}
-
-- (NSDictionary *)params
-{
-   return [options objectForKey:@"params"];
 }
 @end
