@@ -13,6 +13,7 @@
     NSURL *fullURL;
     NSString *path;
     NSDictionary *options;
+    NSArray *methodStrings;
     
     kHTTPRiotMethod httpMethod;
 }
@@ -23,7 +24,7 @@
 @property (nonatomic, readonly, retain) NSURL *fullURL;
 @property (nonatomic, readonly, retain) NSDictionary *options;
 
-+ (NSArray*)requestWithMethod:(kHTTPRiotMethod)method
++ (id)requestWithMethod:(kHTTPRiotMethod)method
                          path:(NSString*)urlPath
                       options:(NSDictionary*)requestOptions
                         error:(NSError **)error;

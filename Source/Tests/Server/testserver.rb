@@ -82,3 +82,8 @@ delete '/person/:id' do
   person = Person.find(params[:id])
   ok if person.destroy
 end
+
+get '/status/:code' do
+  status params[:code].to_i
+  "omg"
+end

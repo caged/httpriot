@@ -44,10 +44,12 @@
 		D0298A9A0F3FFF2E00EC8C01 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A870F3FFF2E00EC8C01 /* SBJSON.m */; };
 		D0298B440F40D0FB00EC8C01 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D029897A0F3FBFF800EC8C01 /* libcrypto.dylib */; };
 		D0298B710F40EEB500EC8C01 /* HTTPRiot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* HTTPRiot.framework */; };
+		D02990290F433C1800EC8C01 /* HTTPRiotRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D02990280F433C1800EC8C01 /* HTTPRiotRequestTest.m */; };
+		D029906B0F43422E00EC8C01 /* HTTPRiotTestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D029906A0F43422E00EC8C01 /* HTTPRiotTestHelper.m */; };
 		D03DB6660F3163BB00F18796 /* HTTPRiot.h in Headers */ = {isa = PBXBuildFile; fileRef = D03DB6650F3163BB00F18796 /* HTTPRiot.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D03DB66C0F31654200F18796 /* HTTPRiotRestModel.h in Headers */ = {isa = PBXBuildFile; fileRef = D03DB66A0F31654200F18796 /* HTTPRiotRestModel.h */; settings = {ATTRIBUTES = (); }; };
 		D03DB66D0F31654200F18796 /* HTTPRiotRestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D03DB66B0F31654200F18796 /* HTTPRiotRestModel.m */; };
-		D09E4A1E0F339E0600C9E26E /* RestModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4A1D0F339E0600C9E26E /* RestModelTest.m */; };
+		D09E4A1E0F339E0600C9E26E /* HTTPRiotRestModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4A1D0F339E0600C9E26E /* HTTPRiotRestModelTest.m */; };
 		D09E4A4E0F33A12700C9E26E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D09E4A4D0F33A12700C9E26E /* SenTestingKit.framework */; };
 		D09E4AB60F33CCB900C9E26E /* HTTPRiot.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* HTTPRiot.framework */; };
 		D09E4ADA0F33CDB600C9E26E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4AD90F33CDB600C9E26E /* main.m */; };
@@ -62,7 +64,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 8DC2EF4F0486A6940098B216 /* HTTPRiot */;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = HTTPRiot;
 		};
 		D09E4AB10F33CCAA00C9E26E /* PBXContainerItemProxy */ = {
@@ -119,13 +121,15 @@
 		D0298A850F3FFF2E00EC8C01 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
 		D0298A860F3FFF2E00EC8C01 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
 		D0298A870F3FFF2E00EC8C01 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		D02990280F433C1800EC8C01 /* HTTPRiotRequestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRiotRequestTest.m; sourceTree = "<group>"; };
+		D02990380F433D1900EC8C01 /* HTTPRiotTestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRiotTestHelper.h; sourceTree = "<group>"; };
+		D029906A0F43422E00EC8C01 /* HTTPRiotTestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRiotTestHelper.m; sourceTree = "<group>"; };
 		D03DB6650F3163BB00F18796 /* HTTPRiot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRiot.h; sourceTree = "<group>"; };
 		D03DB66A0F31654200F18796 /* HTTPRiotRestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRiotRestModel.h; sourceTree = "<group>"; };
 		D03DB66B0F31654200F18796 /* HTTPRiotRestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRiotRestModel.m; sourceTree = "<group>"; };
 		D09E4A170F339D7900C9E26E /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D09E4A180F339D7900C9E26E /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
-		D09E4A1C0F339E0600C9E26E /* RestModelTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestModelTest.h; sourceTree = "<group>"; };
-		D09E4A1D0F339E0600C9E26E /* RestModelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestModelTest.m; sourceTree = "<group>"; };
+		D09E4A1D0F339E0600C9E26E /* HTTPRiotRestModelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRiotRestModelTest.m; sourceTree = "<group>"; };
 		D09E4A4D0F33A12700C9E26E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		D09E4AAA0F33CB7F00C9E26E /* SampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D09E4AAC0F33CB7F00C9E26E /* SampleApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SampleApp-Info.plist"; sourceTree = "<group>"; };
@@ -333,8 +337,10 @@
 			isa = PBXGroup;
 			children = (
 				D0298B370F4038C500EC8C01 /* Server */,
-				D09E4A1C0F339E0600C9E26E /* RestModelTest.h */,
-				D09E4A1D0F339E0600C9E26E /* RestModelTest.m */,
+				D09E4A1D0F339E0600C9E26E /* HTTPRiotRestModelTest.m */,
+				D02990280F433C1800EC8C01 /* HTTPRiotRequestTest.m */,
+				D02990380F433D1900EC8C01 /* HTTPRiotTestHelper.h */,
+				D029906A0F43422E00EC8C01 /* HTTPRiotTestHelper.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -561,7 +567,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D09E4A1E0F339E0600C9E26E /* RestModelTest.m in Sources */,
+				D09E4A1E0F339E0600C9E26E /* HTTPRiotRestModelTest.m in Sources */,
+				D02990290F433C1800EC8C01 /* HTTPRiotRequestTest.m in Sources */,
+				D029906B0F43422E00EC8C01 /* HTTPRiotTestHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
