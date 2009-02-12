@@ -35,6 +35,28 @@
     STAssertNil(person, nil);
 }
 
+- (void)testShouldUseParamsWhenProvided
+{
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"5",@"limit", @"foo", @"bar", nil];
+    NSDictionary *opts = [NSDictionary dictionaryWithObject:params forKey:@"params"];
+    NSArray *people = [HRTestPerson getPath:@"/search" withOptions:opts error:nil];
+    STAssertTrue([people count] <= 4, nil);
+}
+
+- (void)testShouldSetDefaultHeaders
+{
+    NSDictionary *headers = [HRTestPerson3 headers];
+    STAssertEqualObjects(@"bar", [headers objectForKey:@"foo"], nil);
+    STAssertEqualObjects(@"bing", [headers objectForKey:@"bada"], nil);
+}
+
+- (void)testShouldSetDefaultParams
+{
+    NSDictionary *params = [HRTestPerson3 defaultParams];
+    STAssertEqualObjects(@"bar", [params objectForKey:@"foo"], nil);
+    STAssertEqualObjects(@"bing", [params objectForKey:@"bada"], nil);
+}
+
 // - (void) testHostProvidedInPathShouldOverideBaseURI 
 // {
 //     STFail(nil, nil);

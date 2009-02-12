@@ -19,3 +19,13 @@
     [self setBaseURI:[NSURL URLWithString:server]]; 
 }
 @end
+
+@implementation HRTestPerson3
++ (void)initialize 
+{ 
+    [self setBaseURI:[NSURL URLWithString:HTTPRiotTestServer]]; 
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"bar", @"foo", @"bing", @"bada", nil];
+    [self setHeaders:params];
+    [self setDefaultParams:params];
+}
+@end

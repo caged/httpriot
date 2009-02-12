@@ -18,11 +18,6 @@ DB.create_table :people do
   column :created_at, :date
 end
 
-class Sequel::Model
-  def to_json
-    values.to_json
-  end
-end
 # simple person model
 class Person < Sequel::Model
   validates_presence_of :name, :email, :address
@@ -67,17 +62,17 @@ get '/status/:code' do
 end
 
 get '/search' do
-  Person.find('id > ?', params[:limit]).to_json
+  Person.filter('id < ?', params[:limit]).collect { |p| p.values }.to_json
 end
 
 #GET /people returns all posts as json
 get '/people' do
-  Person.all.to_json
+  Person.all.collect { |p| p.values }.to_json
 end
  
 #GET /person/1 returns that post as json
 get '/person/:id' do
-  Person.find(params[:id]).to_json
+  Person.find(params[:id]).values.to_json
 end
  
 #PUT /person/1 update that puts with json

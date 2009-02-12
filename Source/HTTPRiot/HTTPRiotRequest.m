@@ -101,13 +101,13 @@ static NSArray *httpMethods;
     
     NSString *urlString = [[self composedURI] absoluteString];
     NSDictionary *params = [[self options] valueForKey:@"params"];
-    
+
     switch([self httpMethod])
     {
         case kHTTPRiotMethodGet: 
             [request setHTTPMethod:@"GET"];
             NSString *queryString = [[self class] buildQueryStringFromParams:params];
-            [urlString stringByAppendingString:queryString];
+            urlString = [urlString stringByAppendingString:queryString];
             NSURL *url = [NSURL URLWithString:urlString];
             [request setURL:url];
         break;
@@ -146,30 +146,32 @@ static NSArray *httpMethods;
     NSError *responseError = nil;
     id results = nil;
     NSData *body;
-    id instance = [[self alloc] initWithMethod:method path:urlPath options:requestOptions];
+    id instance = [[[self alloc] initWithMethod:method path:urlPath options:requestOptions] autorelease];
     if(instance)
     {
         NSHTTPURLResponse *response;
         NSMutableURLRequest *request = [instance configuredRequest];
         //NSLog(@"%@ %@", [httpMethods objectAtIndex:method], [[request URL] absoluteString]);
-        
+        NSError *connectionError = nil;
         body = [NSURLConnection sendSynchronousRequest:request
                                              returningResponse:&response
-                                                         error:nil];
+                                                         error:&connectionError];
+        
+        if(connectionError)
+        {
+            if(error) *error = connectionError;
+            return results;
+        }
+        
         [self handleResponse:response error:&responseError];
-
-        // FIXME: Releasing the instance here results in a double free error.  Wonder what the best 
-        // way to handle this is considering I need to release it if there is an error and I need to 
-        // keep it around a little longer if there is no error.
+        
         if(responseError)
         {
             if(error) *error = responseError;
-            //[instance release];
             return results;
         } 
 
         results = [[instance formatter] decode:body];
-        [instance release];
     }
     return results;
 }
@@ -185,7 +187,7 @@ static NSArray *httpMethods;
     NSDictionary *headers = [response allHeaderFields];
     NSString *errorReason = [NSString stringWithFormat:@"%d Error: ", code];
     NSString *errorDescription;
-    // NSLog(@"%s CODE:%i, %d, %f", _cmd, code, code, code);
+    NSLog(@"%s CODE:%i, %d, %f", _cmd, code, code, code);
     
     if(code == 300 || code == 302) {
         errorReason = [errorReason stringByAppendingString:@"RedirectNotHandled"];
@@ -234,13 +236,12 @@ static NSArray *httpMethods;
 
 + (NSString *)buildQueryStringFromParams:(NSDictionary *)theParams
 {
-    NSString *query = @"";
     if(theParams)
     {
          if([theParams count] > 0)
              return [theParams toQueryString];
     }
     
-    return query;
+    return @"";
 }
 @end
