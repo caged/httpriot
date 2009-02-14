@@ -66,6 +66,17 @@ static NSMutableDictionary *attributes;
     [self setAttributeValue:hdrs forKey:@"headers"];
 }
 
++ (NSDictionary *)basicAuth
+{
+    return [[self classAttributes] objectForKey:@"basicAuth"];
+}
+
++ (void)setBasicAuthWithUsername:(NSString *)username password:(NSString *)password
+{
+    NSDictionary *authDict = [NSDictionary dictionaryWithObjectsAndKeys:username, @"username", password, @"password", nil];
+    [self setAttributeValue:authDict forKey:@"basicAuth"];
+}
+
 + (kHTTPRiotFormat)format
 {
     return [[[self classAttributes] objectForKey:@"format"] intValue];

@@ -14,11 +14,18 @@
 
 + (NSURL *)baseURI;
 + (void)setBaseURI:(NSURL *)uri;
+
 + (NSDictionary *)headers;
 + (void)setHeaders:(NSDictionary *)hdrs;
-+ (void)setFormat:(kHTTPRiotFormat)format;
+
++ (NSDictionary *)basicAuth;
++ (void)setBasicAuthWithUsername:(NSString *)username password:(NSString *)password;
+
 + (NSDictionary *)defaultParams;
 + (void)setDefaultParams:(NSDictionary *)params;
+
 + (kHTTPRiotFormat)format;
++ (void)setFormat:(kHTTPRiotFormat)format;
+
 + (NSArray *)getPath:(NSString *)path withOptions:(NSDictionary *)options error:(NSError **)error;
 @end

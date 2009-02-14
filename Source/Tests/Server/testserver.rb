@@ -3,6 +3,7 @@ require 'sinatra'
 require 'sequel'
 require 'json'
 require 'faker'
+require File.join(File.dirname(__FILE__), 'lib/authorization')
 
 # connect to an in-memory database
 DB = Sequel.sqlite
@@ -91,4 +92,18 @@ end
 delete '/person/:id' do
   person = Person.find(params[:id])
   ok if person.destroy
+end
+
+include Sinatra::Authorization
+#BASIC AUTH
+get '/auth' do
+  login_required
+end
+
+def authorize(username, password)
+  username == "user" && password = "test"
+end
+
+def authorization_realm
+  "HTTPRiot Basic Auth Testser"
 end

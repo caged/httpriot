@@ -18,6 +18,7 @@
 - (NSMutableURLRequest *)http;
 - (NSArray *)formattedResults:(NSData *)data;
 - (void)setDefaultHeadersForRequest:(NSMutableURLRequest *)request;
+- (void)setAuthHeadersForRequest:(NSMutableURLRequest *)request;
 - (NSMutableURLRequest *)configuredRequest;
 - (id)formatterFromFormat;
 - (NSURL *)composedURI;
@@ -80,7 +81,6 @@ static NSArray *httpMethods;
     return nil;  
 }
 
-
 - (void)setDefaultHeadersForRequest:(NSMutableURLRequest *)request
 {
     NSDictionary *headers = [[self options] valueForKey:@"headers"];
@@ -90,6 +90,21 @@ static NSArray *httpMethods;
 
     if(headers)
         [request setAllHTTPHeaderFields:headers];
+}
+
+- (void)setAuthHeadersForRequest:(NSMutableURLRequest *)request
+{
+    NSString *username = [options valueForKey:@"username"];
+    NSString *password = [options valueForKey:@"password"];
+    
+    if(username || password)
+    {
+        NSString *userPass = [NSString stringWithFormat:@"%@:%@", username, password];
+        NSData *b64 = [userPass dataUsingEncoding:NSUTF8StringEncoding];
+        NSString *encodedUserPass = [b64 encodeBase64];
+        [request setValue:[NSString stringWithFormat:@"Basic %@", encodedUserPass] forHTTPHeaderField:@"Authorization"];
+    }
+    
 }
 
 - (NSMutableURLRequest *)configuredRequest

@@ -57,6 +57,11 @@
     STAssertEqualObjects(@"bing", [params objectForKey:@"bada"], nil);
 }
 
+- (void) testShouldAuthenticateWithBasicAuth 
+{
+    STFail(nil, nil);
+}
+
 // - (void) testHostProvidedInPathShouldOverideBaseURI 
 // {
 //     STFail(nil, nil);
