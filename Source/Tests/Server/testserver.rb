@@ -84,7 +84,9 @@ end
  
 #PUT /person/1 update that puts with json
 put '/person/:id' do
-  Person.respond(params).to_json
+  person = Person.find(params[:id])
+  data = JSON.parse(request.body.read)
+  status 200 if person.update(data)
 end
  
 #POST /post body with data field set to JSON: { "title": "test", "body": "body test" }

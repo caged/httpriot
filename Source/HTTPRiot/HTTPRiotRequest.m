@@ -98,6 +98,7 @@ static NSArray *httpMethods;
     NSDictionary *authDict = [options valueForKey:@"basicAuth"];
     NSString *username = [authDict valueForKey:@"username"];
     NSString *password = [authDict valueForKey:@"password"];
+
     if(username || password)
     {
         username = [username stringByPreparingForURL];
@@ -114,6 +115,7 @@ static NSArray *httpMethods;
 
 - (NSMutableURLRequest *)configuredRequest
 {
+    kHTTPRiotMethod method = [self httpMethod];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
     [request setTimeoutInterval:30.0];
@@ -123,21 +125,25 @@ static NSArray *httpMethods;
     NSURL *composedURL = [self composedURI];
     NSDictionary *params = [[self options] valueForKey:@"params"];
     NSString *queryString = [[self class] buildQueryStringFromParams:params];
-
-    switch([self httpMethod])
+    
+    if(method == kHTTPRiotMethodGet)
     {
-        case kHTTPRiotMethodGet: 
-            [request setHTTPMethod:@"GET"];
-            NSString *urlString = [[composedURL absoluteString] stringByAppendingString:queryString];
-            NSURL *url = [NSURL URLWithString:urlString];
-            [request setURL:url];
-        break;
-        case kHTTPRiotMethodPost:
+        [request setHTTPMethod:@"GET"];
+        NSString *urlString = [[composedURL absoluteString] stringByAppendingString:queryString];
+        NSURL *url = [NSURL URLWithString:urlString];
+        [request setURL:url];
+    } 
+    else if(method == kHTTPRiotMethodPost || kHTTPRiotMethodPost)
+    {
+        NSString *json = [formatter encode:params];
+        [request setHTTPBody:[json dataUsingEncoding:NSUTF8StringEncoding]];
+        [request setURL:composedURL];
+        
+        if(method == kHTTPRiotMethodPost)
             [request setHTTPMethod:@"POST"];
-            NSString *json = [formatter encode:params];
-            [request setHTTPBody:[json dataUsingEncoding:NSUTF8StringEncoding]];
-            [request setURL:composedURL];
-        break;
+        else
+            [request setHTTPMethod:@"PUT"];
+            
     }
     
     return request;
@@ -194,7 +200,8 @@ static NSArray *httpMethods;
             return results;
         } 
 
-        results = [[instance formatter] decode:body];
+        if([body length] > 0)
+            results = [[instance formatter] decode:body];
     }
     return results;
 }

@@ -57,5 +57,13 @@
     // NSDictionary *options = [NSDictionary dictionaryWithObject:params forKey:@"params"];                       
     // id newPerson = [SAPerson postPath:@"/person" withOptions:options error:&error];
     // NSLog(@"%s WHUT:%@ ERROR:%@", _cmd, whut, error);
+    
+    id person = [SAPerson getPath:@"/person/1" withOptions:nil error:&error];
+
+    NSMutableDictionary *updatedPerson = [NSMutableDictionary dictionaryWithDictionary:person];
+    [updatedPerson setValue:@"Justin" forKey:@"name"];
+    [updatedPerson setValue:@"encytemedia@gamil.com" forKey:@"email"];
+    [updatedPerson removeObjectForKey:@"id"];
+    [SAPerson putPath:@"/person/1" withOptions:[NSDictionary dictionaryWithObject:updatedPerson forKey:@"params"] error:&error];
 }
 @end

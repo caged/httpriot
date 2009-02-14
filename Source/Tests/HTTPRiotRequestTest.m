@@ -121,11 +121,27 @@ static NSDictionary *defaultOptions;
                                              
     STAssertEqualObjects([person valueForKey:@"name"], @"bob", nil);
 }
-// 
-// - (void)testPUT
-// {
-//     STFail(nil, nil);
-// }
+
+- (void)testPUT
+{
+    id person = [HRTestPerson getPath:@"/person/1" withOptions:nil error:nil];
+    
+    NSMutableDictionary *updatedPerson = [NSMutableDictionary dictionaryWithDictionary:person];
+    [updatedPerson setValue:@"Justin" forKey:@"name"];
+    [updatedPerson setValue:@"encytemedia@gamil.com" forKey:@"email"];
+    [updatedPerson removeObjectForKey:@"id"];
+    
+    NSMutableDictionary *options = [NSMutableDictionary dictionaryWithObject:updatedPerson forKey:@"params"];                       
+    [options addEntriesFromDictionary:defaultOptions];
+    
+    NSError *error = nil;
+    id person2 = [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodPut
+                                              path:[HTTPRiotTestServer stringByAppendingString:@"/person/1"]
+                                           options:options
+                                             error:&error];
+                                             
+    STAssertTrue(person2 == nil && error == nil, nil);
+}
 // 
 // - (void)testDELETE
 // {

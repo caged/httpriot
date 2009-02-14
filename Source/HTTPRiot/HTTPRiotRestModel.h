@@ -29,4 +29,5 @@
 
 + (NSArray *)getPath:(NSString *)path withOptions:(NSDictionary *)options error:(NSError **)error;
 + (NSArray *)postPath:(NSString *)path withOptions:(NSDictionary *)options error:(NSError **)error;
++ (NSArray *)putPath:(NSString *)path withOptions:(NSDictionary *)options error:(NSError **)error;
 @end
