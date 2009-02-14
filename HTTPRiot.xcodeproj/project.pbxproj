@@ -17,10 +17,8 @@
 		D029893B0F3FBEDC00EC8C01 /* NSDictionary+URI.h in Headers */ = {isa = PBXBuildFile; fileRef = D02989330F3FBEDC00EC8C01 /* NSDictionary+URI.h */; };
 		D029893C0F3FBEDC00EC8C01 /* NSDictionary+URI.m in Sources */ = {isa = PBXBuildFile; fileRef = D02989340F3FBEDC00EC8C01 /* NSDictionary+URI.m */; };
 		D029893D0F3FBEDC00EC8C01 /* NSString+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = D02989350F3FBEDC00EC8C01 /* NSString+Base64.h */; };
-		D029893E0F3FBEDC00EC8C01 /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = D02989360F3FBEDC00EC8C01 /* NSString+Base64.m */; };
 		D029893F0F3FBEDC00EC8C01 /* NSString+URI.h in Headers */ = {isa = PBXBuildFile; fileRef = D02989370F3FBEDC00EC8C01 /* NSString+URI.h */; };
 		D02989400F3FBEDC00EC8C01 /* NSString+URI.m in Sources */ = {isa = PBXBuildFile; fileRef = D02989380F3FBEDC00EC8C01 /* NSString+URI.m */; };
-		D029897B0F3FBFF800EC8C01 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D029897A0F3FBFF800EC8C01 /* libcrypto.dylib */; };
 		D0298A2B0F3FCA8800EC8C01 /* HTTPRiotFormatterProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A280F3FCA8800EC8C01 /* HTTPRiotFormatterProtocol.h */; };
 		D0298A300F3FF4FD00EC8C01 /* HTTPRiotFormatJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A2D0F3FF4FD00EC8C01 /* HTTPRiotFormatJSON.h */; };
 		D0298A310F3FF4FD00EC8C01 /* HTTPRiotFormatJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A2E0F3FF4FD00EC8C01 /* HTTPRiotFormatJSON.m */; };
@@ -147,7 +145,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */,
-				D029897B0F3FBFF800EC8C01 /* libcrypto.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -543,7 +540,6 @@
 				D09E4B390F33EB1D00C9E26E /* HTTPRiotRequest.m in Sources */,
 				D029893A0F3FBEDC00EC8C01 /* NSData+Base64.m in Sources */,
 				D029893C0F3FBEDC00EC8C01 /* NSDictionary+URI.m in Sources */,
-				D029893E0F3FBEDC00EC8C01 /* NSString+Base64.m in Sources */,
 				D02989400F3FBEDC00EC8C01 /* NSString+URI.m in Sources */,
 				D0298A310F3FF4FD00EC8C01 /* HTTPRiotFormatJSON.m in Sources */,
 				D0298A360F3FF50800EC8C01 /* HTTPRiotFormatXML.m in Sources */,

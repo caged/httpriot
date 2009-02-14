@@ -1,7 +1,8 @@
-#include <openssl/bio.h>
-#include <openssl/evp.h>
+// Using MiloBird's implementation on CocoaDevCentral
+// http://www.cocoadev.com/index.pl?BaseSixtyFour/
+
 
 @interface NSData (Base64)
-- (NSString *) encodeBase64;
-- (NSString *) encodeBase64WithNewlines: (BOOL) encodeWithNewlines;
+- (NSString *)base64Encoding;
++ (id)dataWithBase64EncodedString:(NSString *)string;
 @end

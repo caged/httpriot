@@ -57,9 +57,11 @@
     STAssertEqualObjects(@"bing", [params objectForKey:@"bada"], nil);
 }
 
-- (void) testShouldAuthenticateWithBasicAuth 
+- (void) testShouldSetBasicAuthCredentials 
 {
-    STFail(nil, nil);
+    NSDictionary *expectedAuth = [NSDictionary dictionaryWithObjectsAndKeys:@"user", @"username", @"pass", @"password", nil];
+    NSDictionary *basicAuth = [HRTestPerson basicAuth];
+    STAssertEqualObjects(basicAuth, expectedAuth, nil);
 }
 
 // - (void) testHostProvidedInPathShouldOverideBaseURI 

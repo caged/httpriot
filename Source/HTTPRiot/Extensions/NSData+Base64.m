@@ -7,38 +7,107 @@
 //
 
 #import "NSData+Base64.h"
+static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
 @implementation NSData (Base64)
 
-- (NSString *) encodeBase64;
++ (id)dataWithBase64EncodedString:(NSString *)string
 {
-    return [self encodeBase64WithNewlines: YES];
+	if (string == nil)
+		[NSException raise:NSInvalidArgumentException format:nil];
+	if ([string length] == 0)
+		return [NSData data];
+	
+	static char *decodingTable = NULL;
+	if (decodingTable == NULL)
+	{
+		decodingTable = malloc(256);
+		if (decodingTable == NULL)
+			return nil;
+		memset(decodingTable, CHAR_MAX, 256);
+		NSUInteger i;
+		for (i = 0; i < 64; i++)
+			decodingTable[(short)encodingTable[i]] = i;
+	}
+	
+	const char *characters = [string cStringUsingEncoding:NSASCIIStringEncoding];
+	if (characters == NULL)     //  Not an ASCII string!
+		return nil;
+	char *bytes = malloc((([string length] + 3) / 4) * 3);
+	if (bytes == NULL)
+		return nil;
+	NSUInteger length = 0;
+
+	NSUInteger i = 0;
+	while (YES)
+	{
+		char buffer[4];
+		short bufferLength;
+		for (bufferLength = 0; bufferLength < 4; i++)
+		{
+			if (characters[i] == '\0')
+				break;
+			if (isspace(characters[i]) || characters[i] == '=')
+				continue;
+			buffer[bufferLength] = decodingTable[(short)characters[i]];
+			if (buffer[bufferLength++] == CHAR_MAX)      //  Illegal character!
+			{
+				free(bytes);
+				return nil;
+			}
+		}
+		
+		if (bufferLength == 0)
+			break;
+		if (bufferLength == 1)      //  At least two characters are needed to produce one byte!
+		{
+			free(bytes);
+			return nil;
+		}
+		
+		//  Decode the characters in the buffer to bytes.
+		bytes[length++] = (buffer[0] << 2) | (buffer[1] >> 4);
+		if (bufferLength > 2)
+			bytes[length++] = (buffer[1] << 4) | (buffer[2] >> 2);
+		if (bufferLength > 3)
+			bytes[length++] = (buffer[2] << 6) | buffer[3];
+	}
+	
+	realloc(bytes, length);
+	return [NSData dataWithBytesNoCopy:bytes length:length];
 }
 
-- (NSString *) encodeBase64WithNewlines: (BOOL) encodeWithNewlines;
+- (NSString *)base64Encoding
 {
-    // Create a memory buffer which will contain the Base64 encoded string
-    BIO * mem = BIO_new(BIO_s_mem());
-    
-    // Push on a Base64 filter so that writing to the buffer encodes the data
-    BIO * b64 = BIO_new(BIO_f_base64());
-    if (!encodeWithNewlines)
-        BIO_set_flags(b64, BIO_FLAGS_BASE64_NO_NL);
-    mem = BIO_push(b64, mem);
-    
-    // Encode all the data
-    BIO_write(mem, [self bytes], [self length]);
-    BIO_flush(mem);
-    
-    // Create a new string from the data in the memory buffer
-    char * base64Pointer;
-    long base64Length = BIO_get_mem_data(mem, &base64Pointer);
-    NSString * base64String = [NSString stringWithCString: base64Pointer
-                                                   length: base64Length];
-    
-    // Clean up and go home
-    BIO_free_all(mem);
-    return base64String;
+	if ([self length] == 0)
+		return @"";
+
+    char *characters = malloc((([self length] + 2) / 3) * 4);
+	if (characters == NULL)
+		return nil;
+	NSUInteger length = 0;
+	
+	NSUInteger i = 0;
+	while (i < [self length])
+	{
+		char buffer[3] = {0,0,0};
+		short bufferLength = 0;
+		while (bufferLength < 3 && i < [self length])
+			buffer[bufferLength++] = ((char *)[self bytes])[i++];
+		
+		//  Encode the bytes in the buffer to four characters, including padding "=" characters if necessary.
+		characters[length++] = encodingTable[(buffer[0] & 0xFC) >> 2];
+		characters[length++] = encodingTable[((buffer[0] & 0x03) << 4) | ((buffer[1] & 0xF0) >> 4)];
+		if (bufferLength > 1)
+			characters[length++] = encodingTable[((buffer[1] & 0x0F) << 2) | ((buffer[2] & 0xC0) >> 6)];
+		else characters[length++] = '=';
+		if (bufferLength > 2)
+			characters[length++] = encodingTable[buffer[2] & 0x3F];
+		else characters[length++] = '=';	
+	}
+	
+	return [[[NSString alloc] initWithBytesNoCopy:characters length:length encoding:NSASCIIStringEncoding freeWhenDone:YES] autorelease];
 }
+
 
 @end

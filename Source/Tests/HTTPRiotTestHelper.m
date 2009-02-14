@@ -9,7 +9,10 @@
 #import "HTTPRiotTestHelper.h"
 
 @implementation HRTestPerson
-+ (void)initialize { [self setBaseURI:[NSURL URLWithString:HTTPRiotTestServer]]; }
++ (void)initialize { 
+    [self setBaseURI:[NSURL URLWithString:HTTPRiotTestServer]];
+    [self setBasicAuthWithUsername:@"user" password:@"pass"]; 
+}
 @end
 
 @implementation HRTestPerson2 

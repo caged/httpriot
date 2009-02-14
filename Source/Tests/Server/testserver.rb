@@ -6,17 +6,19 @@ require 'faker'
 require File.join(File.dirname(__FILE__), 'lib/authorization')
 
 # connect to an in-memory database
-DB = Sequel.sqlite
+DB ||= Sequel.sqlite
 
-# setup a persons table
-DB.create_table :people do
-  primary_key :id
-  column :name, :text
-  column :email, :text
-  column :bio, :text
-  column :address, :text
-  column :telephone, :text
-  column :created_at, :date
+unless DB[:people]
+  # setup a persons table
+  DB.create_table :people do
+    primary_key :id
+    column :name, :text
+    column :email, :text
+    column :bio, :text
+    column :address, :text
+    column :telephone, :text
+    column :created_at, :date
+  end
 end
 
 # simple person model
@@ -97,7 +99,9 @@ end
 include Sinatra::Authorization
 #BASIC AUTH
 get '/auth' do
+  puts self.inspect
   login_required
+  Person.first.values.to_json
 end
 
 def authorize(username, password)

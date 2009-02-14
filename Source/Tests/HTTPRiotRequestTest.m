@@ -76,12 +76,11 @@ static NSDictionary *defaultOptions;
 - (void)testHeadersReturnedWithError
 {
     NSError *error;
-    id person = [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet
-                                              path:[HTTPRiotTestServer stringByAppendingString:@"/foobared-path"]
-                                           options:defaultOptions
-                                             error:&error];
+    [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet
+                                  path:[HTTPRiotTestServer stringByAppendingString:@"/foobared-path"]
+                               options:defaultOptions
+                                 error:&error];
     NSDictionary *headers = [[error userInfo] valueForKey:@"headers"];
-    NSLog(@"%s HEADERS:%@", _cmd, headers);
     STAssertTrue([headers count] > 0, nil);
 }
 
@@ -90,6 +89,18 @@ static NSDictionary *defaultOptions;
     id person = [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet
                                               path:[HTTPRiotTestServer stringByAppendingString:@"/person/1"]
                                            options:defaultOptions
+                                             error:nil];
+    STAssertNotNil(person, nil);
+}
+
+- (void) testBasicAuth 
+{
+    NSDictionary *auth = [NSDictionary dictionaryWithObjectsAndKeys:@"user", @"username", @"pass", @"password", nil];
+    NSMutableDictionary *opts = [NSMutableDictionary dictionaryWithDictionary:defaultOptions];
+    [opts addEntriesFromDictionary:[NSDictionary dictionaryWithObject:auth forKey:@"basicAuth"]];
+    id person = [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet
+                                              path:[HTTPRiotTestServer stringByAppendingString:@"/auth"]
+                                           options:opts
                                              error:nil];
     STAssertNotNil(person, nil);
 }

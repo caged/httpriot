@@ -94,15 +94,19 @@ static NSArray *httpMethods;
 
 - (void)setAuthHeadersForRequest:(NSMutableURLRequest *)request
 {
-    NSString *username = [options valueForKey:@"username"];
-    NSString *password = [options valueForKey:@"password"];
-    
+    NSDictionary *authDict = [options valueForKey:@"basicAuth"];
+    NSString *username = [authDict valueForKey:@"username"];
+    NSString *password = [authDict valueForKey:@"password"];
     if(username || password)
     {
+        username = [username stringByPreparingForURL];
+        password = [password stringByPreparingForURL];
+        
         NSString *userPass = [NSString stringWithFormat:@"%@:%@", username, password];
         NSData *b64 = [userPass dataUsingEncoding:NSUTF8StringEncoding];
-        NSString *encodedUserPass = [b64 encodeBase64];
-        [request setValue:[NSString stringWithFormat:@"Basic %@", encodedUserPass] forHTTPHeaderField:@"Authorization"];
+        NSString *encodedUserPass = [b64 base64Encoding];
+        NSString *basicHeader = [NSString stringWithFormat:@"Basic %@", encodedUserPass];
+        [request setValue:basicHeader forHTTPHeaderField:@"Authorization"];
     }
     
 }
@@ -113,7 +117,7 @@ static NSArray *httpMethods;
     [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
     [request setTimeoutInterval:60.0];
     [self setDefaultHeadersForRequest:request];
-    
+    [self setAuthHeadersForRequest:request];
     NSString *urlString = [[self composedURI] absoluteString];
     NSDictionary *params = [[self options] valueForKey:@"params"];
 
@@ -202,7 +206,6 @@ static NSArray *httpMethods;
     NSDictionary *headers = [response allHeaderFields];
     NSString *errorReason = [NSString stringWithFormat:@"%d Error: ", code];
     NSString *errorDescription;
-    NSLog(@"%s CODE:%i, %d, %f", _cmd, code, code, code);
     
     if(code == 300 || code == 302) {
         errorReason = [errorReason stringByAppendingString:@"RedirectNotHandled"];
