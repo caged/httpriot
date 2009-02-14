@@ -2,7 +2,7 @@ typedef enum {
     kHTTPRiotMethodGet = 1,
     kHTTPRiotMethodPost,
     kHTTPRiotMethodPut,
-    kHTTPRiotMethodPush
+    kHTTPRiotMethodDelete
 } kHTTPRiotMethod;
 
 typedef enum {

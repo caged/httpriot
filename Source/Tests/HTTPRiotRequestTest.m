@@ -93,18 +93,6 @@ static NSDictionary *defaultOptions;
     STAssertNotNil(person, nil);
 }
 
-- (void) testBasicAuth 
-{
-    NSDictionary *auth = [NSDictionary dictionaryWithObjectsAndKeys:@"user", @"username", @"pass", @"password", nil];
-    NSMutableDictionary *opts = [NSMutableDictionary dictionaryWithDictionary:defaultOptions];
-    [opts addEntriesFromDictionary:[NSDictionary dictionaryWithObject:auth forKey:@"basicAuth"]];
-    id person = [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet
-                                              path:[HTTPRiotTestServer stringByAppendingString:@"/auth"]
-                                           options:opts
-                                             error:nil];
-    STAssertNotNil(person, nil);
-}
-
 - (void)testPOST
 {
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"bob", @"name", 
@@ -142,9 +130,27 @@ static NSDictionary *defaultOptions;
                                              
     STAssertTrue(person2 == nil && error == nil, nil);
 }
-// 
-// - (void)testDELETE
-// {
-//     STFail(nil, nil);
-// }
+
+- (void)testDELETE
+{
+    NSError *error = nil;
+    id person = [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodDelete
+                                              path:[HTTPRiotTestServer stringByAppendingString:@"/person/1"]
+                                           options:defaultOptions
+                                             error:nil];
+    
+    STAssertTrue(person == nil && error == nil, nil);
+}
+
+- (void) testBasicAuth 
+{
+    NSDictionary *auth = [NSDictionary dictionaryWithObjectsAndKeys:@"user", @"username", @"pass", @"password", nil];
+    NSMutableDictionary *opts = [NSMutableDictionary dictionaryWithDictionary:defaultOptions];
+    [opts addEntriesFromDictionary:[NSDictionary dictionaryWithObject:auth forKey:@"basicAuth"]];
+    id person = [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet
+                                              path:[HTTPRiotTestServer stringByAppendingString:@"/auth"]
+                                           options:opts
+                                             error:nil];
+    STAssertNotNil(person, nil);
+}
 @end

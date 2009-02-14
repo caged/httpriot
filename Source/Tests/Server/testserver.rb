@@ -101,7 +101,7 @@ end
 #DELETE /post/1 deletes post
 delete '/person/:id' do
   person = Person.find(params[:id])
-  ok if person.destroy
+  status 200 if person.destroy
 end
 
 include Sinatra::Authorization

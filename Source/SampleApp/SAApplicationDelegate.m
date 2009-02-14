@@ -65,5 +65,8 @@
     [updatedPerson setValue:@"encytemedia@gamil.com" forKey:@"email"];
     [updatedPerson removeObjectForKey:@"id"];
     [SAPerson putPath:@"/person/1" withOptions:[NSDictionary dictionaryWithObject:updatedPerson forKey:@"params"] error:&error];
+
+    id person2 = [SAPerson deletePath:@"/person/1" withOptions:nil error:&error];    
+    
 }
 @end

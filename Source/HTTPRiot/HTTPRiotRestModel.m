@@ -24,6 +24,7 @@ static NSMutableDictionary *attributes;
         attributes = [[NSMutableDictionary dictionary] retain];
 }
 
+#pragma mark - Class Attributes
 // Given that we want to allow classes to define default attributes we need to create 
 // a classname-based dictionary store that maps a subclass name to a dictionary 
 // containing its attributes.
@@ -102,6 +103,7 @@ static NSMutableDictionary *attributes;
     [[self classAttributes] setObject:attr forKey:key];
 }
 
+#pragma mark - REST Methods
 + (NSArray *)getPath:(NSString *)path withOptions:(NSDictionary *)options error:(NSError **)error
 {
     NSMutableDictionary *opts = [self mergedOptions:options];
@@ -120,6 +122,13 @@ static NSMutableDictionary *attributes;
     return [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodPut path:path options:opts error:error];
 }
 
++ (NSArray *)deletePath:(NSString *)path withOptions:(NSDictionary *)options error:(NSError **)error
+{
+    NSMutableDictionary *opts = [self mergedOptions:options];
+    return [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodDelete path:path options:opts error:error];        
+}
+
+#pragma mark - Private Methods
 + (NSMutableDictionary *)mergedOptions:(NSDictionary *)options
 {
     NSMutableDictionary *opts = [NSMutableDictionary dictionaryWithDictionary:[self classAttributes]];

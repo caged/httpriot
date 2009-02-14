@@ -68,18 +68,20 @@ static NSArray *httpMethods;
 - (id)formatterFromFormat
 {
     NSNumber *format = [[self options] objectForKey:@"format"];
+    id theFormatter;
     switch([format intValue])
     {
         case kHTTPRiotJSONFormat:
-            return [HTTPRiotFormatJSON class];
+            theFormatter = [HTTPRiotFormatJSON class];
         break;
         case kHTTPRiotXMLFormat:
-            return [HTTPRiotFormatXML class];
+            theFormatter = [HTTPRiotFormatXML class];
         break;
     }
     
-    [NSException raise:@"InvalidFormatException" format:@"Unsupported format.  Format must be json or xml"];     
-    return nil;  
+    NSString *errorMessage = [NSString stringWithFormat:@"Invalid Formatter %@", NSStringFromClass(theFormatter)];
+    NSAssert([theFormatter conformsToProtocol:@protocol(HTTPRiotFormatterProtocol)], errorMessage); 
+    return theFormatter;
 }
 
 - (void)setDefaultHeadersForRequest:(NSMutableURLRequest *)request
@@ -126,12 +128,16 @@ static NSArray *httpMethods;
     NSDictionary *params = [[self options] valueForKey:@"params"];
     NSString *queryString = [[self class] buildQueryStringFromParams:params];
     
-    if(method == kHTTPRiotMethodGet)
+    if(method == kHTTPRiotMethodGet || method == kHTTPRiotMethodDelete)
     {
-        [request setHTTPMethod:@"GET"];
         NSString *urlString = [[composedURL absoluteString] stringByAppendingString:queryString];
         NSURL *url = [NSURL URLWithString:urlString];
         [request setURL:url];
+        
+        if(method == kHTTPRiotMethodGet)
+            [request setHTTPMethod:@"GET"];
+        else
+            [request setHTTPMethod:@"DELETE"];
     } 
     else if(method == kHTTPRiotMethodPost || kHTTPRiotMethodPost)
     {
