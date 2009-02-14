@@ -3,12 +3,17 @@ require 'sinatra'
 require 'sequel'
 require 'json'
 require 'faker'
+require 'pp'
 require File.join(File.dirname(__FILE__), 'lib/authorization')
 
 # connect to an in-memory database
-DB ||= Sequel.sqlite
 
-unless DB[:people]
+DB = Sequel.sqlite unless self.class.const_defined?('DB')
+
+
+begin
+  DB.schema(:people)
+rescue
   # setup a persons table
   DB.create_table :people do
     primary_key :id
@@ -32,8 +37,7 @@ class Person < Sequel::Model
     else
       person = self.new
     end
-    puts params.inspect
-    data = JSON.parse(params[:data])
+    data = {} #JSON.parse(params)
     if person.update(data)
       {:status => 200, :name => person.name}
     else
@@ -85,9 +89,11 @@ end
  
 #POST /post body with data field set to JSON: { "title": "test", "body": "body test" }
 post '/person' do
-  st = Person.respond(params)
-  status st[:status]
-  st.to_json
+  data = JSON.parse(request.body.read)
+  if p = Person.create(data)
+    status 201
+    p.values.to_json
+  end
 end
  
 #DELETE /post/1 deletes post
@@ -99,7 +105,6 @@ end
 include Sinatra::Authorization
 #BASIC AUTH
 get '/auth' do
-  puts self.inspect
   login_required
   Person.first.values.to_json
 end

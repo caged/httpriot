@@ -40,6 +40,7 @@ static NSArray *httpMethods;
 {
     if(!httpMethods)
         httpMethods = [[NSArray arrayWithObjects:@"", @"GET", @"POST", @"PUT", @"DELETE", nil] retain];
+        
 }
 
 - (void)dealloc
@@ -115,24 +116,27 @@ static NSArray *httpMethods;
 {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
-    [request setTimeoutInterval:60.0];
+    [request setTimeoutInterval:30.0];
     [self setDefaultHeadersForRequest:request];
     [self setAuthHeadersForRequest:request];
-    NSString *urlString = [[self composedURI] absoluteString];
+    
+    NSURL *composedURL = [self composedURI];
     NSDictionary *params = [[self options] valueForKey:@"params"];
+    NSString *queryString = [[self class] buildQueryStringFromParams:params];
 
     switch([self httpMethod])
     {
         case kHTTPRiotMethodGet: 
             [request setHTTPMethod:@"GET"];
-            NSString *queryString = [[self class] buildQueryStringFromParams:params];
-            urlString = [urlString stringByAppendingString:queryString];
+            NSString *urlString = [[composedURL absoluteString] stringByAppendingString:queryString];
             NSURL *url = [NSURL URLWithString:urlString];
             [request setURL:url];
         break;
-        // TODO: POST BODY STUFF
         case kHTTPRiotMethodPost:
             [request setHTTPMethod:@"POST"];
+            NSString *json = [formatter encode:params];
+            [request setHTTPBody:[json dataUsingEncoding:NSUTF8StringEncoding]];
+            [request setURL:composedURL];
         break;
     }
     
@@ -170,7 +174,6 @@ static NSArray *httpMethods;
     {
         NSHTTPURLResponse *response;
         NSMutableURLRequest *request = [instance configuredRequest];
-        //NSLog(@"%@ %@", [httpMethods objectAtIndex:method], [[request URL] absoluteString]);
         NSError *connectionError = nil;
         body = [NSURLConnection sendSynchronousRequest:request
                                              returningResponse:&response
@@ -184,6 +187,7 @@ static NSArray *httpMethods;
         
         [self handleResponse:response error:&responseError];
         
+        //TODO Should we attempt to parse the response even if we have an error
         if(responseError)
         {
             if(error) *error = responseError;

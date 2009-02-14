@@ -105,10 +105,22 @@ static NSDictionary *defaultOptions;
     STAssertNotNil(person, nil);
 }
 
-// - (void)testPOST
-// {
-//     STFail(nil, nil);
-// }
+- (void)testPOST
+{
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"bob", @"name", 
+                                @"foo@email.com", @"email", 
+                                @"101 Cherry Lane", @"address", nil];
+    
+    NSMutableDictionary *options = [NSMutableDictionary dictionaryWithObject:params forKey:@"params"];                       
+    [options addEntriesFromDictionary:defaultOptions];
+    
+    id person = [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodPost
+                                              path:[HTTPRiotTestServer stringByAppendingString:@"/person"]
+                                           options:options
+                                             error:nil];
+                                             
+    STAssertEqualObjects([person valueForKey:@"name"], @"bob", nil);
+}
 // 
 // - (void)testPUT
 // {

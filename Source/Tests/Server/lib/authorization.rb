@@ -1,3 +1,5 @@
+# See http://github.com/foca/sinatra-ditties/tree/master
+# Released under an MIT License
 module Sinatra
   # HTTP Authorization helpers for Sinatra.
   #

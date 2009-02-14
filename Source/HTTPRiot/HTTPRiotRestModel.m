@@ -108,6 +108,12 @@ static NSMutableDictionary *attributes;
     return [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet path:path options:opts error:error];        
 }
 
++ (NSArray *)postPath:(NSString *)path withOptions:(NSDictionary *)options error:(NSError **)error
+{
+    NSMutableDictionary *opts = [self mergedOptions:options];
+    return [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodPost path:path options:opts error:error];
+}
+
 + (NSMutableDictionary *)mergedOptions:(NSDictionary *)options
 {
     NSMutableDictionary *opts = [NSMutableDictionary dictionaryWithDictionary:[self classAttributes]];

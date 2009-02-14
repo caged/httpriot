@@ -39,15 +39,23 @@
     //     NSLog(@"%s TWEET:%@", _cmd, [tweet valueForKey:@"text"]);
     // }
     
-    NSError *error;
+    NSError *error = nil;
     // NSArray *people = [SAPerson getPath:@"/people" withOptions:nil error:&error];
-    //    NSDictionary *person = [SAPerson getPath:@"/person/1" withOptions:nil error:&error];
+    // NSDictionary *person = [SAPerson getPath:@"/person/1" withOptions:nil error:&error];
     // id person2 = [SAPerson getPath:@"/people" withOptions:nil error:&error];    
     // person2 = [SAPerson getPath:@"/anotherinvalidpath" withOptions:nil error:nil];
     // NSLog(@"%s PERSON 2:%@", _cmd, [person2 class]);
     // NSLog(@"%s PEOPLE:%@", _cmd, people);
     // NSLog(@"%s PERSON:%@", _cmd, person);
     
-    id people = [SAPerson getPath:@"/status/400" withOptions:nil error:&error];
+    //[SAPerson getPath:@"/status/400" withOptions:nil error:&error];
+    
+    // NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"bob", @"name", 
+    //                             @"foo@email.com", @"email", 
+    //                             @"101 Cherry Lane", @"address", nil];
+    // 
+    // NSDictionary *options = [NSDictionary dictionaryWithObject:params forKey:@"params"];                       
+    // id newPerson = [SAPerson postPath:@"/person" withOptions:options error:&error];
+    // NSLog(@"%s WHUT:%@ ERROR:%@", _cmd, whut, error);
 }
 @end
