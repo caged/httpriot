@@ -21,7 +21,8 @@ static NSDictionary *defaultOptions;
 
 - (void) testShouldThrowExceptionIfHostIsNotGiven 
 {
-    STAssertThrows([HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet path:@"/status/400" options:nil error:nil], nil);
+    NSError *error = nil;
+    STAssertThrows([HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet path:@"/status/400" options:defaultOptions error:&error], nil);
 }
 
 - (void) testShouldHandleResponse 

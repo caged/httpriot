@@ -40,25 +40,24 @@
     // }
     
     NSError *error = nil;
-    // NSArray *people = [SAPerson getPath:@"/people" withOptions:nil error:&error];
-    // NSDictionary *person = [SAPerson getPath:@"/person/1" withOptions:nil error:&error];
-    // id person2 = [SAPerson getPath:@"/people" withOptions:nil error:&error];    
-    // person2 = [SAPerson getPath:@"/anotherinvalidpath" withOptions:nil error:nil];
-    // NSLog(@"%s PERSON 2:%@", _cmd, [person2 class]);
-    // NSLog(@"%s PEOPLE:%@", _cmd, people);
-    // NSLog(@"%s PERSON:%@", _cmd, person);
-    
-    //[SAPerson getPath:@"/status/400" withOptions:nil error:&error];
-    
-    // NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"bob", @"name", 
-    //                             @"foo@email.com", @"email", 
-    //                             @"101 Cherry Lane", @"address", nil];
-    // 
-    // NSDictionary *options = [NSDictionary dictionaryWithObject:params forKey:@"params"];                       
-    // id newPerson = [SAPerson postPath:@"/person" withOptions:options error:&error];
-    // NSLog(@"%s WHUT:%@ ERROR:%@", _cmd, whut, error);
-    
+    NSArray *people = [SAPerson getPath:@"/people" withOptions:nil error:&error];
     id person = [SAPerson getPath:@"/person/1" withOptions:nil error:&error];
+    id person2 = [SAPerson getPath:@"/people" withOptions:nil error:&error];    
+    person2 = [SAPerson getPath:@"/anotherinvalidpath" withOptions:nil error:nil];
+    NSLog(@"%s PERSON 2:%@", _cmd, [person2 class]);
+    NSLog(@"%s PEOPLE:%@", _cmd, people);
+    NSLog(@"%s PERSON:%@", _cmd, person);
+    
+    [SAPerson getPath:@"/status/400" withOptions:nil error:&error];
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"bob", @"name", 
+                                @"foo@email.com", @"email", 
+                                @"101 Cherry Lane", @"address", nil];
+    
+    NSDictionary *options = [NSDictionary dictionaryWithObject:params forKey:@"params"];                       
+    id newPerson = [SAPerson postPath:@"/person" withOptions:options error:&error];
+    
+    id person4 = [SAPerson getPath:@"/person/1" withOptions:nil error:&error];
 
     NSMutableDictionary *updatedPerson = [NSMutableDictionary dictionaryWithDictionary:person];
     [updatedPerson setValue:@"Justin" forKey:@"name"];
@@ -66,7 +65,7 @@
     [updatedPerson removeObjectForKey:@"id"];
     [SAPerson putPath:@"/person/1" withOptions:[NSDictionary dictionaryWithObject:updatedPerson forKey:@"params"] error:&error];
 
-    id person2 = [SAPerson deletePath:@"/person/1" withOptions:nil error:&error];    
+    id person3 = [SAPerson deletePath:@"/person/1" withOptions:nil error:&error];    
     
 }
 @end

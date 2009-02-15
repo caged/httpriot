@@ -1,5 +1,4 @@
-
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 
 @interface NSDictionary (URI)
 - (NSString*) toQueryString;

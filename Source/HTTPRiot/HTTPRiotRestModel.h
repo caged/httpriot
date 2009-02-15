@@ -5,7 +5,7 @@
 //  Created by Justin Palmer on 1/28/09.
 //  Copyright 2009 Alternateidea. All rights reserved.
 //
-
+#import <Foundation/Foundation.h>
 #import "HTTPRiotConstants.h"
 
 @interface HTTPRiotRestModel : NSObject {

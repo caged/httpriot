@@ -10,7 +10,6 @@
 #import "NSString+URI.h"
 #import "NSDictionary+URI.h"
 #import "NSData+Base64.h"
-#import "NSString+Base64.h"
 #import "HTTPRiotFormatJSON.h"
 #import "HTTPRiotFormatXML.h"
 
@@ -152,7 +151,7 @@
 {
     NSURL *tmpURI = [NSURL URLWithString:path];
     NSURL *baseURI = [options objectForKey:@"baseURI"];
-    
+        
     if([tmpURI host] == nil && [baseURI host] == nil)
         [NSException raise:@"UnspecifiedHost" format:@"host wasn't provided in baseURI or path"];
     

@@ -8,7 +8,6 @@
 
 #import "HTTPRiotFormatXML.h"
 
-
 @implementation HTTPRiotFormatXML
 
 @end
