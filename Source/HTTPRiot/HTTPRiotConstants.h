@@ -10,4 +10,4 @@ typedef enum {
     kHTTPRiotXMLFormat
 } kHTTPRiotFormat;
 
-#define HTTPRiotErrorDomain @"com.labratrevenge.HTTPRiot.ErroDomain"
+#define HTTPRiotErrorDomain @"com.alternateidea.HTTPRiot.ErroDomain"

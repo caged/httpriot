@@ -17,11 +17,11 @@
     id formatter;
 }
 
-@property (nonatomic) CGFloat timeout;
-@property (nonatomic) kHTTPRiotMethod httpMethod;
+@property (nonatomic, assign) CGFloat timeout;
+@property (nonatomic, assign) kHTTPRiotMethod httpMethod;
 @property (nonatomic, readonly, copy) NSString *path;
 @property (nonatomic, readonly, retain) NSDictionary *options;
-@property (nonatomic, retain) id formatter;
+@property (nonatomic, readonly, retain) id formatter;
 
 + (id)requestWithMethod:(kHTTPRiotMethod)method
                          path:(NSString*)urlPath

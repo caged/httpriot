@@ -26,8 +26,6 @@
 + (NSString *)buildQueryStringFromParams:(NSDictionary *)params;
 @end
 
-static NSArray *httpMethods;
-
 @implementation HTTPRiotRequest
 
 @synthesize timeout;
@@ -36,17 +34,12 @@ static NSArray *httpMethods;
 @synthesize options;
 @synthesize formatter;
 
-+ (void)initialize
-{
-    if(!httpMethods)
-        httpMethods = [[NSArray arrayWithObjects:@"", @"GET", @"POST", @"PUT", @"DELETE", nil] retain];
-        
-}
 
 - (void)dealloc
 {
     [path release];
     [options release];
+    [formatter release];
     [super dealloc];
 }
 
@@ -59,7 +52,7 @@ static NSArray *httpMethods;
         httpMethod = method;
         path = urlPath;
         options = [requestOptions retain];
-        [self setFormatter:[self formatterFromFormat]];
+        formatter = [[self formatterFromFormat] retain];
     }
 
     return self;
