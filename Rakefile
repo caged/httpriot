@@ -185,7 +185,6 @@ class SDKPackage < Rake::PackageTask
 end
 
 SDKPackage.new do |sdk|
-  sdk.package_dir = HTTPRIOT_PKG_DIR
   sdk.need_tar_gz = true
   sdk.need_tar = true
   sdk.need_tar_bz2 = true
