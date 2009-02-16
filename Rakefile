@@ -1,5 +1,5 @@
+# requires osx/plist `sudo gem install 
 require 'rubygems'
-require 'pp'
 require 'rake/packagetask'
 require 'osx/plist'
 
@@ -71,23 +71,16 @@ class SDKSettings
       "FamilyName"                    => "iPhone OS",
       "IsBaseSDK"                     => "NO",
       "DefaultProperties"             => default_properties,
-     "CanonicalName"                  => alternate_sdk
+      "CanonicalName"                 => alternate_sdk
     }.to_plist
   end
 end
 
 
-class SDKPackage < Rake::TaskLib
-  #include FileUtils::DryRun
+class SDKPackage < Rake::PackageTask
   
-  # Name of the product.  Taken from plist if not given
-  attr_accessor :name
-  
-  # Product version. Taken from the plist if not given
-  attr_accessor :version
-  
-  # Where package files are put.  Uses `pkg` by default
-  attr_accessor :package_dir
+  # Project root directory unless provided
+  attr_accessor :product_name
   
   # Build products dir.  Uses `build` by default
   attr_accessor :build_dir
@@ -108,8 +101,10 @@ class SDKPackage < Rake::TaskLib
   end
   
   def init(name, version)
+    super
     @properties = OSX::PropertyList.load(File.read(HTTPRIOT_PLIST), format = false)
-    @name = name || File.basename(HTTPRIOT_ROOT).downcase
+    @product_name = File.basename(HTTPRIOT_ROOT)
+    @name = name || @product_name.downcase.gsub(/\s*/, '')
     @version = version || @properties['CFBundleVersion']
     @project_dir = File.dirname(__FILE__)
     @package_dir = File.join(@project_dir, 'pkg')
@@ -118,10 +113,6 @@ class SDKPackage < Rake::TaskLib
     @sdks = %w(iphoneos iphonesimulator)
     @configuration = 'Release'
     @target = "2.2"
-  end
-  
-  def package_name
-    @version ? "#{@name}-#{@version}" : @name
   end
   
   def generate_tasks
@@ -157,6 +148,30 @@ class SDKPackage < Rake::TaskLib
           # assume product name is lib${NAME}.a
           cp File.join(built_sdk_dir, "lib#{name}.a"), './'
         end
+        
+        # Move the framework over
+        package_root = File.join(package_dir, package_name)
+        cd package_root
+        framework = Dir["#{File.join(@build_dir, @configuration)}/*.framework"].first
+        cp_r(framework, './') if framework
+        
+        [
+          [need_tar, tgz_file, "z"],
+          [need_tar_gz, tar_gz_file, "z"],
+          [need_tar_bz2, tar_bz2_file, "j"]
+        ].each do |need_tar, file, flag|
+          if need_tar
+            cd package_dir do
+              sh %{#{@tar_command} #{flag}cvf #{file} #{package_name}}
+            end
+          end
+        end
+        
+        if need_zip
+          chdir(package_dir) do
+            sh %{#{@zip_command} -r #{zip_file} #{package_name}}
+          end
+        end
       end
     
       desc 'Clean the package directory'
@@ -172,4 +187,8 @@ end
 
 SDKPackage.new do |sdk|
   sdk.package_dir = HTTPRIOT_PKG_DIR
+  sdk.need_tar_gz = true
+  sdk.need_tar = true
+  sdk.need_tar_bz2 = true
+  sdk.need_zip = true
 end
