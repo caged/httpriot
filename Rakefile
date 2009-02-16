@@ -5,7 +5,6 @@ require 'osx/plist'
 
 
 HTTPRIOT_ROOT = File.expand_path(File.dirname(__FILE__))
-HTTPRIOT_PKG_DIR = File.join(HTTPRIOT_ROOT, 'pkg')
 HTTPRIOT_PLIST = File.join(HTTPRIOT_ROOT, 'Info.plist')
 
 class SDKSettings
