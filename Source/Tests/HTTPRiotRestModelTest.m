@@ -64,6 +64,32 @@
     STAssertEqualObjects(basicAuth, expectedAuth, nil);
 }
 
+- (void)testShouldMergeDefaultParamsWithParamsPassedToMethod
+{
+    // defaultParams: {foo: 'bar', bada: 'bing'}
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"5",@"limit", nil];
+    NSDictionary *opts = [NSDictionary dictionaryWithObject:params forKey:@"params"];
+    
+    NSDictionary *mergedOpts = [HRTestPerson3 mergedOptions:opts];
+    params = [mergedOpts valueForKey:@"params"];
+    
+    STAssertEqualObjects([params valueForKey:@"limit"], @"5", nil);
+    STAssertEqualObjects([params valueForKey:@"bada"], @"bing", nil);
+}
+
+- (void)testParamsProvidedInMethodShouldOverideDefaultParams
+{
+    // defaultParams: {foo: 'bar', bada: 'bing'}
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"123",@"foo", nil];
+    NSDictionary *opts = [NSDictionary dictionaryWithObject:params forKey:@"params"];
+    
+    NSDictionary *mergedOpts = [HRTestPerson3 mergedOptions:opts];
+    params = [mergedOpts valueForKey:@"params"];
+    
+    STAssertEqualObjects([params valueForKey:@"foo"], @"123", nil);
+    STAssertEqualObjects([params valueForKey:@"bada"], @"bing", nil);
+}
+
 // - (void) testHostProvidedInPathShouldOverideBaseURI 
 // {
 //     STFail(nil, nil);

@@ -14,4 +14,5 @@
 
 @interface HRTestPerson : HTTPRiotRestModel {} @end
 @interface HRTestPerson2 : HTTPRiotRestModel {} @end
-@interface HRTestPerson3 : HTTPRiotRestModel {} @end
+@interface HRTestPerson3 : HTTPRiotRestModel {} 
+@end

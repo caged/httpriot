@@ -131,8 +131,14 @@ static NSMutableDictionary *attributes;
 #pragma mark - Private Methods
 + (NSMutableDictionary *)mergedOptions:(NSDictionary *)options
 {
+    NSMutableDictionary *defaultParams = [NSMutableDictionary dictionaryWithDictionary:[self defaultParams]];
+    [defaultParams addEntriesFromDictionary:[options valueForKey:@"params"]];
+    options = [NSMutableDictionary dictionaryWithDictionary:options];
+    [(NSMutableDictionary *)options setObject:defaultParams forKey:@"params"];
     NSMutableDictionary *opts = [NSMutableDictionary dictionaryWithDictionary:[self classAttributes]];
     [opts addEntriesFromDictionary:options];
+    [opts removeObjectForKey:@"defaultParams"];
+
     return opts;
 }
 @end
