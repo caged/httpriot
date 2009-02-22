@@ -9,6 +9,7 @@
     return self;
 }
 
+// Set default options here
 + (void)initialize
 {
     [self setBaseURI:[NSURL URLWithString:@"http://twitter.com"]];

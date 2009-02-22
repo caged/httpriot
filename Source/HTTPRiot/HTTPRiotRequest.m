@@ -191,7 +191,6 @@
         
         [self handleResponse:response error:&responseError];
         
-        //TODO Should we attempt to parse the response even if we have an error
         if(responseError)
         {
             if(error) *error = responseError;

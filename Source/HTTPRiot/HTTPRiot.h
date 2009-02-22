@@ -56,6 +56,43 @@ The preferred way to use HTTPRiot is to subclass HTTPRiotRestModel and make your
 From these models you can set default options that will be used by every request.
 @include Tweet.m
 
+<h3>Using Threads</h3>
+HTTPRiot uses synchronous requests.  This means you should run these requests in a seperate 
+thread.  Apple has made this really easy.
+
+@code
+-(void)applicationDidFinishLaunching
+{
+    [NSThread detachNewThreadSelector:@selector(getSomeResource) toTarget:self withObject:nil];
+}
+
+-(void)getSomeResource
+{
+    NSAutoreleasePool *pool = [NSAutoreleasePool new];
+    person = [HTTPRiotRestModel getPath:@"/some/person.json" 
+                                options:[NSDictionary dictionaryWithObject:@"json" forKey:@"format"] 
+                                  error:nil];
+    [pool release];
+    
+    [self performSelectorOnMainThread:@selector(updateUI) withObject:nil waitUntilDone:YES];
+}
+
+-(void)updateUI
+{
+    [self updateGUIWithPerson:person];
+}
+@endcode
+
+<h3>Handling Errors</h3>
+You can handle errors in your requests by supplying an error object to the methods of HTTPRiotRestModel.
+The errors will return useful information:
+@li <strong><tt>code</tt></strong> - The status code returned by the server.
+@li <strong><tt>localizedFailureReason</tt></strong> - The reason the request failed.
+@li <strong><tt>localizedDescription</tt></strong> - Description of the failure.
+@li <strong><tt>domain</tt></strong> - The error domain.
+@li <strong><tt>userInfo</tt></strong> - The userInfo dictionary with error infomration in addition to 
+    to any <strong><tt>headers</tt></strong> returned by the server.
+
 @page iphone-setup Using the HTTPRiot Framework in your iPhone Applications
 
 HTTPRiot comes with a simple SDK package that makes it very easy to get up and running quickly 
