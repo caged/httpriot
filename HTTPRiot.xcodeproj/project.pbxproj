@@ -673,7 +673,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Source/HTTPRiot/HTTPRiot_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "$(HOME)/Library/Frameworks";
+				INSTALL_PATH = "@loader_path/../Frameworks";
 				OTHER_CFLAGS = "-DHTTPRIOT_FRAMEWORK_BUILD";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -697,7 +697,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Source/HTTPRiot/HTTPRiot_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "$(HOME)/Library/Frameworks";
+				INSTALL_PATH = "@loader_path/../Frameworks";
 				OTHER_CFLAGS = "-DHTTPRIOT_FRAMEWORK_BUILD";
 				OTHER_LDFLAGS = (
 					"-framework",

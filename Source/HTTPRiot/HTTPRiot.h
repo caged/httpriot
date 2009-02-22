@@ -71,13 +71,20 @@ can share it with all your iPhone projects.
    @image html additional-sdks.png
 -# Set the <strong><tt>Additional Linker Flags</tt></strong> to <tt>-lhttpriot -ObjC</tt></strong> 
    @image html other-linker-flags.png
--# Use <strong><tt>#include "HTTPRiot/HTTPRiot.h"</tt></strong> in one of your application's files and use 
-   it per the directions.  Good luck!
+-# Use <strong><tt>\#include "HTTPRiot/HTTPRiot.h"</tt></strong> in one of your application's files. 
+   That's it!  Now you're ready to use HTTPRiot!
 
 @page cocoa-setup Using the HTTPRiot Framework in your Desktop Applications
 
 -# Right click Other Frameworks in XCode and select <tt>Add &rarr; Existing Frameworks</tt>.  Select 
    the <strong><tt>HTTPRiot.framework</tt></strong> and press <tt>Add</tt>. @image html httpriot-framework.png
+-# Include the framework <HTTPRiot/HTTPRiot.h> in your project.  That's it!
+
+<h3>Embedding HTTPRiot.framework in your application</h3>
+If you want to distribute HTTPRiot.framework with your application you'll need to do another step.
+
+-# Right click your target name and select <tt>"Add > New Build Phase > New Copy Files Build Phase"</tt>.
+   Set <tt>Frameworks</tt> as the destination path in the popup. @image html copy-files.png
 */
 
 #import <Foundation/Foundation.h>

@@ -7,11 +7,13 @@ require 'osx/plist'
 HTTPRIOT_ROOT = File.expand_path(File.dirname(__FILE__))
 HTTPRIOT_PLIST = File.join(HTTPRIOT_ROOT, 'Info.plist')
 
-DOXYGEN_BIN = '/Applications/Doxygen.app/Contents/Resources/doxygen'
+#DOXYGEN_BIN = '/Applications/Doxygen.app/Contents/Resources/doxygen'
 
-desc 'Generate the documentation'
-task :doc do
-  
+namespace :sdk do
+  desc 'Generate the documentation'
+  task :doc do
+    system("xcodebuild -target Documentation -configuration Release -sdk macosx10.5")
+  end
 end
 
 class SDKSettings
