@@ -22,9 +22,9 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		D02988310F3F7BCE00EC8C01 /* HTTPRiotRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = D09E4B350F33EB0E00C9E26E /* HTTPRiotRequest.h */; };
+		D02988310F3F7BCE00EC8C01 /* HTTPRiotRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = D09E4B350F33EB0E00C9E26E /* HTTPRiotRequest.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D02988640F3F7F1200EC8C01 /* HTTPRiot_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = D02988630F3F7F1200EC8C01 /* HTTPRiot_Prefix.pch */; };
-		D02988FF0F3FB63F00EC8C01 /* HTTPRiotConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = D02988FE0F3FB63F00EC8C01 /* HTTPRiotConstants.h */; };
+		D02988FF0F3FB63F00EC8C01 /* HTTPRiotConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = D02988FE0F3FB63F00EC8C01 /* HTTPRiotConstants.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D02989390F3FBEDC00EC8C01 /* NSData+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = D02989310F3FBEDC00EC8C01 /* NSData+Base64.h */; };
 		D029893A0F3FBEDC00EC8C01 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = D02989320F3FBEDC00EC8C01 /* NSData+Base64.m */; };
 		D029893B0F3FBEDC00EC8C01 /* NSDictionary+URI.h in Headers */ = {isa = PBXBuildFile; fileRef = D02989330F3FBEDC00EC8C01 /* NSDictionary+URI.h */; };
@@ -56,7 +56,7 @@
 		D02990290F433C1800EC8C01 /* HTTPRiotRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D02990280F433C1800EC8C01 /* HTTPRiotRequestTest.m */; };
 		D029906B0F43422E00EC8C01 /* HTTPRiotTestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D029906A0F43422E00EC8C01 /* HTTPRiotTestHelper.m */; };
 		D03DB6660F3163BB00F18796 /* HTTPRiot.h in Headers */ = {isa = PBXBuildFile; fileRef = D03DB6650F3163BB00F18796 /* HTTPRiot.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D03DB66C0F31654200F18796 /* HTTPRiotRestModel.h in Headers */ = {isa = PBXBuildFile; fileRef = D03DB66A0F31654200F18796 /* HTTPRiotRestModel.h */; settings = {ATTRIBUTES = (); }; };
+		D03DB66C0F31654200F18796 /* HTTPRiotRestModel.h in Headers */ = {isa = PBXBuildFile; fileRef = D03DB66A0F31654200F18796 /* HTTPRiotRestModel.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D03DB66D0F31654200F18796 /* HTTPRiotRestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D03DB66B0F31654200F18796 /* HTTPRiotRestModel.m */; };
 		D07744840F4885A700190554 /* HTTPRiotRestModel.h in Headers */ = {isa = PBXBuildFile; fileRef = D03DB66A0F31654200F18796 /* HTTPRiotRestModel.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D07744850F4885AE00190554 /* HTTPRiotRestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D03DB66B0F31654200F18796 /* HTTPRiotRestModel.m */; };
@@ -557,7 +557,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/usr/bin/env ruby";
-			shellScript = "#!/usr/bin/env ruby\n#!/usr/bin/env ruby\n# The documentation gets generated with a bad info.plist file so this fixes it\n# until I can find a better solution\n#\nrequire 'fileutils'\ninclude FileUtils\n\ncontents = <<-CONTENTS\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\"\n\"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n<plist version=\"1.0\">\n<dict>\n     <key>CFBundleName</key>\n     <string>#{ENV['PROJECT']} #{ENV['VERSION']}</string>\n     <key>CFBundleIdentifier</key>\n     <string>com.alternateidea.#{ENV['PROJECT']}.docset</string>\n     <key>DocSetFeedName</key>\n     <string>#{ENV['PROJECT']} Documentation</string>\n</dict>\n</plist>\nCONTENTS\n\ndoc_dir = \"/Users/#{ENV['USER']}/Library/Developer/Shared/Documentation/DocSets/com.alternateidea.#{ENV['PROJECT']}.docset/Contents\"\nplist = File.join(doc_dir, \"Info.plist\")\nresource_dir = File.join(doc_dir, \"Resources\", \"Documents\")\n\nif File.exists?(plist)\n  File.open(plist, 'w+') do |f|\n    f << contents\n  end\nend\n\ncp_r(File.join(ENV['PROJECT_DIR'], 'Documentation', 'orange', 'images'), resource_dir)\n\n# Script to tell XCode to load up our new documentation\nscript = <<-OSA \ntell application \"Xcode\"\n\tload documentation set with path \"/Users/$USER/Library/Developer/Shared/Documentation/DocSets/com.alternateidea.#{ENV['PROJECT']}.docset/\"\nend tell\nOSA\n\n# Run the load-docset applescript command.\nsystem(\"osascript -e #{script}\")";
+			shellScript = "#!/usr/bin/env ruby\n#!/usr/bin/env ruby\n# The documentation gets generated with a bad info.plist file so this fixes it\n# until I can find a better solution\n#\nrequire 'rubygems'\nrequire 'fileutils'\nrequire 'osx/cocoa'\n\ninclude FileUtils\n\n# Get the main target's version number\nplist = OSX::NSDictionary.dictionaryWithContentsOfFile(File.join(ENV['PROJECT_DIR'], \"Info.plist\"))\nversion = plist['CFBundleVersion']\n\ncontents = <<-CONTENTS\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\"\n\"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n<plist version=\"1.0\">\n<dict>\n     <key>CFBundleName</key>\n     <string>#{ENV['PROJECT']} #{version}</string>\n     <key>CFBundleIdentifier</key>\n     <string>com.alternateidea.#{ENV['PROJECT']}.docset</string>\n     <key>DocSetFeedName</key>\n     <string>#{ENV['PROJECT']} Documentation</string>\n</dict>\n</plist>\nCONTENTS\n\ndoc_dir = \"/Users/#{ENV['USER']}/Library/Developer/Shared/Documentation/DocSets/com.alternateidea.#{ENV['PROJECT']}.docset/Contents\"\nplist = File.join(doc_dir, \"Info.plist\")\nresource_dir = File.join(doc_dir, \"Resources\", \"Documents\")\n\nif File.exists?(plist)\n  File.open(plist, 'w+') do |f|\n    f << contents\n  end\nend\n\ncp_r(File.join(ENV['PROJECT_DIR'], 'Documentation', 'orange', 'images'), resource_dir)\n\n# Script to tell XCode to load up our new documentation\nscript = <<-OSA \ntell application \"Xcode\"\n\tload documentation set with path \"/Users/$USER/Library/Developer/Shared/Documentation/DocSets/com.alternateidea.#{ENV['PROJECT']}.docset/\"\nend tell\nOSA\n\n# Run the load-docset applescript command.\nsystem(\"osascript -e #{script}\")";
 		};
 		D09E4A150F339D7900C9E26E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -584,7 +584,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# See also http://developer.apple.com/tools/creatingdocsetswithdoxygen.html \n\nVERS=$(agvtool mvers -terse1)\n\nDOXYFILE=$DERIVED_FILES_DIR/Doxyfile\nDOXYGEN=/Applications/Doxygen.app/Contents/Resources/doxygen\nDOCSET=$DSTROOT/Documentation\n\nmkdir -p $DERIVED_FILES_DIR || exit 1\nmkdir -p $DOCSET || exit 1\n\nif ! test -x $DOXYGEN ; then\n\tDOXYGEN=`which doxygen`;\nfi\n\nif ! test -x $DOXYGEN ; then\n\techo \"*** Install Doxygen to get documentatino generated for you automatically ***\"\n\texit 0\nfi\n\n\n# Check that doxygen is present\ntest -f $DOXYGEN || exit 1\n\n# Create a doxygen configuration file with only the settings we care about\n\ncat <<EOF > $DOXYFILE\n\nPROJECT_NAME           = $FULL_PRODUCT_NAME\nPROJECT_NUMBER         = $VERS\nDOCSET_FEEDNAME  \t    = \"$PROJECT $VERSION\"\nOUTPUT_DIRECTORY       = $DOCSET\nINPUT                  = $SOURCE_ROOT/Source/$PROJECT $SOURCE_ROOT/Documentation\nEXAMPLE_PATH           = $SOURCE_ROOT/Documentation/Samples\nIMAGE_PATH             = $SOURCE_ROOT/Documentation/orange/images\nFILE_PATTERNS          = *.h *.m *.doxygen\n\nHIDE_UNDOC_MEMBERS     = NO\nHIDE_UNDOC_CLASSES     = YES\nHIDE_UNDOC_RELATIONS   = YES\nREPEAT_BRIEF           = NO\n\nGENERATE_LATEX         = NO\nGENERATE_HTML          = YES\nGENERATE_DOCSET        = YES\nDOCSET_FEEDNAME        = \"$PROJECT Documentation\"\nDOCSET_BUNDLE_ID       = com.alternateidea.$PROJECT\n\nQUIET                  = NO\n\nHTML_FOOTER \t\t\t= $SOURCE_ROOT/Documentation/orange/index.html\nHTML_STYLESHEET \t\t= $SOURCE_ROOT/Documentation/orange/orange.css\n\nEOF\n\n#  Run doxygen on the updated config file.\n#  doxygen creates a Makefile that does most of the heavy lifting.\n\n$DOXYGEN $DOXYFILE\n\n\n#  make will invoke docsetutil. Take a look at the Makefile to see how this is done.\nmake -C $DOCSET/html install";
+			shellScript = "# See also http://developer.apple.com/tools/creatingdocsetswithdoxygen.html \n\nVERS=$(agvtool mvers -terse1)\n\nDOXYFILE=$DERIVED_FILES_DIR/Doxyfile\nDOXYGEN=/Applications/Doxygen.app/Contents/Resources/doxygen\nDOCSET=$DSTROOT/Documentation\n\nmkdir -p $DERIVED_FILES_DIR || exit 1\nmkdir -p $DOCSET || exit 1\n\nif ! test -x $DOXYGEN ; then\n\tDOXYGEN=`which doxygen`;\nfi\n\nif ! test -x $DOXYGEN ; then\n\techo \"*** Install Doxygen to get documentatino generated for you automatically ***\"\n\texit 0\nfi\n\n\n# Check that doxygen is present\ntest -f $DOXYGEN || exit 1\n\n# Create a doxygen configuration file with only the settings we care about\n\ncat <<EOF > $DOXYFILE\n\nPROJECT_NAME           = $FULL_PRODUCT_NAME\nPROJECT_NUMBER         = $VERS\nDOCSET_FEEDNAME  \t    = \"$PROJECT $VERSION\"\nOUTPUT_DIRECTORY       = $DOCSET\nINPUT                  = $SOURCE_ROOT/Source/$PROJECT $SOURCE_ROOT/Documentation\nEXAMPLE_PATH           = $SOURCE_ROOT/Documentation/Samples $SOURCE_ROOT/Documentation/Guides\nIMAGE_PATH             = $SOURCE_ROOT/Documentation/images\nFILE_PATTERNS          = *.h *.m *.doxygen\n\nHIDE_UNDOC_MEMBERS     = NO\nHIDE_UNDOC_CLASSES     = YES\nHIDE_UNDOC_RELATIONS   = YES\nREPEAT_BRIEF           = NO\n\nGENERATE_LATEX         = NO\nGENERATE_HTML          = YES\nGENERATE_DOCSET        = YES\nDOCSET_FEEDNAME        = \"$PROJECT Documentation\"\nDOCSET_BUNDLE_ID       = com.alternateidea.$PROJECT\n\nQUIET                  = NO\n\nHTML_FOOTER \t\t\t= $SOURCE_ROOT/Documentation/orange/index.html\nHTML_STYLESHEET \t\t= $SOURCE_ROOT/Documentation/orange/orange.css\n\nEOF\n\n#  Run doxygen on the updated config file.\n#  doxygen creates a Makefile that does most of the heavy lifting.\n\n$DOXYGEN $DOXYFILE\n\n\n#  make will invoke docsetutil. Take a look at the Makefile to see how this is done.\nmake -C $DOCSET/html install";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -674,6 +674,7 @@
 				GCC_PREFIX_HEADER = Source/HTTPRiot/HTTPRiot_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Frameworks";
+				OTHER_CFLAGS = "-DHTTPRIOT_FRAMEWORK_BUILD";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -690,12 +691,14 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				FOO_BAR = 1;
 				FRAMEWORK_VERSION = A;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Source/HTTPRiot/HTTPRiot_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Frameworks";
+				OTHER_CFLAGS = "-DHTTPRIOT_FRAMEWORK_BUILD";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,

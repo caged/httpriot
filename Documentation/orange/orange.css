@@ -237,6 +237,14 @@ hr {
 	visibility: hidden;
 }
 
+div[align=center] {
+  text-align: left;
+}
+
+div[align=center] img {
+  margin: 10px 0;
+}
+
 /* @group Member Descriptions */
 
 .mdescLeft, .mdescRight,
@@ -460,6 +468,35 @@ div.tabs + div.tabs {
   border-bottom: 1px solid #e2ecf3 !important;
 }
 
+div.navpath {
+  line-height: 100%;
+  text-align: left;
+  background: #f2f6f9  !important;
+  border-bottom: 1px solid #e2ecf3 !important;
+  padding: 0;
+  margin: 0;
+}
+
+div.navpath:after {
+  content: ".";
+  display: block;
+  visibility: hidden;
+  clear: both;
+  padding: 0;
+  margin: 0;
+  height: 0;
+}
+
+div.navpath a {
+  display: block;
+  float: left;
+  padding: 8px 20px;
+  color: #8c99a3;
+}
+
+/*div.navpath a:after {
+  content: " >";
+}*/
 /* @end */
 
 /*------------------------------------------------------------------------------------
@@ -521,19 +558,45 @@ td.indexkey {
   padding: 0 0 5px 0;
 }
 
-ul {
+ul, ol {
   list-style: square;
   margin-left: 20px;
   line-height: 170%;
 }
 
-pre.fragment {
-	border: 1px solid #ddd;
-	background-color: #f7f7f7;
-	padding: 5px;
-	margin: 10px 0;
+ol {
+  list-style: decimal;
+  margin-left: 50px !important;
 }
 
+ol li {
+  margin-bottom: 5px;
+}
+
+pre.fragment {
+  font-family: Monaco, "Courier New", Courier, monospace;
+  font-size: 82%;
+	border: 1px solid #BAC8D3;
+  background: #F0F5F9;
+	padding: 5px;
+	margin: 10px 0;
+	line-height: 140%;
+}
+
+b.key {
+  font-family: "Lucidea Grande", Helvetica, arial, sans-serif;
+  font-size: 120%;
+}
+
+#guides {
+  margin: 20px 0;
+  background: #F0F5F9;
+  padding: 5px;
+}
+
+#guides .ttl {
+  font-weight: bold;
+}
 
 /*.contents table {
   width: 100%;

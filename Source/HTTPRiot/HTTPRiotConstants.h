@@ -1,5 +1,10 @@
 /**
-  Supported REST methods
+ * @file HTTPRiotConstants.h Shared types and constants.
+ */
+ 
+/**
+ * Supported REST methods.
+ * @see HTTPRiotRequest
  */
 typedef enum {
     /// GET
@@ -13,12 +18,13 @@ typedef enum {
 } kHTTPRiotMethod;
 
 /**
- Supported formats
+ Supported formats/formatters.
+ @see HTTPRiotRestModel#setFormat
  */
 typedef enum {
-    /// JSON
+    /// JSON Format
     kHTTPRiotJSONFormat = 1,
-    /// XML
+    /// XML Format
     kHTTPRiotXMLFormat
 } kHTTPRiotFormat;
 

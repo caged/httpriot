@@ -1,6 +1,3 @@
-@interface Twitter : HTTPriotRestModel {} @end
-
-
 @implementation Tweet
 - (void)initWithDictionary:(NSDictionary *)dict
 {

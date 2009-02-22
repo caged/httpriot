@@ -9,26 +9,28 @@
 #import "HTTPRiotConstants.h"
 
 /**
- * Request stuff
+ * The object which all requests are routed through.  You shouldn't need to use 
+ * this class directly, but instead use HTTPRiotRestModel which wraps the method 
+ * of this class neatly.
  */
 @interface HTTPRiotRequest : NSObject {
     float timeout;
     kHTTPRiotMethod httpMethod;
     NSString *path;
     NSDictionary *options;
-    NSArray *methodStrings;
     id formatter;
 }
-
-/// The length of time in seconds before the request times out
+ 
+/// The lenght of time in seconds before the request times out.
 /**
- This defaults to 30.0
+ * Sets the length of time in seconds before a request will timeout.
+ * This defaults to <tt>30.0</tt>.
  */
 @property (nonatomic, assign) float timeout;
 
 /// The REST method to use when performing a request
 /**
- This defaults to kHTTPRiotMethodGET
+ * This defaults to kHTTPRiotMethodGet.  Valid options are ::kHTTPRiotMethod.
  */
 @property (nonatomic, assign) kHTTPRiotMethod httpMethod;
 
@@ -52,7 +54,7 @@
 @property (nonatomic, readonly, retain) id formatter;
 
 /**
- @breif Returns an NSDictionary, NSArray decoded from the server
+ Returns an NSDictionary, NSArray decoded from the server
 
  You shouldn't have to call this method directly.
  */

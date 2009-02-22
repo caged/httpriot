@@ -9,8 +9,28 @@
 #import "HTTPRiotConstants.h"
 
 /**
- * Document this class
+ * You can either subclass this class or use it directly to make requests.
+ * It's recommended that you subclass it and setup default properties in your 
+ * classes <tt>initialize</tt> method.
  *
+ * @code
+ *  @implementation Person
+ *  + (void)initialize
+ *  {
+ *     NSDictionary *params = [NSDictionary dictionaryWithObject:@"1234567" forKey:@"api_key"];
+ *     [self setBaseURI:[NSURL URLWithString:@"http://localhost:1234/api"]];    
+ *     [self setFormat:kHTTPFormatJSON];
+ *     [self setDefaultParameters:params];
+ *  }
+ *  @end
+ *
+ *  // Would send a request to http://localhost:1234/api/people/1?api_key=1234567
+ *  [Person getPath:@"/people/1" withOptions:nil error:nil];
+ * @endcode
+ *
+ * <h3>A note on default properties and subclassing</h3>
+ * Each subclass has its own set of unique properties and these properties <em>are not</em>
+ * inherited by any additional subclasses.
  */
 @interface HTTPRiotRestModel : NSObject {
 
@@ -18,6 +38,8 @@
 
 /**
  * @name Setting default request options
+ * Set the default options that can be used in every request made from the model 
+ * that sets them.
  * @{ 
  */
 
