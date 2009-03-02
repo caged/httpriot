@@ -8,6 +8,7 @@
 #import <HTTPRiot/HTTPRiot.h>
 #import <SenTestingKit/SenTestingKit.h>
 #import "HTTPRiotTestHelper.h"
+#import "HTTPRiotFormatJSON.h"
 
 @interface HTTPRiotRequestTest : SenTestCase {} @end
 static NSDictionary *defaultOptions;
@@ -94,24 +95,46 @@ static NSDictionary *defaultOptions;
     STAssertNotNil(person, nil);
 }
 
-- (void)testPOST
+- (void)testPOSTWithRawBody
 {
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"bob", @"name", 
+    NSError *error = nil;
+    NSDictionary *body = [NSDictionary dictionaryWithObjectsAndKeys:@"bob", @"name", 
                                 @"foo@email.com", @"email", 
                                 @"101 Cherry Lane", @"address", nil];
-    
-    NSMutableDictionary *options = [NSMutableDictionary dictionaryWithObject:params forKey:@"params"];                       
+    NSDictionary *headers = [NSDictionary dictionaryWithObject:[HTTPRiotFormatJSON mimeType] forKey:@"Content-Type"];
+    id bodyData = [HTTPRiotFormatJSON encode:body];
+    NSMutableDictionary *options = [NSMutableDictionary dictionaryWithObjectsAndKeys:bodyData, @"body", 
+                                        headers, @"headers", nil];                       
     [options addEntriesFromDictionary:defaultOptions];
     
     id person = [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodPost
                                               path:[HTTPRiotTestServer stringByAppendingString:@"/person"]
                                            options:options
-                                             error:nil];
-                                             
+                                             error:&error];
+    
     STAssertEqualObjects([person valueForKey:@"name"], @"bob", nil);
+    STAssertNil(error, nil);
 }
 
-- (void)testPUT
+- (void) testPOSTWithFormData 
+{
+    NSError *error = nil;
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"bob", @"name", 
+                                @"foo@email.com", @"email", 
+                                @"101 Cherry Lane", @"address", nil];
+    NSMutableDictionary *options = [NSMutableDictionary dictionaryWithObject:params forKey:@"params"];                       
+    [options addEntriesFromDictionary:defaultOptions];
+    
+    id person = [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodPost
+                                              path:[HTTPRiotTestServer stringByAppendingString:@"/person/form-data"]
+                                           options:options
+                                             error:&error];
+                                             
+    STAssertNil(person, nil);
+    STAssertNil(error, nil);
+}
+
+- (void)testPUTWithRawBody
 {
     id person = [HRTestPerson getPath:@"/person/1" withOptions:nil error:nil];
     
@@ -120,7 +143,10 @@ static NSDictionary *defaultOptions;
     [updatedPerson setValue:@"encytemedia@gamil.com" forKey:@"email"];
     [updatedPerson removeObjectForKey:@"id"];
     
-    NSMutableDictionary *options = [NSMutableDictionary dictionaryWithObject:updatedPerson forKey:@"params"];                       
+    NSDictionary *headers = [NSDictionary dictionaryWithObject:[HTTPRiotFormatJSON mimeType] forKey:@"Content-Type"];
+    id bodyData = [HTTPRiotFormatJSON encode:updatedPerson];
+    NSMutableDictionary *options = [NSMutableDictionary dictionaryWithObjectsAndKeys:bodyData, @"body", 
+                                        headers, @"headers", nil];
     [options addEntriesFromDictionary:defaultOptions];
     
     NSError *error = nil;

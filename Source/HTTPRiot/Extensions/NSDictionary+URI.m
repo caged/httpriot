@@ -12,7 +12,7 @@
 @implementation NSDictionary (URI)
 - (NSString *)toQueryString
 {
-    NSMutableString *tmpString = [NSMutableString stringWithString:@"?"];
+    NSMutableString *tmpString = [NSMutableString string];
     for(id key in self) 
     {
         [tmpString appendFormat:@"%@=%@&", key, [[self objectForKey:key] stringByPreparingForURL]];

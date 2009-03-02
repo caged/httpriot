@@ -67,7 +67,7 @@ end
 
 # Set every request to JSON
 before do
-  pp request.env
+  #pp request.env
   def xml?
     request.env['CONTENT_TYPE'] == "application/xml"
   end
@@ -120,6 +120,12 @@ post '/person' do
   if p = Person.create(data)
     status 201
     p.values.to_json
+  end
+end
+
+post '/person/form-data' do
+  if p = Person.create(params)
+    status 201
   end
 end
  

@@ -79,10 +79,6 @@
 - (void)setDefaultHeadersForRequest:(NSMutableURLRequest *)request
 {
     NSDictionary *headers = [[self options] valueForKey:@"headers"];
-
-    [request setValue:[[self formatter] mimeType] forHTTPHeaderField:@"Content-Type"];  
-    [request addValue:[[self formatter] mimeType] forHTTPHeaderField:@"Accept"];
-
     if(headers)
         [request setAllHTTPHeaderFields:headers];
 }
@@ -118,6 +114,7 @@
     
     NSURL *composedURL = [self composedURI];
     NSDictionary *params = [[self options] valueForKey:@"params"];
+    id body = [[self options] valueForKey:@"body"];
     NSString *queryString = [[self class] buildQueryStringFromParams:params];
     
     if(method == kHTTPRiotMethodGet || method == kHTTPRiotMethodDelete)
@@ -126,6 +123,9 @@
         NSURL *url = [NSURL URLWithString:urlString];
         [request setURL:url];
         
+        [request setValue:[[self formatter] mimeType] forHTTPHeaderField:@"Content-Type"];  
+        [request addValue:[[self formatter] mimeType] forHTTPHeaderField:@"Accept"];
+        
         if(method == kHTTPRiotMethodGet)
             [request setHTTPMethod:@"GET"];
         else
@@ -133,8 +133,28 @@
     } 
     else if(method == kHTTPRiotMethodPost || kHTTPRiotMethodPost)
     {
-        NSString *json = [formatter encode:params];
-        [request setHTTPBody:[json dataUsingEncoding:NSUTF8StringEncoding]];
+        if(params && [params isKindOfClass:[NSDictionary class]])
+        {
+            NSData *bodyData = [[params toQueryString] dataUsingEncoding:NSUTF8StringEncoding];
+            [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+            [request setHTTPBody:bodyData];
+        }
+        else
+        {
+            NSData *bodyData;
+            if([body isKindOfClass:[NSDictionary class]])
+                bodyData = [[body toQueryString] dataUsingEncoding:NSUTF8StringEncoding];
+            else if([body isKindOfClass:[NSString class]])
+                bodyData = [body dataUsingEncoding:NSUTF8StringEncoding];
+            else if([body isKindOfClass:[NSString class]])
+                bodyData = body;
+            else
+                [NSException exceptionWithName:@"InvalidBodyData"
+                                        reason:@"The body must be an NSDictionary, NSString, or NSData"
+                                      userInfo:nil];
+            [request setHTTPBody:bodyData];
+        }
+        
         [request setURL:composedURL];
         
         if(method == kHTTPRiotMethodPost)
@@ -265,7 +285,7 @@
     if(theParams)
     {
          if([theParams count] > 0)
-             return [theParams toQueryString];
+             return [NSString stringWithFormat:@"?%@", [theParams toQueryString]];
     }
     
     return @"";
