@@ -4,7 +4,15 @@ require 'sequel'
 require 'json'
 require 'faker'
 require 'pp'
+require 'xmlsimple'
 require File.join(File.dirname(__FILE__), 'lib/authorization')
+
+# Stupid hack so XmlSimple can use symbolized keys
+class Symbol
+  def [](*args)
+    to_s[*args]
+  end
+end
 
 # connect to an in-memory database
 DB = Sequel.sqlite unless self.class.const_defined?('DB')
@@ -59,7 +67,20 @@ end
 
 # Set every request to JSON
 before do
-  content_type 'application/json'
+  pp request.env
+  def xml?
+    request.env['CONTENT_TYPE'] == "application/xml"
+  end
+  # 
+  def json?
+    request.env['CONTENT_TYPE'] == "application/json"
+  end
+  
+  if xml?
+    content_type 'application/xml'
+  elsif json?
+    content_type 'application/json'
+  end
 end
 
 #GET /status/500 returns the given status code
@@ -73,7 +94,12 @@ end
 
 #GET /people returns all posts as json
 get '/people' do
-  Person.all.collect { |p| p.values }.to_json
+  people = Person.all.collect { |p| p.values }
+  if json?
+    people.to_json
+  elsif xml?
+    XmlSimple.xml_out(people, 'noattr' => 'yes', 'rootname' => 'people')
+  end
 end
  
 #GET /person/1 returns that post as json

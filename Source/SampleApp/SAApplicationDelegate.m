@@ -29,6 +29,17 @@
 }
 @end
 
+@interface SAXMLPerson : HTTPRiotRestModel {} @end
+
+@implementation SAXMLPerson
++ (void)initialize
+{
+    [self setBaseURI:[NSURL URLWithString:@"http://localhost:4567"]];
+    [self setFormat:kHTTPRiotXMLFormat];
+}
+@end
+
+
 
 @implementation SAApplicationDelegate
 - (void)awakeFromNib
@@ -58,14 +69,17 @@
     id newPerson = [SAPerson postPath:@"/person" withOptions:options error:&error];
     
     id person4 = [SAPerson getPath:@"/person/1" withOptions:nil error:&error];
-
+    
     NSMutableDictionary *updatedPerson = [NSMutableDictionary dictionaryWithDictionary:person];
     [updatedPerson setValue:@"Justin" forKey:@"name"];
     [updatedPerson setValue:@"encytemedia@gamil.com" forKey:@"email"];
     [updatedPerson removeObjectForKey:@"id"];
     [SAPerson putPath:@"/person/1" withOptions:[NSDictionary dictionaryWithObject:updatedPerson forKey:@"params"] error:&error];
-
-    id person3 = [SAPerson deletePath:@"/person/1" withOptions:nil error:&error];    
+    
+    id person3 = [SAPerson deletePath:@"/person/1" withOptions:nil error:&error]; 
+    
+    // NSArray *xmlpeople = [SAXMLPerson getPath:@"/people" withOptions:nil error:&error];
+    
     
 }
 @end
