@@ -32,7 +32,7 @@
 /**
  * This defaults to kHTTPRiotMethodGet.  Valid options are ::kHTTPRiotMethod.
  */
-@property (nonatomic, assign) kHTTPRiotMethod httpMethod;
+@property (nonatomic, readonly, assign) kHTTPRiotMethod httpMethod;
 
 /// The relative path or url string used in a request
 /**

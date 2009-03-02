@@ -46,7 +46,7 @@ HTTPRiot was inspired by John Nunemaker's excellent
 <h3>A simple example</h3>
 @code
 // Returns a dictionary of key vlaues
-id person = [HTTPRiotRestModel getPath:@"/some/person.json" 
+id person = [HTTPRiotRestModel getPath:@"http://localhost:1234/some/person.json" 
                                options:[NSDictionary dictionaryWithObject:@"json" forKey:@"format"] 
                                 error:nil];
                                 
@@ -122,6 +122,7 @@ If you want to distribute HTTPRiot.framework with your application you'll need t
 
 -# Right click your target name and select <tt>"Add > New Build Phase > New Copy Files Build Phase"</tt>.
    Set <tt>Frameworks</tt> as the destination path in the popup. @image html copy-files.png
+-# Drag the HTTPRiot.framework file to this new phase.
 */
 
 #import <Foundation/Foundation.h>

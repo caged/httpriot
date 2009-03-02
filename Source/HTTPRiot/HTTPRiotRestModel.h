@@ -120,7 +120,24 @@
  * @name Sending Requests
  * These methods allow you to send GET, POST, PUT and DELETE requetsts.
  *
+ * <h3>Request Options</h3>
+ * All requests can take numerous types of options passed as the second argument.
+ * @li @b headers <tt>NSDictionary</tt> - The headers to send with the request
+ * @li @b params <tt>NSDictionary</tt> - The query or body parameters sent with the request.
+ * @li @b body <tt>NSData</tt>, <tt>NSString</tt> or <tt>NSDictionary</tt> - This option is used only during POST and PUT
+ *     requests.  This option is eventually transformed into an NSData object before it is sent.
+ *     If you supply the body as an NSDictionary it's turned to a query string &foo=bar&baz=boo and 
+ *     then it's encoded as an NSData object.  If you supply an NSString, it's encoded as an NSData 
+ *     object and sent.  
  * @{
+ */
+ 
+/**
+ * Send a GET request
+ * @param path The path to get.  If you haven't setup the baseURI option you'll need to provide a 
+ *        full url. 
+ * @param options The options for this request.
+ * @param error If any errors are returned they will be stored here.
  */
 + (NSArray *)getPath:(NSString *)path withOptions:(NSDictionary *)options error:(NSError **)error;
 + (NSArray *)postPath:(NSString *)path withOptions:(NSDictionary *)options error:(NSError **)error;
