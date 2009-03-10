@@ -37,7 +37,7 @@
 #define NSXMLNodePrettyPrint         DDXMLNodePrettyPrint        
 #endif
 
-#ifndef DDXMLDocumentContentKind
+#ifndef NSXMLDocumentXMLKind
 #define NSXMLDocumentXMLKind   DDXMLDocumentXMLKind 
 #define NSXMLDocumentXHTMLKind DDXMLDocumentXHTMLKind
 #define NSXMLDocumentHTMLKind  DDXMLDocumentHTMLKind
@@ -46,7 +46,8 @@
 #define NSXMLDocumentContentKind DDXMLDocumentContentKind
 #endif
 
-#ifndef NSXMLDocumentTidyXML
+
+#if !TARGET_IPHONE_SIMULATOR
 enum {
     // Tidy
     NSXMLDocumentTidyHTML = 1 << 9,
@@ -59,8 +60,8 @@ enum {
     NSXMLDocumentXInclude = 1 << 16
 };
 #endif
-
 #endif
+
 
 #import "AIXMLDocumentSerialize.h"
 #import "AIXMLElementSerialize.h"
