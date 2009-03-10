@@ -22,6 +22,12 @@
     STAssertEquals([HRTestPerson format], kHTTPRiotJSONFormat, nil);
 }
 
+- (void) testShouldSetFormat 
+{
+    [HRTestPerson4 setFormat:kHTTPRiotXMLFormat];
+    STAssertEquals([HRTestPerson4 format], kHTTPRiotXMLFormat, nil);
+}
+
 - (void)testShouldProvideErrorIfRequestFails
 {
     NSError *error = nil;
@@ -88,6 +94,39 @@
     
     STAssertEqualObjects([params valueForKey:@"foo"], @"123", nil);
     STAssertEqualObjects([params valueForKey:@"bada"], @"bing", nil);
+}
+
+- (void) testShouldDecodeJSON 
+{
+    NSError *error = nil;
+    [HRTestPerson4 setFormat:kHTTPRiotJSONFormat];
+    id people = [HRTestPerson getPath:@"/people" withOptions:nil error:&error];
+    NSArray *person = [people valueForKeyPath:@"people.person"];
+    STAssertTrue([person isKindOfClass:[NSArray class]], nil);
+    STAssertNil(error, nil);
+}
+
+- (void)testShouldDecodeXML
+{
+    NSError *error = nil;
+    [HRTestPerson4 setFormat:kHTTPRiotXMLFormat];
+    id people = [HRTestPerson getPath:@"/people" withOptions:nil error:&error];
+    NSArray *person = [people valueForKeyPath:@"people.person"];
+    STAssertTrue([person isKindOfClass:[NSArray class]], nil);
+    STAssertNil(error, nil);
+}
+
+- (void) testShouldCreateUniqueClassAttributesForSubClasses
+{
+    NSDictionary *h5attrs = [HRTestPerson5 classAttributes];
+    NSDictionary *h6attrs = [HRTestPerson6 classAttributes];
+    NSURL *h5URL = [NSURL URLWithString:@"http://foo.com"];
+    NSURL *h6URL = [NSURL URLWithString:@"http://bar.com"];
+    [HRTestPerson5 setBaseURI:h5URL];
+    [HRTestPerson6 setBaseURI:h6URL];
+    
+    STAssertEqualObjects([h5attrs objectForKey:@"baseURI"], h5URL, nil);
+    STAssertEqualObjects([h6attrs objectForKey:@"baseURI"], h6URL, nil);
 }
 
 // - (void) testHostProvidedInPathShouldOverideBaseURI 

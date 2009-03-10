@@ -7,6 +7,7 @@
 //
 
 #import "HTTPRiotFormatXML.h"
+#import "AIXMLSerialization.h"
 
 @implementation HTTPRiotFormatXML
 + (NSString *)extension
@@ -21,8 +22,11 @@
 
 + (id)decode:(NSData *)data
 {
-    NSAssert(true, @"omg it's broke");
-    return nil;
+    NSXMLDocument *doc = [[NSXMLDocument alloc] initWithData:data options:NSXMLDocumentTidyXML error:nil];
+    NSDictionary *dict = [doc toDictionary];
+    [doc release];
+    
+    return dict;
 }
 
 + (NSString *)encode:(id)data

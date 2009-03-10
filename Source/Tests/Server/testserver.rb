@@ -4,7 +4,7 @@ require 'sequel'
 require 'json'
 require 'faker'
 require 'pp'
-require 'xmlsimple'
+require 'builder'
 require File.join(File.dirname(__FILE__), 'lib/authorization')
 
 # Stupid hack so XmlSimple can use symbolized keys
@@ -65,6 +65,7 @@ end
   })
 end
 
+
 # Set every request to JSON
 before do
   #pp request.env
@@ -74,6 +75,23 @@ before do
   # 
   def json?
     request.env['CONTENT_TYPE'] == "application/json"
+  end
+  
+  def people_xml
+    @people ||= Person.all.collect { |p| p.values}
+    xml = Builder::XmlMarkup.new
+    xml.people do
+      @people.each do |per|
+        xml.person do |p|
+          p.name per[:name]
+          p.email per[:email]
+          p.address per[:address]
+          p.telephone per[:telephone]
+          p.bio per[:bio]
+          p.created_at per[:created_at]
+        end
+      end
+    end
   end
   
   if xml?
@@ -95,10 +113,13 @@ end
 #GET /people returns all posts as json
 get '/people' do
   people = Person.all.collect { |p| p.values }
+  
   if json?
     people.to_json
   elsif xml?
-    XmlSimple.xml_out(people, 'noattr' => 'yes', 'rootname' => 'people')
+    people_xml
+  else
+    puts "OMG WTF"
   end
 end
  
