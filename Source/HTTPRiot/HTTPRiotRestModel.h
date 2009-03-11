@@ -140,8 +140,42 @@
  * @param error If any errors are returned they will be stored here.
  */
 + (NSArray *)getPath:(NSString *)path withOptions:(NSDictionary *)options error:(NSError **)error;
+
+/**
+ * Send a POST request
+ * @param path The path to POST to.  If you haven't setup the baseURI option you'll need to provide a 
+ *        full url. 
+ * @param options The options for this request.
+ *
+ * <strong>Note:</strong>  There are two important options you can set on post request.  Setting the 
+ * <tt>params</tt> option will cause the request to be posted as <tt>application/x-www-form-urlencoded</tt> data.
+ * If you'd like to post raw data like JSON or XML you'll need to set the <tt>body</tt> option.  Setting the <tt>body</tt>
+ * option will cause the <tt>params</tt> option to be ignored.
+ * 
+ * @param error If any errors are returned they will be stored here.
+ */
 + (NSArray *)postPath:(NSString *)path withOptions:(NSDictionary *)options error:(NSError **)error;
+
+/**
+ * Send a PUT request
+ * @param path The path to PUT to.  If you haven't setup the baseURI option you'll need to provide a 
+ *        full url. 
+ * @param options The options for this request.
+ *
+ * <strong>Note:</strong>  All data found in the <tt>body</tt> option will be PUT.  Setting the <tt>body</tt>
+ * option will cause the <tt>params</tt> option to be ignored.
+ * 
+ * @param error If any errors are returned they will be stored here.
+ */
 + (NSArray *)putPath:(NSString *)path withOptions:(NSDictionary *)options error:(NSError **)error;
+
+/**
+ * Send a DELETE request
+ * @param path The path to DELETE.  If you haven't setup the baseURI option you'll need to provide a 
+ *        full url. 
+ * @param options The options for this request.
+ * @param error If any errors are returned they will be stored here.
+ */
 + (NSArray *)deletePath:(NSString *)path withOptions:(NSDictionary *)options error:(NSError **)error;
 //@}
 @end

@@ -30,6 +30,10 @@
 /**
 @mainpage HTTPRiot - A simple HTTP REST Library
 
+@image html httpriot.png
+
+<a href="http://www.labratrevenge.com/httpriot">HTTPRiot homepage</a>
+
 HTTPRiot is a simple REST library designed to make interacting with REST services 
 much easier.  It supports GET, POST, PUSH and DELETE requests in addition to HTTP Basic Authentication.
 HTTPRiot was inspired by John Nunemaker's excellent 
