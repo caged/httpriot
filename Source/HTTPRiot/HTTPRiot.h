@@ -32,7 +32,8 @@
 
 @image html httpriot.png
 
-<a href="http://www.labratrevenge.com/httpriot">HTTPRiot homepage</a>
+@li <a href="http://labratrevenge.com/httpriot">HTTPRiot homepage</a>
+@li <a href="https://github.com/Caged/httpriot/tree/master">Source Code</a>
 
 HTTPRiot is a simple REST library designed to make interacting with REST services 
 much easier.  It supports GET, POST, PUSH and DELETE requests in addition to HTTP Basic Authentication.
