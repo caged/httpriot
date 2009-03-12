@@ -169,6 +169,7 @@
 
 - (NSURL *)composedURI
 {
+    NSString *finalString;
     NSURL *tmpURI = [NSURL URLWithString:path];
     NSURL *baseURI = [options objectForKey:@"baseURI"];
         
@@ -176,11 +177,12 @@
         [NSException raise:@"UnspecifiedHost" format:@"host wasn't provided in baseURI or path"];
     
     if([tmpURI host])
-        tmpURI = [NSURL URLWithString:path relativeToURL:tmpURI];
+        finalString = [[tmpURI absoluteString] stringByAppendingPathComponent:path];
     else
-        tmpURI = [NSURL URLWithString:path relativeToURL:baseURI];
-
+        finalString = [[baseURI absoluteString] stringByAppendingPathComponent:path];
     
+    tmpURI = [NSURL URLWithString:finalString];
+
     return tmpURI;
 }
 
@@ -275,7 +277,8 @@
     NSDictionary *userInfo = [[[NSDictionary dictionaryWithObjectsAndKeys:
                                errorReason, NSLocalizedFailureReasonErrorKey,
                                errorDescription, NSLocalizedDescriptionKey, 
-                               headers, @"headers", nil] retain] autorelease];
+                               headers, @"headers", 
+                               [[response URL] absoluteString], @"url", nil] retain] autorelease];
     *error = [NSError errorWithDomain:HTTPRiotErrorDomain code:code userInfo:userInfo];
     return nil;
 }
