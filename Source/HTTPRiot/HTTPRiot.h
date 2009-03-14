@@ -56,14 +56,25 @@ id person = [HTTPRiotRestModel getPath:@"http://localhost:1234/some/person.json"
                                 error:nil];
                                 
 @endcode
+<h3>Posting Form Data</h3>
+It's very easy to post form-encoded data.  When you specify the <tt>params</tt> option for a POST 
+request <tt>HTTPRiot</tt> will treat this as form encoded data.
+
+@code
+NSDictionary *formParams = [NSDictionary dictionaryWithObjectsAndKeys:@"bob", @"name", @"01/02/03", @"birthday", nil];
+[HTTPRiotRestModel postPath:@"http://localhost:1234/some/form/submission" 
+                    options:[NSDictionary dictionaryWithObject:formParams forKey:@"params"] 
+                      error:nil];
+@endcode
+
 <h3>Creating Your Own Models</h3>
 The preferred way to use HTTPRiot is to subclass HTTPRiotRestModel and make your own models.
 From these models you can set default options that will be used by every request.
 @include Tweet.m
 
 <h3>Using Threads</h3>
-HTTPRiot uses synchronous requests.  This means you should run these requests in a seperate 
-thread.  Apple has made this really easy.
+HTTPRiot uses synchronous requests.  This means, that in the vast majority of cases you should run 
+these requests in a seperate thread.  Apple has made this really easy.
 
 @code
 -(void)applicationDidFinishLaunching
@@ -96,7 +107,8 @@ The errors will return useful information:
 @li <strong><tt>localizedDescription</tt></strong> - Description of the failure.
 @li <strong><tt>domain</tt></strong> - The error domain.
 @li <strong><tt>userInfo</tt></strong> - The userInfo dictionary with error infomration in addition to 
-    to any <strong><tt>headers</tt></strong> returned by the server.
+    to any <strong><tt>headers</tt></strong> returned by the server.  This dictionary also contains the full 
+    <strong><tt>url</tt></strong> used in the request.
 
 @page iphone-setup Using the HTTPRiot Framework in your iPhone Applications
 

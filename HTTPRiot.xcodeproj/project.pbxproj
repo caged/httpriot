@@ -36,8 +36,6 @@
 		D0298A310F3FF4FD00EC8C01 /* HTTPRiotFormatJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A2E0F3FF4FD00EC8C01 /* HTTPRiotFormatJSON.m */; };
 		D0298A350F3FF50800EC8C01 /* HTTPRiotFormatXML.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A320F3FF50800EC8C01 /* HTTPRiotFormatXML.h */; };
 		D0298A360F3FF50800EC8C01 /* HTTPRiotFormatXML.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A330F3FF50800EC8C01 /* HTTPRiotFormatXML.m */; };
-		D0298A880F3FFF2E00EC8C01 /* CREDITS in Resources */ = {isa = PBXBuildFile; fileRef = D0298A800F3FFF2E00EC8C01 /* CREDITS */; };
-		D0298A8C0F3FFF2E00EC8C01 /* CREDITS in Resources */ = {isa = PBXBuildFile; fileRef = D0298A800F3FFF2E00EC8C01 /* CREDITS */; };
 		D0298A8D0F3FFF2E00EC8C01 /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A810F3FFF2E00EC8C01 /* JSON.h */; };
 		D0298A8E0F3FFF2E00EC8C01 /* NSObject+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A820F3FFF2E00EC8C01 /* NSObject+SBJSON.h */; };
 		D0298A8F0F3FFF2E00EC8C01 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A830F3FFF2E00EC8C01 /* NSObject+SBJSON.m */; };
@@ -159,7 +157,6 @@
 		D0298A320F3FF50800EC8C01 /* HTTPRiotFormatXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRiotFormatXML.h; sourceTree = "<group>"; };
 		D0298A330F3FF50800EC8C01 /* HTTPRiotFormatXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRiotFormatXML.m; sourceTree = "<group>"; };
 		D0298A650F3FFBBD00EC8C01 /* libhttpriot.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libhttpriot.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		D0298A800F3FFF2E00EC8C01 /* CREDITS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CREDITS; sourceTree = "<group>"; };
 		D0298A810F3FFF2E00EC8C01 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		D0298A820F3FFF2E00EC8C01 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		D0298A830F3FFF2E00EC8C01 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
@@ -348,7 +345,6 @@
 		D0298A7F0F3FFF2E00EC8C01 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
-				D0298A800F3FFF2E00EC8C01 /* CREDITS */,
 				D0298A810F3FFF2E00EC8C01 /* JSON.h */,
 				D0298A820F3FFF2E00EC8C01 /* NSObject+SBJSON.h */,
 				D0298A830F3FFF2E00EC8C01 /* NSObject+SBJSON.m */,
@@ -611,7 +607,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0298A8C0F3FFF2E00EC8C01 /* CREDITS in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -619,7 +614,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0298A880F3FFF2E00EC8C01 /* CREDITS in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -845,7 +839,8 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_GC = supported;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
@@ -857,7 +852,7 @@
 				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include/HTTPRiot;
 				PRODUCT_NAME = httpriot;
 				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/HTTPRiot;
-				SDKROOT = iphoneos2.2.1;
+				SDKROOT = "";
 			};
 			name = Debug;
 		};
@@ -880,7 +875,7 @@
 				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include/HTTPRiot;
 				PRODUCT_NAME = httpriot;
 				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/HTTPRiot;
-				SDKROOT = iphoneos2.2.1;
+				SDKROOT = "";
 				SKIP_INSTALL = NO;
 				ZERO_LINK = NO;
 			};
