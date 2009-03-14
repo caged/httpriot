@@ -171,13 +171,15 @@ static NSDictionary *defaultOptions;
 
 - (void) testBasicAuth 
 {
+    NSError *error = nil;
     NSDictionary *auth = [NSDictionary dictionaryWithObjectsAndKeys:@"user", @"username", @"pass", @"password", nil];
     NSMutableDictionary *opts = [NSMutableDictionary dictionaryWithDictionary:defaultOptions];
     [opts addEntriesFromDictionary:[NSDictionary dictionaryWithObject:auth forKey:@"basicAuth"]];
     id person = [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet
                                               path:[HTTPRiotTestServer stringByAppendingString:@"/auth"]
                                            options:opts
-                                             error:nil];
+                                             error:&error];
     STAssertNotNil(person, nil);
+    STAssertNil(error, nil);
 }
 @end

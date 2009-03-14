@@ -169,7 +169,6 @@
 
 - (NSURL *)composedURI
 {
-    NSString *finalString;
     NSURL *tmpURI = [NSURL URLWithString:path];
     NSURL *baseURI = [options objectForKey:@"baseURI"];
         
@@ -177,13 +176,9 @@
         [NSException raise:@"UnspecifiedHost" format:@"host wasn't provided in baseURI or path"];
     
     if([tmpURI host])
-        finalString = [[tmpURI absoluteString] stringByAppendingPathComponent:path];
-    else
-        finalString = [[baseURI absoluteString] stringByAppendingPathComponent:path];
-    
-    tmpURI = [NSURL URLWithString:finalString];
-
-    return tmpURI;
+        return tmpURI;
+        
+    return [NSURL URLWithString:[[baseURI absoluteString] stringByAppendingPathComponent:path]];
 }
 
 #pragma mark - Class Methods
