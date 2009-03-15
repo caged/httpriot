@@ -193,7 +193,5 @@ end
 
 SDKPackage.new do |sdk|
   sdk.need_tar_gz = true
-  sdk.need_tar = true
-  sdk.need_tar_bz2 = true
   sdk.need_zip = true
 end
