@@ -8,7 +8,12 @@
 
 
 #import <HTTPRiot/HTTPRiot.h>
+
+#if !TARGET_IPHONE_SIMULATOR
 #import <GHUnit/GHUnit.h>
+#else
+#import "GHUnit.h"
+#endif
 
 // Get the compiler to STFU when testing private methods
 @interface HTTPRiotRestModel (STFU)

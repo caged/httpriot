@@ -1,4 +1,4 @@
-# requires osx/plist `sudo gem install 
+# requires osx/plist `sudo gem install osx-plist`
 require 'rubygems'
 require 'rake/packagetask'
 require 'osx/plist'
@@ -6,6 +6,23 @@ require 'osx/plist'
 
 HTTPRIOT_ROOT = File.expand_path(File.dirname(__FILE__))
 HTTPRIOT_PLIST = File.join(HTTPRIOT_ROOT, 'Info.plist')
+
+namespace :osx do
+  desc 'Run Unit Tests'
+  task :test do
+    system("xcodebuild -target TestRunner -configuration #{Project.active_config}")
+    system("open #{File.join(Project.product_dir, 'TestRunner')}.app")
+  end
+end
+
+namespace :iphone do
+  # TODO Find out how to run a program on the Simulator programtically
+  desc 'Run iPhone Unit Tests'
+  task :test do
+    system("xcodebuild -target iPhoneTestRunner -configuration #{Project.active_config}")
+    system("open #{File.join("#{Project.product_dir}-iphonesimulator", 'iPhoneTestRunner')}.app")
+  end
+end
 
 namespace :sdk do
   desc 'Generate the documentation'
@@ -79,6 +96,41 @@ class SDKSettings
       "DefaultProperties"             => default_properties,
       "CanonicalName"                 => alternate_sdk
     }.to_plist
+  end
+end
+
+class Project
+  
+  def self.out
+    @out ||= %x[xcodebuild -list]
+  end
+  
+  def self.active_config
+    config = 'Debug'
+    out.each_line do |line|
+      config = 'Release' if line.include?('Release (Active)')
+    end
+    config
+  end
+  
+  def self.active_product
+    proj = ''
+    out.scan(/(.+?)\s\(Active\)/) do |m|
+      proj = m[0].strip unless %w(Debug Release).include?(m[0].strip)
+    end
+    File.join(product_dir, proj)
+  end
+  
+  def self.project_dir
+    File.dirname(__FILE__)
+  end
+  
+  def self.build_dir
+    File.join(project_dir, 'build')
+  end
+  
+  def self.product_dir
+    File.join(build_dir, active_config)
   end
 end
 
