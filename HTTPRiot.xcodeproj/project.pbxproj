@@ -50,9 +50,6 @@
 		D0298A980F3FFF2E00EC8C01 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A850F3FFF2E00EC8C01 /* NSString+SBJSON.m */; };
 		D0298A990F3FFF2E00EC8C01 /* SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A860F3FFF2E00EC8C01 /* SBJSON.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D0298A9A0F3FFF2E00EC8C01 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A870F3FFF2E00EC8C01 /* SBJSON.m */; };
-		D0298B710F40EEB500EC8C01 /* HTTPRiot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* HTTPRiot.framework */; };
-		D02990290F433C1800EC8C01 /* HTTPRiotRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D02990280F433C1800EC8C01 /* HTTPRiotRequestTest.m */; };
-		D029906B0F43422E00EC8C01 /* HTTPRiotTestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D029906A0F43422E00EC8C01 /* HTTPRiotTestHelper.m */; };
 		D03DB6660F3163BB00F18796 /* HTTPRiot.h in Headers */ = {isa = PBXBuildFile; fileRef = D03DB6650F3163BB00F18796 /* HTTPRiot.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D03DB66C0F31654200F18796 /* HTTPRiotRestModel.h in Headers */ = {isa = PBXBuildFile; fileRef = D03DB66A0F31654200F18796 /* HTTPRiotRestModel.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D03DB66D0F31654200F18796 /* HTTPRiotRestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D03DB66B0F31654200F18796 /* HTTPRiotRestModel.m */; };
@@ -96,8 +93,6 @@
 		D07745660F48917400190554 /* NSData+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = D02989310F3FBEDC00EC8C01 /* NSData+Base64.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D07745670F48917400190554 /* NSDictionary+URI.h in Headers */ = {isa = PBXBuildFile; fileRef = D02989330F3FBEDC00EC8C01 /* NSDictionary+URI.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D07745680F48917400190554 /* NSString+URI.h in Headers */ = {isa = PBXBuildFile; fileRef = D02989370F3FBEDC00EC8C01 /* NSString+URI.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		D09E4A1E0F339E0600C9E26E /* HTTPRiotRestModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4A1D0F339E0600C9E26E /* HTTPRiotRestModelTest.m */; };
-		D09E4A4E0F33A12700C9E26E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D09E4A4D0F33A12700C9E26E /* SenTestingKit.framework */; };
 		D09E4AB60F33CCB900C9E26E /* HTTPRiot.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* HTTPRiot.framework */; };
 		D09E4ADA0F33CDB600C9E26E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4AD90F33CDB600C9E26E /* main.m */; };
 		D09E4ADF0F33CEBC00C9E26E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D09E4ADE0F33CEBC00C9E26E /* MainMenu.xib */; };
@@ -105,21 +100,27 @@
 		D09E4AFC0F33D61400C9E26E /* HTTPRiot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* HTTPRiot.framework */; };
 		D09E4B390F33EB1D00C9E26E /* HTTPRiotRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4B360F33EB0E00C9E26E /* HTTPRiotRequest.m */; };
 		D0D9669B0F65C7C300F1347A /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D0D9669A0F65C7C300F1347A /* libxml2.2.dylib */; };
+		D0F6D8C50FAB72D0006DE022 /* GHUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F6D8C40FAB72D0006DE022 /* GHUnit.framework */; };
+		D0F6D8CF0FAB732B006DE022 /* GHUnitTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6D8CE0FAB732B006DE022 /* GHUnitTestMain.m */; };
+		D0F6D8D60FAB73C7006DE022 /* HTTPRiotRestModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4A1D0F339E0600C9E26E /* HTTPRiotRestModelTest.m */; };
+		D0F6D8D70FAB73CC006DE022 /* HTTPRiotRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D02990280F433C1800EC8C01 /* HTTPRiotRequestTest.m */; };
+		D0F6D8D80FAB73D6006DE022 /* HTTPRiotTestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D029906A0F43422E00EC8C01 /* HTTPRiotTestHelper.m */; };
+		D0F6D8FC0FAB749E006DE022 /* HTTPRiot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* HTTPRiot.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D0298B6A0F40EE7700EC8C01 /* PBXContainerItemProxy */ = {
+		D09E4AB10F33CCAA00C9E26E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = HTTPRiot;
 		};
-		D09E4AB10F33CCAA00C9E26E /* PBXContainerItemProxy */ = {
+		D0F6D8F30FAB7483006DE022 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216 /* HTTPRiot */;
 			remoteInfo = HTTPRiot;
 		};
 /* End PBXContainerItemProxy section */
@@ -187,7 +188,6 @@
 		D04EF12A0F65C52D003C6240 /* DDXMLPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLPrivate.h; sourceTree = "<group>"; };
 		D04EF12B0F65C52D003C6240 /* NSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringAdditions.h; sourceTree = "<group>"; };
 		D04EF12C0F65C52D003C6240 /* NSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringAdditions.m; sourceTree = "<group>"; };
-		D09E4A170F339D7900C9E26E /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D09E4A180F339D7900C9E26E /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
 		D09E4A1D0F339E0600C9E26E /* HTTPRiotRestModelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRiotRestModelTest.m; sourceTree = "<group>"; };
 		D09E4A4D0F33A12700C9E26E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -200,6 +200,10 @@
 		D09E4B350F33EB0E00C9E26E /* HTTPRiotRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRiotRequest.h; sourceTree = "<group>"; };
 		D09E4B360F33EB0E00C9E26E /* HTTPRiotRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRiotRequest.m; sourceTree = "<group>"; };
 		D0D9669A0F65C7C300F1347A /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		D0F6D8BA0FAB726D006DE022 /* TestRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0F6D8BC0FAB726D006DE022 /* TestRunner-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TestRunner-Info.plist"; sourceTree = "<group>"; };
+		D0F6D8C40FAB72D0006DE022 /* GHUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnit.framework; path = ../../../../Library/Frameworks/GHUnit.framework; sourceTree = SOURCE_ROOT; };
+		D0F6D8CE0FAB732B006DE022 /* GHUnitTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitTestMain.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,20 +222,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D09E4A140F339D7900C9E26E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D09E4A4E0F33A12700C9E26E /* SenTestingKit.framework in Frameworks */,
-				D0298B710F40EEB500EC8C01 /* HTTPRiot.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D09E4AA80F33CB7F00C9E26E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				D09E4AFC0F33D61400C9E26E /* HTTPRiot.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0F6D8B80FAB726D006DE022 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0F6D8FC0FAB749E006DE022 /* HTTPRiot.framework in Frameworks */,
+				D0F6D8C50FAB72D0006DE022 /* GHUnit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,9 +246,9 @@
 			isa = PBXGroup;
 			children = (
 				8DC2EF5B0486A6940098B216 /* HTTPRiot.framework */,
-				D09E4A170F339D7900C9E26E /* UnitTests.octest */,
 				D09E4AAA0F33CB7F00C9E26E /* SampleApp.app */,
 				D0298A650F3FFBBD00EC8C01 /* libhttpriot.a */,
+				D0F6D8BA0FAB726D006DE022 /* TestRunner.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -261,6 +265,7 @@
 				D09E4AAC0F33CB7F00C9E26E /* SampleApp-Info.plist */,
 				D09E4ADE0F33CEBC00C9E26E /* MainMenu.xib */,
 				D0D9669A0F65C7C300F1347A /* libxml2.2.dylib */,
+				D0F6D8BC0FAB726D006DE022 /* TestRunner-Info.plist */,
 			);
 			name = HTTPRiot;
 			sourceTree = "<group>";
@@ -286,6 +291,7 @@
 		1058C7B0FEA5585E11CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D0F6D8C40FAB72D0006DE022 /* GHUnit.framework */,
 				1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */,
 			);
 			name = "Linked Frameworks";
@@ -424,6 +430,7 @@
 		D09E4A0F0F339D5200C9E26E /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				D0F6D8CE0FAB732B006DE022 /* GHUnitTestMain.m */,
 				D0298B370F4038C500EC8C01 /* Server */,
 				D09E4A1D0F339E0600C9E26E /* HTTPRiotRestModelTest.m */,
 				D02990280F433C1800EC8C01 /* HTTPRiotRequestTest.m */,
@@ -542,25 +549,6 @@
 			productReference = D0298A650F3FFBBD00EC8C01 /* libhttpriot.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		D09E4A160F339D7900C9E26E /* UnitTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D09E4A1B0F339D7A00C9E26E /* Build configuration list for PBXNativeTarget "UnitTests" */;
-			buildPhases = (
-				D09E4A120F339D7900C9E26E /* Resources */,
-				D09E4A130F339D7900C9E26E /* Sources */,
-				D09E4A140F339D7900C9E26E /* Frameworks */,
-				D09E4A150F339D7900C9E26E /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D0298B6B0F40EE7700EC8C01 /* PBXTargetDependency */,
-			);
-			name = UnitTests;
-			productName = UnitTests;
-			productReference = D09E4A170F339D7900C9E26E /* UnitTests.octest */;
-			productType = "com.apple.product-type.bundle";
-		};
 		D09E4AA90F33CB7F00C9E26E /* SampleApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D09E4AAF0F33CB8000C9E26E /* Build configuration list for PBXNativeTarget "SampleApp" */;
@@ -580,6 +568,25 @@
 			productReference = D09E4AAA0F33CB7F00C9E26E /* SampleApp.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D0F6D8B90FAB726D006DE022 /* TestRunner */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0F6D8BF0FAB726D006DE022 /* Build configuration list for PBXNativeTarget "TestRunner" */;
+			buildPhases = (
+				D0F6D8B60FAB726D006DE022 /* Resources */,
+				D0F6D8B70FAB726D006DE022 /* Sources */,
+				D0F6D8B80FAB726D006DE022 /* Frameworks */,
+				D0F6D9100FAB74C1006DE022 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D0F6D8F40FAB7483006DE022 /* PBXTargetDependency */,
+			);
+			name = TestRunner;
+			productName = TestRunner;
+			productReference = D0F6D8BA0FAB726D006DE022 /* TestRunner.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -594,10 +601,10 @@
 			projectRoot = "";
 			targets = (
 				8DC2EF4F0486A6940098B216 /* HTTPRiot */,
-				D09E4A160F339D7900C9E26E /* UnitTests */,
 				D09E4AA90F33CB7F00C9E26E /* SampleApp */,
 				D0298A640F3FFBBD00EC8C01 /* libhttpriot */,
 				D0F4848A0F4CC03500160DD9 /* Documentation */,
+				D0F6D8B90FAB726D006DE022 /* TestRunner */,
 			);
 		};
 /* End PBXProject section */
@@ -610,18 +617,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D09E4A120F339D7900C9E26E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D09E4AA60F33CB7F00C9E26E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				D09E4ADF0F33CEBC00C9E26E /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0F6D8B60FAB726D006DE022 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,19 +649,6 @@
 			shellPath = "/usr/bin/env ruby";
 			shellScript = "#!/usr/bin/env ruby\n#!/usr/bin/env ruby\n# The documentation gets generated with a bad info.plist file so this fixes it\n# until I can find a better solution\n#\nrequire 'rubygems'\nrequire 'fileutils'\nrequire 'osx/cocoa'\n\ninclude FileUtils\n\n# Get the main target's version number\nplist = OSX::NSDictionary.dictionaryWithContentsOfFile(File.join(ENV['PROJECT_DIR'], \"Info.plist\"))\nversion = plist['CFBundleVersion']\n\ncontents = <<-CONTENTS\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\"\n\"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n<plist version=\"1.0\">\n<dict>\n     <key>CFBundleName</key>\n     <string>#{ENV['PROJECT']} #{version}</string>\n     <key>CFBundleIdentifier</key>\n     <string>com.alternateidea.#{ENV['PROJECT']}.docset</string>\n     <key>DocSetFeedName</key>\n     <string>#{ENV['PROJECT']} Documentation</string>\n</dict>\n</plist>\nCONTENTS\n\ndoc_dir = \"/Users/#{ENV['USER']}/Library/Developer/Shared/Documentation/DocSets/com.alternateidea.#{ENV['PROJECT']}.docset/Contents\"\nplist = File.join(doc_dir, \"Info.plist\")\nresource_dir = File.join(doc_dir, \"Resources\", \"Documents\")\n\nif File.exists?(plist)\n  File.open(plist, 'w+') do |f|\n    f << contents\n  end\nend\n\ncp_r(File.join(ENV['PROJECT_DIR'], 'Documentation', 'slate', 'images'), resource_dir)\n\n# Script to tell XCode to load up our new documentation\nscript = <<-OSA \ntell application \"Xcode\"\n\tload documentation set with path \"/Users/$USER/Library/Developer/Shared/Documentation/DocSets/com.alternateidea.#{ENV['PROJECT']}.docset/\"\nend tell\nOSA\n\n# Run the load-docset applescript command.\nsystem(\"osascript -e #{script}\")";
 		};
-		D09E4A150F339D7900C9E26E /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = "/usr/bin/env ruby";
-			shellScript = "# Start test server\npid = fork do\n  system(\"#{ENV['PROJECT_DIR']}/Source/Tests/Server/testserver.rb\")\n  exit 99\nend\n\n# Run the unit tests in this test bundle.\n# system(\"sh #{ENV['SYSTEM_DEVELOPER_DIR']}/Tools/RunUnitTests\")\n\nProcess.kill(\"TERM\", pid)\n";
-		};
 		D0F484890F4CC03500160DD9 /* Generate and Install docs */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -668,6 +662,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# See also http://developer.apple.com/tools/creatingdocsetswithdoxygen.html \n\nVERS=$(agvtool mvers -terse1)\n\nDOXYFILE=$DERIVED_FILES_DIR/Doxyfile\nDOXYGEN=/Applications/Doxygen.app/Contents/Resources/doxygen\nDOCSET=$DSTROOT/Documentation\n\nmkdir -p $DERIVED_FILES_DIR || exit 1\nmkdir -p $DOCSET || exit 1\n\nif ! test -x $DOXYGEN ; then\n\tDOXYGEN=`which doxygen`;\nfi\n\nif ! test -x $DOXYGEN ; then\n\techo \"*** Install Doxygen to get documentatino generated for you automatically ***\"\n\texit 0\nfi\n\n\n# Check that doxygen is present\ntest -f $DOXYGEN || exit 1\n\n# Create a doxygen configuration file with only the settings we care about\n\ncat <<EOF > $DOXYFILE\n\nPROJECT_NAME           = $FULL_PRODUCT_NAME\nPROJECT_NUMBER         = $VERS\nDOCSET_FEEDNAME  \t    = \"$PROJECT $VERSION\"\nOUTPUT_DIRECTORY       = $DOCSET\nINPUT                  = $SOURCE_ROOT/Source/$PROJECT $SOURCE_ROOT/Documentation\nEXAMPLE_PATH           = $SOURCE_ROOT/Documentation/Samples $SOURCE_ROOT/Documentation/Guides\nIMAGE_PATH             = $SOURCE_ROOT/Documentation/images\nFILE_PATTERNS          = *.h *.m *.doxygen\n\nHIDE_UNDOC_MEMBERS     = NO\nHIDE_UNDOC_CLASSES     = YES\nHIDE_UNDOC_RELATIONS   = YES\nREPEAT_BRIEF           = NO\n\nGENERATE_LATEX         = NO\nGENERATE_HTML          = YES\nGENERATE_DOCSET        = YES\nDOCSET_FEEDNAME        = \"$PROJECT Documentation\"\nDOCSET_BUNDLE_ID       = com.alternateidea.$PROJECT\n\nQUIET                  = NO\n\nHTML_FOOTER \t\t\t= $SOURCE_ROOT/Documentation/slate/index.html\nHTML_STYLESHEET \t\t= $SOURCE_ROOT/Documentation/slate/slate.css\n\nEOF\n\n#  Run doxygen on the updated config file.\n#  doxygen creates a Makefile that does most of the heavy lifting.\n\n$DOXYGEN $DOXYFILE\n\n\n#  make will invoke docsetutil. Take a look at the Makefile to see how this is done.\nmake -C $DOCSET/html install";
+		};
+		D0F6D9100FAB74C1006DE022 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/usr/bin/env ruby";
+			shellScript = "";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -715,16 +722,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D09E4A130F339D7900C9E26E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D09E4A1E0F339E0600C9E26E /* HTTPRiotRestModelTest.m in Sources */,
-				D02990290F433C1800EC8C01 /* HTTPRiotRequestTest.m in Sources */,
-				D029906B0F43422E00EC8C01 /* HTTPRiotTestHelper.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D09E4AA70F33CB7F00C9E26E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -734,18 +731,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D0F6D8B70FAB726D006DE022 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0F6D8CF0FAB732B006DE022 /* GHUnitTestMain.m in Sources */,
+				D0F6D8D60FAB73C7006DE022 /* HTTPRiotRestModelTest.m in Sources */,
+				D0F6D8D70FAB73CC006DE022 /* HTTPRiotRequestTest.m in Sources */,
+				D0F6D8D80FAB73D6006DE022 /* HTTPRiotTestHelper.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D0298B6B0F40EE7700EC8C01 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8DC2EF4F0486A6940098B216 /* HTTPRiot */;
-			targetProxy = D0298B6A0F40EE7700EC8C01 /* PBXContainerItemProxy */;
-		};
 		D09E4AB20F33CCAA00C9E26E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8DC2EF4F0486A6940098B216 /* HTTPRiot */;
 			targetProxy = D09E4AB10F33CCAA00C9E26E /* PBXContainerItemProxy */;
+		};
+		D0F6D8F40FAB7483006DE022 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DC2EF4F0486A6940098B216 /* HTTPRiot */;
+			targetProxy = D0F6D8F30FAB7483006DE022 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -881,60 +889,6 @@
 			};
 			name = Release;
 		};
-		D09E4A190F339D7900C9E26E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
-				INFOPLIST_FILE = "UnitTests-Info.plist";
-				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Cocoa,
-					"-framework",
-					SenTestingKit,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = UnitTests;
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Debug;
-		};
-		D09E4A1A0F339D7900C9E26E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
-				INFOPLIST_FILE = "UnitTests-Info.plist";
-				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Cocoa,
-					"-framework",
-					SenTestingKit,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = UnitTests;
-				WRAPPER_EXTENSION = octest;
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
 		D09E4AAD0F33CB8000C9E26E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1006,6 +960,62 @@
 			};
 			name = Release;
 		};
+		D0F6D8BD0FAB726D006DE022 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Library/Frameworks\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "TestRunner-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = TestRunner;
+			};
+			name = Debug;
+		};
+		D0F6D8BE0FAB726D006DE022 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Library/Frameworks\"",
+				);
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "TestRunner-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = TestRunner;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1036,15 +1046,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D09E4A1B0F339D7A00C9E26E /* Build configuration list for PBXNativeTarget "UnitTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D09E4A190F339D7900C9E26E /* Debug */,
-				D09E4A1A0F339D7900C9E26E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		D09E4AAF0F33CB8000C9E26E /* Build configuration list for PBXNativeTarget "SampleApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1059,6 +1060,15 @@
 			buildConfigurations = (
 				D0F4848B0F4CC03500160DD9 /* Debug */,
 				D0F4848C0F4CC03500160DD9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0F6D8BF0FAB726D006DE022 /* Build configuration list for PBXNativeTarget "TestRunner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0F6D8BD0FAB726D006DE022 /* Debug */,
+				D0F6D8BE0FAB726D006DE022 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -6,11 +6,10 @@
 //  Copyright 2009 Alternateidea. All rights reserved.
 //
 #import <HTTPRiot/HTTPRiot.h>
-#import <SenTestingKit/SenTestingKit.h>
 #import "HTTPRiotTestHelper.h"
 #import "HTTPRiotFormatJSON.h"
 
-@interface HTTPRiotRequestTest : SenTestCase {} @end
+@interface HTTPRiotRequestTest : GHTestCase {} @end
 static NSDictionary *defaultOptions;
 @implementation HTTPRiotRequestTest
 
@@ -23,7 +22,7 @@ static NSDictionary *defaultOptions;
 - (void) testShouldThrowExceptionIfHostIsNotGiven 
 {
     NSError *error = nil;
-    STAssertThrows([HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet path:@"/status/400" options:defaultOptions error:&error], nil);
+    GHAssertThrows([HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet path:@"/status/400" options:defaultOptions error:&error], nil);
 }
 
 - (void) testShouldHandleResponse 
@@ -32,47 +31,47 @@ static NSDictionary *defaultOptions;
     //BadRequest
     NSError *error = nil;
     [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/400"] options:defaultOptions error:&error];    
-    STAssertEquals(400, [error code], nil);
+    GHAssertEquals(400, [error code], nil);
     
     //ForbiddenAccess
     error = nil;
     [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/403"] options:defaultOptions error:&error];        
-    STAssertEquals(403, [error code], nil);
+    GHAssertEquals(403, [error code], nil);
     
     //ResourceNotFound
     error = nil;
     [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/404"] options:defaultOptions error:&error];        
-    STAssertEquals(404, [error code], nil);
+    GHAssertEquals(404, [error code], nil);
     
     //MethodNotAllowed
     error = nil;
     [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/405"] options:defaultOptions error:&error];        
-    STAssertEquals(405, [error code], nil);
+    GHAssertEquals(405, [error code], nil);
     
     //ResourceConflict
     error = nil;
     [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/409"] options:defaultOptions error:&error];        
-    STAssertEquals(409, [error code], nil);
+    GHAssertEquals(409, [error code], nil);
     
     //ResourceInvalid
     error = nil;
     [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/422"] options:defaultOptions error:&error];        
-    STAssertEquals(422, [error code], nil);
+    GHAssertEquals(422, [error code], nil);
     
     //ClientError
     error = nil;
     [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/420"] options:defaultOptions error:&error];        
-    STAssertEquals(420, [error code], nil);
+    GHAssertEquals(420, [error code], nil);
     
     //ServerError
     error = nil;
     [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/500"] options:defaultOptions error:&error];        
-    STAssertEquals(500, [error code], nil);
+    GHAssertEquals(500, [error code], nil);
     
     //ConnectionError
     error = nil;
     [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/999"] options:defaultOptions error:&error];        
-    STAssertEquals(999, [error code], nil);
+    GHAssertEquals(999, [error code], nil);
 }
 
 - (void)testHeadersReturnedWithError
@@ -83,7 +82,7 @@ static NSDictionary *defaultOptions;
                                options:defaultOptions
                                  error:&error];
     NSDictionary *headers = [[error userInfo] valueForKey:@"headers"];
-    STAssertTrue([headers count] > 0, nil);
+    GHAssertTrue([headers count] > 0, nil);
 }
 
 - (void) testGET 
@@ -92,7 +91,7 @@ static NSDictionary *defaultOptions;
                                               path:[HTTPRiotTestServer stringByAppendingString:@"/person/1"]
                                            options:defaultOptions
                                              error:nil];
-    STAssertNotNil(person, nil);
+    GHAssertNotNil(person, nil);
 }
 
 - (void)testPOSTWithRawBody
@@ -112,8 +111,8 @@ static NSDictionary *defaultOptions;
                                            options:options
                                              error:&error];
     
-    STAssertEqualObjects([person valueForKey:@"name"], @"bob", nil);
-    STAssertNil(error, nil);
+    GHAssertEqualObjects([person valueForKey:@"name"], @"bob", nil);
+    GHAssertNil(error, nil);
 }
 
 - (void) testPOSTWithFormData 
@@ -130,8 +129,8 @@ static NSDictionary *defaultOptions;
                                            options:options
                                              error:&error];
                                              
-    STAssertNil(person, nil);
-    STAssertNil(error, nil);
+    GHAssertNil(person, nil);
+    GHAssertNil(error, nil);
 }
 
 - (void)testPUTWithRawBody
@@ -155,7 +154,7 @@ static NSDictionary *defaultOptions;
                                            options:options
                                              error:&error];
                                              
-    STAssertTrue(person2 == nil && error == nil, nil);
+    GHAssertTrue(person2 == nil && error == nil, nil);
 }
 
 - (void)testDELETE
@@ -166,7 +165,7 @@ static NSDictionary *defaultOptions;
                                            options:defaultOptions
                                              error:nil];
     
-    STAssertTrue(person == nil && error == nil, nil);
+    GHAssertTrue(person == nil && error == nil, nil);
 }
 
 - (void) testBasicAuth 
@@ -179,7 +178,7 @@ static NSDictionary *defaultOptions;
                                               path:[HTTPRiotTestServer stringByAppendingString:@"/auth"]
                                            options:opts
                                              error:&error];
-    STAssertNotNil(person, nil);
-    STAssertNil(error, nil);
+    GHAssertNotNil(person, nil);
+    GHAssertNil(error, nil);
 }
 @end

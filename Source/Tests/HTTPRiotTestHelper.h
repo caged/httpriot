@@ -8,7 +8,7 @@
 
 
 #import <HTTPRiot/HTTPRiot.h>
-#import <SenTestingKit/SenTestingKit.h>
+#import <GHUnit/GHUnit.h>
 
 // Get the compiler to STFU when testing private methods
 @interface HTTPRiotRestModel (STFU)
