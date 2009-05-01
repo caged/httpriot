@@ -120,7 +120,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 8DC2EF4F0486A6940098B216 /* HTTPRiot */;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = HTTPRiot;
 		};
 /* End PBXContainerItemProxy section */
