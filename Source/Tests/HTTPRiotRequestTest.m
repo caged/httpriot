@@ -13,10 +13,14 @@
 static NSDictionary *defaultOptions;
 @implementation HTTPRiotRequestTest
 
-+ (void)initialize
+- (void) setUp
 {
-    if(!defaultOptions)
-        defaultOptions = [[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:kHTTPRiotJSONFormat]  forKey:@"format"] retain];
+    defaultOptions = [[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:kHTTPRiotJSONFormat]  forKey:@"format"] retain];
+}
+
+- (void) tearDown
+{
+    [defaultOptions release];
 }
 
 - (void) testShouldThrowExceptionIfHostIsNotGiven 
@@ -76,20 +80,24 @@ static NSDictionary *defaultOptions;
 
 - (void)testHeadersReturnedWithError
 {
-    NSError *error;
+    NSError *error = nil;
+    NSString *tserver = [HTTPRiotTestServer stringByAppendingString:@"/foobared-path"];
+    GHTestLog(@"DL%@", defaultOptions);
     [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet
-                                  path:[HTTPRiotTestServer stringByAppendingString:@"/foobared-path"]
+                                  path:tserver
                                options:defaultOptions
                                  error:&error];
+
     NSDictionary *headers = [[error userInfo] valueForKey:@"headers"];
     GHAssertTrue([headers count] > 0, nil);
+
 }
 
 - (void) testGET 
 {
     id person = [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet
                                               path:[HTTPRiotTestServer stringByAppendingString:@"/person/1"]
-                                           options:defaultOptions
+                                           options:[NSDictionary dictionary]
                                              error:nil];
     GHAssertNotNil(person, nil);
 }

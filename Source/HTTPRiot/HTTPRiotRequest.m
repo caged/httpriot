@@ -60,7 +60,7 @@
 - (id)formatterFromFormat
 {
     NSNumber *format = [[self options] objectForKey:@"format"];
-    id theFormatter;
+    id theFormatter = nil;
     switch([format intValue])
     {
         case kHTTPRiotJSONFormat:
@@ -70,6 +70,8 @@
             theFormatter = [HTTPRiotFormatXML class];
         break;
     }
+    
+    theFormatter = [HTTPRiotFormatJSON class];
     
     NSString *errorMessage = [NSString stringWithFormat:@"Invalid Formatter %@", NSStringFromClass(theFormatter)];
     NSAssert([theFormatter conformsToProtocol:@protocol(HTTPRiotFormatterProtocol)], errorMessage); 
@@ -133,15 +135,15 @@
     } 
     else if(method == kHTTPRiotMethodPost || kHTTPRiotMethodPost)
     {
+        NSData *bodyData = nil;
         if(params && [params isKindOfClass:[NSDictionary class]])
         {
-            NSData *bodyData = [[params toQueryString] dataUsingEncoding:NSUTF8StringEncoding];
+            bodyData = [[params toQueryString] dataUsingEncoding:NSUTF8StringEncoding];
             [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
             [request setHTTPBody:bodyData];
         }
         else
         {
-            NSData *bodyData;
             if([body isKindOfClass:[NSDictionary class]])
                 bodyData = [[body toQueryString] dataUsingEncoding:NSUTF8StringEncoding];
             else if([body isKindOfClass:[NSString class]])
@@ -187,15 +189,16 @@
                      options:(NSDictionary*)requestOptions
                      error:(NSError **)error
 {
+    
     NSError *responseError = nil;
     id results = nil;
     NSData *body;
-    id instance = [[[self alloc] initWithMethod:method path:urlPath options:requestOptions] autorelease];
+    id instance = [[self alloc] initWithMethod:method path:urlPath options:requestOptions];
     if(instance)
     {
-        NSHTTPURLResponse *response;
         NSMutableURLRequest *request = [instance configuredRequest];
         NSError *connectionError = nil;
+        NSHTTPURLResponse *response;
         body = [NSURLConnection sendSynchronousRequest:request
                                              returningResponse:&response
                                                          error:&connectionError];
@@ -213,10 +216,12 @@
             if(error) *error = responseError;
             return results;
         } 
-
+    
         if([body length] > 0)
             results = [[instance formatter] decode:body];
     }
+    
+    [instance release];
     return results;
 }
 
@@ -269,12 +274,16 @@
         errorDescription = @"Unknown status code";
     }
     
-    NSDictionary *userInfo = [[[NSDictionary dictionaryWithObjectsAndKeys:
-                               errorReason, NSLocalizedFailureReasonErrorKey,
-                               errorDescription, NSLocalizedDescriptionKey, 
-                               headers, @"headers", 
-                               [[response URL] absoluteString], @"url", nil] retain] autorelease];
-    *error = [NSError errorWithDomain:HTTPRiotErrorDomain code:code userInfo:userInfo];
+    if(error != nil)
+    {
+        NSDictionary *userInfo = [[[NSDictionary dictionaryWithObjectsAndKeys:
+                                   errorReason, NSLocalizedFailureReasonErrorKey,
+                                   errorDescription, NSLocalizedDescriptionKey, 
+                                   headers, @"headers", 
+                                   [[response URL] absoluteString], @"url", nil] retain] autorelease];
+        *error = [NSError errorWithDomain:HTTPRiotErrorDomain code:code userInfo:userInfo];
+    }
+
     return nil;
 }
 

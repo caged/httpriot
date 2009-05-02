@@ -7,6 +7,12 @@ require 'osx/plist'
 HTTPRIOT_ROOT = File.expand_path(File.dirname(__FILE__))
 HTTPRIOT_PLIST = File.join(HTTPRIOT_ROOT, 'Info.plist')
 
+desc 'Run Clang'
+task :analyze do
+  system("xcodebuild clean -alltargets")
+  system("scan-build -k -V xcodebuild -target #{File.basename(Project.project_dir)} -configuration #{Project.active_config}")
+end
+
 namespace :osx do
   desc 'Run Unit Tests'
   task :test do
