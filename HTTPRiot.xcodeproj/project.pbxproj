@@ -119,7 +119,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = D0298A640F3FFBBD00EC8C01 /* libhttpriot */;
+			remoteGlobalIDString = D0298A640F3FFBBD00EC8C01;
 			remoteInfo = libhttpriot;
 		};
 		D09E4AB10F33CCAA00C9E26E /* PBXContainerItemProxy */ = {

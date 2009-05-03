@@ -93,7 +93,8 @@ static NSDictionary *defaultOptions;
 
 }
 
-- (void) testGET 
+
+- (void)testGET 
 {
     id person = [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet
                                               path:[HTTPRiotTestServer stringByAppendingString:@"/person/1"]
@@ -123,7 +124,7 @@ static NSDictionary *defaultOptions;
     GHAssertNil(error, nil);
 }
 
-- (void) testPOSTWithFormData 
+- (void)testPOSTWithFormData 
 {
     NSError *error = nil;
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"bob", @"name", 
@@ -171,9 +172,10 @@ static NSDictionary *defaultOptions;
     id person = [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodDelete
                                               path:[HTTPRiotTestServer stringByAppendingString:@"/person/1"]
                                            options:defaultOptions
-                                             error:nil];
+                                             error:&error];
     
-    GHAssertTrue(person == nil && error == nil, nil);
+    GHAssertNil(person, nil);
+    GHAssertNULL(error, @"Error Should've been nil.  Got: %d ERROR: %@", [error code], [error localizedDescription]);
 }
 
 - (void) testBasicAuth 
