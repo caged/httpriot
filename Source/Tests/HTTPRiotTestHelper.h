@@ -15,6 +15,13 @@
 #import "GHUnit.h"
 #endif
 
+@interface HRTestHelper : NSObject {
+    
+} 
+
+- (id)returnedResults:(id)info;
+@end
+
 // Get the compiler to STFU when testing private methods
 @interface HTTPRiotRestModel (STFU)
 + (void)setAttributeValue:(id)attr forKey:(NSString *)key;

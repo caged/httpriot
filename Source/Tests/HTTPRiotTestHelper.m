@@ -7,6 +7,13 @@
 //
 
 #import "HTTPRiotTestHelper.h"
+@implementation HRTestHelper 
+
+- (id)returnedResults:(id)info
+{
+    return info;
+}
+@end
 
 @implementation HRTestPerson
 + (void)initialize 
