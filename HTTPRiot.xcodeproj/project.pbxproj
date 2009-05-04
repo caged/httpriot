@@ -22,7 +22,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		D02988310F3F7BCE00EC8C01 /* HTTPRiotRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = D09E4B350F33EB0E00C9E26E /* HTTPRiotRequest.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D02988310F3F7BCE00EC8C01 /* HTTPRiotRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = D09E4B350F33EB0E00C9E26E /* HTTPRiotRequestOperation.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D02988640F3F7F1200EC8C01 /* HTTPRiot_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = D02988630F3F7F1200EC8C01 /* HTTPRiot_Prefix.pch */; };
 		D02988FF0F3FB63F00EC8C01 /* HTTPRiotConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = D02988FE0F3FB63F00EC8C01 /* HTTPRiotConstants.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D02989390F3FBEDC00EC8C01 /* NSData+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = D02989310F3FBEDC00EC8C01 /* NSData+Base64.h */; };
@@ -79,7 +79,7 @@
 		D07744850F4885AE00190554 /* HTTPRiotRestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D03DB66B0F31654200F18796 /* HTTPRiotRestModel.m */; };
 		D07744860F4885DA00190554 /* HTTPRiotFormatJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A2E0F3FF4FD00EC8C01 /* HTTPRiotFormatJSON.m */; };
 		D07744870F4885DA00190554 /* HTTPRiotFormatXML.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A330F3FF50800EC8C01 /* HTTPRiotFormatXML.m */; };
-		D07744880F4885DA00190554 /* HTTPRiotRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4B360F33EB0E00C9E26E /* HTTPRiotRequest.m */; };
+		D07744880F4885DA00190554 /* HTTPRiotRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4B360F33EB0E00C9E26E /* HTTPRiotRequestOperation.m */; };
 		D07744890F4885DA00190554 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = D02989320F3FBEDC00EC8C01 /* NSData+Base64.m */; };
 		D077448A0F4885DA00190554 /* NSDictionary+URI.m in Sources */ = {isa = PBXBuildFile; fileRef = D02989340F3FBEDC00EC8C01 /* NSDictionary+URI.m */; };
 		D077448B0F4885DA00190554 /* NSString+URI.m in Sources */ = {isa = PBXBuildFile; fileRef = D02989380F3FBEDC00EC8C01 /* NSString+URI.m */; };
@@ -89,7 +89,7 @@
 		D07745620F48917400190554 /* HTTPRiotFormatJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A2D0F3FF4FD00EC8C01 /* HTTPRiotFormatJSON.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D07745630F48917400190554 /* HTTPRiotFormatterProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A280F3FCA8800EC8C01 /* HTTPRiotFormatterProtocol.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D07745640F48917400190554 /* HTTPRiotFormatXML.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A320F3FF50800EC8C01 /* HTTPRiotFormatXML.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		D07745650F48917400190554 /* HTTPRiotRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = D09E4B350F33EB0E00C9E26E /* HTTPRiotRequest.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D07745650F48917400190554 /* HTTPRiotRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = D09E4B350F33EB0E00C9E26E /* HTTPRiotRequestOperation.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D07745660F48917400190554 /* NSData+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = D02989310F3FBEDC00EC8C01 /* NSData+Base64.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D07745670F48917400190554 /* NSDictionary+URI.h in Headers */ = {isa = PBXBuildFile; fileRef = D02989330F3FBEDC00EC8C01 /* NSDictionary+URI.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D07745680F48917400190554 /* NSString+URI.h in Headers */ = {isa = PBXBuildFile; fileRef = D02989370F3FBEDC00EC8C01 /* NSString+URI.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -104,7 +104,7 @@
 		D09E4ADF0F33CEBC00C9E26E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D09E4ADE0F33CEBC00C9E26E /* MainMenu.xib */; };
 		D09E4AE20F33CEF600C9E26E /* SAApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4AE10F33CEF600C9E26E /* SAApplicationDelegate.m */; };
 		D09E4AFC0F33D61400C9E26E /* HTTPRiot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* HTTPRiot.framework */; };
-		D09E4B390F33EB1D00C9E26E /* HTTPRiotRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4B360F33EB0E00C9E26E /* HTTPRiotRequest.m */; };
+		D09E4B390F33EB1D00C9E26E /* HTTPRiotRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4B360F33EB0E00C9E26E /* HTTPRiotRequestOperation.m */; };
 		D0D9669B0F65C7C300F1347A /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D0D9669A0F65C7C300F1347A /* libxml2.2.dylib */; };
 		D0F6D8C50FAB72D0006DE022 /* GHUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F6D8C40FAB72D0006DE022 /* GHUnit.framework */; };
 		D0F6D8CF0FAB732B006DE022 /* GHUnitTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6D8CE0FAB732B006DE022 /* GHUnitTestMain.m */; };
@@ -213,8 +213,8 @@
 		D09E4ADE0F33CEBC00C9E26E /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		D09E4AE00F33CEF600C9E26E /* SAApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAApplicationDelegate.h; sourceTree = "<group>"; };
 		D09E4AE10F33CEF600C9E26E /* SAApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAApplicationDelegate.m; sourceTree = "<group>"; };
-		D09E4B350F33EB0E00C9E26E /* HTTPRiotRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRiotRequest.h; sourceTree = "<group>"; };
-		D09E4B360F33EB0E00C9E26E /* HTTPRiotRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRiotRequest.m; sourceTree = "<group>"; };
+		D09E4B350F33EB0E00C9E26E /* HTTPRiotRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRiotRequestOperation.h; sourceTree = "<group>"; };
+		D09E4B360F33EB0E00C9E26E /* HTTPRiotRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRiotRequestOperation.m; sourceTree = "<group>"; };
 		D0D9669A0F65C7C300F1347A /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		D0F6D8BA0FAB726D006DE022 /* TestRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0F6D8BC0FAB726D006DE022 /* TestRunner-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TestRunner-Info.plist"; sourceTree = "<group>"; };
@@ -303,6 +303,8 @@
 				089C1665FE841158C02AAC07 /* Resources */,
 				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
 				034768DFFF38A50411DB9C8B /* Products */,
+				D0F6D9B70FAB83B1006DE022 /* Vendor */,
+				D09E4A0F0F339D5200C9E26E /* Tests */,
 				D09E4A180F339D7900C9E26E /* UnitTests-Info.plist */,
 				D09E4AAC0F33CB7F00C9E26E /* SampleApp-Info.plist */,
 				D0D9669A0F65C7C300F1347A /* libxml2.2.dylib */,
@@ -370,16 +372,6 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		D02989300F3FBEB800EC8C01 /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-				D04EF1200F65C52D003C6240 /* KissXML */,
-				D04EF10B0F65C50A003C6240 /* AIXMLSerialization */,
-				D0298A7F0F3FFF2E00EC8C01 /* JSON */,
-			);
-			path = Vendor;
-			sourceTree = "<group>";
-		};
 		D0298A1C0F3FC9A400EC8C01 /* Formatters */ = {
 			isa = PBXGroup;
 			children = (
@@ -418,8 +410,6 @@
 			children = (
 				D03DB6640F31639000F18796 /* HTTPRiot */,
 				D09E4AA30F33CB4700C9E26E /* SampleApp */,
-				D09E4A0F0F339D5200C9E26E /* Tests */,
-				D0F6D9B70FAB83B1006DE022 /* Vendor */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -428,13 +418,12 @@
 			isa = PBXGroup;
 			children = (
 				D0298A1C0F3FC9A400EC8C01 /* Formatters */,
-				D02989300F3FBEB800EC8C01 /* Vendor */,
 				D029892F0F3FBEAD00EC8C01 /* Extensions */,
 				D03DB6650F3163BB00F18796 /* HTTPRiot.h */,
 				D03DB66A0F31654200F18796 /* HTTPRiotRestModel.h */,
 				D03DB66B0F31654200F18796 /* HTTPRiotRestModel.m */,
-				D09E4B350F33EB0E00C9E26E /* HTTPRiotRequest.h */,
-				D09E4B360F33EB0E00C9E26E /* HTTPRiotRequest.m */,
+				D09E4B350F33EB0E00C9E26E /* HTTPRiotRequestOperation.h */,
+				D09E4B360F33EB0E00C9E26E /* HTTPRiotRequestOperation.m */,
 				D02988630F3F7F1200EC8C01 /* HTTPRiot_Prefix.pch */,
 				D02988FE0F3FB63F00EC8C01 /* HTTPRiotConstants.h */,
 			);
@@ -482,7 +471,8 @@
 				D02990380F433D1900EC8C01 /* HTTPRiotTestHelper.h */,
 				D029906A0F43422E00EC8C01 /* HTTPRiotTestHelper.m */,
 			);
-			path = Tests;
+			name = Tests;
+			path = Source/Tests;
 			sourceTree = "<group>";
 		};
 		D09E4AA30F33CB4700C9E26E /* SampleApp */ = {
@@ -499,9 +489,13 @@
 		D0F6D9B70FAB83B1006DE022 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				D04EF1200F65C52D003C6240 /* KissXML */,
+				D04EF10B0F65C50A003C6240 /* AIXMLSerialization */,
+				D0298A7F0F3FFF2E00EC8C01 /* JSON */,
 				D0F6D9B80FAB83B1006DE022 /* gh-unit-iphone */,
 			);
-			path = Vendor;
+			name = Vendor;
+			path = Source/Vendor;
 			sourceTree = "<group>";
 		};
 		D0F6D9B80FAB83B1006DE022 /* gh-unit-iphone */ = {
@@ -539,7 +533,7 @@
 				D0298A300F3FF4FD00EC8C01 /* HTTPRiotFormatJSON.h in Headers */,
 				D0298A2B0F3FCA8800EC8C01 /* HTTPRiotFormatterProtocol.h in Headers */,
 				D0298A350F3FF50800EC8C01 /* HTTPRiotFormatXML.h in Headers */,
-				D02988310F3F7BCE00EC8C01 /* HTTPRiotRequest.h in Headers */,
+				D02988310F3F7BCE00EC8C01 /* HTTPRiotRequestOperation.h in Headers */,
 				D03DB66C0F31654200F18796 /* HTTPRiotRestModel.h in Headers */,
 				D0298A8D0F3FFF2E00EC8C01 /* JSON.h in Headers */,
 				D02989390F3FBEDC00EC8C01 /* NSData+Base64.h in Headers */,
@@ -564,7 +558,7 @@
 				D07745620F48917400190554 /* HTTPRiotFormatJSON.h in Headers */,
 				D07745630F48917400190554 /* HTTPRiotFormatterProtocol.h in Headers */,
 				D07745640F48917400190554 /* HTTPRiotFormatXML.h in Headers */,
-				D07745650F48917400190554 /* HTTPRiotRequest.h in Headers */,
+				D07745650F48917400190554 /* HTTPRiotRequestOperation.h in Headers */,
 				D07744840F4885A700190554 /* HTTPRiotRestModel.h in Headers */,
 				D0298A940F3FFF2E00EC8C01 /* JSON.h in Headers */,
 				D07745660F48917400190554 /* NSData+Base64.h in Headers */,
@@ -786,7 +780,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D03DB66D0F31654200F18796 /* HTTPRiotRestModel.m in Sources */,
-				D09E4B390F33EB1D00C9E26E /* HTTPRiotRequest.m in Sources */,
+				D09E4B390F33EB1D00C9E26E /* HTTPRiotRequestOperation.m in Sources */,
 				D029893A0F3FBEDC00EC8C01 /* NSData+Base64.m in Sources */,
 				D029893C0F3FBEDC00EC8C01 /* NSDictionary+URI.m in Sources */,
 				D02989400F3FBEDC00EC8C01 /* NSString+URI.m in Sources */,
@@ -806,7 +800,7 @@
 			files = (
 				D07744860F4885DA00190554 /* HTTPRiotFormatJSON.m in Sources */,
 				D07744870F4885DA00190554 /* HTTPRiotFormatXML.m in Sources */,
-				D07744880F4885DA00190554 /* HTTPRiotRequest.m in Sources */,
+				D07744880F4885DA00190554 /* HTTPRiotRequestOperation.m in Sources */,
 				D07744850F4885AE00190554 /* HTTPRiotRestModel.m in Sources */,
 				D07744890F4885DA00190554 /* NSData+Base64.m in Sources */,
 				D077448A0F4885DA00190554 /* NSDictionary+URI.m in Sources */,

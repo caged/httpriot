@@ -7,7 +7,7 @@
 //
 
 #import "HTTPRiotRestModel.h"
-#import "HTTPRiotRequest.h"
+#import "HTTPRiotRequestOperation.h"
 
 @interface HTTPRiotRestModel (PrivateMethods)
 + (void)setAttributeValue:(id)attr forKey:(NSString *)key;
@@ -104,28 +104,48 @@ static NSMutableDictionary *attributes;
 }
 
 #pragma mark - REST Methods
-+ (NSArray *)getPath:(NSString *)path withOptions:(NSDictionary *)options error:(NSError **)error
++ (NSOperation *)getPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel
 {
     NSMutableDictionary *opts = [self mergedOptions:options];
-    return [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet path:path options:opts error:error];        
+    return [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet path:path options:opts target:target selector:sel];        
 }
 
-+ (NSArray *)postPath:(NSString *)path withOptions:(NSDictionary *)options error:(NSError **)error
++ (NSOperation *)getPath:(NSString *)path target:(id)target selector:(SEL)sel
 {
-    NSMutableDictionary *opts = [self mergedOptions:options];
-    return [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodPost path:path options:opts error:error];
+    return [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet path:path options:[self mergedOptions:nil] target:target selector:sel];        
 }
 
-+ (NSArray *)putPath:(NSString *)path withOptions:(NSDictionary *)options error:(NSError **)error
++ (NSOperation *)postPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel
 {
     NSMutableDictionary *opts = [self mergedOptions:options];
-    return [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodPut path:path options:opts error:error];
+    return [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodPost path:path options:opts target:target selector:sel];        
 }
 
-+ (NSArray *)deletePath:(NSString *)path withOptions:(NSDictionary *)options error:(NSError **)error
++ (NSOperation *)postPath:(NSString *)path target:(id)target selector:(SEL)sel
+{
+    return [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodPost path:path options:[self mergedOptions:nil] target:target selector:sel];        
+}
+
++ (NSOperation *)putPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel
 {
     NSMutableDictionary *opts = [self mergedOptions:options];
-    return [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodDelete path:path options:opts error:error];        
+    return [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodPut path:path options:opts target:target selector:sel];        
+}
+
++ (NSOperation *)putPath:(NSString *)path target:(id)target selector:(SEL)sel
+{
+    return [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodPut path:path options:[self mergedOptions:nil] target:target selector:sel];        
+}
+
++ (NSOperation *)deletePath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel
+{
+    NSMutableDictionary *opts = [self mergedOptions:options];
+    return [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodDelete path:path options:opts target:target selector:sel];        
+}
+
++ (NSOperation *)deletePath:(NSString *)path target:(id)target selector:(SEL)sel
+{
+    return [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodDelete path:path options:[self mergedOptions:nil] target:target selector:sel];        
 }
 
 #pragma mark - Private Methods

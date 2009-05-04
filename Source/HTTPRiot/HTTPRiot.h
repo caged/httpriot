@@ -143,5 +143,5 @@ If you want to distribute HTTPRiot.framework with your application you'll need t
 */
 
 #import <Foundation/Foundation.h>
-#import <HTTPRiot/HTTPRiotRequest.h>
+#import <HTTPRiot/HTTPRiotRequestOperation.h>
 #import <HTTPRiot/HTTPRiotRestModel.h>

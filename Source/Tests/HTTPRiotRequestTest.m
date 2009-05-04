@@ -1,5 +1,5 @@
 //
-//  HTTPRiotRequestTest.m
+//  HTTPRiotRequestOperationTest.m
 //  HTTPRiot
 //
 //  Created by Justin Palmer on 2/11/09.
@@ -9,9 +9,9 @@
 #import "HTTPRiotTestHelper.h"
 #import "HTTPRiotFormatJSON.h"
 
-@interface HTTPRiotRequestTest : GHTestCase {} @end
+@interface HTTPRiotRequestOperationTest : GHTestCase {} @end
 static NSDictionary *defaultOptions;
-@implementation HTTPRiotRequestTest
+@implementation HTTPRiotRequestOperationTest
 
 - (void) setUp
 {
@@ -26,7 +26,7 @@ static NSDictionary *defaultOptions;
 - (void) testShouldThrowExceptionIfHostIsNotGiven 
 {
     NSError *error = nil;
-    GHAssertThrows([HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet path:@"/status/400" options:defaultOptions error:&error], nil);
+    GHAssertThrows([HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet path:@"/status/400" options:defaultOptions error:&error], nil);
 }
 
 - (void) testShouldHandleResponse 
@@ -34,47 +34,47 @@ static NSDictionary *defaultOptions;
     NSString *host = HTTPRiotTestServer;
     //BadRequest
     NSError *error = nil;
-    [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/400"] options:defaultOptions error:&error];    
+    [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/400"] options:defaultOptions error:&error];    
     GHAssertEquals(400, [error code], nil);
     
     //ForbiddenAccess
     error = nil;
-    [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/403"] options:defaultOptions error:&error];        
+    [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/403"] options:defaultOptions error:&error];        
     GHAssertEquals(403, [error code], nil);
     
     //ResourceNotFound
     error = nil;
-    [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/404"] options:defaultOptions error:&error];        
+    [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/404"] options:defaultOptions error:&error];        
     GHAssertEquals(404, [error code], nil);
     
     //MethodNotAllowed
     error = nil;
-    [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/405"] options:defaultOptions error:&error];        
+    [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/405"] options:defaultOptions error:&error];        
     GHAssertEquals(405, [error code], nil);
     
     //ResourceConflict
     error = nil;
-    [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/409"] options:defaultOptions error:&error];        
+    [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/409"] options:defaultOptions error:&error];        
     GHAssertEquals(409, [error code], nil);
     
     //ResourceInvalid
     error = nil;
-    [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/422"] options:defaultOptions error:&error];        
+    [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/422"] options:defaultOptions error:&error];        
     GHAssertEquals(422, [error code], nil);
     
     //ClientError
     error = nil;
-    [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/420"] options:defaultOptions error:&error];        
+    [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/420"] options:defaultOptions error:&error];        
     GHAssertEquals(420, [error code], nil);
     
     //ServerError
     error = nil;
-    [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/500"] options:defaultOptions error:&error];        
+    [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/500"] options:defaultOptions error:&error];        
     GHAssertEquals(500, [error code], nil);
     
     //ConnectionError
     error = nil;
-    [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/999"] options:defaultOptions error:&error];        
+    [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/999"] options:defaultOptions error:&error];        
     GHAssertEquals(999, [error code], nil);
 }
 
@@ -83,7 +83,7 @@ static NSDictionary *defaultOptions;
     NSError *error = nil;
     NSString *tserver = [HTTPRiotTestServer stringByAppendingString:@"/foobared-path"];
     GHTestLog(@"DL%@", defaultOptions);
-    [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet
+    [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet
                                   path:tserver
                                options:defaultOptions
                                  error:&error];
@@ -96,7 +96,7 @@ static NSDictionary *defaultOptions;
 
 - (void)testGET 
 {
-    id person = [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet
+    id person = [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet
                                               path:[HTTPRiotTestServer stringByAppendingString:@"/person/1"]
                                            options:[NSDictionary dictionary]
                                              error:nil];
@@ -115,7 +115,7 @@ static NSDictionary *defaultOptions;
                                         headers, @"headers", nil];                       
     [options addEntriesFromDictionary:defaultOptions];
     
-    id person = [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodPost
+    id person = [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodPost
                                               path:[HTTPRiotTestServer stringByAppendingString:@"/person"]
                                            options:options
                                              error:&error];
@@ -133,7 +133,7 @@ static NSDictionary *defaultOptions;
     NSMutableDictionary *options = [NSMutableDictionary dictionaryWithObject:params forKey:@"params"];                       
     [options addEntriesFromDictionary:defaultOptions];
     
-    id person = [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodPost
+    id person = [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodPost
                                               path:[HTTPRiotTestServer stringByAppendingString:@"/person/form-data"]
                                            options:options
                                              error:&error];
@@ -158,7 +158,7 @@ static NSDictionary *defaultOptions;
     [options addEntriesFromDictionary:defaultOptions];
     
     NSError *error = nil;
-    id person2 = [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodPut
+    id person2 = [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodPut
                                               path:[HTTPRiotTestServer stringByAppendingString:@"/person/1"]
                                            options:options
                                              error:&error];
@@ -169,7 +169,7 @@ static NSDictionary *defaultOptions;
 - (void)testDELETE
 {
     NSError *error = nil;
-    id person = [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodDelete
+    id person = [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodDelete
                                               path:[HTTPRiotTestServer stringByAppendingString:@"/person/1"]
                                            options:defaultOptions
                                              error:&error];
@@ -184,7 +184,7 @@ static NSDictionary *defaultOptions;
     NSDictionary *auth = [NSDictionary dictionaryWithObjectsAndKeys:@"user", @"username", @"pass", @"password", nil];
     NSMutableDictionary *opts = [NSMutableDictionary dictionaryWithDictionary:defaultOptions];
     [opts addEntriesFromDictionary:[NSDictionary dictionaryWithObject:auth forKey:@"basicAuth"]];
-    id person = [HTTPRiotRequest requestWithMethod:kHTTPRiotMethodGet
+    id person = [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet
                                               path:[HTTPRiotTestServer stringByAppendingString:@"/auth"]
                                            options:opts
                                              error:&error];

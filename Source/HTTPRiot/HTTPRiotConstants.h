@@ -4,7 +4,7 @@
  
 /**
  * Supported REST methods.
- * @see HTTPRiotRequest
+ * @see HTTPRiotRequestOperation
  */
 typedef enum {
     /// GET

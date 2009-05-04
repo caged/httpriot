@@ -25,8 +25,8 @@ namespace :iphone do
   # TODO Find out how to run a program on the Simulator programtically
   desc 'Run iPhone Unit Tests'
   task :test do
-    system("xcodebuild -target iPhoneTestRunner -configuration #{Project.active_config}")
-    system("open #{File.join("#{Project.product_dir}-iphonesimulator", 'iPhoneTestRunner')}.app")
+    system("xcodebuild -target iPhoneUnitTestsRunner -configuration #{Project.active_config}")
+    system("open #{File.join("#{Project.product_dir}-iphonesimulator", 'iPhoneUnitTestsRunner')}.app")
   end
 end
 
@@ -36,6 +36,8 @@ namespace :sdk do
     system("xcodebuild -target Documentation -configuration Release -sdk macosx10.5")
   end
 end
+
+task :default => "osx:test"
 
 class SDKSettings
   def initialize(name, version, sdk, target)

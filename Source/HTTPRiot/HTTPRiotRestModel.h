@@ -6,7 +6,6 @@
 //  Copyright 2009 Alternateidea. All rights reserved.
 //
 #import <Foundation/Foundation.h>
-#import "HTTPRiotConstants.h"
 
 /**
  * You can either subclass this class or use it directly to make requests.
@@ -137,9 +136,20 @@
  * @param path The path to get.  If you haven't setup the baseURI option you'll need to provide a 
  *        full url. 
  * @param options The options for this request.
- * @param error If any errors are returned they will be stored here.
+ * @param target The object on which the selector is invoked.
+ * @param sel The selector run after the request is complete.  
+ *        This selector with be passed a dictionary containing 3 objects:
+ *        @li <tt>results</tt>: The decoded data recieved from the server
+ *        @li <tt>response</tt>: The NSHTTPURLResponse object.
+ *        @li <tt>error</tt>: The error if present or nil. 
+ *
  */
-+ (NSArray *)getPath:(NSString *)path withOptions:(NSDictionary *)options error:(NSError **)error;
++ (NSOperation *)getPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel;
+
+/**
+ * @copybrief getPath:withOptions:target:selector:
+ */
++ (NSOperation *)getPath:(NSString *)path target:(id)target selector:(SEL)sel;
 
 /**
  * Send a POST request
@@ -152,9 +162,17 @@
  * If you'd like to post raw data like JSON or XML you'll need to set the <tt>body</tt> option.  Setting the <tt>body</tt>
  * option will cause the <tt>params</tt> option to be ignored.
  * 
- * @param error If any errors are returned they will be stored here.
+ * @param target The object on which the selector is invoked.
+ * @param sel The selector run after the request is complete.  
+ *        This selector with be passed a dictionary containing 3 objects:
+ *        @li <tt>results</tt>: The decoded data recieved from the server
+ *        @li <tt>response</tt>: The NSHTTPURLResponse object.
+ *        @li <tt>error</tt>: The error if present or nil.
+ *
  */
-+ (NSArray *)postPath:(NSString *)path withOptions:(NSDictionary *)options error:(NSError **)error;
++ (NSOperation *)postPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel;
+
++ (NSOperation *)postPath:(NSString *)path target:(id)target selector:(SEL)sel;
 
 /**
  * Send a PUT request
@@ -165,17 +183,33 @@
  * <strong>Note:</strong>  All data found in the <tt>body</tt> option will be PUT.  Setting the <tt>body</tt>
  * option will cause the <tt>params</tt> option to be ignored.
  * 
- * @param error If any errors are returned they will be stored here.
+ * @param target The object on which the selector is invoked.
+ * @param sel The selector run after the request is complete.  
+ *        This selector with be passed a dictionary containing 3 objects:
+ *        @li <tt>results</tt>: The decoded data recieved from the server
+ *        @li <tt>response</tt>: The NSHTTPURLResponse object.
+ *        @li <tt>error</tt>: The error if present or nil. 
+ *
  */
-+ (NSArray *)putPath:(NSString *)path withOptions:(NSDictionary *)options error:(NSError **)error;
++ (NSOperation *)putPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel;
+
++ (NSOperation *)putPath:(NSString *)path target:(id)target selector:(SEL)sel;
 
 /**
  * Send a DELETE request
  * @param path The path to DELETE.  If you haven't setup the baseURI option you'll need to provide a 
  *        full url. 
  * @param options The options for this request.
- * @param error If any errors are returned they will be stored here.
+ * @param target The object on which the selector is invoked.
+ * @param sel The selector run after the request is complete.  
+ *        This selector with be passed a dictionary containing 3 objects:
+ *        @li <tt>results</tt>: The decoded data recieved from the server
+ *        @li <tt>response</tt>: The NSHTTPURLResponse object.
+ *        @li <tt>error</tt>: The error if present or nil. 
+ *
  */
-+ (NSArray *)deletePath:(NSString *)path withOptions:(NSDictionary *)options error:(NSError **)error;
++ (NSOperation *)deletePath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel;
+
++ (NSOperation *)deletePath:(NSString *)path target:(id)target selector:(SEL)sel;
 //@}
 @end
