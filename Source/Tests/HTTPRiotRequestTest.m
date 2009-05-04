@@ -93,26 +93,16 @@ static NSDictionary *defaultOptions;
 // 
 // }
 
-void FOOBAR(id)omg
-{
-    NSLog(@"OMG");
-}
-
 - (void)testGET 
 {
     NSOperation *op = [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet
                                                              path:[HTTPRiotTestServer stringByAppendingString:@"/person/1"]
                                                           options:nil
                                                            target:nil
-                                                         selector:@selector(FOOBAR:)];
+                                                         selector:@selector(getFinishedLoading:)];
     //GHAssertNotNil(op, nil);
 }
 
-- (void)getFinishedLoading:(id)arg
-{
-    GHTestLog(@"FOO BAR");
-    //GHTestLog(@"ARG:%@", arg);
-}
 
 // - (void)testPOSTWithRawBody
 // {
