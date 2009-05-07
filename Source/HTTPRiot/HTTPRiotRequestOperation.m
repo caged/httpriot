@@ -38,6 +38,7 @@ static NSOperationQueue *HROperationQueue;
 
 - (void)dealloc
 {
+    [obj release];
     [path release];
     [options release];
     [formatter release];
@@ -49,6 +50,7 @@ static NSOperationQueue *HROperationQueue;
              options:(NSDictionary*)requestOptions
              target:(id)tgt
              selector:(SEL)sel
+             object:(id)aobj
 {
     if(self = [super init])
     {
@@ -58,6 +60,7 @@ static NSOperationQueue *HROperationQueue;
         formatter = [[self formatterFromFormat] retain];
         target = tgt;
         didEndSelector = sel;
+        obj = [aobj retain];
         
         if(!HROperationQueue)
             HROperationQueue = [[NSOperationQueue alloc] init];
@@ -235,14 +238,15 @@ static NSOperationQueue *HROperationQueue;
         results = [[self formatter] decode:body];
     
     
-    NSLog(@"ERROR:%@", error);
     if([target respondsToSelector:didEndSelector])
-    {        
+    {   
+        NSDictionary *test = [NSDictionary dictionaryWithObject:obj forKey:@"obj"];
         info = [NSDictionary dictionaryWithObjectsAndKeys:results, @"results", 
+                            obj, @"object",
                             response, @"response", 
                             error, @"error", 
                             nil];
-        
+
         [target performSelectorOnMainThread:didEndSelector withObject:info waitUntilDone:YES];
     }
     
@@ -255,12 +259,28 @@ static NSOperationQueue *HROperationQueue;
                      options:(NSDictionary*)requestOptions
                      target:(id)target
                      selector:(SEL)sel
+{
+    return [self requestWithMethod:method
+                              path:urlPath
+                           options:requestOptions
+                            target:target
+                          selector:sel
+                            object:nil];
+}
+
++ (NSOperation *)requestWithMethod:(kHTTPRiotMethod)method
+                        path:(NSString*)urlPath
+                     options:(NSDictionary*)requestOptions
+                     target:(id)target
+                     selector:(SEL)sel
+                     object:(id)obj
 {    
     id instance = [[self alloc] initWithMethod:method
                                           path:urlPath
                                        options:requestOptions
                                         target:target
-                                      selector:sel];
+                                      selector:sel
+                                      object:obj];
     
     [HROperationQueue addOperation:instance];
     return [instance autorelease];

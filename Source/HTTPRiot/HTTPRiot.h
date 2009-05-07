@@ -36,7 +36,9 @@
 @li <a href="https://github.com/Caged/httpriot/tree/master">Source Code</a>
 
 HTTPRiot is a simple REST library designed to make interacting with REST services 
-much easier.  It supports GET, POST, PUSH and DELETE requests in addition to HTTP Basic Authentication.
+much easier.  It supports GET, POST, PUSH and DELETE requests, HTTP Basic Authentication and 
+the ability to post form-encoded data.
+
 HTTPRiot was inspired by John Nunemaker's excellent 
 <a href="http://github.com/jnunemaker/httparty/tree/master">httparty</a> Ruby library.
 
@@ -48,14 +50,30 @@ HTTPRiot was inspired by John Nunemaker's excellent
     </ul>
 </div>
 
-<h3>A simple example</h3>
+<h3>Some Examples</h3>
+
+<h4>Send a GET request</h4>
 @code
-// Returns a dictionary of key vlaues
-id person = [HTTPRiotRestModel getPath:@"http://localhost:1234/some/person.json" 
-                               options:[NSDictionary dictionaryWithObject:@"json" forKey:@"format"] 
-                                error:nil];
-                                
+[HTTPRiotRestModel getPath:@"/person.json" target:self selector:@selector(personLoaded:)];
 @endcode
+
+<h4>Send a POST request</h4>
+@code
+NSDictionary *opts = [NSDictionary dictionaroyWithObject:[person JSONRepresentation] forKey:@"body"];
+[HTTPRiotRestModel postPath:@"/person" withOptions:opts target:self selector:@selector(personCreated:)];
+@endcode
+
+<h4>Send a PUT request</h4>
+@code
+NSDictionary *opts = [NSDictionary dictionaroyWithObject:[updatedPerson JSONRepresentation] forKey:@"body"];
+[HTTPRiotRestModel postPath:@"/person" withOptions:opts target:self selector:@selector(personUpdated:)];
+@endcode
+
+<h4>Send a DELETE request</h4>
+@code
+[HTTPRiotRestModel deletePath:@"/person/1" target:self selector:@selector(personDeleted:)];
+@endcode
+                            
 <h3>Posting Form Data</h3>
 It's very easy to post form-encoded data.  When you specify the <tt>params</tt> option for a POST 
 request <tt>HTTPRiot</tt> will treat this as form encoded data.
@@ -64,12 +82,15 @@ request <tt>HTTPRiot</tt> will treat this as form encoded data.
 NSDictionary *formParams = [NSDictionary dictionaryWithObjectsAndKeys:@"bob", @"name", @"01/02/03", @"birthday", nil];
 [HTTPRiotRestModel postPath:@"http://localhost:1234/some/form/submission" 
                     options:[NSDictionary dictionaryWithObject:formParams forKey:@"params"] 
-                      error:nil];
+                      target:self
+                    selector:@selector(formPosted:)];
 @endcode
 
 <h3>Creating Your Own Models</h3>
 The preferred way to use HTTPRiot is to subclass HTTPRiotRestModel and make your own models.
-From these models you can set default options that will be used by every request.
+From these models you can set "class options" that will be used in every request sent from 
+a particular model.
+
 @include Tweet.m
 
 <h3>Using Threads</h3>

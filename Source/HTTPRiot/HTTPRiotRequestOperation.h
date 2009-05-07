@@ -25,6 +25,9 @@
     
     /// The selector invoked after a request completes or returns an error
     SEL didEndSelector;
+    
+    /// An object to be added to the dictionary passed to didEndSelector
+    id obj;
 }
  
 /// The lenght of time in seconds before the request times out.
@@ -60,13 +63,20 @@
 @property (nonatomic, readonly, retain) id formatter;
 
 /**
- Returns an NSDictionary, NSArray decoded from the server
-
- You shouldn't have to call this method directly.
+ * Returns an NSDictionary, NSArray decoded from the server
  */
-+ (NSOperation *)requestWithMethod:(kHTTPRiotMethod)method
-                     path:(NSString*)urlPath
-                  options:(NSDictionary*)requestOptions
-                   target:(id)target
-                 selector:(SEL)sel;
++ (NSOperation*)requestWithMethod:(kHTTPRiotMethod)method
+                             path:(NSString*)urlPath
+                          options:(NSDictionary*)requestOptions
+                           target:(id)target
+                         selector:(SEL)sel;
+/**
+ * Returns an NSDictionary, NSArray decoded from the server
+ */
++ (NSOperation*)requestWithMethod:(kHTTPRiotMethod)method
+                             path:(NSString*)urlPath
+                          options:(NSDictionary*)requestOptions
+                           target:(id)target
+                         selector:(SEL)sel
+                           object:(id)obj;
 @end

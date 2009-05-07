@@ -104,15 +104,26 @@ static NSMutableDictionary *attributes;
 }
 
 #pragma mark - REST Methods
++ (NSOperation *)getPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel object:(id)obj
+{
+    NSMutableDictionary *opts = [self mergedOptions:options];
+    return [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet path:path options:opts target:target selector:sel object:obj];        
+}
+
 + (NSOperation *)getPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel
 {
     NSMutableDictionary *opts = [self mergedOptions:options];
     return [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet path:path options:opts target:target selector:sel];        
 }
 
++ (NSOperation *)getPath:(NSString *)path target:(id)target selector:(SEL)sel object:(id)obj
+{
+    return [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet path:path options:[self mergedOptions:nil] target:target selector:sel object:obj];        
+}
+
 + (NSOperation *)getPath:(NSString *)path target:(id)target selector:(SEL)sel
 {
-    return [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet path:path options:[self mergedOptions:nil] target:target selector:sel];        
+    return [self getPath:path target:target selector:sel object:nil];
 }
 
 + (NSOperation *)postPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel

@@ -46,7 +46,7 @@
 - (void)awakeFromNib
 {   
     tableView.delegate = self;                                                                                  
-    [HTTPRiotRestModel getPath:@"/people" target:self selector:@selector(peopleLoaded:)];
+    [HTTPRiotRestModel getPath:@"/people" target:self selector:@selector(peopleLoaded:) object:@"FOOBAR"];
 }
 
 - (IBAction)addPerson:(id)sender
@@ -111,6 +111,7 @@
 - (void)peopleLoaded:(NSDictionary *)info
 {
     NSError *error = [info valueForKey:@"error"];
+    id obj = [info valueForKey:@"object"];
     
     if(error == nil)
     {

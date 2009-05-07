@@ -21,10 +21,15 @@
  *     [self setFormat:kHTTPFormatJSON];
  *     [self setDefaultParameters:params];
  *  }
+ *
+ *  -(void)personLoaded:(NSDictionary *)info
+ *  {
+ *      NSDictionary *person = [info valueForKey:@"results"];   
+ *  }
  *  @end
  *
  *  // Would send a request to http://localhost:1234/api/people/1?api_key=1234567
- *  [Person getPath:@"/people/1" withOptions:nil error:nil];
+ *  [Person getPath:@"/people/1" withOptions:nil target:self selector:@selector(personLoaded:)];
  * @endcode
  *
  * <h3>A note on default properties and subclassing</h3>
@@ -138,16 +143,25 @@
  * @param options The options for this request.
  * @param target The object on which the selector is invoked.
  * @param sel The selector run after the request is complete.  
- *        This selector with be passed a dictionary containing 3 objects:
+ *        This selector will be passed a dictionary containing 4 objects:
  *        @li <tt>results</tt>: The decoded data recieved from the server
  *        @li <tt>response</tt>: The NSHTTPURLResponse object.
  *        @li <tt>error</tt>: The error if present or nil. 
+ *        @li <tt>object</tt>: Any object that was passed along
+ * @param obj Any object you want passed to the selector callback
  *
  */
-+ (NSOperation *)getPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel;
-
++ (NSOperation *)getPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel object:(id)obj;
 /**
- * @copybrief getPath:withOptions:target:selector:
+ * @see getPath:withOptions:target:selector:object
+ */
++ (NSOperation *)getPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel;
+/**
+ * @see getPath:withOptions:target:selector:object
+ */
++ (NSOperation *)getPath:(NSString *)path target:(id)target selector:(SEL)sel object:(id)obj;
+/**
+ * @see getPath:withOptions:target:selector:object
  */
 + (NSOperation *)getPath:(NSString *)path target:(id)target selector:(SEL)sel;
 
@@ -173,7 +187,7 @@
 + (NSOperation *)postPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel;
 
 /**
- * @copybrief postPath:withOptions:target:selector:
+ * @see postPath:withOptions:target:selector:
  */
 + (NSOperation *)postPath:(NSString *)path target:(id)target selector:(SEL)sel;
 
@@ -197,7 +211,7 @@
 + (NSOperation *)putPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel;
 
 /**
- * @copybrief putPath:withOptions:target:selector:
+ * @see putPath:withOptions:target:selector:
  */
 + (NSOperation *)putPath:(NSString *)path target:(id)target selector:(SEL)sel;
 
@@ -216,6 +230,9 @@
  */
 + (NSOperation *)deletePath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel;
 
+/**
+ * @see deletePath:withOptions:target:selector
+ */
 + (NSOperation *)deletePath:(NSString *)path target:(id)target selector:(SEL)sel;
 //@}
 @end
