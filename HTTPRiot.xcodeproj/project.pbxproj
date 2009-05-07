@@ -22,6 +22,9 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		D01966A60FAEC8AE000F27E5 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D01966A50FAEC8AE000F27E5 /* OCMock.framework */; };
+		D01966A70FAEC8AE000F27E5 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D01966A50FAEC8AE000F27E5 /* OCMock.framework */; };
+		D01966E30FAECA2B000F27E5 /* HTTPRiotRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4B360F33EB0E00C9E26E /* HTTPRiotRequestOperation.m */; };
 		D02988310F3F7BCE00EC8C01 /* HTTPRiotRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = D09E4B350F33EB0E00C9E26E /* HTTPRiotRequestOperation.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D02988640F3F7F1200EC8C01 /* HTTPRiot_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = D02988630F3F7F1200EC8C01 /* HTTPRiot_Prefix.pch */; };
 		D02988FF0F3FB63F00EC8C01 /* HTTPRiotConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = D02988FE0F3FB63F00EC8C01 /* HTTPRiotConstants.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -157,6 +160,7 @@
 		1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* HTTPRiot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HTTPRiot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D01966A50FAEC8AE000F27E5 /* OCMock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OCMock.framework; sourceTree = "<group>"; };
 		D02988630F3F7F1200EC8C01 /* HTTPRiot_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRiot_Prefix.pch; sourceTree = "<group>"; };
 		D02988FE0F3FB63F00EC8C01 /* HTTPRiotConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRiotConstants.h; sourceTree = "<group>"; };
 		D02989310F3FBEDC00EC8C01 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
@@ -220,7 +224,6 @@
 		D0F6D8BC0FAB726D006DE022 /* TestRunner-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TestRunner-Info.plist"; sourceTree = "<group>"; };
 		D0F6D8C40FAB72D0006DE022 /* GHUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnit.framework; path = ../../../../Library/Frameworks/GHUnit.framework; sourceTree = SOURCE_ROOT; };
 		D0F6D8CE0FAB732B006DE022 /* GHUnitTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitTestMain.m; sourceTree = "<group>"; };
-		D0F6D9630FAB8190006DE022 /* iPhoneTestRunner-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iPhoneTestRunner-Info.plist"; sourceTree = "<group>"; };
 		D0F6D9B90FAB83B1006DE022 /* GHAsyncTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHAsyncTestCase.h; sourceTree = "<group>"; };
 		D0F6D9BA0FAB83B1006DE022 /* GHMockNSHTTPURLResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHMockNSHTTPURLResponse.h; sourceTree = "<group>"; };
 		D0F6D9BB0FAB83B1006DE022 /* GHMockNSURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHMockNSURLConnection.h; sourceTree = "<group>"; };
@@ -260,6 +263,7 @@
 			files = (
 				D0788AFE0FABACE000C3207D /* libGHUnitIPhone.a in Frameworks */,
 				D0788AF50FABAC4100C3207D /* CoreGraphics.framework in Frameworks */,
+				D01966A70FAEC8AE000F27E5 /* OCMock.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +281,7 @@
 			files = (
 				D0F6D8FC0FAB749E006DE022 /* HTTPRiot.framework in Frameworks */,
 				D0F6D8C50FAB72D0006DE022 /* GHUnit.framework in Frameworks */,
+				D01966A60FAEC8AE000F27E5 /* OCMock.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,17 +304,13 @@
 			isa = PBXGroup;
 			children = (
 				D03DB6630F315F9E00F18796 /* Source */,
-				32C88DFF0371C24200C91783 /* Other Sources */,
 				089C1665FE841158C02AAC07 /* Resources */,
 				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
 				034768DFFF38A50411DB9C8B /* Products */,
-				D0F6D9B70FAB83B1006DE022 /* Vendor */,
-				D09E4A0F0F339D5200C9E26E /* Tests */,
 				D09E4A180F339D7900C9E26E /* UnitTests-Info.plist */,
 				D09E4AAC0F33CB7F00C9E26E /* SampleApp-Info.plist */,
 				D0D9669A0F65C7C300F1347A /* libxml2.2.dylib */,
 				D0F6D8BC0FAB726D006DE022 /* TestRunner-Info.plist */,
-				D0F6D9630FAB8190006DE022 /* iPhoneTestRunner-Info.plist */,
 				D0788AEB0FABAB3600C3207D /* iPhoneUnitTestsRunner-Info.plist */,
 				D0788AF40FABAC4100C3207D /* CoreGraphics.framework */,
 			);
@@ -350,13 +351,6 @@
 				0867D69BFE84028FC02AAC07 /* Foundation.framework */,
 			);
 			name = "Other Frameworks";
-			sourceTree = "<group>";
-		};
-		32C88DFF0371C24200C91783 /* Other Sources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Other Sources";
 			sourceTree = "<group>";
 		};
 		D029892F0F3FBEAD00EC8C01 /* Extensions */ = {
@@ -408,6 +402,8 @@
 		D03DB6630F315F9E00F18796 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				D0F6D9B70FAB83B1006DE022 /* Vendor */,
+				D09E4A0F0F339D5200C9E26E /* Tests */,
 				D03DB6640F31639000F18796 /* HTTPRiot */,
 				D09E4AA30F33CB4700C9E26E /* SampleApp */,
 			);
@@ -471,8 +467,7 @@
 				D02990380F433D1900EC8C01 /* HTTPRiotTestHelper.h */,
 				D029906A0F43422E00EC8C01 /* HTTPRiotTestHelper.m */,
 			);
-			name = Tests;
-			path = Source/Tests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		D09E4AA30F33CB4700C9E26E /* SampleApp */ = {
@@ -489,13 +484,13 @@
 		D0F6D9B70FAB83B1006DE022 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				D01966A50FAEC8AE000F27E5 /* OCMock.framework */,
 				D04EF1200F65C52D003C6240 /* KissXML */,
 				D04EF10B0F65C50A003C6240 /* AIXMLSerialization */,
 				D0298A7F0F3FFF2E00EC8C01 /* JSON */,
 				D0F6D9B80FAB83B1006DE022 /* gh-unit-iphone */,
 			);
-			name = Vendor;
-			path = Source/Vendor;
+			path = Vendor;
 			sourceTree = "<group>";
 		};
 		D0F6D9B80FAB83B1006DE022 /* gh-unit-iphone */ = {
@@ -689,9 +684,9 @@
 			projectRoot = "";
 			targets = (
 				8DC2EF4F0486A6940098B216 /* HTTPRiot */,
-				D09E4AA90F33CB7F00C9E26E /* SampleApp */,
 				D0298A640F3FFBBD00EC8C01 /* libhttpriot */,
 				D0F4848A0F4CC03500160DD9 /* Documentation */,
+				D09E4AA90F33CB7F00C9E26E /* SampleApp */,
 				D0F6D8B90FAB726D006DE022 /* TestRunner */,
 				D0788AE70FABAB3600C3207D /* iPhoneUnitTestsRunner */,
 			);
@@ -826,6 +821,7 @@
 				D0788B050FABAD3800C3207D /* HTTPRiotTestHelper.m in Sources */,
 				D0788B090FABAD4600C3207D /* HTTPRiotRestModelTest.m in Sources */,
 				D0788B0D0FABAD6F00C3207D /* HTTPRiotRequestTest.m in Sources */,
+				D01966E30FAECA2B000F27E5 /* HTTPRiotRequestOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1008,12 +1004,17 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "Don't Code Sign";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Source/Vendor\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = "iPhoneUnitTestsRunner-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
+				LD_RUNPATH_SEARCH_PATHS = "$(PROJECT_DIR)/Source/Vendor";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Source/Vendor/gh-unit-iphone\"",
@@ -1041,11 +1042,16 @@
 				CODE_SIGN_IDENTITY = "Don't Code Sign";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Source/Vendor\"",
+				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = "iPhoneUnitTestsRunner-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
+				LD_RUNPATH_SEARCH_PATHS = "$(PROJECT_DIR)/Source/Vendor";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Source/Vendor/gh-unit-iphone\"",
@@ -1145,6 +1151,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../../Library/Frameworks\"",
+					"\"$(SRCROOT)/Source/Vendor\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -1154,6 +1161,7 @@
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
 				INFOPLIST_FILE = "TestRunner-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
+				LD_RUNPATH_SEARCH_PATHS = "$(PROJECT_DIR)/Source/Vendor";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -1174,6 +1182,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../../Library/Frameworks\"",
+					"\"$(SRCROOT)/Source/Vendor\"",
 				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
@@ -1181,6 +1190,7 @@
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
 				INFOPLIST_FILE = "TestRunner-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
+				LD_RUNPATH_SEARCH_PATHS = "$(PROJECT_DIR)/Source/Vendor";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,

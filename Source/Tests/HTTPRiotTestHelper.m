@@ -7,6 +7,7 @@
 //
 
 #import "HTTPRiotTestHelper.h"
+
 @implementation HRTestHelper 
 
 - (id)returnedResults:(id)info

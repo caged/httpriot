@@ -8,55 +8,176 @@
 
 #import "SAApplicationDelegate.h"
 #import <HTTPRiot/HTTPRiot.h>
+#import "JSON.h"
 
-// @interface SAProject : HTTPRiotRestModel
-// {
-// }
-// @end
-// 
-// @implementation SAProject
-// + (void)initialize
-// {
-//     [self setBaseURI:[NSURL URLWithString:@"http://alternateidea.com"]];
-// }
-// @end
-// 
-@interface SAPerson : HTTPRiotRestModel {} @end
-@implementation SAPerson
-+ (void)initialize
-{
-    [self setFormat:kHTTPRiotXMLFormat];
-    [self setBaseURI:[NSURL URLWithString:@"http://localhost:4567"]];
-}
+@interface SAApplicationDelegate()
+@property (retain) NSMutableArray *people;
 @end
-
-@interface SAXMLPerson : HTTPRiotRestModel {} @end
-
-@implementation SAXMLPerson
-+ (void)initialize
-{
-    [self setBaseURI:[NSURL URLWithString:@"http://localhost:4567"]];
-    [self setFormat:kHTTPRiotXMLFormat];
-}
-@end
-
-
 
 @implementation SAApplicationDelegate
-- (void)awakeFromNib
-{                                                                                             
-    NSOperation *op =  [SAPerson getPath:@"http://www.govtrack.us/data/us/111/repstats/people.xml"  target:self selector:@selector(peopleLoaded:)];    
-    [op cancel];
-    //NSOperation *op2 = [SAPerson getPath:@"http://www.govtrack.us/data/us/111/repstats/people.xml" target:self selector:@selector(peopleLoaded:)];
-    //NSOperation *op3 = [SAPerson getPath:@"http://www.govtrack.us/data/us/111/repstats/people.xml" target:self selector:@selector(peopleLoaded:)];
-    //NSOperation *op4 = [SAPerson getPath:@"http://www.govtrack.us/data/us/111/repstats/people.xml" target:self selector:@selector(peopleLoaded:)];
+@synthesize arrayController, people;
+
+- (id)init
+{
+    self = [super init];
+    if(self)
+    {
+        [HTTPRiotRestModel setBaseURI:[NSURL URLWithString:@"http://localhost:4567"]];
+        
+        self.people = [[NSMutableArray alloc] init];
+        arrayController = [[NSArrayController alloc] init];
+        [arrayController setSortDescriptors:[NSArray arrayWithObjects:[[[NSSortDescriptor alloc] initWithKey:@"name"
+                                                                                                   ascending:YES
+                                                                                                    selector:@selector(caseInsensitiveCompare:)] autorelease], nil]];
+        [arrayController bind:@"contentArray" toObject:self withKeyPath:@"people" options:nil];
+        
+    }
+    
+    return self;
 }
+
+- (void)dealloc
+{
+    [people release];
+    [arrayController release];
+    [super dealloc];
+}
+
+- (void)awakeFromNib
+{   
+    tableView.delegate = self;                                                                                  
+    [HTTPRiotRestModel getPath:@"/people" target:self selector:@selector(peopleLoaded:)];
+}
+
+- (IBAction)addPerson:(id)sender
+{
+    NSMutableDictionary *placeholder = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+        @"name", @"name",
+        @"foo@email.com", @"email", 
+        @"1234567890", @"telephone",
+        @"101 Cherry Lane", @"address",
+        nil];
+    [arrayController addObject:placeholder];
+}
+
+- (IBAction)removePerson:(id)sender;
+{
+    NSMutableDictionary *person = [[arrayController selectedObjects] objectAtIndex:0];
+    NSInteger personID = [[person valueForKey:@"id"] intValue];
+    NSString *path = [NSString stringWithFormat:@"/person/%i", personID];
+    
+    [HTTPRiotRestModel deletePath:path
+                        target:self
+                      selector:@selector(personRemoved:)];
+}
+
+- (void)objectDidEndEditing:(id)editor
+{
+    NSMutableDictionary *person = [[editor selectedObjects] objectAtIndex:0];
+    
+    // New Record
+    if([person valueForKey:@"id"] == nil)
+    {
+    
+        NSLog(@"ID WAS NIL:%@", person);
+        NSString *json = [person JSONRepresentation];
+        NSDictionary *opts = [NSDictionary dictionaryWithObject:json forKey:@"body"];
+    
+        [HTTPRiotRestModel postPath:@"/person" withOptions:opts target:self selector:@selector(personSaved:)];
+    }
+    
+    // Editing existing record
+    else
+    {
+        NSInteger personID = [[person valueForKey:@"id"] intValue];
+        [person removeObjectsForKeys:[NSArray arrayWithObjects:@"created_at", @"id", nil]];
+        
+        NSString *json = [person JSONRepresentation];
+        NSDictionary *opts = [NSDictionary dictionaryWithObject:json forKey:@"body"];
+        NSString *path = [NSString stringWithFormat:@"/person/%i", personID];
+    
+        [HTTPRiotRestModel putPath:path
+                       withOptions:opts
+                            target:self
+                          selector:@selector(personSaved:)];
+    }
+}
+
+#pragma mark - HTTPRiot Callbacks
 
 /**
  * dict contains 'response', 'results' and 'error'
  */
-- (void)peopleLoaded:(NSDictionary *)dict
+- (void)peopleLoaded:(NSDictionary *)info
 {
-    NSLog(@"HAR HAR HAR:%i", [[dict valueForKey:@"response"] statusCode]);
+    NSError *error = [info valueForKey:@"error"];
+    
+    if(error == nil)
+    {
+        NSURLResponse *response = [info valueForKey:@"response"];
+        id results = [info valueForKey:@"results"];
+        // Set the people property to the results we got from the server
+        [self.people addObjectsFromArray:results];
+        
+        // Now we bind the table columns to specific keys in the dictionary.  
+        [[tableView tableColumnWithIdentifier:@"name"] bind:@"value" toObject:arrayController withKeyPath:@"arrangedObjects.name" options:nil];
+        [[tableView tableColumnWithIdentifier:@"email"] bind:@"value" toObject:arrayController withKeyPath:@"arrangedObjects.email" options:nil];
+        [[tableView tableColumnWithIdentifier:@"phone"] bind:@"value" toObject:arrayController withKeyPath:@"arrangedObjects.telephone" options:nil];
+        [[tableView tableColumnWithIdentifier:@"address"] bind:@"value" toObject:arrayController withKeyPath:@"arrangedObjects.address" options:nil];        
+    
+        // Sort it
+        [arrayController setSortDescriptors:[NSArray arrayWithObjects:[[[NSSortDescriptor alloc] initWithKey:@"name"
+                                                                                                   ascending:YES
+                                                                                                  selector:@selector(caseInsensitiveCompare:)] autorelease], nil]];
+    }
+    else
+    {
+        NSString *serverPath = [[[[NSBundle mainBundle] bundlePath] stringByAppendingString:@"/../../.."] stringByStandardizingPath];
+        serverPath = [serverPath stringByAppendingString:@"/Source/Tests/Server/testserver.rb"];
+        NSLog(@"Failed to get resource:%@", [[error userInfo] valueForKey:NSErrorFailingURLStringKey]);
+        NSLog(@"You likely have not started the test server.  Run: `ruby %@`", serverPath);
+        
+        [NSApp presentError:error];
+    }
+}
+
+- (void)personSaved:(NSDictionary *)info
+{
+    NSError *error = [info valueForKey:@"error"];
+    id results = [info valueForKey:@"results"];
+    
+    if(error == nil)
+    {
+        NSLog(@"RESULTS:%@", results);
+    }
+}
+
+- (void)personRemoved:(NSDictionary *)info
+{
+    NSError *error = [info valueForKey:@"error"];
+    id results = [info valueForKey:@"results"];
+    
+    if(error == nil)
+    {
+        NSInteger idx = [arrayController selectionIndex];
+        [arrayController removeObjectAtArrangedObjectIndex:idx];
+    }
+}
+
+@end
+
+
+#pragma mark - Pretty up the window
+// Just tossing this here to add a bottom region to the window for some buttons
+@implementation SAWindow
+- (id)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)windowStyle backing:(NSBackingStoreType)bufferingType defer:(BOOL)deferCreation
+{
+    self = [super initWithContentRect:contentRect styleMask:windowStyle backing:bufferingType defer:deferCreation];
+    if(self)
+    {
+        [self setContentBorderThickness:44.0 forEdge:NSMinYEdge];
+    }
+    
+    return self;
 }
 @end

@@ -7,6 +7,7 @@ require 'pp'
 require 'builder'
 require File.join(File.dirname(__FILE__), 'lib/authorization')
 
+
 # Stupid hack so XmlSimple can use symbolized keys
 class Symbol
   def [](*args)
@@ -37,10 +38,14 @@ end
 class Person < Sequel::Model
   validates_presence_of :name, :email, :address
   
+  before_create do
+    self.created_at = Time.now
+  end
+  
   def self.respond(params)
     #edit or create
     if params[:id]
-      person = self.find(params[:id])
+      person = self.find("id = ?", params[:id])
     else
       person = self.new
     end
@@ -54,15 +59,17 @@ class Person < Sequel::Model
 end
 
 # create some records using Faker
-10.times do
-  Person.create({
-    :name => Faker::Name.name,
-    :email => Faker::Internet.email,
-    :address => Faker::Address.street_address,
-    :telephone => Faker::PhoneNumber.phone_number,
-    :bio => Faker::Lorem.paragraph,
-    :created_at => Time.now
-  })
+if Person.count == 0
+  10.times do
+    Person.create({
+      :name => Faker::Name.name,
+      :email => Faker::Internet.email,
+      :address => Faker::Address.street_address,
+      :telephone => Faker::PhoneNumber.phone_number,
+      :bio => Faker::Lorem.paragraph,
+      :created_at => Time.now
+    })
+  end
 end
 
 
@@ -70,11 +77,13 @@ end
 before do
   #pp request.env
   def xml?
-    request.env['CONTENT_TYPE'] == "application/xml"
+    request.env['CONTENT_TYPE'] == "application/xml" || 
+    request.env['REQUEST_URI'].split('.')[1] == 'xml'
   end
   # 
   def json?
-    request.env['CONTENT_TYPE'] == "application/json"
+    request.env['CONTENT_TYPE'] == "application/json" || 
+    request.env['REQUEST_URI'].split('.')[1] == 'json'
   end
   
   def people_xml
@@ -111,28 +120,35 @@ get '/search' do
 end
 
 #GET /people returns all posts as json
-get '/people' do
-  people = Person.all.collect { |p| p.values }
+get '/people*' do 
+  pp request 
+  @people = Person.all.collect { |p| p.values }
   
   if json?
-    people.to_json
+    return @people.to_json
   elsif xml?
-    people_xml
-  else
-    puts "OMG WTF"
+    return people_xml
   end
+  
+  erb :people
 end
  
 #GET /person/1 returns that post as json
 get '/person/:id' do
-  Person.find(params[:id]).values.to_json
+  pp "GETTING PERSON"
+  Person.find("id = ?", params[:id]).values.to_json
+  #Person.find(params[:id]).values.to_json
 end
  
 #PUT /person/1 update that puts with json
 put '/person/:id' do
-  person = Person.find(params[:id])
+  person = Person.find("id = ?", params[:id])
+  pp person
   data = JSON.parse(request.body.read)
-  status 200 if person.update(data)
+  if person.update(data)
+    status 200 
+    return person.values.to_json
+  end
 end
  
 #POST /post body with data field set to JSON: { "title": "test", "body": "body test" }
@@ -152,8 +168,11 @@ end
  
 #DELETE /post/1 deletes post
 delete '/person/:id' do
-  person = Person.find(params[:id])
-  status 200 if person.destroy
+  person = Person.find("id = ?", params[:id])
+  if person.destroy
+    status 200 
+    person.values.to_json
+  end
 end
 
 include Sinatra::Authorization

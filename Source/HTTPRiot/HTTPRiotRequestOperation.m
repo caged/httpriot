@@ -53,7 +53,7 @@ static NSOperationQueue *HROperationQueue;
     if(self = [super init])
     {
         httpMethod = method;
-        path = urlPath;
+        path = [urlPath copy];
         options = [requestOptions retain];
         formatter = [[self formatterFromFormat] retain];
         target = tgt;
@@ -147,14 +147,14 @@ static NSOperationQueue *HROperationQueue;
     else if(method == kHTTPRiotMethodPost || kHTTPRiotMethodPost)
     {
         NSData *bodyData = nil;
-        if(params && [params isKindOfClass:[NSDictionary class]])
-        {
+        if(params && [params isKindOfClass:[NSDictionary class]] && body == nil)
+        {   
             bodyData = [[params toQueryString] dataUsingEncoding:NSUTF8StringEncoding];
             [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
             [request setHTTPBody:bodyData];
         }
         else
-        {
+        {            
             if([body isKindOfClass:[NSDictionary class]])
                 bodyData = [[body toQueryString] dataUsingEncoding:NSUTF8StringEncoding];
             else if([body isKindOfClass:[NSString class]])
@@ -165,6 +165,7 @@ static NSOperationQueue *HROperationQueue;
                 [NSException exceptionWithName:@"InvalidBodyData"
                                         reason:@"The body must be an NSDictionary, NSString, or NSData"
                                       userInfo:nil];
+            
             [request setHTTPBody:bodyData];
         }
         
@@ -201,6 +202,7 @@ static NSOperationQueue *HROperationQueue;
     NSError *error = nil, *responseError = nil;
     id results = nil;
     NSData *body;
+    NSDictionary *info;
     
     NSMutableURLRequest *request = [self configuredRequest];
     NSError *connectionError = nil;
@@ -212,11 +214,19 @@ static NSOperationQueue *HROperationQueue;
     if(connectionError)
     {        
         error = connectionError;
+        
+        if([target respondsToSelector:didEndSelector])      
+        {
+            info = [NSDictionary dictionaryWithObject:error forKey:@"error"];
+            [target performSelectorOnMainThread:didEndSelector withObject:info waitUntilDone:YES];
+            
+            return;
+        }
     }
     
     [[self class] handleResponse:response error:&responseError];
     
-    if(responseError)
+    if(responseError && connectionError == nil)
     {
         error = responseError;
     } 
@@ -225,14 +235,15 @@ static NSOperationQueue *HROperationQueue;
         results = [[self formatter] decode:body];
     
     
+    NSLog(@"ERROR:%@", error);
     if([target respondsToSelector:didEndSelector])
     {        
-        NSDictionary *obj = [NSDictionary dictionaryWithObjectsAndKeys:results, @"results", 
-                                response, @"response", 
-                                error, @"error", 
-                                nil];
+        info = [NSDictionary dictionaryWithObjectsAndKeys:results, @"results", 
+                            response, @"response", 
+                            error, @"error", 
+                            nil];
         
-        [target performSelectorOnMainThread:didEndSelector withObject:obj waitUntilDone:YES];
+        [target performSelectorOnMainThread:didEndSelector withObject:info waitUntilDone:YES];
     }
     
     [pool drain];

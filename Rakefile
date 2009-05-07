@@ -234,7 +234,7 @@ class SDKPackage < Rake::PackageTask
         end
         
         if need_zip
-          chdir(package_dir) do
+          cd package_dir do
             sh %{#{@zip_command} -r #{zip_file} #{package_name}}
           end
         end

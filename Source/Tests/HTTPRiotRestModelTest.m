@@ -96,25 +96,25 @@
     GHAssertEqualObjects([params valueForKey:@"bada"], @"bing", nil);
 }
 
-- (void) testShouldDecodeJSON 
-{
-    NSError *error = nil;
-    [HRTestPerson4 setFormat:kHTTPRiotJSONFormat];
-    id people = [HRTestPerson getPath:@"/people" withOptions:nil error:&error];
-    NSArray *person = [people valueForKeyPath:@"people.person"];
-    GHAssertTrue([person isKindOfClass:[NSArray class]], nil);
-    GHAssertNil(error, nil);
-}
-
-- (void)testShouldDecodeXML
-{
-    NSError *error = nil;
-    [HRTestPerson4 setFormat:kHTTPRiotXMLFormat];
-    id people = [HRTestPerson getPath:@"/people" withOptions:nil error:&error];
-    NSArray *person = [people valueForKeyPath:@"people.person"];
-    GHAssertTrue([person isKindOfClass:[NSArray class]], nil);
-    GHAssertNil(error, nil);
-}
+// - (void) testShouldDecodeJSON 
+// {
+//     NSError *error = nil;
+//     [HRTestPerson4 setFormat:kHTTPRiotJSONFormat];
+//     id people = [HRTestPerson getPath:@"/people" withOptions:nil error:&error];
+//     NSArray *person = [people valueForKeyPath:@"people.person"];
+//     GHAssertTrue([person isKindOfClass:[NSArray class]], nil);
+//     GHAssertNil(error, nil);
+// }
+// 
+// - (void)testShouldDecodeXML
+// {
+//     NSError *error = nil;
+//     [HRTestPerson4 setFormat:kHTTPRiotXMLFormat];
+//     id people = [HRTestPerson getPath:@"/people" withOptions:nil error:&error];
+//     NSArray *person = [people valueForKeyPath:@"people.person"];
+//     GHAssertTrue([person isKindOfClass:[NSArray class]], nil);
+//     GHAssertNil(error, nil);
+// }
 
 - (void) testShouldCreateUniqueClassAttributesForSubClasses
 {

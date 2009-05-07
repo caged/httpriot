@@ -6,7 +6,7 @@
 //  Copyright 2009 Alternateidea. All rights reserved.
 //
 #import <Foundation/Foundation.h>
-
+#import "HTTPRiotConstants.h"
 /**
  * You can either subclass this class or use it directly to make requests.
  * It's recommended that you subclass it and setup default properties in your 

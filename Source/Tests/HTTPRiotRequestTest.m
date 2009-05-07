@@ -9,12 +9,18 @@
 #import "HTTPRiotTestHelper.h"
 #import "HTTPRiotFormatJSON.h"
 
-@interface HTTPRiotRequestOperationTest : GHTestCase {} @end
+@interface HTTPRiotRequestOperationTest : GHTestCase {
+    OCMockObject *mock;
+} 
+@end
+
 static NSDictionary *defaultOptions;
 @implementation HTTPRiotRequestOperationTest
 
 - (void) setUp
 {
+    mock = [OCMockObject mockForClass:[HTTPRiotRequestOperation class]];
+    
     defaultOptions = [[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:kHTTPRiotJSONFormat]  forKey:@"format"] retain];
 }
 
@@ -93,13 +99,39 @@ static NSDictionary *defaultOptions;
 // 
 // }
 
+
 - (void)testGET 
 {
-    NSOperation *op = [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet
-                                                             path:[HTTPRiotTestServer stringByAppendingString:@"/person/1"]
-                                                          options:nil
-                                                           target:nil
-                                                         selector:@selector(getFinishedLoading:)];
+    NSString *resource = [HTTPRiotTestServer stringByAppendingString:@"/person/1"];
+    
+    [[mock stub] initWithMethod:kHTTPRiotMethodGet
+                           path:resource
+                        options:nil
+                         target:self
+                       selector:@selector(didFetchData:)];
+                       
+    [mock initWithMethod:kHTTPRiotMethodGet
+                    path:resource
+                 options:nil
+                  target:self
+                selector:@selector(didFetchData:)];
+
+    //                                            
+    // [mock requestWithMethod:kHTTPRiotMethodGet
+    //                    path:resource
+    //                 options:nil
+    //                  target:self
+    //                selector:@selector(didFetchData:)];
+    
+    // [[mock expect] requestWithMethod:kHTTPRiotMethodGet path:resource
+    //                          options:nil target:self selector:@selector(didFetchData:)];
+    
+    GHAssertNoThrow([mock verify], @"Unknown exception thrown");
+    // NSOperation *op = [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet
+    //                                                          path:[HTTPRiotTestServer stringByAppendingString:@"/person/1"]
+    //                                                       options:nil
+    //                                                        target:self
+    //                                                      selector:@selector(didFetchData:)];
     //GHAssertNotNil(op, nil);
 }
 
