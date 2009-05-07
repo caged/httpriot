@@ -172,6 +172,9 @@
  */
 + (NSOperation *)postPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel;
 
+/**
+ * @copybrief postPath:withOptions:target:selector:
+ */
 + (NSOperation *)postPath:(NSString *)path target:(id)target selector:(SEL)sel;
 
 /**
@@ -193,6 +196,9 @@
  */
 + (NSOperation *)putPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel;
 
+/**
+ * @copybrief putPath:withOptions:target:selector:
+ */
 + (NSOperation *)putPath:(NSString *)path target:(id)target selector:(SEL)sel;
 
 /**
