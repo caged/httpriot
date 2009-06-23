@@ -1,19 +1,19 @@
 //
-//  HTTPRiotRequestOperation.h
+//  HRRequestOperation.h
 //  HTTPRiot
 //
 //  Created by Justin Palmer on 1/30/09.
 //  Copyright 2009 Alternateidea. All rights reserved.
 //
 #import <Foundation/Foundation.h>
-#import "HTTPRiotConstants.h"
+#import "HRConstants.h"
 
 /**
  * The object which all requests are routed through.  You shouldn't need to use 
- * this class directly, but instead use HTTPRiotRestModel which wraps the method 
+ * this class directly, but instead use HRRestModel which wraps the method 
  * of this class neatly.
  */
-@interface HTTPRiotRequestOperation : NSOperation {
+@interface HRRequestOperation : NSOperation {
     float timeout;
     HRRequestMethod httpMethod;
     NSString *path;

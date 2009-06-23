@@ -1,10 +1,10 @@
 /**
- * @file HTTPRiotConstants.h Shared types and constants.
+ * @file HRConstants.h Shared types and constants.
  */
  
 /**
  * Supported REST methods.
- * @see HTTPRiotRequestOperation
+ * @see HRRequestOperation
  */
 typedef enum {
     HRRequestMethodUnknown = -1,
@@ -20,15 +20,15 @@ typedef enum {
 
 /**
  Supported formats.
- @see HTTPRiotRestModel#setFormat
+ @see HRRestModel#setFormat
  */
 typedef enum {
-    HRFormatUnknown = -1,
+    HRDataFormatUnknown = -1,
     /// JSON Format
-    HRFormatJSON,
+    HRDataFormatJSON,
     /// XML Format
-    HRFormatXML
-} HRFormat;
+    HRDataFormatXML
+} HRDataFormat;
 
 #define HTTPRiotErrorDomain @"com.alternateidea.HTTPRiot.ErroDomain"
 #ifdef DEBUG

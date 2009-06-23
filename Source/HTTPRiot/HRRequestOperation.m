@@ -1,21 +1,21 @@
 //
-//  HTTPRiotRequestOperation.m
+//  HRRequestOperation.m
 //  HTTPRiot
 //
 //  Created by Justin Palmer on 1/30/09.
 //  Copyright 2009 Alternateidea. All rights reserved.
 //
 
-#import "HTTPRiotRequestOperation.h"
+#import "HRRequestOperation.h"
 #import "NSString+URI.h"
 #import "NSDictionary+URI.h"
 #import "NSData+Base64.h"
-#import "HTTPRiotFormatJSON.h"
-#import "HTTPRiotFormatXML.h"
+#import "HRFormatJSON.h"
+#import "HRFormatXML.h"
 
 static NSOperationQueue *HROperationQueue;
 
-@interface HTTPRiotRequestOperation (PrivateMethods)
+@interface HRRequestOperation (PrivateMethods)
 - (NSMutableURLRequest *)http;
 - (NSArray *)formattedResults:(NSData *)data;
 - (void)setDefaultHeadersForRequest:(NSMutableURLRequest *)request;
@@ -27,7 +27,7 @@ static NSOperationQueue *HROperationQueue;
 + (NSString *)buildQueryStringFromParams:(NSDictionary *)params;
 @end
 
-@implementation HTTPRiotRequestOperation
+@implementation HRRequestOperation
 @synthesize timeout;
 @synthesize httpMethod;
 @synthesize path;
@@ -75,20 +75,20 @@ static NSOperationQueue *HROperationQueue;
     id theFormatter = nil;
     
     switch([format intValue]) {
-        case HRFormatJSON:
-            theFormatter = [HTTPRiotFormatJSON class];
+        case HRDataFormatJSON:
+            theFormatter = [HRFormatJSON class];
         break;
-        case HRFormatXML:
-            theFormatter = [HTTPRiotFormatXML class];
+        case HRDataFormatXML:
+            theFormatter = [HRFormatXML class];
         break;
         default:
-            theFormatter = [HTTPRiotFormatJSON class];
+            theFormatter = [HRFormatJSON class];
         break;   
     }
     
     
     NSString *errorMessage = [NSString stringWithFormat:@"Invalid Formatter %@", NSStringFromClass(theFormatter)];
-    NSAssert([theFormatter conformsToProtocol:@protocol(HTTPRiotFormatterProtocol)], errorMessage); 
+    NSAssert([theFormatter conformsToProtocol:@protocol(HRFormatterProtocol)], errorMessage); 
     
     return theFormatter;
 }

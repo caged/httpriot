@@ -22,9 +22,9 @@
     self = [super init];
     if(self)
     {
-        // For this sample app we're using HTTPRiotRestModel directly, but you can
+        // For this sample app we're using HRRestModel directly, but you can
         // subclass it if you want your models to have unique attributes.
-        [HTTPRiotRestModel setBaseURI:[NSURL URLWithString:@"http://localhost:4567"]];
+        [HRRestModel setBaseURI:[NSURL URLWithString:@"http://localhost:4567"]];
         
         self.people = [[NSMutableArray alloc] init];
         arrayController = [[NSArrayController alloc] init];
@@ -48,7 +48,7 @@
 - (void)awakeFromNib
 {   
     tableView.delegate = self;                                                                                  
-    [HTTPRiotRestModel getPath:@"/people" target:self selector:@selector(peopleLoaded:) object:@"FOOBAR"];
+    [HRRestModel getPath:@"/people" target:self selector:@selector(peopleLoaded:) object:@"FOOBAR"];
 }
 
 - (IBAction)addPerson:(id)sender
@@ -68,7 +68,7 @@
     NSInteger personID = [[person valueForKey:@"id"] intValue];
     NSString *path = [NSString stringWithFormat:@"/person/delete/%i", personID];
     
-    [HTTPRiotRestModel deletePath:path
+    [HRRestModel deletePath:path
                            target:self
                          selector:@selector(personRemoved:)
                            object:[NSNumber numberWithInt:[arrayController selectionIndex]]];
@@ -86,7 +86,7 @@
         NSString *json = [person JSONRepresentation];
         NSDictionary *opts = [NSDictionary dictionaryWithObject:json forKey:@"body"];
     
-        [HTTPRiotRestModel postPath:@"/person" withOptions:opts target:self selector:@selector(personSaved:)];
+        [HRRestModel postPath:@"/person" withOptions:opts target:self selector:@selector(personSaved:)];
     }
     
     // Editing existing record
@@ -99,7 +99,7 @@
         NSDictionary *opts = [NSDictionary dictionaryWithObject:json forKey:@"body"];
         NSString *path = [NSString stringWithFormat:@"/person/%i", personID];
     
-        [HTTPRiotRestModel putPath:path
+        [HRRestModel putPath:path
                        withOptions:opts
                             target:self
                           selector:@selector(personSaved:)];

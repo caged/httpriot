@@ -1,21 +1,21 @@
 //
-//  HTTPRiotRestModel.m
+//  HRRestModel.m
 //  HTTPRiot
 //
 //  Created by Justin Palmer on 1/28/09.
 //  Copyright 2009 Alternateidea. All rights reserved.
 //
 
-#import "HTTPRiotRestModel.h"
-#import "HTTPRiotRequestOperation.h"
+#import "HRRestModel.h"
+#import "HRRequestOperation.h"
 
-@interface HTTPRiotRestModel (PrivateMethods)
+@interface HRRestModel (PrivateMethods)
 + (void)setAttributeValue:(id)attr forKey:(NSString *)key;
 + (NSMutableDictionary *)classAttributes;
 + (NSMutableDictionary *)mergedOptions:(NSDictionary *)options;
 @end
 
-@implementation HTTPRiotRestModel
+@implementation HRRestModel
 static NSMutableDictionary *attributes;
 
 + (void)initialize {    
@@ -36,7 +36,7 @@ static NSMutableDictionary *attributes;
     if(dict) {
         return dict;
     } else {
-        newDict = [NSMutableDictionary dictionaryWithObject:[NSNumber numberWithInt:HRFormatJSON] forKey:@"format"];
+        newDict = [NSMutableDictionary dictionaryWithObject:[NSNumber numberWithInt:HRDataFormatJSON] forKey:@"format"];
         [attributes setObject:newDict forKey:className];
     }
     
@@ -68,11 +68,11 @@ static NSMutableDictionary *attributes;
     [self setAttributeValue:authDict forKey:@"basicAuth"];
 }
 
-+ (HRFormat)format {
++ (HRDataFormat)format {
     return [[[self classAttributes] objectForKey:@"format"] intValue];
 }
 
-+ (void)setFormat:(HRFormat)format {
++ (void)setFormat:(HRDataFormat)format {
     [[self classAttributes] setValue:[NSNumber numberWithInt:format] forKey:@"format"];
 }
 
@@ -91,16 +91,16 @@ static NSMutableDictionary *attributes;
 #pragma mark - REST Methods
 + (NSOperation *)getPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel object:(id)obj {
     NSMutableDictionary *opts = [self mergedOptions:options];
-    return [HTTPRiotRequestOperation requestWithMethod:HRRequestMethodGet path:path options:opts target:target selector:sel object:obj];        
+    return [HRRequestOperation requestWithMethod:HRRequestMethodGet path:path options:opts target:target selector:sel object:obj];        
 }
 
 + (NSOperation *)getPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel {
     NSMutableDictionary *opts = [self mergedOptions:options];
-    return [HTTPRiotRequestOperation requestWithMethod:HRRequestMethodGet path:path options:opts target:target selector:sel object:nil];        
+    return [HRRequestOperation requestWithMethod:HRRequestMethodGet path:path options:opts target:target selector:sel object:nil];        
 }
 
 + (NSOperation *)getPath:(NSString *)path target:(id)target selector:(SEL)sel object:(id)obj {
-    return [HTTPRiotRequestOperation requestWithMethod:HRRequestMethodGet path:path options:[self mergedOptions:nil] target:target selector:sel object:obj];        
+    return [HRRequestOperation requestWithMethod:HRRequestMethodGet path:path options:[self mergedOptions:nil] target:target selector:sel object:obj];        
 }
 
 + (NSOperation *)getPath:(NSString *)path target:(id)target selector:(SEL)sel {
@@ -109,16 +109,16 @@ static NSMutableDictionary *attributes;
 
 + (NSOperation *)postPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel {
     NSMutableDictionary *opts = [self mergedOptions:options];
-    return [HTTPRiotRequestOperation requestWithMethod:HRRequestMethodPost path:path options:opts target:target selector:sel object:nil];        
+    return [HRRequestOperation requestWithMethod:HRRequestMethodPost path:path options:opts target:target selector:sel object:nil];        
 }
 
 + (NSOperation *)postPath:(NSString *)path target:(id)target selector:(SEL)sel {
-    return [HTTPRiotRequestOperation requestWithMethod:HRRequestMethodPost path:path options:[self mergedOptions:nil] target:target selector:sel object:nil];        
+    return [HRRequestOperation requestWithMethod:HRRequestMethodPost path:path options:[self mergedOptions:nil] target:target selector:sel object:nil];        
 }
 
 + (NSOperation *)putPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel object:(id)obj {
     NSMutableDictionary *opts = [self mergedOptions:options];
-    return [HTTPRiotRequestOperation requestWithMethod:HRRequestMethodPut path:path options:opts target:target selector:sel object:obj];        
+    return [HRRequestOperation requestWithMethod:HRRequestMethodPut path:path options:opts target:target selector:sel object:obj];        
 }
 
 + (NSOperation *)putPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel {
@@ -136,7 +136,7 @@ static NSMutableDictionary *attributes;
 
 + (NSOperation *)deletePath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel object:(id)obj {
     NSMutableDictionary *opts = [self mergedOptions:options];
-    return [HTTPRiotRequestOperation requestWithMethod:HRRequestMethodDelete path:path options:opts target:target selector:sel object:obj];        
+    return [HRRequestOperation requestWithMethod:HRRequestMethodDelete path:path options:opts target:target selector:sel object:obj];        
 }
 
 + (NSOperation *)deletePath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel {

@@ -1,5 +1,5 @@
 //
-//  HTTPRiotFormatterProtocol.h
+//  HRFormatterProtocol.h
 //  HTTPRiot
 //
 //  Created by Justin Palmer on 2/8/09.
@@ -7,7 +7,7 @@
 //
 #import <Foundation/Foundation.h>
 
-@protocol HTTPRiotFormatterProtocol 
+@protocol HRFormatterProtocol 
 + (NSString *)extension;
 + (NSString *)mimeType;
 + (id)decode:(NSData *)data;

@@ -1,12 +1,12 @@
 //
-//  HTTPRiotRestModel.h
+//  HRRestModel.h
 //  HTTPRiot
 //
 //  Created by Justin Palmer on 1/28/09.
 //  Copyright 2009 Alternateidea. All rights reserved.
 //
 #import <Foundation/Foundation.h>
-#import "HTTPRiotConstants.h"
+#import "HRConstants.h"
 /**
  * You can either subclass this class or use it directly to make requests.
  * It's recommended that you subclass it and setup default properties in your 
@@ -36,7 +36,7 @@
  * Each subclass has its own set of unique properties and these properties <em>are not</em>
  * inherited by any additional subclasses.
  */
-@interface HTTPRiotRestModel : NSObject {
+@interface HRRestModel : NSObject {
 
 }
 
@@ -112,12 +112,12 @@
  * The format used to decode and encode request and responses.
  * Supported formats are JSON and XML.
  */
-+ (HRFormat)format;
++ (HRDataFormat)format;
 
 /**
  * Set the format used to decode and encode request and responses.
  */
-+ (void)setFormat:(HRFormat)format;
++ (void)setFormat:(HRDataFormat)format;
 //@}
 
 /** 

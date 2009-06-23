@@ -54,24 +54,24 @@ HTTPRiot was inspired by John Nunemaker's excellent
 
 <h4>Send a GET request</h4>
 @code
-[HTTPRiotRestModel getPath:@"/person.json" target:self selector:@selector(personLoaded:)];
+[HRRestModel getPath:@"/person.json" target:self selector:@selector(personLoaded:)];
 @endcode
 
 <h4>Send a POST request</h4>
 @code
 NSDictionary *opts = [NSDictionary dictionaroyWithObject:[person JSONRepresentation] forKey:@"body"];
-[HTTPRiotRestModel postPath:@"/person" withOptions:opts target:self selector:@selector(personCreated:)];
+[HRRestModel postPath:@"/person" withOptions:opts target:self selector:@selector(personCreated:)];
 @endcode
 
 <h4>Send a PUT request</h4>
 @code
 NSDictionary *opts = [NSDictionary dictionaroyWithObject:[updatedPerson JSONRepresentation] forKey:@"body"];
-[HTTPRiotRestModel postPath:@"/person" withOptions:opts target:self selector:@selector(personUpdated:)];
+[HRRestModel postPath:@"/person" withOptions:opts target:self selector:@selector(personUpdated:)];
 @endcode
 
 <h4>Send a DELETE request</h4>
 @code
-[HTTPRiotRestModel deletePath:@"/person/1" target:self selector:@selector(personDeleted:)];
+[HRRestModel deletePath:@"/person/1" target:self selector:@selector(personDeleted:)];
 @endcode
                             
 <h3>Posting Form Data</h3>
@@ -80,14 +80,14 @@ request <tt>HTTPRiot</tt> will treat this as form encoded data.
 
 @code
 NSDictionary *formParams = [NSDictionary dictionaryWithObjectsAndKeys:@"bob", @"name", @"01/02/03", @"birthday", nil];
-[HTTPRiotRestModel postPath:@"http://localhost:1234/some/form/submission" 
+[HRRestModel postPath:@"http://localhost:1234/some/form/submission" 
                     options:[NSDictionary dictionaryWithObject:formParams forKey:@"params"] 
                       target:self
                     selector:@selector(formPosted:)];
 @endcode
 
 <h3>Creating Your Own Models</h3>
-The preferred way to use HTTPRiot is to subclass HTTPRiotRestModel and make your own models.
+The preferred way to use HTTPRiot is to subclass HRRestModel and make your own models.
 From these models you can set "class options" that will be used in every request sent from 
 a particular model.
 
@@ -136,5 +136,5 @@ If you want to distribute HTTPRiot.framework with your application you'll need t
 */
 
 #import <Foundation/Foundation.h>
-#import "HTTPRiotRequestOperation.h"
-#import "HTTPRiotRestModel.h"
+#import "HRRequestOperation.h"
+#import "HRRestModel.h"
