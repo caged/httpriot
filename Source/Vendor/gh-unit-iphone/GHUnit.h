@@ -28,15 +28,14 @@
 //
 
 #import "GHTestCase.h"
+#import "GHUITestCase.h"
 #import "GHAsyncTestCase.h"
 #import "GHTestSuite.h"
 #import "GHTestMacros.h"
 #import "GHTestRunner.h"
 
-// Mocking
-#import "GHMockNSURLConnection.h"
-#import "GHMockNSHTTPURLResponse.h"
-
-#import "GHUNSObject+Swizzle.h"
-#import "GHNSLocale+Mock.h"
-
+#ifdef DEBUG
+#define GHUDebug(fmt, ...) NSLog(fmt, ##__VA_ARGS__)
+#else
+#define GHUDebug(fmt, ...) do {} while(0)
+#endif

@@ -60,7 +60,11 @@ static NSOperationQueue *HROperationQueue;
         formatter = [[self formatterFromFormat] retain];
         target = tgt;
         didEndSelector = sel;
-        obj = [aobj retain];
+        
+        if(aobj && [aobj isMemberOfClass:[NSString class]])
+            obj = [aobj copy];
+        else
+            obj = [aobj retain];
         
         if(!HROperationQueue)
             HROperationQueue = [[NSOperationQueue alloc] init];
@@ -137,6 +141,7 @@ static NSOperationQueue *HROperationQueue;
     if(method == kHTTPRiotMethodGet || method == kHTTPRiotMethodDelete)
     {
         NSString *urlString = [[composedURL absoluteString] stringByAppendingString:queryString];
+        NSLog(@"URL:%@", urlString);
         NSURL *url = [NSURL URLWithString:urlString];
         [request setURL:url];
         [request setValue:[[self formatter] mimeType] forHTTPHeaderField:@"Content-Type"];  
@@ -217,12 +222,12 @@ static NSOperationQueue *HROperationQueue;
     if(connectionError)
     {        
         error = connectionError;
-        
         if([target respondsToSelector:didEndSelector])      
         {
-            info = [NSDictionary dictionaryWithObject:error forKey:@"error"];
+            info = [[[NSDictionary alloc] initWithObjectsAndKeys:error, @"error", nil] autorelease];            
             [target performSelectorOnMainThread:didEndSelector withObject:info waitUntilDone:YES];
             
+            [pool drain];
             return;
         }
     }
@@ -235,18 +240,18 @@ static NSOperationQueue *HROperationQueue;
     } 
 
     if([body length] > 0)
-        results = [[self formatter] decode:body];
-    
+    {
+        results = [[self formatter] decode:body];        
+    }
     
     if([target respondsToSelector:didEndSelector])
     {   
-        NSDictionary *test = [NSDictionary dictionaryWithObject:obj forKey:@"obj"];
         info = [NSDictionary dictionaryWithObjectsAndKeys:results, @"results", 
                             obj, @"object",
                             response, @"response", 
                             error, @"error", 
                             nil];
-
+        
         [target performSelectorOnMainThread:didEndSelector withObject:info waitUntilDone:YES];
     }
     
@@ -254,20 +259,6 @@ static NSOperationQueue *HROperationQueue;
 }
 
 #pragma mark - Class Methods
-+ (NSOperation *)requestWithMethod:(kHTTPRiotMethod)method
-                        path:(NSString*)urlPath
-                     options:(NSDictionary*)requestOptions
-                     target:(id)target
-                     selector:(SEL)sel
-{
-    return [self requestWithMethod:method
-                              path:urlPath
-                           options:requestOptions
-                            target:target
-                          selector:sel
-                            object:nil];
-}
-
 + (NSOperation *)requestWithMethod:(kHTTPRiotMethod)method
                         path:(NSString*)urlPath
                      options:(NSDictionary*)requestOptions

@@ -74,18 +74,13 @@
 	id<GHTestRunnerDelegate> delegate_; // weak
 	
 	// If YES, will allow exceptions to be raised (so you can trigger the debugger)
-	BOOL raiseExceptions_;
-	
-	// If yes, delegate calls will occur on the main thread
-	// Defaults to YES.
-	BOOL delegateOnMainThread_;
+	BOOL raiseExceptions_;	
 
 }
 
 @property (retain) id<GHTest> test;
 @property (assign) id<GHTestRunnerDelegate> delegate;
 @property (assign) BOOL raiseExceptions;
-@property (assign) BOOL delegateOnMainThread;
 @property (readonly) GHTestStats stats;
 
 /*!
@@ -109,6 +104,14 @@
 + (GHTestRunner *)runnerForSuite:(GHTestSuite *)suite;
 
 /*!
+ Create runner for class and method.
+ @param testClassName
+ @param methodName
+ @result Runner
+ */
++ (GHTestRunner *)runnerForTestClassName:(NSString *)testClassName methodName:(NSString *)methodName;
+
+/*!
  Get the runner from the environment.
  If the TEST env is set, then we will only run that test case or test method.
  */
@@ -117,14 +120,15 @@
 /*!
  Run the test runner. Usually called from the test main.
  Reads the TEST environment variable and filters on that; or all tests are run.
- @result Return value, 0 is success, otherwise the failure count
+ @result 0 is success, otherwise the failure count
  */
 + (int)run;
 
 /*!
  Start the test runner.
+ @result 0 is success, otherwise the failure count
  */
-- (void)run;
+- (int)run;
 
 @end
 

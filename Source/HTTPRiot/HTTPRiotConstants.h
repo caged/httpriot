@@ -29,3 +29,8 @@ typedef enum {
 } kHTTPRiotFormat;
 
 #define HTTPRiotErrorDomain @"com.alternateidea.HTTPRiot.ErroDomain"
+#ifdef DEBUG
+#define HTTPRIOT_DEBUG_REQUESTS 1
+#else
+#define HTTPRIOT_DEBUG_REQUESTS 0
+#endif

@@ -511,7 +511,7 @@ h1 {
 
 h2 {
   padding: 5px 0;
-  font-size: 150%;
+  font-size: 120%;
   border-bottom: 1px solid #ccc;
   margin-bottom: 10px;
 }
@@ -528,6 +528,7 @@ h3 {
 
 div.groupHeader {
   font-size: 150%;
+  margin-top: 25px;
 }
 
 dt b {

@@ -22,6 +22,8 @@
     self = [super init];
     if(self)
     {
+        // For this sample app we're using HTTPRiotRestModel directly, but you can
+        // subclass it if you want your models to have unique attributes.
         [HTTPRiotRestModel setBaseURI:[NSURL URLWithString:@"http://localhost:4567"]];
         
         self.people = [[NSMutableArray alloc] init];
@@ -64,11 +66,12 @@
 {
     NSMutableDictionary *person = [[arrayController selectedObjects] objectAtIndex:0];
     NSInteger personID = [[person valueForKey:@"id"] intValue];
-    NSString *path = [NSString stringWithFormat:@"/person/%i", personID];
+    NSString *path = [NSString stringWithFormat:@"/person/delete/%i", personID];
     
     [HTTPRiotRestModel deletePath:path
-                        target:self
-                      selector:@selector(personRemoved:)];
+                           target:self
+                         selector:@selector(personRemoved:)
+                           object:[NSNumber numberWithInt:[arrayController selectionIndex]]];
 }
 
 - (void)objectDidEndEditing:(id)editor
@@ -111,11 +114,11 @@
 - (void)peopleLoaded:(NSDictionary *)info
 {
     NSError *error = [info valueForKey:@"error"];
-    id obj = [info valueForKey:@"object"];
     
     if(error == nil)
     {
-        NSURLResponse *response = [info valueForKey:@"response"];
+        NSHTTPURLResponse *response = [info valueForKey:@"response"];
+        NSLog(@"RESPONSE HEADERS:%@", [response allHeaderFields]);
         id results = [info valueForKey:@"results"];
         // Set the people property to the results we got from the server
         [self.people addObjectsFromArray:results];
@@ -149,6 +152,8 @@
     
     if(error == nil)
     {
+        NSHTTPURLResponse *response = [info valueForKey:@"response"];
+        NSLog(@"RESPONSE HEADERS:%@", [response allHeaderFields]);
         NSLog(@"RESULTS:%@", results);
     }
 }
@@ -157,11 +162,18 @@
 {
     NSError *error = [info valueForKey:@"error"];
     id results = [info valueForKey:@"results"];
-    
+
     if(error == nil)
     {
+        NSHTTPURLResponse *response = [info valueForKey:@"response"];
+        NSLog(@"RESPONSE HEADERS:%@", [response allHeaderFields]);
+        
         NSInteger idx = [arrayController selectionIndex];
         [arrayController removeObjectAtArrangedObjectIndex:idx];
+    }
+    else
+    {
+        [NSApp presentError:error];
     }
 }
 

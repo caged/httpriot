@@ -28,27 +28,6 @@
     GHAssertEquals([HRTestPerson4 format], kHTTPRiotXMLFormat, nil);
 }
 
-- (void)testShouldProvideErrorIfRequestFails
-{
-    NSError *error = nil;
-    [HRTestPerson getPath:@"/invalidpath" withOptions:nil error:&error];
-    GHAssertEquals(404, [error code], nil);
-}
-
-- (void) testShouldReturnNilIfGivenInvalidPathAndErrorWasntProvided 
-{
-    id person = [HRTestPerson getPath:@"/another-invalid-path" withOptions:nil error:nil];
-    GHAssertNil(person, nil);
-}
-
-- (void)testShouldUseParamsWhenProvided
-{
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"5",@"limit", @"foo", @"bar", nil];
-    NSDictionary *opts = [NSDictionary dictionaryWithObject:params forKey:@"params"];
-    NSArray *people = [HRTestPerson getPath:@"/search" withOptions:opts error:nil];
-    GHAssertTrue([people count] <= 4, nil);
-}
-
 - (void)testShouldSetDefaultHeaders
 {
     NSDictionary *headers = [HRTestPerson3 headers];

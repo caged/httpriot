@@ -9,8 +9,8 @@ HTTPRIOT_PLIST = File.join(HTTPRIOT_ROOT, 'Info.plist')
 
 desc 'Run Clang'
 task :analyze do
-  system("xcodebuild clean -alltargets")
-  system("scan-build -k -V xcodebuild -target #{File.basename(Project.project_dir)} -configuration #{Project.active_config}")
+  FileUtils.rm_r(Project.build_dir)
+  system("scan-build -k -V xcodebuild -target libhttpriot -configuration #{Project.active_config} -sdk iphonesimulator3.0")
 end
 
 namespace :osx do
@@ -178,7 +178,7 @@ class SDKPackage < Rake::PackageTask
     @relative_user_dir = "usr/local"
     @sdks = %w(iphoneos iphonesimulator)
     @configuration = 'Release'
-    @target = "2.2"
+    @target = "2.2.1"
   end
   
   def generate_tasks

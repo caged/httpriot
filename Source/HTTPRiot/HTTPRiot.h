@@ -93,36 +93,8 @@ a particular model.
 
 @include Tweet.m
 
-<h3>Using Threads</h3>
-HTTPRiot uses synchronous requests.  This means, that in the vast majority of cases you should run 
-these requests in a seperate thread.  Apple has made this really easy.
-
-@code
--(void)applicationDidFinishLaunching
-{
-    [NSThread detachNewThreadSelector:@selector(getSomeResource) toTarget:self withObject:nil];
-}
-
--(void)getSomeResource
-{
-    NSAutoreleasePool *pool = [NSAutoreleasePool new];
-    person = [HTTPRiotRestModel getPath:@"/some/person.json" 
-                                options:[NSDictionary dictionaryWithObject:@"json" forKey:@"format"] 
-                                  error:nil];
-    [pool release];
-    
-    [self performSelectorOnMainThread:@selector(updateUI) withObject:nil waitUntilDone:YES];
-}
-
--(void)updateUI
-{
-    [self updateGUIWithPerson:person];
-}
-@endcode
-
 <h3>Handling Errors</h3>
-You can handle errors in your requests by supplying an error object to the methods of HTTPRiotRestModel.
-The errors will return useful information:
+If any errors are present, the error will be included in the info dictionary passed to the callback.
 @li <strong><tt>code</tt></strong> - The status code returned by the server.
 @li <strong><tt>localizedFailureReason</tt></strong> - The reason the request failed.
 @li <strong><tt>localizedDescription</tt></strong> - Description of the failure.
@@ -164,5 +136,5 @@ If you want to distribute HTTPRiot.framework with your application you'll need t
 */
 
 #import <Foundation/Foundation.h>
-#import <HTTPRiot/HTTPRiotRequestOperation.h>
-#import <HTTPRiot/HTTPRiotRestModel.h>
+#import "HTTPRiotRequestOperation.h"
+#import "HTTPRiotRestModel.h"

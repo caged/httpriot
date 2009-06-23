@@ -8,7 +8,6 @@
 
 
 #import <HTTPRiot/HTTPRiot.h>
-#import <OCMock/OCMock.h>
 
 #if !TARGET_IPHONE_SIMULATOR
 #import <GHUnit/GHUnit.h>

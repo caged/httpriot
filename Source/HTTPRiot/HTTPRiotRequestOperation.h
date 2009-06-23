@@ -69,14 +69,6 @@
                              path:(NSString*)urlPath
                           options:(NSDictionary*)requestOptions
                            target:(id)target
-                         selector:(SEL)sel;
-/**
- * Returns an NSDictionary, NSArray decoded from the server
- */
-+ (NSOperation*)requestWithMethod:(kHTTPRiotMethod)method
-                             path:(NSString*)urlPath
-                          options:(NSDictionary*)requestOptions
-                           target:(id)target
                          selector:(SEL)sel
                            object:(id)obj;
 @end

@@ -6,6 +6,6 @@
     NSString *result = (NSString *) CFURLCreateStringByAddingPercentEscapes(
     	NULL, (CFStringRef) self, (CFStringRef) @"%+#", NULL,
     	CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));                                            
-    return result;
+    return [result autorelease];
 }
 @end

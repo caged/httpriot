@@ -19,7 +19,7 @@
 static NSMutableDictionary *attributes;
 
 + (void)initialize
-{
+{    
     if(!attributes)
         attributes = [[NSMutableDictionary dictionary] retain];
 }
@@ -113,7 +113,7 @@ static NSMutableDictionary *attributes;
 + (NSOperation *)getPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel
 {
     NSMutableDictionary *opts = [self mergedOptions:options];
-    return [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet path:path options:opts target:target selector:sel];        
+    return [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet path:path options:opts target:target selector:sel object:nil];        
 }
 
 + (NSOperation *)getPath:(NSString *)path target:(id)target selector:(SEL)sel object:(id)obj
@@ -129,34 +129,54 @@ static NSMutableDictionary *attributes;
 + (NSOperation *)postPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel
 {
     NSMutableDictionary *opts = [self mergedOptions:options];
-    return [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodPost path:path options:opts target:target selector:sel];        
+    return [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodPost path:path options:opts target:target selector:sel object:nil];        
 }
 
 + (NSOperation *)postPath:(NSString *)path target:(id)target selector:(SEL)sel
 {
-    return [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodPost path:path options:[self mergedOptions:nil] target:target selector:sel];        
+    return [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodPost path:path options:[self mergedOptions:nil] target:target selector:sel object:nil];        
+}
+
++ (NSOperation *)putPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel object:(id)obj
+{
+    NSMutableDictionary *opts = [self mergedOptions:options];
+    return [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodPut path:path options:opts target:target selector:sel object:obj];        
 }
 
 + (NSOperation *)putPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel
 {
-    NSMutableDictionary *opts = [self mergedOptions:options];
-    return [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodPut path:path options:opts target:target selector:sel];        
+    return [self putPath:path withOptions:options target:target selector:sel object:nil];
+}
+
++ (NSOperation *)putPath:(NSString *)path target:(id)target selector:(SEL)sel object:(id)obj
+{
+    return [self putPath:path withOptions:nil target:target selector:sel object:obj];        
 }
 
 + (NSOperation *)putPath:(NSString *)path target:(id)target selector:(SEL)sel
 {
-    return [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodPut path:path options:[self mergedOptions:nil] target:target selector:sel];        
+    return [self putPath:path target:target selector:sel object:nil];        
+}
+
++ (NSOperation *)deletePath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel object:(id)obj
+{
+    NSMutableDictionary *opts = [self mergedOptions:options];
+    return [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodDelete path:path options:opts target:target selector:sel object:obj];        
 }
 
 + (NSOperation *)deletePath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel
 {
-    NSMutableDictionary *opts = [self mergedOptions:options];
-    return [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodDelete path:path options:opts target:target selector:sel];        
+    return [self deletePath:path withOptions:options target:target selector:sel object:nil];        
+}
+
++ (NSOperation *)deletePath:(NSString *)path target:(id)target selector:(SEL)sel object:(id)obj
+{
+    return [self deletePath:path withOptions:nil target:target selector:sel object:nil];        
 }
 
 + (NSOperation *)deletePath:(NSString *)path target:(id)target selector:(SEL)sel
 {
-    return [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodDelete path:path options:[self mergedOptions:nil] target:target selector:sel];        
+    return [self deletePath:path target:target selector:sel object:nil];
 }
 
 #pragma mark - Private Methods

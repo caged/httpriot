@@ -164,10 +164,12 @@ post '/person/form-data' do
   if p = Person.create(params)
     status 201
   end
+  
+  redirect "/people"
 end
  
 #DELETE /post/1 deletes post
-delete '/person/:id' do
+delete '/person/delete/:id' do
   person = Person.find("id = ?", params[:id])
   if person.destroy
     status 200 

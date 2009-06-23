@@ -47,7 +47,7 @@
 #endif
 
 
-#if !TARGET_IPHONE_SIMULATOR
+#if TARGET_OS_IPHONE
 enum {
     // Tidy
     NSXMLDocumentTidyHTML = 1 << 9,

@@ -206,12 +206,23 @@
  *        @li <tt>results</tt>: The decoded data recieved from the server
  *        @li <tt>response</tt>: The NSHTTPURLResponse object.
  *        @li <tt>error</tt>: The error if present or nil. 
+ * @param obj An object to pass with the info dictionary to the callback
  *
+ */
++ (NSOperation *)putPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel object:(id)obj;
+
+/**
+ * @see putPath:withOptions:target:selector:object
  */
 + (NSOperation *)putPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel;
 
 /**
- * @see putPath:withOptions:target:selector:
+ * @see putPath:withOptions:target:selector:object
+ */
++ (NSOperation *)putPath:(NSString *)path target:(id)target selector:(SEL)sel object:(id)obj;
+
+/**
+ * @see putPath:withOptions:target:selector:object
  */
 + (NSOperation *)putPath:(NSString *)path target:(id)target selector:(SEL)sel;
 
@@ -226,9 +237,20 @@
  *        @li <tt>results</tt>: The decoded data recieved from the server
  *        @li <tt>response</tt>: The NSHTTPURLResponse object.
  *        @li <tt>error</tt>: The error if present or nil. 
+ * @param obj An object to pass with the info dictionary to the callback
  *
  */
++ (NSOperation *)deletePath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel object:(id)obj;
+
+/**
+ * @see deletePath:withOptions:target:selector:object
+ */
 + (NSOperation *)deletePath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel;
+
+/**
+ * @see deletePath:withOptions:target:selector:object
+ */
++ (NSOperation *)deletePath:(NSString *)path target:(id)target selector:(SEL)sel object:(id)obj;
 
 /**
  * @see deletePath:withOptions:target:selector
