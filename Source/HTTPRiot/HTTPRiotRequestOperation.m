@@ -28,16 +28,13 @@ static NSOperationQueue *HROperationQueue;
 @end
 
 @implementation HTTPRiotRequestOperation
-
 @synthesize timeout;
 @synthesize httpMethod;
 @synthesize path;
 @synthesize options;
 @synthesize formatter;
 
-
-- (void)dealloc
-{
+- (void)dealloc {
     [obj release];
     [path release];
     [options release];
@@ -50,10 +47,9 @@ static NSOperationQueue *HROperationQueue;
              options:(NSDictionary*)requestOptions
              target:(id)tgt
              selector:(SEL)sel
-             object:(id)aobj
-{
-    if(self = [super init])
-    {
+             object:(id)aobj {
+                 
+    if(self = [super init]) {
         httpMethod = method;
         path = [urlPath copy];
         options = [requestOptions retain];
@@ -77,8 +73,8 @@ static NSOperationQueue *HROperationQueue;
 {
     NSNumber *format = [[self options] objectForKey:@"format"];
     id theFormatter = nil;
-    switch([format intValue])
-    {
+    
+    switch([format intValue]) {
         case kHTTPRiotJSONFormat:
             theFormatter = [HTTPRiotFormatJSON class];
         break;
@@ -97,21 +93,18 @@ static NSOperationQueue *HROperationQueue;
     return theFormatter;
 }
 
-- (void)setDefaultHeadersForRequest:(NSMutableURLRequest *)request
-{
+- (void)setDefaultHeadersForRequest:(NSMutableURLRequest *)request {
     NSDictionary *headers = [[self options] valueForKey:@"headers"];
     if(headers)
         [request setAllHTTPHeaderFields:headers];
 }
 
-- (void)setAuthHeadersForRequest:(NSMutableURLRequest *)request
-{
+- (void)setAuthHeadersForRequest:(NSMutableURLRequest *)request {
     NSDictionary *authDict = [options valueForKey:@"basicAuth"];
     NSString *username = [authDict valueForKey:@"username"];
     NSString *password = [authDict valueForKey:@"password"];
 
-    if(username || password)
-    {
+    if(username || password) {
         username = [username stringByPreparingForURL];
         password = [password stringByPreparingForURL];
         
@@ -121,11 +114,9 @@ static NSOperationQueue *HROperationQueue;
         NSString *basicHeader = [NSString stringWithFormat:@"Basic %@", encodedUserPass];
         [request setValue:basicHeader forHTTPHeaderField:@"Authorization"];
     }
-    
 }
 
-- (NSMutableURLRequest *)configuredRequest
-{
+- (NSMutableURLRequest *)configuredRequest {
     kHTTPRiotMethod method = [self httpMethod];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
@@ -138,8 +129,7 @@ static NSOperationQueue *HROperationQueue;
     id body = [[self options] valueForKey:@"body"];
     NSString *queryString = [[self class] buildQueryStringFromParams:params];
     
-    if(method == kHTTPRiotMethodGet || method == kHTTPRiotMethodDelete)
-    {
+    if(method == kHTTPRiotMethodGet || method == kHTTPRiotMethodDelete) {
         NSString *urlString = [[composedURL absoluteString] stringByAppendingString:queryString];
         NSLog(@"URL:%@", urlString);
         NSURL *url = [NSURL URLWithString:urlString];
@@ -151,18 +141,16 @@ static NSOperationQueue *HROperationQueue;
             [request setHTTPMethod:@"GET"];
         else
             [request setHTTPMethod:@"DELETE"];
-    } 
-    else if(method == kHTTPRiotMethodPost || kHTTPRiotMethodPost)
-    {
+            
+    } else if(method == kHTTPRiotMethodPost || kHTTPRiotMethodPost) {
+        
         NSData *bodyData = nil;
-        if(params && [params isKindOfClass:[NSDictionary class]] && body == nil)
-        {   
+        
+        if(params && [params isKindOfClass:[NSDictionary class]] && body == nil) {   
             bodyData = [[params toQueryString] dataUsingEncoding:NSUTF8StringEncoding];
             [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
             [request setHTTPBody:bodyData];
-        }
-        else
-        {            
+        } else {            
             if([body isKindOfClass:[NSDictionary class]])
                 bodyData = [[body toQueryString] dataUsingEncoding:NSUTF8StringEncoding];
             else if([body isKindOfClass:[NSString class]])
@@ -189,8 +177,7 @@ static NSOperationQueue *HROperationQueue;
     return request;
 }
 
-- (NSURL *)composedURI
-{
+- (NSURL *)composedURI {
     NSURL *tmpURI = [NSURL URLWithString:path];
     NSURL *baseURI = [options objectForKey:@"baseURI"];
         
@@ -203,8 +190,7 @@ static NSOperationQueue *HROperationQueue;
     return [NSURL URLWithString:[[baseURI absoluteString] stringByAppendingPathComponent:path]];
 }
 
-- (void)main
-{
+- (void)main {
     NSAutoreleasePool *pool = [NSAutoreleasePool new];
     
     NSError *error = nil, *responseError = nil;
@@ -219,11 +205,9 @@ static NSOperationQueue *HROperationQueue;
                                  returningResponse:&response
                                              error:&connectionError];
     
-    if(connectionError)
-    {        
+    if(connectionError) {        
         error = connectionError;
-        if([target respondsToSelector:didEndSelector])      
-        {
+        if([target respondsToSelector:didEndSelector]) {
             info = [[[NSDictionary alloc] initWithObjectsAndKeys:error, @"error", nil] autorelease];            
             [target performSelectorOnMainThread:didEndSelector withObject:info waitUntilDone:YES];
             
@@ -234,18 +218,15 @@ static NSOperationQueue *HROperationQueue;
     
     [[self class] handleResponse:response error:&responseError];
     
-    if(responseError && connectionError == nil)
-    {
+    if(responseError && connectionError == nil) {
         error = responseError;
     } 
 
-    if([body length] > 0)
-    {
+    if([body length] > 0) {
         results = [[self formatter] decode:body];        
     }
     
-    if([target respondsToSelector:didEndSelector])
-    {   
+    if([target respondsToSelector:didEndSelector]) {   
         info = [NSDictionary dictionaryWithObjectsAndKeys:results, @"results", 
                             obj, @"object",
                             response, @"response", 
@@ -264,8 +245,8 @@ static NSOperationQueue *HROperationQueue;
                      options:(NSDictionary*)requestOptions
                      target:(id)target
                      selector:(SEL)sel
-                     object:(id)obj
-{    
+                     object:(id)obj {
+                             
     id instance = [[self alloc] initWithMethod:method
                                           path:urlPath
                                        options:requestOptions
@@ -277,8 +258,7 @@ static NSOperationQueue *HROperationQueue;
     return [instance autorelease];
 }
 
-+ (id)handleResponse:(NSHTTPURLResponse *)response error:(NSError **)error
-{
++ (id)handleResponse:(NSHTTPURLResponse *)response error:(NSError **)error {
     NSInteger code = [response statusCode];
     NSUInteger ucode = [[NSNumber numberWithInt:code] unsignedIntValue];
     NSRange okRange = NSMakeRange(200, 200);
@@ -326,8 +306,7 @@ static NSOperationQueue *HROperationQueue;
         errorDescription = @"Unknown status code";
     }
     
-    if(error != nil)
-    {
+    if(error != nil) {
         NSDictionary *userInfo = [[[NSDictionary dictionaryWithObjectsAndKeys:
                                    errorReason, NSLocalizedFailureReasonErrorKey,
                                    errorDescription, NSLocalizedDescriptionKey, 
@@ -341,8 +320,7 @@ static NSOperationQueue *HROperationQueue;
 
 + (NSString *)buildQueryStringFromParams:(NSDictionary *)theParams
 {
-    if(theParams)
-    {
+    if(theParams) {
          if([theParams count] > 0)
              return [NSString stringWithFormat:@"?%@", [theParams toQueryString]];
     }
