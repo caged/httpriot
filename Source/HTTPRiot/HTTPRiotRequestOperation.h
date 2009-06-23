@@ -15,7 +15,7 @@
  */
 @interface HTTPRiotRequestOperation : NSOperation {
     float timeout;
-    kHTTPRiotMethod httpMethod;
+    HRRequestMethod httpMethod;
     NSString *path;
     NSDictionary *options;
     id formatter;
@@ -39,9 +39,9 @@
 
 /// The REST method to use when performing a request
 /**
- * This defaults to kHTTPRiotMethodGet.  Valid options are ::kHTTPRiotMethod.
+ * This defaults to HRRequestMethodGet.  Valid options are ::HRRequestMethod.
  */
-@property (nonatomic, readonly, assign) kHTTPRiotMethod httpMethod;
+@property (nonatomic, readonly, assign) HRRequestMethod httpMethod;
 
 /// The relative path or url string used in a request
 /**
@@ -65,7 +65,7 @@
 /**
  * Returns an NSDictionary, NSArray decoded from the server
  */
-+ (NSOperation*)requestWithMethod:(kHTTPRiotMethod)method
++ (NSOperation*)requestWithMethod:(HRRequestMethod)method
                              path:(NSString*)urlPath
                           options:(NSDictionary*)requestOptions
                            target:(id)target

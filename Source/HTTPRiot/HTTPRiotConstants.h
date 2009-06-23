@@ -7,26 +7,28 @@
  * @see HTTPRiotRequestOperation
  */
 typedef enum {
+    HRRequestMethodUnknown = -1,
     /// GET
-    kHTTPRiotMethodGet = 1,
+    HRRequestMethodGet,
     /// POST
-    kHTTPRiotMethodPost,
+    HRRequestMethodPost,
     /// PUT
-    kHTTPRiotMethodPut,
+    HRRequestMethodPut,
     /// DELETE
-    kHTTPRiotMethodDelete
-} kHTTPRiotMethod;
+    HRRequestMethodDelete
+} HRRequestMethod;
 
 /**
- Supported formats/formatters.
+ Supported formats.
  @see HTTPRiotRestModel#setFormat
  */
 typedef enum {
+    HRFormatUnknown = -1,
     /// JSON Format
-    kHTTPRiotJSONFormat = 1,
+    HRFormatJSON,
     /// XML Format
-    kHTTPRiotXMLFormat
-} kHTTPRiotFormat;
+    HRFormatXML
+} HRFormat;
 
 #define HTTPRiotErrorDomain @"com.alternateidea.HTTPRiot.ErroDomain"
 #ifdef DEBUG

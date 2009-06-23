@@ -19,13 +19,13 @@
 
 - (void)testDefaultFormatIsJSON
 {
-    GHAssertEquals([HRTestPerson format], kHTTPRiotJSONFormat, nil);
+    GHAssertEquals([HRTestPerson format], HRFormatJSON, nil);
 }
 
 - (void) testShouldSetFormat 
 {
-    [HRTestPerson4 setFormat:kHTTPRiotXMLFormat];
-    GHAssertEquals([HRTestPerson4 format], kHTTPRiotXMLFormat, nil);
+    [HRTestPerson4 setFormat:HRFormatXML];
+    GHAssertEquals([HRTestPerson4 format], HRFormatXML, nil);
 }
 
 - (void)testShouldSetDefaultHeaders
@@ -78,7 +78,7 @@
 // - (void) testShouldDecodeJSON 
 // {
 //     NSError *error = nil;
-//     [HRTestPerson4 setFormat:kHTTPRiotJSONFormat];
+//     [HRTestPerson4 setFormat:HRFormatJSON];
 //     id people = [HRTestPerson getPath:@"/people" withOptions:nil error:&error];
 //     NSArray *person = [people valueForKeyPath:@"people.person"];
 //     GHAssertTrue([person isKindOfClass:[NSArray class]], nil);

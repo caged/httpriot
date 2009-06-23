@@ -42,7 +42,7 @@ static NSOperationQueue *HROperationQueue;
     [super dealloc];
 }
 
-- (id)initWithMethod:(kHTTPRiotMethod)method
+- (id)initWithMethod:(HRRequestMethod)method
                 path:(NSString*)urlPath
              options:(NSDictionary*)requestOptions
              target:(id)tgt
@@ -75,10 +75,10 @@ static NSOperationQueue *HROperationQueue;
     id theFormatter = nil;
     
     switch([format intValue]) {
-        case kHTTPRiotJSONFormat:
+        case HRFormatJSON:
             theFormatter = [HTTPRiotFormatJSON class];
         break;
-        case kHTTPRiotXMLFormat:
+        case HRFormatXML:
             theFormatter = [HTTPRiotFormatXML class];
         break;
         default:
@@ -117,7 +117,7 @@ static NSOperationQueue *HROperationQueue;
 }
 
 - (NSMutableURLRequest *)configuredRequest {
-    kHTTPRiotMethod method = [self httpMethod];
+    HRRequestMethod method = [self httpMethod];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
     [request setTimeoutInterval:30.0];
@@ -129,7 +129,7 @@ static NSOperationQueue *HROperationQueue;
     id body = [[self options] valueForKey:@"body"];
     NSString *queryString = [[self class] buildQueryStringFromParams:params];
     
-    if(method == kHTTPRiotMethodGet || method == kHTTPRiotMethodDelete) {
+    if(method == HRRequestMethodGet || method == HRRequestMethodDelete) {
         NSString *urlString = [[composedURL absoluteString] stringByAppendingString:queryString];
         NSLog(@"URL:%@", urlString);
         NSURL *url = [NSURL URLWithString:urlString];
@@ -137,12 +137,12 @@ static NSOperationQueue *HROperationQueue;
         [request setValue:[[self formatter] mimeType] forHTTPHeaderField:@"Content-Type"];  
         [request addValue:[[self formatter] mimeType] forHTTPHeaderField:@"Accept"];
         
-        if(method == kHTTPRiotMethodGet)
+        if(method == HRRequestMethodGet)
             [request setHTTPMethod:@"GET"];
         else
             [request setHTTPMethod:@"DELETE"];
             
-    } else if(method == kHTTPRiotMethodPost || kHTTPRiotMethodPost) {
+    } else if(method == HRRequestMethodPost || HRRequestMethodPost) {
         
         NSData *bodyData = nil;
         
@@ -167,7 +167,7 @@ static NSOperationQueue *HROperationQueue;
         
         [request setURL:composedURL];
         
-        if(method == kHTTPRiotMethodPost)
+        if(method == HRRequestMethodPost)
             [request setHTTPMethod:@"POST"];
         else
             [request setHTTPMethod:@"PUT"];
@@ -240,7 +240,7 @@ static NSOperationQueue *HROperationQueue;
 }
 
 #pragma mark - Class Methods
-+ (NSOperation *)requestWithMethod:(kHTTPRiotMethod)method
++ (NSOperation *)requestWithMethod:(HRRequestMethod)method
                         path:(NSString*)urlPath
                      options:(NSDictionary*)requestOptions
                      target:(id)target

@@ -112,12 +112,12 @@
  * The format used to decode and encode request and responses.
  * Supported formats are JSON and XML.
  */
-+ (kHTTPRiotFormat)format;
++ (HRFormat)format;
 
 /**
  * Set the format used to decode and encode request and responses.
  */
-+ (void)setFormat:(kHTTPRiotFormat)format;
++ (void)setFormat:(HRFormat)format;
 //@}
 
 /** 

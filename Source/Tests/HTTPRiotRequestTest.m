@@ -20,7 +20,7 @@ static NSDictionary *defaultOptions;
 // - (void) testShouldThrowExceptionIfHostIsNotGiven 
 // {
 //     NSError *error = nil;
-//     GHAssertThrows([HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet path:@"/status/400" options:defaultOptions error:&error], nil);
+//     GHAssertThrows([HTTPRiotRequestOperation requestWithMethod:HRRequestMethodGet path:@"/status/400" options:defaultOptions error:&error], nil);
 // }
 // 
 // - (void) testShouldHandleResponse 
@@ -28,47 +28,47 @@ static NSDictionary *defaultOptions;
 //     NSString *host = HTTPRiotTestServer;
 //     //BadRequest
 //     NSError *error = nil;
-//     [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/400"] options:defaultOptions error:&error];    
+//     [HTTPRiotRequestOperation requestWithMethod:HRRequestMethodGet path:[host stringByAppendingString:@"/status/400"] options:defaultOptions error:&error];    
 //     GHAssertEquals(400, [error code], nil);
 //     
 //     //ForbiddenAccess
 //     error = nil;
-//     [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/403"] options:defaultOptions error:&error];        
+//     [HTTPRiotRequestOperation requestWithMethod:HRRequestMethodGet path:[host stringByAppendingString:@"/status/403"] options:defaultOptions error:&error];        
 //     GHAssertEquals(403, [error code], nil);
 //     
 //     //ResourceNotFound
 //     error = nil;
-//     [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/404"] options:defaultOptions error:&error];        
+//     [HTTPRiotRequestOperation requestWithMethod:HRRequestMethodGet path:[host stringByAppendingString:@"/status/404"] options:defaultOptions error:&error];        
 //     GHAssertEquals(404, [error code], nil);
 //     
 //     //MethodNotAllowed
 //     error = nil;
-//     [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/405"] options:defaultOptions error:&error];        
+//     [HTTPRiotRequestOperation requestWithMethod:HRRequestMethodGet path:[host stringByAppendingString:@"/status/405"] options:defaultOptions error:&error];        
 //     GHAssertEquals(405, [error code], nil);
 //     
 //     //ResourceConflict
 //     error = nil;
-//     [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/409"] options:defaultOptions error:&error];        
+//     [HTTPRiotRequestOperation requestWithMethod:HRRequestMethodGet path:[host stringByAppendingString:@"/status/409"] options:defaultOptions error:&error];        
 //     GHAssertEquals(409, [error code], nil);
 //     
 //     //ResourceInvalid
 //     error = nil;
-//     [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/422"] options:defaultOptions error:&error];        
+//     [HTTPRiotRequestOperation requestWithMethod:HRRequestMethodGet path:[host stringByAppendingString:@"/status/422"] options:defaultOptions error:&error];        
 //     GHAssertEquals(422, [error code], nil);
 //     
 //     //ClientError
 //     error = nil;
-//     [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/420"] options:defaultOptions error:&error];        
+//     [HTTPRiotRequestOperation requestWithMethod:HRRequestMethodGet path:[host stringByAppendingString:@"/status/420"] options:defaultOptions error:&error];        
 //     GHAssertEquals(420, [error code], nil);
 //     
 //     //ServerError
 //     error = nil;
-//     [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/500"] options:defaultOptions error:&error];        
+//     [HTTPRiotRequestOperation requestWithMethod:HRRequestMethodGet path:[host stringByAppendingString:@"/status/500"] options:defaultOptions error:&error];        
 //     GHAssertEquals(500, [error code], nil);
 //     
 //     //ConnectionError
 //     error = nil;
-//     [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet path:[host stringByAppendingString:@"/status/999"] options:defaultOptions error:&error];        
+//     [HTTPRiotRequestOperation requestWithMethod:HRRequestMethodGet path:[host stringByAppendingString:@"/status/999"] options:defaultOptions error:&error];        
 //     GHAssertEquals(999, [error code], nil);
 // }
 // 
@@ -77,7 +77,7 @@ static NSDictionary *defaultOptions;
 //     NSError *error = nil;
 //     NSString *tserver = [HTTPRiotTestServer stringByAppendingString:@"/foobared-path"];
 //     GHTestLog(@"DL%@", defaultOptions);
-//     [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet
+//     [HTTPRiotRequestOperation requestWithMethod:HRRequestMethodGet
 //                                   path:tserver
 //                                options:defaultOptions
 //                                  error:&error];
@@ -106,7 +106,7 @@ static NSDictionary *defaultOptions;
 //                                         headers, @"headers", nil];                       
 //     [options addEntriesFromDictionary:defaultOptions];
 //     
-//     id person = [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodPost
+//     id person = [HTTPRiotRequestOperation requestWithMethod:HRRequestMethodPost
 //                                               path:[HTTPRiotTestServer stringByAppendingString:@"/person"]
 //                                            options:options
 //                                              error:&error];
@@ -124,7 +124,7 @@ static NSDictionary *defaultOptions;
 //     NSMutableDictionary *options = [NSMutableDictionary dictionaryWithObject:params forKey:@"params"];                       
 //     [options addEntriesFromDictionary:defaultOptions];
 //     
-//     id person = [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodPost
+//     id person = [HTTPRiotRequestOperation requestWithMethod:HRRequestMethodPost
 //                                               path:[HTTPRiotTestServer stringByAppendingString:@"/person/form-data"]
 //                                            options:options
 //                                              error:&error];
@@ -149,7 +149,7 @@ static NSDictionary *defaultOptions;
 //     [options addEntriesFromDictionary:defaultOptions];
 //     
 //     NSError *error = nil;
-//     id person2 = [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodPut
+//     id person2 = [HTTPRiotRequestOperation requestWithMethod:HRRequestMethodPut
 //                                               path:[HTTPRiotTestServer stringByAppendingString:@"/person/1"]
 //                                            options:options
 //                                              error:&error];
@@ -160,7 +160,7 @@ static NSDictionary *defaultOptions;
 // - (void)testDELETE
 // {
 //     NSError *error = nil;
-//     id person = [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodDelete
+//     id person = [HTTPRiotRequestOperation requestWithMethod:HRRequestMethodDelete
 //                                               path:[HTTPRiotTestServer stringByAppendingString:@"/person/1"]
 //                                            options:defaultOptions
 //                                              error:&error];
@@ -175,7 +175,7 @@ static NSDictionary *defaultOptions;
 //     NSDictionary *auth = [NSDictionary dictionaryWithObjectsAndKeys:@"user", @"username", @"pass", @"password", nil];
 //     NSMutableDictionary *opts = [NSMutableDictionary dictionaryWithDictionary:defaultOptions];
 //     [opts addEntriesFromDictionary:[NSDictionary dictionaryWithObject:auth forKey:@"basicAuth"]];
-//     id person = [HTTPRiotRequestOperation requestWithMethod:kHTTPRiotMethodGet
+//     id person = [HTTPRiotRequestOperation requestWithMethod:HRRequestMethodGet
 //                                               path:[HTTPRiotTestServer stringByAppendingString:@"/auth"]
 //                                            options:opts
 //                                              error:&error];
