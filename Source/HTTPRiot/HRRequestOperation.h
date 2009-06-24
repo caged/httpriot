@@ -16,20 +16,11 @@
 @interface HRRequestOperation : NSOperation {
     NSURLConnection *_connection;
     NSMutableData   *_responseData;
-    CGFloat         timeout;
-    HRRequestMethod httpMethod;
-    NSString        *path;
-    NSDictionary    *options;
-    id              formatter;
-    
-    /// The target which the didEneSelector is invoked
-    id target;
-    
-    /// The selector invoked after a request completes or returns an error
-    SEL didEndSelector;
-    
-    /// An object to be added to the dictionary passed to didEndSelector
-    id obj;
+    NSString        *_path;
+    NSDictionary    *_options;
+    NSTimeInterval  _timeout;
+    HRRequestMethod _requestMethod;
+    id              _formatter;
     
     BOOL _isFinished;
     BOOL _isExecuting;
@@ -40,26 +31,26 @@
  * Sets the length of time in seconds before a request will timeout.
  * This defaults to <tt>30.0</tt>.
  */
-@property (nonatomic, assign) CGFloat timeout;
+@property (nonatomic, assign) NSTimeInterval timeout;
 
 /// The REST method to use when performing a request
 /**
  * This defaults to HRRequestMethodGet.  Valid options are ::HRRequestMethod.
  */
-@property (nonatomic, readonly, assign) HRRequestMethod httpMethod;
+@property (nonatomic, assign) HRRequestMethod requestMethod;
 
 /// The relative path or url string used in a request
 /**
  If you provide a relative path here, you must set the baseURI option.
  If given a full url this will overide the baseURI option.
  */
-@property (nonatomic, readonly, copy) NSString *path;
+@property (nonatomic, copy) NSString *path;
 
 /// An NSDictionary containing all the options for a request.
 /**
  This needs documented
  */
-@property (nonatomic, readonly, retain) NSDictionary *options;
+@property (nonatomic, retain) NSDictionary *options;
 
 /// The formatter used to decode the response body.
 /**
@@ -68,12 +59,7 @@
 @property (nonatomic, readonly, retain) id formatter;
 
 /**
- * Returns an NSDictionary, NSArray decoded from the server
+ * Returns an HRRequestOperation
  */
-+ (NSOperation*)requestWithMethod:(HRRequestMethod)method
-                             path:(NSString*)urlPath
-                          options:(NSDictionary*)requestOptions
-                           target:(id)target
-                         selector:(SEL)sel
-                           object:(id)obj;
++ (HRRequestOperation *)requestWithMethod:(HRRequestMethod)method path:(NSString*)urlPath options:(NSDictionary*)requestOptions;
 @end

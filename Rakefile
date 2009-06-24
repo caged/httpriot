@@ -35,6 +35,20 @@ namespace :sdk do
   task :doc do
     system("xcodebuild -target Documentation -configuration Release -sdk macosx10.5")
   end
+  
+  desc 'Install the SDK in ~/Library/SDks'
+  task :install => ['sdk:repackage'] do
+    cd Project.project_dir
+    sdk = Dir.entries('pkg').detect {|e| e =~ /[^\.|\.\.|zip|tgz|tar|gz]$/i}
+
+    sdk_base_dir = File.join(File.expand_path("~"), 'Library', 'SDKs')
+    sdk_install_location = File.join(sdk_base_dir, sdk)
+
+    mkdir(sdk_base_dir) unless File.exists?(sdk_base_dir)
+    rm_r(sdk_install_location) if File.exists?(sdk_install_location)
+    cd 'pkg'
+    mv sdk, sdk_install_location
+  end
 end
 
 task :default => "osx:test"

@@ -29,42 +29,27 @@ static NSOperationQueue *HROperationQueue;
 @end
 
 @implementation HRRequestOperation
-@synthesize timeout;
-@synthesize httpMethod;
-@synthesize path;
-@synthesize options;
-@synthesize formatter;
+@synthesize timeout         = _timeout;
+@synthesize requestMethod   = _requestMethod;
+@synthesize path            = _path;
+@synthesize options         = _options;
+@synthesize formatter       = _formatter;
 
 - (void)dealloc {
-    [obj release];
-    [path release];
-    [options release];
-    [formatter release];
+    [_path release];
+    [_options release];
+    [_formatter release];
     [super dealloc];
 }
 
-- (id)initWithMethod:(HRRequestMethod)method
-                path:(NSString*)urlPath
-             options:(NSDictionary*)requestOptions
-             target:(id)tgt
-             selector:(SEL)sel
-             object:(id)aobj {
+- (id)initWithMethod:(HRRequestMethod)method path:(NSString*)urlPath options:(NSDictionary*)requestOptions {
                  
     if(self = [super init]) {
-        _isExecuting = NO;
-        _isFinished = NO;
-        
-        httpMethod = method;
-        path = [urlPath copy];
-        options = [requestOptions retain];
-        formatter = [[self formatterFromFormat] retain];
-        target = tgt;
-        didEndSelector = sel;
-        
-        if(aobj && [aobj isMemberOfClass:[NSString class]])
-            obj = [aobj copy];
-        else
-            obj = [aobj retain];
+        _isExecuting    = NO;
+        _isFinished     = NO;
+        _requestMethod  = method;
+        _path           = urlPath;
+        _formatter      = [[self formatterFromFormat] retain];
         
         if(!HROperationQueue)
             HROperationQueue = [[NSOperationQueue alloc] init];
@@ -104,7 +89,7 @@ static NSOperationQueue *HROperationQueue;
 }
 
 - (void)setAuthHeadersForRequest:(NSMutableURLRequest *)request {
-    NSDictionary *authDict = [options valueForKey:@"basicAuth"];
+    NSDictionary *authDict = [_options valueForKey:@"basicAuth"];
     NSString *username = [authDict valueForKey:@"username"];
     NSString *password = [authDict valueForKey:@"password"];
 
@@ -121,7 +106,6 @@ static NSOperationQueue *HROperationQueue;
 }
 
 - (NSMutableURLRequest *)configuredRequest {
-    HRRequestMethod method = [self httpMethod];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
     [request setTimeoutInterval:30.0];
@@ -133,7 +117,7 @@ static NSOperationQueue *HROperationQueue;
     id body = [[self options] valueForKey:@"body"];
     NSString *queryString = [[self class] buildQueryStringFromParams:params];
     
-    if(method == HRRequestMethodGet || method == HRRequestMethodDelete) {
+    if(_requestMethod == HRRequestMethodGet || _requestMethod == HRRequestMethodDelete) {
         NSString *urlString = [[composedURL absoluteString] stringByAppendingString:queryString];
         NSLog(@"URL:%@", urlString);
         NSURL *url = [NSURL URLWithString:urlString];
@@ -141,12 +125,12 @@ static NSOperationQueue *HROperationQueue;
         [request setValue:[[self formatter] mimeType] forHTTPHeaderField:@"Content-Type"];  
         [request addValue:[[self formatter] mimeType] forHTTPHeaderField:@"Accept"];
         
-        if(method == HRRequestMethodGet)
+        if(_requestMethod == HRRequestMethodGet)
             [request setHTTPMethod:@"GET"];
         else
             [request setHTTPMethod:@"DELETE"];
             
-    } else if(method == HRRequestMethodPost || HRRequestMethodPost) {
+    } else if(_requestMethod == HRRequestMethodPost || HRRequestMethodPost) {
         
         NSData *bodyData = nil;
         
@@ -171,7 +155,7 @@ static NSOperationQueue *HROperationQueue;
         
         [request setURL:composedURL];
         
-        if(method == HRRequestMethodPost)
+        if(_requestMethod == HRRequestMethodPost)
             [request setHTTPMethod:@"POST"];
         else
             [request setHTTPMethod:@"PUT"];
@@ -182,8 +166,8 @@ static NSOperationQueue *HROperationQueue;
 }
 
 - (NSURL *)composedURI {
-    NSURL *tmpURI = [NSURL URLWithString:path];
-    NSURL *baseURI = [options objectForKey:@"baseURI"];
+    NSURL *tmpURI = [NSURL URLWithString:_path];
+    NSURL *baseURI = [_options objectForKey:@"baseURI"];
         
     if([tmpURI host] == nil && [baseURI host] == nil)
         [NSException raise:@"UnspecifiedHost" format:@"host wasn't provided in baseURI or path"];
@@ -191,7 +175,7 @@ static NSOperationQueue *HROperationQueue;
     if([tmpURI host])
         return tmpURI;
         
-    return [NSURL URLWithString:[[baseURI absoluteString] stringByAppendingPathComponent:path]];
+    return [NSURL URLWithString:[[baseURI absoluteString] stringByAppendingPathComponent:_path]];
 }
 
 - (void)start {
@@ -236,7 +220,7 @@ static NSOperationQueue *HROperationQueue;
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     NSError *error = nil;
-    [[self class] handleResponse:response error:&error];
+    [[self class] handleResponse:(NSHTTPURLResponse *)response error:&error];
     [_responseData setLength:0];
 }
 
@@ -319,22 +303,11 @@ static NSOperationQueue *HROperationQueue;
 }
 
 #pragma mark - Class Methods
-+ (NSOperation *)requestWithMethod:(HRRequestMethod)method
-                        path:(NSString*)urlPath
-                     options:(NSDictionary*)requestOptions
-                     target:(id)target
-                     selector:(SEL)sel
-                     object:(id)obj {
++ (HRRequestOperation *)requestWithMethod:(HRRequestMethod)method path:(NSString*)urlPath options:(NSDictionary*)requestOptions {
                              
-    id instance = [[self alloc] initWithMethod:method
-                                          path:urlPath
-                                       options:requestOptions
-                                        target:target
-                                      selector:sel
-                                      object:obj];
-    
-    [HROperationQueue addOperation:instance];
-    return [instance autorelease];
+    id operation = [[self alloc] initWithMethod:method path:urlPath options:requestOptions];
+    [HROperationQueue addOperation:operation];
+    return [operation autorelease];
 }
 
 + (id)handleResponse:(NSHTTPURLResponse *)response error:(NSError **)error {

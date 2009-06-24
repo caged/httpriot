@@ -46,6 +46,17 @@
  * that sets them.
  * @{ 
  */
+ 
+/**
+ * Returns the HRResponseDelegate
+ */
++ (id)delegate;
+
+/**
+* Set the HRResponseDelegate
+* @param del The HRResponseDelegate responsible for handling callbacks 
+*/
++ (void)setDelegate:(id)del;
 
 /**
  * The base url to use in every request
@@ -141,29 +152,9 @@
  * @param path The path to get.  If you haven't setup the baseURI option you'll need to provide a 
  *        full url. 
  * @param options The options for this request.
- * @param target The object on which the selector is invoked.
- * @param sel The selector run after the request is complete.  
- *        This selector will be passed a dictionary containing 4 objects:
- *        @li <tt>results</tt>: The decoded data recieved from the server
- *        @li <tt>response</tt>: The NSHTTPURLResponse object.
- *        @li <tt>error</tt>: The error if present or nil. 
- *        @li <tt>object</tt>: Any object that was passed along
- * @param obj Any object you want passed to the selector callback
  *
  */
-+ (NSOperation *)getPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel object:(id)obj;
-/**
- * @see getPath:withOptions:target:selector:object
- */
-+ (NSOperation *)getPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel;
-/**
- * @see getPath:withOptions:target:selector:object
- */
-+ (NSOperation *)getPath:(NSString *)path target:(id)target selector:(SEL)sel object:(id)obj;
-/**
- * @see getPath:withOptions:target:selector:object
- */
-+ (NSOperation *)getPath:(NSString *)path target:(id)target selector:(SEL)sel;
++ (NSOperation *)getPath:(NSString *)path withOptions:(NSDictionary *)options;
 
 /**
  * Send a POST request
@@ -175,21 +166,9 @@
  * <tt>params</tt> option will cause the request to be posted as <tt>application/x-www-form-urlencoded</tt> data.
  * If you'd like to post raw data like JSON or XML you'll need to set the <tt>body</tt> option.  Setting the <tt>body</tt>
  * option will cause the <tt>params</tt> option to be ignored.
- * 
- * @param target The object on which the selector is invoked.
- * @param sel The selector run after the request is complete.  
- *        This selector with be passed a dictionary containing 3 objects:
- *        @li <tt>results</tt>: The decoded data recieved from the server
- *        @li <tt>response</tt>: The NSHTTPURLResponse object.
- *        @li <tt>error</tt>: The error if present or nil.
  *
  */
-+ (NSOperation *)postPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel;
-
-/**
- * @see postPath:withOptions:target:selector:
- */
-+ (NSOperation *)postPath:(NSString *)path target:(id)target selector:(SEL)sel;
++ (NSOperation *)postPath:(NSString *)path withOptions:(NSDictionary *)options;
 
 /**
  * Send a PUT request
@@ -199,62 +178,17 @@
  *
  * <strong>Note:</strong>  All data found in the <tt>body</tt> option will be PUT.  Setting the <tt>body</tt>
  * option will cause the <tt>params</tt> option to be ignored.
- * 
- * @param target The object on which the selector is invoked.
- * @param sel The selector run after the request is complete.  
- *        This selector with be passed a dictionary containing 3 objects:
- *        @li <tt>results</tt>: The decoded data recieved from the server
- *        @li <tt>response</tt>: The NSHTTPURLResponse object.
- *        @li <tt>error</tt>: The error if present or nil. 
- * @param obj An object to pass with the info dictionary to the callback
  *
  */
-+ (NSOperation *)putPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel object:(id)obj;
-
-/**
- * @see putPath:withOptions:target:selector:object
- */
-+ (NSOperation *)putPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel;
-
-/**
- * @see putPath:withOptions:target:selector:object
- */
-+ (NSOperation *)putPath:(NSString *)path target:(id)target selector:(SEL)sel object:(id)obj;
-
-/**
- * @see putPath:withOptions:target:selector:object
- */
-+ (NSOperation *)putPath:(NSString *)path target:(id)target selector:(SEL)sel;
++ (NSOperation *)putPath:(NSString *)path withOptions:(NSDictionary *)options;
 
 /**
  * Send a DELETE request
  * @param path The path to DELETE.  If you haven't setup the baseURI option you'll need to provide a 
  *        full url. 
  * @param options The options for this request.
- * @param target The object on which the selector is invoked.
- * @param sel The selector run after the request is complete.  
- *        This selector with be passed a dictionary containing 3 objects:
- *        @li <tt>results</tt>: The decoded data recieved from the server
- *        @li <tt>response</tt>: The NSHTTPURLResponse object.
- *        @li <tt>error</tt>: The error if present or nil. 
- * @param obj An object to pass with the info dictionary to the callback
  *
  */
-+ (NSOperation *)deletePath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel object:(id)obj;
-
-/**
- * @see deletePath:withOptions:target:selector:object
- */
-+ (NSOperation *)deletePath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel;
-
-/**
- * @see deletePath:withOptions:target:selector:object
- */
-+ (NSOperation *)deletePath:(NSString *)path target:(id)target selector:(SEL)sel object:(id)obj;
-
-/**
- * @see deletePath:withOptions:target:selector
- */
-+ (NSOperation *)deletePath:(NSString *)path target:(id)target selector:(SEL)sel;
++ (NSOperation *)deletePath:(NSString *)path withOptions:(NSDictionary *)options;
 //@}
 @end

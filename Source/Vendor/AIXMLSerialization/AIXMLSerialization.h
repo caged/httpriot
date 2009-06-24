@@ -1,4 +1,6 @@
-#if TARGET_OS_IPHONE
+#import <TargetConditionals.h>
+
+#if defined(TARGET_OS_IPHONE)
 
 #import "DDXML.h"
 
@@ -46,20 +48,13 @@
 #define NSXMLDocumentContentKind DDXMLDocumentContentKind
 #endif
 
-
-#if TARGET_OS_IPHONE
-enum {
-    // Tidy
-    NSXMLDocumentTidyHTML = 1 << 9,
-    NSXMLDocumentTidyXML = 1 << 10,
-    
-    // Validate
-    NSXMLDocumentValidate = 1 << 13,
-
-    // Parse
-    NSXMLDocumentXInclude = 1 << 16
-};
+#ifndef NSXMLDocumentTidyHTML
+#define NSXMLDocumentTidyHTML 1 << 9
+#define NSXMLDocumentTidyXML  1 << 10
+#define NSXMLDocumentValidate 1 << 13
+#define NSXMLDocumentXInclude 1 << 16
 #endif
+
 #endif
 
 

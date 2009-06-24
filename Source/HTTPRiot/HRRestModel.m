@@ -13,6 +13,7 @@
 + (void)setAttributeValue:(id)attr forKey:(NSString *)key;
 + (NSMutableDictionary *)classAttributes;
 + (NSMutableDictionary *)mergedOptions:(NSDictionary *)options;
++ (NSOperation *)requestWithMethod:(HRRequestMethod)method path:(NSString *)path options:(NSDictionary *)options;
 @end
 
 @implementation HRRestModel
@@ -41,6 +42,16 @@ static NSMutableDictionary *attributes;
     }
     
     return newDict;
+}
+
++ (id)delegate
+{
+   return [[self classAttributes] objectForKey:@"delegate"];
+}
+
++ (void)setDelegate:(id)del
+{
+    [self setAttributeValue:del forKey:@"delegate"];
 }
 
 + (NSURL *)baseURI {
@@ -89,69 +100,28 @@ static NSMutableDictionary *attributes;
 }
 
 #pragma mark - REST Methods
-+ (NSOperation *)getPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel object:(id)obj {
-    NSMutableDictionary *opts = [self mergedOptions:options];
-    return [HRRequestOperation requestWithMethod:HRRequestMethodGet path:path options:opts target:target selector:sel object:obj];        
++ (NSOperation *)getPath:(NSString *)path withOptions:(NSDictionary *)options {
+    return [self requestWithMethod:HRRequestMethodGet path:path options:options];               
 }
 
-+ (NSOperation *)getPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel {
-    NSMutableDictionary *opts = [self mergedOptions:options];
-    return [HRRequestOperation requestWithMethod:HRRequestMethodGet path:path options:opts target:target selector:sel object:nil];        
++ (NSOperation *)postPath:(NSString *)path withOptions:(NSDictionary *)options {
+    return [self requestWithMethod:HRRequestMethodPost path:path options:options];                
 }
 
-+ (NSOperation *)getPath:(NSString *)path target:(id)target selector:(SEL)sel object:(id)obj {
-    return [HRRequestOperation requestWithMethod:HRRequestMethodGet path:path options:[self mergedOptions:nil] target:target selector:sel object:obj];        
++ (NSOperation *)putPath:(NSString *)path withOptions:(NSDictionary *)options {
+    return [self requestWithMethod:HRRequestMethodPut path:path options:options];              
 }
 
-+ (NSOperation *)getPath:(NSString *)path target:(id)target selector:(SEL)sel {
-    return [self getPath:path target:target selector:sel object:nil];
-}
-
-+ (NSOperation *)postPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel {
-    NSMutableDictionary *opts = [self mergedOptions:options];
-    return [HRRequestOperation requestWithMethod:HRRequestMethodPost path:path options:opts target:target selector:sel object:nil];        
-}
-
-+ (NSOperation *)postPath:(NSString *)path target:(id)target selector:(SEL)sel {
-    return [HRRequestOperation requestWithMethod:HRRequestMethodPost path:path options:[self mergedOptions:nil] target:target selector:sel object:nil];        
-}
-
-+ (NSOperation *)putPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel object:(id)obj {
-    NSMutableDictionary *opts = [self mergedOptions:options];
-    return [HRRequestOperation requestWithMethod:HRRequestMethodPut path:path options:opts target:target selector:sel object:obj];        
-}
-
-+ (NSOperation *)putPath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel {
-    return [self putPath:path withOptions:options target:target selector:sel object:nil];
-}
-
-+ (NSOperation *)putPath:(NSString *)path target:(id)target selector:(SEL)sel object:(id)obj {
-    return [self putPath:path withOptions:nil target:target selector:sel object:obj];        
-}
-
-+ (NSOperation *)putPath:(NSString *)path target:(id)target selector:(SEL)sel
-{
-    return [self putPath:path target:target selector:sel object:nil];        
-}
-
-+ (NSOperation *)deletePath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel object:(id)obj {
-    NSMutableDictionary *opts = [self mergedOptions:options];
-    return [HRRequestOperation requestWithMethod:HRRequestMethodDelete path:path options:opts target:target selector:sel object:obj];        
-}
-
-+ (NSOperation *)deletePath:(NSString *)path withOptions:(NSDictionary *)options target:(id)target selector:(SEL)sel {
-    return [self deletePath:path withOptions:options target:target selector:sel object:nil];        
-}
-
-+ (NSOperation *)deletePath:(NSString *)path target:(id)target selector:(SEL)sel object:(id)obj {
-    return [self deletePath:path withOptions:nil target:target selector:sel object:nil];        
-}
-
-+ (NSOperation *)deletePath:(NSString *)path target:(id)target selector:(SEL)sel {
-    return [self deletePath:path target:target selector:sel object:nil];
++ (NSOperation *)deletePath:(NSString *)path withOptions:(NSDictionary *)options {
+    return [self requestWithMethod:HRRequestMethodDelete path:path options:options];        
 }
 
 #pragma mark - Private Methods
++ (NSOperation *)requestWithMethod:(HRRequestMethod)method path:(NSString *)path options:(NSDictionary *)options {
+    NSMutableDictionary *opts = [self mergedOptions:options];
+    return [HRRequestOperation requestWithMethod:method path:path options:opts];
+}
+
 + (NSMutableDictionary *)mergedOptions:(NSDictionary *)options {
     NSMutableDictionary *defaultParams = [NSMutableDictionary dictionaryWithDictionary:[self defaultParams]];
     [defaultParams addEntriesFromDictionary:[options valueForKey:@"params"]];
@@ -160,7 +130,7 @@ static NSMutableDictionary *attributes;
     NSMutableDictionary *opts = [NSMutableDictionary dictionaryWithDictionary:[self classAttributes]];
     [opts addEntriesFromDictionary:options];
     [opts removeObjectForKey:@"defaultParams"];
-
+    NSLog(@"opts:%@", opts);
     return opts;
 }
 @end
