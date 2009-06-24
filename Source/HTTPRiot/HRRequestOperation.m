@@ -25,6 +25,7 @@ static NSOperationQueue *HROperationQueue;
 - (NSURL *)composedURI;
 + (id)handleResponse:(NSHTTPURLResponse *)response error:(NSError **)error;
 + (NSString *)buildQueryStringFromParams:(NSDictionary *)params;
+- (void)finish;
 @end
 
 @implementation HRRequestOperation
@@ -50,6 +51,9 @@ static NSOperationQueue *HROperationQueue;
              object:(id)aobj {
                  
     if(self = [super init]) {
+        _isExecuting = NO;
+        _isFinished = NO;
+        
         httpMethod = method;
         path = [urlPath copy];
         options = [requestOptions retain];
@@ -190,53 +194,128 @@ static NSOperationQueue *HROperationQueue;
     return [NSURL URLWithString:[[baseURI absoluteString] stringByAppendingPathComponent:path]];
 }
 
-- (void)main {
-    NSAutoreleasePool *pool = [NSAutoreleasePool new];
+- (void)start {
+    [self willChangeValueForKey:@"isExecuting"];
+    _isExecuting = YES;
+    [self didChangeValueForKey:@"isExecuting"];
     
-    NSError *error = nil, *responseError = nil;
-    id results = nil;
-    NSData *body;
-    NSDictionary *info;
+    NSURLRequest *request = [self configuredRequest];
+    _connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
     
-    NSMutableURLRequest *request = [self configuredRequest];
-    NSError *connectionError = nil;
-    NSHTTPURLResponse *response;
-    body = [NSURLConnection sendSynchronousRequest:request
-                                 returningResponse:&response
-                                             error:&connectionError];
-    
-    if(connectionError) {        
-        error = connectionError;
-        if([target respondsToSelector:didEndSelector]) {
-            info = [[[NSDictionary alloc] initWithObjectsAndKeys:error, @"error", nil] autorelease];            
-            [target performSelectorOnMainThread:didEndSelector withObject:info waitUntilDone:YES];
-            
-            [pool drain];
-            return;
-        }
-    }
-    
-    [[self class] handleResponse:response error:&responseError];
-    
-    if(responseError && connectionError == nil) {
-        error = responseError;
-    } 
+    if(_connection) {
+        _responseData = [[NSMutableData alloc] init];        
+    } else {
+        [self finish];
+    }    
+}
 
-    if([body length] > 0) {
-        results = [[self formatter] decode:body];        
-    }
+- (void)finish {
+    [_connection release];
+    _connection = nil;
     
-    if([target respondsToSelector:didEndSelector]) {   
-        info = [NSDictionary dictionaryWithObjectsAndKeys:results, @"results", 
-                            obj, @"object",
-                            response, @"response", 
-                            error, @"error", 
-                            nil];
-        
-        [target performSelectorOnMainThread:didEndSelector withObject:info waitUntilDone:YES];
-    }
+    [_responseData release];
+    _responseData = nil;
+
+    [self willChangeValueForKey:@"isExecuting"];
+    [self willChangeValueForKey:@"isFinished"];
+
+    _isExecuting = NO;
+    _isFinished = YES;
+
+    [self didChangeValueForKey:@"isExecuting"];
+    [self didChangeValueForKey:@"isFinished"];
+}
+
+- (BOOL)isExecuting {
+   return _isExecuting;
+}
+
+- (BOOL)isFinished {
+   return _isFinished;
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    NSError *error = nil;
+    [[self class] handleResponse:response error:&error];
+    [_responseData setLength:0];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [_responseData appendData:data];
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+ 
+    NSLog(@"Connection failed! Error - %@ %@",
+          [error localizedDescription],
+          [[error userInfo] objectForKey:NSErrorFailingURLStringKey]);
     
-    [pool drain];
+    [self finish];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    // UIImage *img = [[UIImage alloc] initWithData:_responseData];
+    // 
+    // if([self.delegate respondsToSelector:@selector(didLoadImage:)]) {
+    //     [self.delegate performSelectorOnMainThread:@selector(didLoadImage:) withObject:img waitUntilDone:YES];
+    // }
+    // 
+    // [img release];
+    NSLog(@"IT FINISHED");
+    [self finish];
+}
+
+// - (void)main {
+//     NSAutoreleasePool *pool = [NSAutoreleasePool new];
+//     
+//     NSError *error = nil, *responseError = nil;
+//     id results = nil;
+//     NSData *body;
+//     NSDictionary *info;
+//     
+//     NSMutableURLRequest *request = [self configuredRequest];
+//     NSError *connectionError = nil;
+//     NSHTTPURLResponse *response;
+//     body = [NSURLConnection sendSynchronousRequest:request
+//                                  returningResponse:&response
+//                                              error:&connectionError];
+//     
+//     if(connectionError) {        
+//         error = connectionError;
+//         if([target respondsToSelector:didEndSelector]) {
+//             info = [[[NSDictionary alloc] initWithObjectsAndKeys:error, @"error", nil] autorelease];            
+//             [target performSelectorOnMainThread:didEndSelector withObject:info waitUntilDone:YES];
+//             
+//             [pool drain];
+//             return;
+//         }
+//     }
+//     
+//     [[self class] handleResponse:response error:&responseError];
+//     
+//     if(responseError && connectionError == nil) {
+//         error = responseError;
+//     } 
+// 
+//     if([body length] > 0) {
+//         results = [[self formatter] decode:body];        
+//     }
+//     
+//     if([target respondsToSelector:didEndSelector]) {   
+//         info = [NSDictionary dictionaryWithObjectsAndKeys:results, @"results", 
+//                             obj, @"object",
+//                             response, @"response", 
+//                             error, @"error", 
+//                             nil];
+//         
+//         [target performSelectorOnMainThread:didEndSelector withObject:info waitUntilDone:YES];
+//     }
+//     
+//     [pool drain];
+// }
+
+- (BOOL)isConcurrent {
+    return YES;
 }
 
 #pragma mark - Class Methods

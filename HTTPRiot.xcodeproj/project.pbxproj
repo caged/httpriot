@@ -174,6 +174,7 @@
 		D02990380F433D1900EC8C01 /* HTTPRiotTestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRiotTestHelper.h; sourceTree = "<group>"; };
 		D029906A0F43422E00EC8C01 /* HTTPRiotTestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRiotTestHelper.m; sourceTree = "<group>"; };
 		D038BBEC0FF162320041F570 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D038BD850FF28B960041F570 /* HRResponseDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRResponseDelegate.h; sourceTree = "<group>"; };
 		D03DB6650F3163BB00F18796 /* HTTPRiot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRiot.h; sourceTree = "<group>"; };
 		D03DB66A0F31654200F18796 /* HRRestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRRestModel.h; sourceTree = "<group>"; };
 		D03DB66B0F31654200F18796 /* HRRestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRRestModel.m; sourceTree = "<group>"; };
@@ -392,6 +393,7 @@
 				D09E4B360F33EB0E00C9E26E /* HRRequestOperation.m */,
 				D02988630F3F7F1200EC8C01 /* HTTPRiot_Prefix.pch */,
 				D02988FE0F3FB63F00EC8C01 /* HRConstants.h */,
+				D038BD850FF28B960041F570 /* HRResponseDelegate.h */,
 			);
 			path = HTTPRiot;
 			sourceTree = "<group>";

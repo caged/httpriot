@@ -48,7 +48,7 @@
 - (void)awakeFromNib
 {   
     tableView.delegate = self;                                                                                  
-    [HRRestModel getPath:@"/people" target:self selector:@selector(peopleLoaded:) object:@"FOOBAR"];
+    [HRRestModel getPath:@"/pesople" target:self selector:@selector(peopleLoaded:) object:@"FOOBAR"];
 }
 
 - (IBAction)addPerson:(id)sender

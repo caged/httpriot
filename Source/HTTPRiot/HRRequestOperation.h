@@ -14,11 +14,13 @@
  * of this class neatly.
  */
 @interface HRRequestOperation : NSOperation {
-    float timeout;
+    NSURLConnection *_connection;
+    NSMutableData   *_responseData;
+    CGFloat         timeout;
     HRRequestMethod httpMethod;
-    NSString *path;
-    NSDictionary *options;
-    id formatter;
+    NSString        *path;
+    NSDictionary    *options;
+    id              formatter;
     
     /// The target which the didEneSelector is invoked
     id target;
@@ -28,6 +30,9 @@
     
     /// An object to be added to the dictionary passed to didEndSelector
     id obj;
+    
+    BOOL _isFinished;
+    BOOL _isExecuting;
 }
  
 /// The lenght of time in seconds before the request times out.
@@ -35,7 +40,7 @@
  * Sets the length of time in seconds before a request will timeout.
  * This defaults to <tt>30.0</tt>.
  */
-@property (nonatomic, assign) float timeout;
+@property (nonatomic, assign) CGFloat timeout;
 
 /// The REST method to use when performing a request
 /**
