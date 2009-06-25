@@ -3,15 +3,16 @@
 //  HTTPRiot
 //
 //  Created by Justin Palmer on 1/30/09.
-//  Copyright 2009 Alternateidea. All rights reserved.
+//  Copyright 2009 LabratRevenge LLC.. All rights reserved.
 //
 
 #import "HRRequestOperation.h"
+#import "HRFormatJSON.h"
+#import "HRFormatXML.h"
+#import "NSObject+InvocationUtils.h"
 #import "NSString+URI.h"
 #import "NSDictionary+URI.h"
 #import "NSData+Base64.h"
-#import "HRFormatJSON.h"
-#import "HRFormatXML.h"
 
 static NSOperationQueue *HROperationQueue;
 
@@ -34,6 +35,7 @@ static NSOperationQueue *HROperationQueue;
 @synthesize path            = _path;
 @synthesize options         = _options;
 @synthesize formatter       = _formatter;
+@synthesize delegate        = _delegate;
 
 - (void)dealloc {
     [_path release];
@@ -42,13 +44,15 @@ static NSOperationQueue *HROperationQueue;
     [super dealloc];
 }
 
-- (id)initWithMethod:(HRRequestMethod)method path:(NSString*)urlPath options:(NSDictionary*)requestOptions {
+- (id)initWithMethod:(HRRequestMethod)method path:(NSString*)urlPath options:(NSDictionary*)opts {
                  
     if(self = [super init]) {
         _isExecuting    = NO;
         _isFinished     = NO;
         _requestMethod  = method;
-        _path           = urlPath;
+        _path           = [urlPath copy];
+        _options        = [opts retain];
+        _delegate       = [opts valueForKey:@"delegate"];
         _formatter      = [[self formatterFromFormat] retain];
         
         if(!HROperationQueue)
@@ -168,7 +172,7 @@ static NSOperationQueue *HROperationQueue;
 - (NSURL *)composedURI {
     NSURL *tmpURI = [NSURL URLWithString:_path];
     NSURL *baseURI = [_options objectForKey:@"baseURI"];
-        
+    NSLog(@"OPTIONS:%@", _options);    
     if([tmpURI host] == nil && [baseURI host] == nil)
         [NSException raise:@"UnspecifiedHost" format:@"host wasn't provided in baseURI or path"];
     
@@ -221,6 +225,15 @@ static NSOperationQueue *HROperationQueue;
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     NSError *error = nil;
     [[self class] handleResponse:(NSHTTPURLResponse *)response error:&error];
+    
+    if(error) {
+        if([_delegate respondsToSelector:@selector(restConnection:didReceiveError:response:)]) {
+            [_delegate performSelectorOnMainThread:@selector(restConnection:didReceiveError:response:) withObject:connection withObject:error withObject:response];
+            [connection cancel];
+            [self finish];
+        }
+    }
+    
     [_responseData setLength:0];
 }
 
@@ -229,23 +242,23 @@ static NSOperationQueue *HROperationQueue;
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
- 
-    NSLog(@"Connection failed! Error - %@ %@",
-          [error localizedDescription],
-          [[error userInfo] objectForKey:NSErrorFailingURLStringKey]);
+    if([_delegate respondsToSelector:@selector(restConnection:didFailWithError:)]) {        
+        [_delegate performSelectorOnMainThread:@selector(restConnection:didFailWithError:) withObject:connection withObject:error];
+    }
     
     [self finish];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    // UIImage *img = [[UIImage alloc] initWithData:_responseData];
-    // 
-    // if([self.delegate respondsToSelector:@selector(didLoadImage:)]) {
-    //     [self.delegate performSelectorOnMainThread:@selector(didLoadImage:) withObject:img waitUntilDone:YES];
-    // }
-    // 
-    // [img release];
-    NSLog(@"IT FINISHED");
+    id results;
+    if([_responseData length] > 0) {
+        results = [[self formatter] decode:_responseData];        
+    }
+    
+    if([_delegate respondsToSelector:@selector(connectionDidFinishLoadingData:)]) {
+        [_delegate performSelectorOnMainThread:@selector(connectionDidFinishLoadingData:) withObject:results waitUntilDone:YES];
+    }
+        
     [self finish];
 }
 

@@ -3,7 +3,7 @@
 //  HTTPRiot
 //
 //  Created by Justin Palmer on 1/28/09.
-//  Copyright 2009 Alternateidea. All rights reserved.
+//  Copyright 2009 LabratRevenge LLC.. All rights reserved.
 //
 #import <Foundation/Foundation.h>
 #import "HRConstants.h"
@@ -50,13 +50,13 @@
 /**
  * Returns the HRResponseDelegate
  */
-+ (id)delegate;
++ (NSObject *)delegate;
 
 /**
 * Set the HRResponseDelegate
 * @param del The HRResponseDelegate responsible for handling callbacks 
 */
-+ (void)setDelegate:(id)del;
++ (void)setDelegate:(NSObject *)del;
 
 /**
  * The base url to use in every request

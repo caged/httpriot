@@ -3,7 +3,7 @@
 //  iPhoneSampleApp
 //
 //  Created by Justin Palmer on 6/24/09.
-//  Copyright Alternateidea 2009. All rights reserved.
+//  Copyright LabratRevenge LLC. 2009. All rights reserved.
 //
 
 #import "iPhoneSampleAppDelegate.h"

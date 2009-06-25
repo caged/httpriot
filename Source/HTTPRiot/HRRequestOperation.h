@@ -3,10 +3,11 @@
 //  HTTPRiot
 //
 //  Created by Justin Palmer on 1/30/09.
-//  Copyright 2009 Alternateidea. All rights reserved.
+//  Copyright 2009 LabratRevenge LLC.. All rights reserved.
 //
 #import <Foundation/Foundation.h>
 #import "HRConstants.h"
+#import "HRResponseDelegate.h"
 
 /**
  * The object which all requests are routed through.  You shouldn't need to use 
@@ -14,6 +15,7 @@
  * of this class neatly.
  */
 @interface HRRequestOperation : NSOperation {
+    NSObject        <HRResponseDelegate>*_delegate;
     NSURLConnection *_connection;
     NSMutableData   *_responseData;
     NSString        *_path;
@@ -25,6 +27,8 @@
     BOOL _isFinished;
     BOOL _isExecuting;
 }
+
+@property (nonatomic, readonly, assign) NSObject <HRResponseDelegate>*delegate;
  
 /// The lenght of time in seconds before the request times out.
 /**

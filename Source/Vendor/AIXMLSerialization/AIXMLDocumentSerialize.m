@@ -3,7 +3,7 @@
 //  AIXMLSerialize
 //
 //  Created by Justin Palmer on 2/24/09.
-//  Copyright 2009 Alternateidea. All rights reserved.
+//  Copyright 2009 LabratRevenge LLC.. All rights reserved.
 //
 
 #import "AIXMLDocumentSerialize.h"

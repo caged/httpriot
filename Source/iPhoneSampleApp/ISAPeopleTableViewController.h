@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <UIKit/UITableView.h>
+#import <HTTPRiot/HRResponseDelegate.h>
 
-@interface ISAPeopleTableViewController : UITableViewController {
+@interface ISAPeopleTableViewController : UITableViewController<HRResponseDelegate> {
     NSMutableArray *people;
 }
 

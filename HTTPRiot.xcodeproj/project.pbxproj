@@ -22,6 +22,10 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		D00045D70FF2D5DB00CCAF1B /* ISAPeopleDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = D00045D60FF2D5DB00CCAF1B /* ISAPeopleDetailController.m */; };
+		D00047610FF31D4D00CCAF1B /* ISAEditableTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D00047600FF31D4D00CCAF1B /* ISAEditableTextFieldCell.m */; };
+		D00048240FF35B0E00CCAF1B /* NSObject+InvocationUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D00048220FF35B0E00CCAF1B /* NSObject+InvocationUtils.h */; };
+		D00048250FF35B0E00CCAF1B /* NSObject+InvocationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D00048230FF35B0E00CCAF1B /* NSObject+InvocationUtils.m */; };
 		D00D8C710FF160810077F798 /* libGHUnitIPhone2_1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D00D8C6F0FF160810077F798 /* libGHUnitIPhone2_1.a */; };
 		D00D8C720FF160810077F798 /* RunTests.sh in Resources */ = {isa = PBXBuildFile; fileRef = D00D8C700FF160810077F798 /* RunTests.sh */; };
 		D02988310F3F7BCE00EC8C01 /* HRRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = D09E4B350F33EB0E00C9E26E /* HRRequestOperation.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -52,23 +56,7 @@
 		D0298A980F3FFF2E00EC8C01 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A850F3FFF2E00EC8C01 /* NSString+SBJSON.m */; };
 		D0298A990F3FFF2E00EC8C01 /* SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A860F3FFF2E00EC8C01 /* SBJSON.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D0298A9A0F3FFF2E00EC8C01 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A870F3FFF2E00EC8C01 /* SBJSON.m */; };
-		D02E8D4C0FF2BDAD00F754AC /* HRFormatJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A2E0F3FF4FD00EC8C01 /* HRFormatJSON.m */; };
-		D02E8D4D0FF2BDAD00F754AC /* HRFormatXML.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A330F3FF50800EC8C01 /* HRFormatXML.m */; };
-		D02E8D4E0FF2BDAD00F754AC /* HRRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4B360F33EB0E00C9E26E /* HRRequestOperation.m */; };
-		D02E8D4F0FF2BDAD00F754AC /* HRRestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D03DB66B0F31654200F18796 /* HRRestModel.m */; };
-		D02E8D500FF2BDAD00F754AC /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = D02989320F3FBEDC00EC8C01 /* NSData+Base64.m */; };
-		D02E8D510FF2BDAD00F754AC /* NSDictionary+URI.m in Sources */ = {isa = PBXBuildFile; fileRef = D02989340F3FBEDC00EC8C01 /* NSDictionary+URI.m */; };
-		D02E8D520FF2BDAD00F754AC /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A830F3FFF2E00EC8C01 /* NSObject+SBJSON.m */; };
-		D02E8D530FF2BDAD00F754AC /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A850F3FFF2E00EC8C01 /* NSString+SBJSON.m */; };
-		D02E8D540FF2BDAD00F754AC /* NSString+URI.m in Sources */ = {isa = PBXBuildFile; fileRef = D02989380F3FBEDC00EC8C01 /* NSString+URI.m */; };
-		D02E8D550FF2BDAD00F754AC /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A870F3FFF2E00EC8C01 /* SBJSON.m */; };
-		D02E8D560FF2BDAD00F754AC /* AIXMLDocumentSerialize.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF10D0F65C50A003C6240 /* AIXMLDocumentSerialize.m */; };
-		D02E8D570FF2BDAD00F754AC /* AIXMLElementSerialize.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF10F0F65C50A003C6240 /* AIXMLElementSerialize.m */; };
-		D02E8D580FF2BDAD00F754AC /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF1230F65C52D003C6240 /* DDXMLDocument.m */; };
-		D02E8D590FF2BDAD00F754AC /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF1250F65C52D003C6240 /* DDXMLElement.m */; };
-		D02E8D5A0FF2BDAD00F754AC /* DDXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF1270F65C52D003C6240 /* DDXMLElementAdditions.m */; };
-		D02E8D5B0FF2BDAD00F754AC /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF1290F65C52D003C6240 /* DDXMLNode.m */; };
-		D02E8D5C0FF2BDAD00F754AC /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF12C0F65C52D003C6240 /* NSStringAdditions.m */; };
+		D02E8D9E0FF2C17E00F754AC /* HRResponseDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = D038BD850FF28B960041F570 /* HRResponseDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D03321480FF2A55700330F62 /* iPhoneSampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D038BE000FF29A420041F570 /* iPhoneSampleAppDelegate.m */; };
 		D03321890FF2AAEB00330F62 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D03321880FF2AAEB00330F62 /* UIKit.framework */; };
 		D03321940FF2AB8500330F62 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0867D69BFE84028FC02AAC07 /* Foundation.framework */; };
@@ -129,6 +117,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D02E8D6F0FF2BECF00F754AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D0298A640F3FFBBD00EC8C01;
+			remoteInfo = libhttpriot;
+		};
 		D0788AF20FABAC3600C3207D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
@@ -141,7 +136,13 @@
 /* Begin PBXFileReference section */
 		0867D69BFE84028FC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8DC2EF5B0486A6940098B216 /* HTTPRiot */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.framework; path = HTTPRiot; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DC2EF5B0486A6940098B216 /* HTTPRiot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HTTPRiot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D00045D50FF2D5DB00CCAF1B /* ISAPeopleDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISAPeopleDetailController.h; sourceTree = "<group>"; };
+		D00045D60FF2D5DB00CCAF1B /* ISAPeopleDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISAPeopleDetailController.m; sourceTree = "<group>"; };
+		D000475F0FF31D4D00CCAF1B /* ISAEditableTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISAEditableTextFieldCell.h; sourceTree = "<group>"; };
+		D00047600FF31D4D00CCAF1B /* ISAEditableTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISAEditableTextFieldCell.m; sourceTree = "<group>"; };
+		D00048220FF35B0E00CCAF1B /* NSObject+InvocationUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+InvocationUtils.h"; sourceTree = "<group>"; };
+		D00048230FF35B0E00CCAF1B /* NSObject+InvocationUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+InvocationUtils.m"; sourceTree = "<group>"; };
 		D00D8C6D0FF160810077F798 /* GHMockCLLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHMockCLLocationManager.h; sourceTree = "<group>"; };
 		D00D8C6E0FF160810077F798 /* GHUITestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUITestCase.h; sourceTree = "<group>"; };
 		D00D8C6F0FF160810077F798 /* libGHUnitIPhone2_1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGHUnitIPhone2_1.a; sourceTree = "<group>"; };
@@ -268,7 +269,7 @@
 		034768DFFF38A50411DB9C8B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8DC2EF5B0486A6940098B216 /* HTTPRiot */,
+				8DC2EF5B0486A6940098B216 /* HTTPRiot.framework */,
 				D0298A650F3FFBBD00EC8C01 /* libhttpriot.a */,
 				D0788AE80FABAB3600C3207D /* iPhoneUnitTestsRunner.app */,
 				D038BDCE0FF298330041F570 /* iPhoneSampleApp.app */,
@@ -334,6 +335,8 @@
 				D02989340F3FBEDC00EC8C01 /* NSDictionary+URI.m */,
 				D02989370F3FBEDC00EC8C01 /* NSString+URI.h */,
 				D02989380F3FBEDC00EC8C01 /* NSString+URI.m */,
+				D00048220FF35B0E00CCAF1B /* NSObject+InvocationUtils.h */,
+				D00048230FF35B0E00CCAF1B /* NSObject+InvocationUtils.m */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -382,6 +385,10 @@
 				D0C7131C0FF2A3310083905B /* ISAPeopleTableViewController.h */,
 				D0C7131D0FF2A3310083905B /* ISAPeopleTableViewController.m */,
 				D033221D0FF2AD1000330F62 /* iPhoneSampleApp_Prefix.pch */,
+				D00045D50FF2D5DB00CCAF1B /* ISAPeopleDetailController.h */,
+				D00045D60FF2D5DB00CCAF1B /* ISAPeopleDetailController.m */,
+				D000475F0FF31D4D00CCAF1B /* ISAEditableTextFieldCell.h */,
+				D00047600FF31D4D00CCAF1B /* ISAEditableTextFieldCell.m */,
 			);
 			path = iPhoneSampleApp;
 			sourceTree = "<group>";
@@ -389,10 +396,10 @@
 		D03DB6630F315F9E00F18796 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				D038BDF40FF299500041F570 /* iPhoneSampleApp */,
-				D0F6D9B70FAB83B1006DE022 /* Vendor */,
-				D09E4A0F0F339D5200C9E26E /* Tests */,
 				D03DB6640F31639000F18796 /* HTTPRiot */,
+				D0F6D9B70FAB83B1006DE022 /* Vendor */,
+				D038BDF40FF299500041F570 /* iPhoneSampleApp */,
+				D09E4A0F0F339D5200C9E26E /* Tests */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -526,6 +533,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D02E8D9E0FF2C17E00F754AC /* HRResponseDelegate.h in Headers */,
 				D077455F0F48913800190554 /* HTTPRiot.h in Headers */,
 				D07745600F48917400190554 /* HTTPRiot_Prefix.pch in Headers */,
 				D07745610F48917400190554 /* HRConstants.h in Headers */,
@@ -551,6 +559,7 @@
 				D04EF1340F65C52D003C6240 /* DDXMLNode.h in Headers */,
 				D04EF1360F65C52D003C6240 /* DDXMLPrivate.h in Headers */,
 				D04EF1370F65C52D003C6240 /* NSStringAdditions.h in Headers */,
+				D00048240FF35B0E00CCAF1B /* NSObject+InvocationUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,7 +582,7 @@
 			name = HTTPRiot;
 			productInstallPath = "$(HOME)/Library/Frameworks";
 			productName = HTTPRiot;
-			productReference = 8DC2EF5B0486A6940098B216 /* HTTPRiot */;
+			productReference = 8DC2EF5B0486A6940098B216 /* HTTPRiot.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		D0298A640F3FFBBD00EC8C01 /* libhttpriot */ = {
@@ -605,6 +614,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D02E8D700FF2BECF00F754AC /* PBXTargetDependency */,
 			);
 			name = iPhoneSampleApp;
 			productName = iPhoneSampleApp;
@@ -777,6 +787,7 @@
 				D04EF1330F65C52D003C6240 /* DDXMLElementAdditions.m in Sources */,
 				D04EF1350F65C52D003C6240 /* DDXMLNode.m in Sources */,
 				D04EF1380F65C52D003C6240 /* NSStringAdditions.m in Sources */,
+				D00048250FF35B0E00CCAF1B /* NSObject+InvocationUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -784,26 +795,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D02E8D4C0FF2BDAD00F754AC /* HRFormatJSON.m in Sources */,
-				D02E8D4D0FF2BDAD00F754AC /* HRFormatXML.m in Sources */,
-				D02E8D4E0FF2BDAD00F754AC /* HRRequestOperation.m in Sources */,
-				D02E8D4F0FF2BDAD00F754AC /* HRRestModel.m in Sources */,
-				D02E8D500FF2BDAD00F754AC /* NSData+Base64.m in Sources */,
-				D02E8D510FF2BDAD00F754AC /* NSDictionary+URI.m in Sources */,
-				D02E8D520FF2BDAD00F754AC /* NSObject+SBJSON.m in Sources */,
-				D02E8D530FF2BDAD00F754AC /* NSString+SBJSON.m in Sources */,
-				D02E8D540FF2BDAD00F754AC /* NSString+URI.m in Sources */,
-				D02E8D550FF2BDAD00F754AC /* SBJSON.m in Sources */,
-				D02E8D560FF2BDAD00F754AC /* AIXMLDocumentSerialize.m in Sources */,
-				D02E8D570FF2BDAD00F754AC /* AIXMLElementSerialize.m in Sources */,
-				D02E8D580FF2BDAD00F754AC /* DDXMLDocument.m in Sources */,
-				D02E8D590FF2BDAD00F754AC /* DDXMLElement.m in Sources */,
-				D02E8D5A0FF2BDAD00F754AC /* DDXMLElementAdditions.m in Sources */,
-				D02E8D5B0FF2BDAD00F754AC /* DDXMLNode.m in Sources */,
-				D02E8D5C0FF2BDAD00F754AC /* NSStringAdditions.m in Sources */,
 				D038BDF60FF2995D0041F570 /* main.m in Sources */,
 				D0C7131E0FF2A3310083905B /* ISAPeopleTableViewController.m in Sources */,
 				D03321480FF2A55700330F62 /* iPhoneSampleAppDelegate.m in Sources */,
+				D00045D70FF2D5DB00CCAF1B /* ISAPeopleDetailController.m in Sources */,
+				D00047610FF31D4D00CCAF1B /* ISAEditableTextFieldCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -821,6 +817,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D02E8D700FF2BECF00F754AC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D0298A640F3FFBBD00EC8C01 /* libhttpriot */;
+			targetProxy = D02E8D6F0FF2BECF00F754AC /* PBXContainerItemProxy */;
+		};
 		D0788AF30FABAC3600C3207D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D0298A640F3FFBBD00EC8C01 /* libhttpriot */;
@@ -975,6 +976,7 @@
 				INFOPLIST_FILE = "iPhoneSampleApp-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
+					"-lhttpriot",
 					"-lxml2",
 					"-all_load",
 					"-ObjC",
@@ -1001,6 +1003,7 @@
 				INFOPLIST_FILE = "iPhoneSampleApp-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
+					"-lhttpriot",
 					"-lxml2",
 					"-all_load",
 					"-ObjC",

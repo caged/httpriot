@@ -1,9 +1,9 @@
 //
 //  NSData.m
-//  LampLight
+//  HTTPRiot
 //
 //  Created by Justin Palmer on 12/23/08.
-//  Copyright 2008 Alternateidea. All rights reserved.
+//  Copyright 2009 LabratRevenge LLC.. All rights reserved.
 //
 
 #import "NSData+Base64.h"
