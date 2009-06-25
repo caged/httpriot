@@ -11,7 +11,6 @@
 
 @implementation NSObject (InvocationUtils)
 - (void)performSelectorOnMainThread:(SEL)selector withObject:(id)obj1 withObject:(id)obj2 {
-    NSLog(@"SEL:%@", NSStringFromSelector(selector));
     NSMethodSignature *signature = [self methodSignatureForSelector:selector];
     
     if(signature) {
@@ -25,7 +24,6 @@
 }
 
 - (void)performSelectorOnMainThread:(SEL)selector withObject:(id)obj1 withObject:(id)obj2 withObject:(id)obj3 {
-    NSLog(@"SEL:%@", NSStringFromSelector(selector));
     NSMethodSignature *signature = [self methodSignatureForSelector:selector];
     
     if(signature) {

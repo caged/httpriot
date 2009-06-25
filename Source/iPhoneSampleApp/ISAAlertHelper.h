@@ -1,0 +1,1 @@
+void ISAAlertWithMessage(NSString *message);

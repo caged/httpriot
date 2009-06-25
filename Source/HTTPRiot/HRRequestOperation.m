@@ -134,7 +134,7 @@ static NSOperationQueue *HROperationQueue;
         else
             [request setHTTPMethod:@"DELETE"];
             
-    } else if(_requestMethod == HRRequestMethodPost || HRRequestMethodPost) {
+    } else if(_requestMethod == HRRequestMethodPost || _requestMethod == HRRequestMethodPut) {
         
         NSData *bodyData = nil;
         
@@ -147,7 +147,7 @@ static NSOperationQueue *HROperationQueue;
                 bodyData = [[body toQueryString] dataUsingEncoding:NSUTF8StringEncoding];
             else if([body isKindOfClass:[NSString class]])
                 bodyData = [body dataUsingEncoding:NSUTF8StringEncoding];
-            else if([body isKindOfClass:[NSString class]])
+            else if([body isKindOfClass:[NSData class]])
                 bodyData = body;
             else
                 [NSException exceptionWithName:@"InvalidBodyData"
@@ -255,8 +255,8 @@ static NSOperationQueue *HROperationQueue;
         results = [[self formatter] decode:_responseData];        
     }
     
-    if([_delegate respondsToSelector:@selector(connectionDidFinishLoadingData:)]) {
-        [_delegate performSelectorOnMainThread:@selector(connectionDidFinishLoadingData:) withObject:results waitUntilDone:YES];
+    if([_delegate respondsToSelector:@selector(restConnection:didFinishReturningResource:)]) {
+        [_delegate performSelectorOnMainThread:@selector(restConnection:didFinishReturningResource:) withObject:connection withObject:results];
     }
         
     [self finish];

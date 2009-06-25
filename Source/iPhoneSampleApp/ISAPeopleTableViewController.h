@@ -10,7 +10,9 @@
 #import <HTTPRiot/HRResponseDelegate.h>
 
 @interface ISAPeopleTableViewController : UITableViewController<HRResponseDelegate> {
-    NSMutableArray *people;
+    NSMutableArray *_people;
+    NSIndexPath    *_indexPathOfItemToDelete;
+    BOOL           _isDeleting;
 }
 
 @end

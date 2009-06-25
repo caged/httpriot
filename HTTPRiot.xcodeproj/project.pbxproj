@@ -56,6 +56,7 @@
 		D0298A980F3FFF2E00EC8C01 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A850F3FFF2E00EC8C01 /* NSString+SBJSON.m */; };
 		D0298A990F3FFF2E00EC8C01 /* SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A860F3FFF2E00EC8C01 /* SBJSON.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D0298A9A0F3FFF2E00EC8C01 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A870F3FFF2E00EC8C01 /* SBJSON.m */; };
+		D02BB9530FF3EE95002EF1CF /* ISAAlertHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D02BB9520FF3EE95002EF1CF /* ISAAlertHelper.m */; };
 		D02E8D9E0FF2C17E00F754AC /* HRResponseDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = D038BD850FF28B960041F570 /* HRResponseDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D03321480FF2A55700330F62 /* iPhoneSampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D038BE000FF29A420041F570 /* iPhoneSampleAppDelegate.m */; };
 		D03321890FF2AAEB00330F62 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D03321880FF2AAEB00330F62 /* UIKit.framework */; };
@@ -171,6 +172,8 @@
 		D02990280F433C1800EC8C01 /* HTTPRiotRequestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRiotRequestTest.m; sourceTree = "<group>"; };
 		D02990380F433D1900EC8C01 /* HTTPRiotTestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRiotTestHelper.h; sourceTree = "<group>"; };
 		D029906A0F43422E00EC8C01 /* HTTPRiotTestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRiotTestHelper.m; sourceTree = "<group>"; };
+		D02BB9510FF3EE95002EF1CF /* ISAAlertHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISAAlertHelper.h; sourceTree = "<group>"; };
+		D02BB9520FF3EE95002EF1CF /* ISAAlertHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISAAlertHelper.m; sourceTree = "<group>"; };
 		D03321880FF2AAEB00330F62 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D033221D0FF2AD1000330F62 /* iPhoneSampleApp_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPhoneSampleApp_Prefix.pch; sourceTree = "<group>"; };
 		D038BBEC0FF162320041F570 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -389,6 +392,8 @@
 				D00045D60FF2D5DB00CCAF1B /* ISAPeopleDetailController.m */,
 				D000475F0FF31D4D00CCAF1B /* ISAEditableTextFieldCell.h */,
 				D00047600FF31D4D00CCAF1B /* ISAEditableTextFieldCell.m */,
+				D02BB9510FF3EE95002EF1CF /* ISAAlertHelper.h */,
+				D02BB9520FF3EE95002EF1CF /* ISAAlertHelper.m */,
 			);
 			path = iPhoneSampleApp;
 			sourceTree = "<group>";
@@ -800,6 +805,7 @@
 				D03321480FF2A55700330F62 /* iPhoneSampleAppDelegate.m in Sources */,
 				D00045D70FF2D5DB00CCAF1B /* ISAPeopleDetailController.m in Sources */,
 				D00047610FF31D4D00CCAF1B /* ISAEditableTextFieldCell.m in Sources */,
+				D02BB9530FF3EE95002EF1CF /* ISAAlertHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,7 @@
 
 #import "ISAPeopleDetailController.h"
 #import "ISAEditableTextFieldCell.h"
+#import "ISAAlertHelper.h"
 #import <HTTPRiot/HTTPRiot.h>
 
 @implementation ISAPeopleDetailController
@@ -25,18 +26,39 @@
     if (self = [super initWithStyle:UITableViewStyleGrouped]) {
         self.tableView.allowsSelection = NO;
         _saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleDone target:self action:@selector(save)];
-        
-        [HRRestModel setDelegate:self];
-        [HRRestModel setBaseURI:[NSURL URLWithString:@"http://localhost:4567"]];
     }
     return self;
 }
 
 - (void)save
 {
-    [HRRestModel putPath:[NSString stringWithFormat:@"/people/%i", [self.person valueForKey:@"id"]] withOptions:nil];
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    NSArray *cells = [[self.tableView visibleCells] retain];
+
+    [params setObject:[[cells objectAtIndex:0] valueField].text forKey:@"name"];
+    [params setObject:[[cells objectAtIndex:1] valueField].text forKey:@"email"];
+    [params setObject:[[cells objectAtIndex:2] valueField].text forKey:@"address"];
+    [params setObject:[[cells objectAtIndex:3] valueField].text forKey:@"telephone"];
+
+    NSDictionary *bodyData = [NSDictionary dictionaryWithObjectsAndKeys:[params JSONRepresentation], @"body", nil];
+    [HRRestModel putPath:[NSString stringWithFormat:@"/person/%@", [self.person valueForKey:@"id"]] withOptions:bodyData];
 }
 
+
+#pragma mark - HRResponseDelegate Methods
+- (void)restConnection:(NSURLConnection *)connection didReceiveError:(NSError *)error response:(NSHTTPURLResponse *)response {
+    NSLog(@"RESPONSE:%@", response);
+    ISAAlertWithMessage([error localizedDescription]);
+}
+
+- (void)restConnection:(NSURLConnection *)connection didFinishReturningResource:(id)resource {
+    [resource retain];
+    [_person release];
+    _person = resource;
+    [self.tableView reloadData];
+}
+
+#pragma mark - Other
 - (void)prepareCell:(ISAEditableTextFieldCell *)cell forIndexPath:(NSIndexPath *)ipath {
     NSInteger row = ipath.row;
     NSString *label = @"";
@@ -76,11 +98,12 @@
 }
 
 
-/*
-- (void)viewWillAppear:(BOOL)animated {
+
+- (void)viewWillAppear:(BOOL)animated {        
+    [HRRestModel setDelegate:self];
     [super viewWillAppear:animated];
 }
-*/
+
 /*
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -120,7 +143,6 @@
 
 
 #pragma mark Table view methods
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -166,11 +188,6 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     self.navigationItem.rightBarButtonItem = _saveButton;
-}
-
-#pragma mark - HRResponseDelegate Methods
-- (void)connectionDidFinishLoadingData:(id)data {
-    NSLog(@"YES");
 }
 
 @end

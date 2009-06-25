@@ -8,34 +8,24 @@
 
 #import "ISAPeopleTableViewController.h"
 #import "ISAPeopleDetailController.h"
+#import "ISAAlertHelper.h"
 #import <HTTPRiot/HTTPRiot.h>
-
-void ISAAlertWithMessage(NSString *message)
-{
-	/* open an alert with an OK button */
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"iPhone Sample App" 
-													message:message
-												   delegate:nil 
-										  cancelButtonTitle:@"OK" 
-										  otherButtonTitles: nil];
-	[alert show];
-	[alert release];
-}
 
 @implementation ISAPeopleTableViewController
 
 - (void)dealloc {
-    [people release];
+    _isDeleting = nil;
+    _indexPathOfItemToDelete = nil;
+    [_people release];
     [super dealloc];
 }
 
 - (id)initWithStyle:(UITableViewStyle)style {
     // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
     if (self = [super initWithStyle:style]) {
-        people = [[NSMutableArray alloc] init];
-        
-        [HRRestModel setDelegate:self];
-        [HRRestModel setBaseURI:[NSURL URLWithString:@"http://localhost:4567"]];
+        _people = [[NSMutableArray alloc] init];
+        _indexPathOfItemToDelete = nil;
+        _isDeleting = NO;
     }
     return self;
 }
@@ -46,12 +36,21 @@ void ISAAlertWithMessage(NSString *message)
     [super viewDidLoad];
     self.title = @"People";
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    [HRRestModel getPath:@"/people" withOptions:nil];
 }
 
-- (void)connectionDidFinishLoadingData:(id)data {
-    [people addObjectsFromArray:data];
-    [self.tableView reloadData];
+- (void)restConnection:(NSURLConnection *)connection didFinishReturningResource:(id)resource {
+    if(_isDeleting) {
+        
+        [_people removeObjectAtIndex:_indexPathOfItemToDelete.row];
+        [self.tableView beginUpdates];
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:_indexPathOfItemToDelete, nil] withRowAnimation:YES];
+        [self.tableView endUpdates];
+        [self.tableView reloadData];
+    } else {
+        [_people removeAllObjects];
+        [_people addObjectsFromArray:resource];
+        [self.tableView reloadData];
+    }
 }
 
 - (void)restConnection:(NSURLConnection *)connection didFailWithError:(NSError *)error { 
@@ -60,34 +59,14 @@ void ISAAlertWithMessage(NSString *message)
 }
 
 
-/*
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    self.tableView.delegate = self;
+    
+    [HRRestModel setDelegate:self];
+    [HRRestModel getPath:@"/people" withOptions:nil];
 }
-*/
-/*
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-*/
-/*
-- (void)viewWillDisappear:(BOOL)animated {
-	[super viewWillDisappear:animated];
-}
-*/
-/*
-- (void)viewDidDisappear:(BOOL)animated {
-	[super viewDidDisappear:animated];
-}
-*/
-
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
@@ -102,7 +81,17 @@ void ISAAlertWithMessage(NSString *message)
 }
 
 
+
 #pragma mark Table view methods
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    NSDictionary *person = [_people objectAtIndex:indexPath.row];
+    
+    _indexPathOfItemToDelete = indexPath;
+    _isDeleting = YES;
+    
+    [HRRestModel deletePath:[NSString stringWithFormat:@"person/delete/%@", [person valueForKey:@"id"]] withOptions:nil];
+}
 
 // - (UITableViewCellAccessoryType)tableView:(UITableView *)tableView accessoryTypeForRowWithIndexPath:(NSIndexPath *)indexPath {
 //     return UITableViewCellAccessoryDisclosureIndicator;
@@ -115,7 +104,7 @@ void ISAAlertWithMessage(NSString *message)
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [people count];
+    return [_people count];
 }
 
 
@@ -131,7 +120,7 @@ void ISAAlertWithMessage(NSString *message)
     }
     
     // Set up the cell...
-    cell.textLabel.text = [[people objectAtIndex:indexPath.row] valueForKey:@"name"];
+    cell.textLabel.text = [[_people objectAtIndex:indexPath.row] valueForKey:@"name"];
     return cell;
 }
 
@@ -139,7 +128,7 @@ void ISAAlertWithMessage(NSString *message)
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here. Create and push another view controller.
     ISAPeopleDetailController *peopleDetailController = [[ISAPeopleDetailController alloc] init];
-    peopleDetailController.person = [people objectAtIndex:indexPath.row];
+    peopleDetailController.person = [_people objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:peopleDetailController animated:YES];
     [peopleDetailController release];
 }

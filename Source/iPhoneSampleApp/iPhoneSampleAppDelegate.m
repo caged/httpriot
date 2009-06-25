@@ -8,6 +8,7 @@
 
 #import "iPhoneSampleAppDelegate.h"
 #import "ISAPeopleTableViewController.h"
+#import <HTTPRiot/HTTPRiot.h>
 
 @implementation iPhoneSampleAppDelegate
 
@@ -21,6 +22,7 @@
     // Override point for customization after app launch  
     ISAPeopleTableViewController *peopleController = [[[ISAPeopleTableViewController alloc] init] autorelease];
     navigationController.viewControllers = [NSArray arrayWithObjects:peopleController, nil];
+    [HRRestModel setBaseURI:[NSURL URLWithString:@"http://localhost:4567"]];
     
 	[window addSubview:[navigationController view]];
     [window makeKeyAndVisible];
