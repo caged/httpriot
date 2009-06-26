@@ -9,6 +9,7 @@
 
 
 @protocol HRResponseDelegate <NSObject>
+@optional
 - (void)restConnection:(NSURLConnection *)connection didFinishReturningResource:(id)resource;
 - (void)restConnection:(NSURLConnection *)connection didFailWithError:(NSError *)error;
 - (void)restConnection:(NSURLConnection *)connection didReceiveError:(NSError *)error response:(NSHTTPURLResponse *)response;

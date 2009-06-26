@@ -4,8 +4,8 @@ require 'rake/packagetask'
 require 'osx/plist'
 
 
-HTTPRIOT_ROOT = File.expand_path(File.dirname(__FILE__))
-HTTPRIOT_PLIST = File.join(HTTPRIOT_ROOT, 'Info.plist')
+# HTTPRIOT_ROOT = File.expand_path(File.dirname(__FILE__))
+# HTTPRIOT_PLIST = File.join(HTTPRIOT_ROOT, 'Info.plist')
 
 desc 'Run Clang'
 task :analyze do
@@ -22,6 +22,19 @@ namespace :osx do
 end
 
 namespace :iphone do
+  desc 'Build 2.0 - 3.0 Release Versions of the static library for the simulator and device'
+  task :build_all => :clean_all do
+    %w(2.0 2.1 2.2 2.2.1 3.0).each do |version|
+      system("xcodebuild -target libhttpriot -configuration Release -sdk iphonesimulator#{version}")
+      system("xcodebuild -target libhttpriot -configuration Release -sdk iphoneos#{version}")
+    end
+  end
+  
+  desc 'Clean all targets'
+  task :clean_all do
+    system("xcodebuild clean -alltargets")
+  end
+  
   # TODO Find out how to run a program on the Simulator programtically
   desc 'Run iPhone Unit Tests'
   task :test do
@@ -30,7 +43,10 @@ namespace :iphone do
   end
 end
 
-namespace :sdk do
+namespace :sdk do  
+  desc 'Build and package all SDKs' 
+  task :package_all => ['iphone:build_all', 'sdk:package']
+  
   desc 'Generate the documentation'
   task :doc do
     system("xcodebuild -target Documentation -configuration Release -sdk macosx10.5")
@@ -154,6 +170,14 @@ class Project
   def self.product_dir
     File.join(build_dir, active_config)
   end
+  
+  def self.plist
+    File.join(project_dir, 'Info.plist')
+  end
+  
+  def self.targets
+    %w(2.0 2.1 2.2 2.2.1 3.0)
+  end
 end
 
 
@@ -168,7 +192,7 @@ class SDKPackage < Rake::PackageTask
   # Debug, Release, etc.  Release by default
   attr_accessor :configuration
   
-  # Deployment target (2.0, 2.1, 2.2).  2.2 by default
+  # Deployment target (2.0, 2.1, 2.2, 2.2.1, 3.0).  Contains all by default.
   attr_accessor :target
   
   # SDKs to package.  iphonesimulator, iphoneos by default
@@ -182,17 +206,17 @@ class SDKPackage < Rake::PackageTask
   
   def init(name, version)
     super
-    @properties = OSX::PropertyList.load(File.read(HTTPRIOT_PLIST), format = false)
-    @product_name = File.basename(HTTPRIOT_ROOT)
+    @properties = OSX::PropertyList.load(File.read(Project.plist), format = false)
+    @product_name = File.basename(Project.project_dir)
     @name = name || @product_name.downcase.gsub(/\s*/, '')
     @version = version || @properties['CFBundleVersion']
-    @project_dir = File.dirname(__FILE__)
+    @project_dir = Project.project_dir
     @package_dir = File.join(@project_dir, 'pkg')
-    @build_dir = File.join(@project_dir, 'build')
+    @build_dir = Project.build_dir
     @relative_user_dir = "usr/local"
     @sdks = %w(iphoneos iphonesimulator)
     @configuration = 'Release'
-    @target = "2.2.1"
+    @targets = Project.targets
   end
   
   def generate_tasks
@@ -203,30 +227,32 @@ class SDKPackage < Rake::PackageTask
         package_root = File.join(package_dir, package_name)
         mkdir_p package_root
         cd package_root
-        @sdks.each do |sdk|
-          # Create the SDK dir
-          cd package_root
-          sdk_dir = "#{sdk}.sdk"
-          mkdir sdk_dir
+        @targets.each do |target|
+          @sdks.each do |sdk|
+            # Create the SDK dir
+            cd package_root
+            sdk_dir = "#{sdk}#{target}.sdk"
+            mkdir sdk_dir
           
           
-          # Create the SDKSettings.plist file
-          cd sdk_dir
-          sdk_properties = SDKSettings.new(name, version, sdk, target).to_plist
-          File.open(File.join(pwd, 'SDKSettings.plist'), 'w+') do |f|
-            f << sdk_properties
+            # Create the SDKSettings.plist file
+            cd sdk_dir
+            sdk_properties = SDKSettings.new(name, version, sdk, target).to_plist
+            File.open(File.join(pwd, 'SDKSettings.plist'), 'w+') do |f|
+              f << sdk_properties
+            end
+          
+            # Copy the header files over
+            built_sdk_dir = File.join(@build_dir, "#{@configuration}-#{sdk}")
+            cp_r File.join(built_sdk_dir, "usr"), "./"
+          
+            # Create the lib directory and copy over the static library
+            lib_dir = File.join(pwd, 'usr', 'local', 'lib')
+            mkdir lib_dir
+            cd lib_dir
+            # assume product name is lib${NAME}.a
+            cp File.join(built_sdk_dir, "lib#{name}.a"), './'
           end
-          
-          # Copy the header files over
-          built_sdk_dir = File.join(@build_dir, "#{@configuration}-#{sdk}")
-          cp_r File.join(built_sdk_dir, "usr"), "./"
-          
-          # Create the lib directory and copy over the static library
-          lib_dir = File.join(pwd, 'usr', 'local', 'lib')
-          mkdir lib_dir
-          cd lib_dir
-          # assume product name is lib${NAME}.a
-          cp File.join(built_sdk_dir, "lib#{name}.a"), './'
         end
         
         # Move the framework over

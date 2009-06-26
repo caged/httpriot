@@ -71,7 +71,7 @@
 		D04EF1120F65C50A003C6240 /* AIXMLDocumentSerialize.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF10D0F65C50A003C6240 /* AIXMLDocumentSerialize.m */; };
 		D04EF1130F65C50A003C6240 /* AIXMLElementSerialize.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF10E0F65C50A003C6240 /* AIXMLElementSerialize.h */; };
 		D04EF1140F65C50A003C6240 /* AIXMLElementSerialize.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF10F0F65C50A003C6240 /* AIXMLElementSerialize.m */; };
-		D04EF1150F65C50A003C6240 /* AIXMLSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF1100F65C50A003C6240 /* AIXMLSerialization.h */; };
+		D04EF1150F65C50A003C6240 /* AIXMLSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF1100F65C50A003C6240 /* AIXMLSerialization.h */; settings = {ATTRIBUTES = (); }; };
 		D04EF1160F65C50A003C6240 /* AIXMLDocumentSerialize.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF10C0F65C50A003C6240 /* AIXMLDocumentSerialize.h */; };
 		D04EF1170F65C50A003C6240 /* AIXMLDocumentSerialize.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF10D0F65C50A003C6240 /* AIXMLDocumentSerialize.m */; };
 		D04EF1180F65C50A003C6240 /* AIXMLElementSerialize.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF10E0F65C50A003C6240 /* AIXMLElementSerialize.h */; };
@@ -597,7 +597,6 @@
 				D0298A610F3FFBBD00EC8C01 /* Headers */,
 				D0298A620F3FFBBD00EC8C01 /* Sources */,
 				D0298A630F3FFBBD00EC8C01 /* Frameworks */,
-				D06BEEB70FDD7C3A00433BD3 /* Install in User SDK directory */,
 			);
 			buildRules = (
 			);
@@ -707,20 +706,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/usr/bin/env ruby";
 			shellScript = "#!/usr/bin/env ruby\n#!/usr/bin/env ruby\n# The documentation gets generated with a bad info.plist file so this fixes it\n# until I can find a better solution\n#\nrequire 'rubygems'\nrequire 'fileutils'\nrequire 'osx/cocoa'\n\ninclude FileUtils\n\n# Get the main target's version number\nplist = OSX::NSDictionary.dictionaryWithContentsOfFile(File.join(ENV['PROJECT_DIR'], \"Info.plist\"))\nversion = plist['CFBundleVersion']\n\ncontents = <<-CONTENTS\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\"\n\"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n<plist version=\"1.0\">\n<dict>\n     <key>CFBundleName</key>\n     <string>#{ENV['PROJECT']} #{version}</string>\n     <key>CFBundleIdentifier</key>\n     <string>com.alternateidea.#{ENV['PROJECT']}.docset</string>\n     <key>DocSetFeedName</key>\n     <string>#{ENV['PROJECT']} Documentation</string>\n</dict>\n</plist>\nCONTENTS\n\ndoc_dir = \"/Users/#{ENV['USER']}/Library/Developer/Shared/Documentation/DocSets/com.alternateidea.#{ENV['PROJECT']}.docset/Contents\"\nplist = File.join(doc_dir, \"Info.plist\")\nresource_dir = File.join(doc_dir, \"Resources\", \"Documents\")\n\nif File.exists?(plist)\n  File.open(plist, 'w+') do |f|\n    f << contents\n  end\nend\n\ncp_r(File.join(ENV['PROJECT_DIR'], 'Documentation', 'slate', 'images'), resource_dir)\n\n# Script to tell XCode to load up our new documentation\nscript = <<-OSA \ntell application \"Xcode\"\n\tload documentation set with path \"/Users/$USER/Library/Developer/Shared/Documentation/DocSets/com.alternateidea.#{ENV['PROJECT']}.docset/\"\nend tell\nOSA\n\n# Run the load-docset applescript command.\nsystem(\"osascript -e #{script}\")";
-		};
-		D06BEEB70FDD7C3A00433BD3 /* Install in User SDK directory */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Install in User SDK directory";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = "/usr/bin/env ruby";
-			shellScript = "require 'fileutils'\ninclude FileUtils\n\ncd ENV['PROJECT_DIR']\nsystem('rake sdk:repackage')\nsdk = Dir.entries('pkg').detect {|e| e =~ /[^\\.|\\.\\.|zip|tgz|tar|gz]$/i}\n\nsdk_base_dir = File.join(File.expand_path(\"~\"), 'Library', 'SDKs')\nsdk_install_location = File.join(sdk_base_dir, sdk)\n\nmkdir(sdk_base_dir) unless File.exists?(sdk_base_dir)\nrm_r(sdk_install_location) if File.exists?(sdk_install_location)\ncd 'pkg'\nmv sdk, sdk_install_location";
 		};
 		D0788C1E0FABC91900C3207D /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -923,6 +908,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)$(IPHONEOS_DEPLOYMENT_TARGET)";
+				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)$(IPHONEOS_DEPLOYMENT_TARGET)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -947,6 +934,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)$(IPHONEOS_DEPLOYMENT_TARGET)";
+				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)$(IPHONEOS_DEPLOYMENT_TARGET)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
