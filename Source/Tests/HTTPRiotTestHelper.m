@@ -46,7 +46,7 @@
 + (void)initialize 
 { 
     [self setBaseURI:[NSURL URLWithString:HTTPRiotTestServer]];
-    [self setFormat:kHTTPRiotXMLFormat];
+    [self setFormat:HRDataFormatXML];
 }
 @end
 

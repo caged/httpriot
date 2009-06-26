@@ -7,14 +7,14 @@
 //
 #import <HTTPRiot/HTTPRiot.h>
 #import "HTTPRiotTestHelper.h"
-#import "HTTPRiotFormatJSON.h"
+#import "HRFormatJSON.h"
 
-@interface HTTPRiotRequestOperationTest : GHTestCase {
+@interface HRRequestOperationTest : GHTestCase {
 } 
 @end
 
 static NSDictionary *defaultOptions;
-@implementation HTTPRiotRequestOperationTest
+@implementation HRRequestOperationTest
 
 
 // - (void) testShouldThrowExceptionIfHostIsNotGiven 
@@ -88,10 +88,10 @@ static NSDictionary *defaultOptions;
 // }
 
 
-- (void)testGET 
-{
-
-}
+// - (void)testGET 
+// {
+// 
+// }
 
 
 // - (void)testPOSTWithRawBody

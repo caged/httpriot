@@ -8,9 +8,9 @@
 
 #import "HTTPRiotTestHelper.h"
 
-@interface HTTPRiotRestModelTest : GHTestCase {} @end
+@interface HRRestModelTest : GHTestCase {} @end
 
-@implementation HTTPRiotRestModelTest
+@implementation HRRestModelTest
 - (void) testSetsBaseURI 
 {   
     GHAssertEqualObjects(@"http://localhost:4567", [[HRTestPerson baseURI] absoluteString], nil);
@@ -19,13 +19,13 @@
 
 - (void)testDefaultFormatIsJSON
 {
-    GHAssertEquals([HRTestPerson format], HRFormatJSON, nil);
+    GHAssertEquals([HRTestPerson format], HRDataFormatJSON, nil);
 }
 
 - (void) testShouldSetFormat 
 {
-    [HRTestPerson4 setFormat:HRFormatXML];
-    GHAssertEquals([HRTestPerson4 format], HRFormatXML, nil);
+    [HRTestPerson4 setFormat:HRDataFormatXML];
+    GHAssertEquals([HRTestPerson4 format], HRDataFormatXML, nil);
 }
 
 - (void)testShouldSetDefaultHeaders

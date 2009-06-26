@@ -23,7 +23,7 @@
 @end
 
 // Get the compiler to STFU when testing private methods
-@interface HTTPRiotRestModel (STFU)
+@interface HRRestModel (STFU)
 + (void)setAttributeValue:(id)attr forKey:(NSString *)key;
 + (NSMutableDictionary *)classAttributes;
 + (NSMutableDictionary *)mergedOptions:(NSDictionary *)options;
@@ -31,9 +31,9 @@
 
 #define HTTPRiotTestServer @"http://localhost:4567"
 
-@interface HRTestPerson  : HTTPRiotRestModel {} @end
-@interface HRTestPerson2 : HTTPRiotRestModel {} @end
-@interface HRTestPerson3 : HTTPRiotRestModel {} @end
-@interface HRTestPerson4 : HTTPRiotRestModel {} @end
-@interface HRTestPerson5 : HTTPRiotRestModel {} @end
-@interface HRTestPerson6 : HTTPRiotRestModel {} @end
+@interface HRTestPerson  : HRRestModel {} @end
+@interface HRTestPerson2 : HRRestModel {} @end
+@interface HRTestPerson3 : HRRestModel {} @end
+@interface HRTestPerson4 : HRRestModel {} @end
+@interface HRTestPerson5 : HRRestModel {} @end
+@interface HRTestPerson6 : HRRestModel {} @end
