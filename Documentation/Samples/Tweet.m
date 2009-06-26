@@ -4,10 +4,14 @@
 @synthesize text;
 @synthesize location;
 
-- (void)initWithDictionary:(NSDictionary *)dict
-{
-    if(self = [super init])
-    {
+// Set default options here
++ (void)initialize {
+    [self setDelegate:self];
+    [self setBaseURI:[NSURL URLWithString:@"http://twitter.com"]];
+}
+
+- (void)initWithDictionary:(NSDictionary *)dict {
+    if(self = [super init]) {
         [self setScreenName:[dict valueForKeyPath:@"user.screen_name"]];
         [self setName:[dict valueForKeyPath:@"user.name"]];
         [self setLocation:[dict valueForKeyPath:@"user.location"]];
@@ -17,29 +21,30 @@
     return self;
 }
 
-// Set default options here
-+ (void)initialize
-{
-    [self setBaseURI:[NSURL URLWithString:@"http://twitter.com"]];
-}
-
-+ (id)timelineForUser:(NSString *)user target:(id)target selector:(SEL)sel
++ (id)timelineForUser:(NSString *)user
 {
     NSDictionary *targetAction = [NSDictionary dictionaryWithObjectsAndKeys:target, @"target", NSStringFromSelector(sel), @"selector", nil];
     NSDictionary *params = [NSDictionary dictionaryWithObject:user forKey:@"screen_name"];
     NSDictionary *opts = [NSDictionary dictionaryWithObject:params forKey:@"params"];
     
-    [self getPath:@"/statuses/user_timeline.json" withOptions:opts target:self selector:@selector(tweetsLoaded:) object:targetAction];
+    [self getPath:@"/statuses/user_timeline.json" withOptions:opts];
 }
 
-+ (id)publicTimelineWithTarget:(id)target selector:(SEL)sel
-{
-    // We could just use the controller calling this method as the target and selector, but instead we want to 
-    // to reuse a method to initialize an array of tweets so we pass use a callback in the model to initialize 
-    // the tweets and pass the additional target and selector as the `object` so we can use it later after the 
-    // tweets have been initialized. 
-    NSDictionary *targetAction = [NSDictionary dictionaryWithObjectsAndKeys:target, @"target", NSStringFromSelector(sel), @"selector", nil];
-    [self getPath:@"/statuses/public_timeline.json" target:self selector:@selector(tweetsLoaded:) object:targetAction];
++ (id)publicTimeline {
+    [self getPath:@"/statuses/public_timeline.json" withOptions:nil];
+}
+
+#pragma mark - HRRequestOperation Delegates
++ (void)restConnection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    // Handle connection errors.  Failures to connect to the server, etc.
+}
+
++ (void)restConnection:(NSURLConnection *)connection didReceiveError:(NSError *)error response:(NSHTTPURLResponse *)response {
+    // Handle invalid responses, 404, 500, etc.
+}
+
++ (void)restConnection:(NSURLConnection *)connection didFinishReturningResource:(id)resource {
+
 }
 
 + (void)tweetsLoaded:(NSDictionary *)info
