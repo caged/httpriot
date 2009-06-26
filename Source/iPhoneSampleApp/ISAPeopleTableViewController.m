@@ -40,12 +40,13 @@
 
 - (void)restConnection:(NSURLConnection *)connection didFinishReturningResource:(id)resource {
     if(_isDeleting) {
-        
         [_people removeObjectAtIndex:_indexPathOfItemToDelete.row];
         [self.tableView beginUpdates];
         [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:_indexPathOfItemToDelete, nil] withRowAnimation:YES];
         [self.tableView endUpdates];
         [self.tableView reloadData];
+        _isDeleting = false;
+        _indexPathOfItemToDelete = nil;
     } else {
         [_people removeAllObjects];
         [_people addObjectsFromArray:resource];
