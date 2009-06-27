@@ -10,44 +10,36 @@
 
 
 @implementation NSObject (InvocationUtils)
-- (void)performSelectorOnMainThread:(SEL)selector withObject:(id)obj1 withObject:(id)obj2 {
-    NSMethodSignature *signature = [self methodSignatureForSelector:selector];
-    
-    if(signature) {
-        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
-        [invocation setTarget:self];
-        [invocation setSelector:selector];
-        [invocation setArgument:&obj1 atIndex:2];
-        [invocation setArgument:&obj2 atIndex:3];
-        [invocation performSelectorOnMainThread:@selector(invoke) withObject:nil waitUntilDone:YES];   
+- (void)performSelectorOnMainThread:(SEL)selector withObjects:(id)obj1, ...
+{
+    id arg; va_list args;
+    NSMutableArray *objArray = [[[NSMutableArray alloc] init] autorelease];
+    if(obj1)
+    {
+        [objArray addObject:obj1];
+        va_start(args, obj1);         
+        while (arg = va_arg(args, id))
+            [objArray addObject:arg];               
+        
+        va_end(args);
     }
+    
+    return [self performSelectorOnMainThread:selector withObjectArray:objArray];
 }
 
-- (void)performSelectorOnMainThread:(SEL)selector withObject:(id)obj1 withObject:(id)obj2 withObject:(id)obj3 {
+- (void)performSelectorOnMainThread:(SEL)selector withObjectArray:(NSArray *)objects
+{
     NSMethodSignature *signature = [self methodSignatureForSelector:selector];
-    
     if(signature) {
         NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
         [invocation setTarget:self];
         [invocation setSelector:selector];
-        [invocation setArgument:&obj1 atIndex:2];
-        [invocation setArgument:&obj2 atIndex:3];
-        [invocation setArgument:&obj3 atIndex:4];
-        [invocation performSelectorOnMainThread:@selector(invoke) withObject:nil waitUntilDone:YES];   
-    }
-}
-
-- (void)performSelectorOnMainThread:(SEL)selector withObject:(id)obj1 withObject:(id)obj2 withObject:(id)obj3 withObject:(id)obj4 {
-    NSMethodSignature *signature = [self methodSignatureForSelector:selector];
-    
-    if(signature) {
-        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
-        [invocation setTarget:self];
-        [invocation setSelector:selector];
-        [invocation setArgument:&obj1 atIndex:2];
-        [invocation setArgument:&obj2 atIndex:3];
-        [invocation setArgument:&obj3 atIndex:4];
-        [invocation setArgument:&obj3 atIndex:5];
+        for(size_t i = 0; i < objects.count; ++i)
+        {
+            id obj = [objects objectAtIndex:i];
+            [invocation setArgument:&obj atIndex:(i + 2)];
+        }
+        
         [invocation performSelectorOnMainThread:@selector(invoke) withObject:nil waitUntilDone:YES];   
     }
 }

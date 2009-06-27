@@ -228,7 +228,7 @@ static NSOperationQueue *HROperationQueue;
     
     if(error) {
         if([_delegate respondsToSelector:@selector(restConnection:didReceiveError:response:object:)]) {
-            [_delegate performSelectorOnMainThread:@selector(restConnection:didReceiveError:response:object:) withObject:connection withObject:error withObject:response withObject:_object];
+            [_delegate performSelectorOnMainThread:@selector(restConnection:didReceiveError:response:object:) withObjects:connection, error, response, _object];
             [connection cancel];
             [self finish];
         }
@@ -243,7 +243,7 @@ static NSOperationQueue *HROperationQueue;
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     if([_delegate respondsToSelector:@selector(restConnection:didFailWithError:object:)]) {        
-        [_delegate performSelectorOnMainThread:@selector(restConnection:didFailWithError:object:) withObject:connection withObject:error withObject:_object];
+        [_delegate performSelectorOnMainThread:@selector(restConnection:didFailWithError:object:) withObjects:connection, error, _object];
     }
     
     [self finish];
@@ -256,7 +256,7 @@ static NSOperationQueue *HROperationQueue;
     }
     
     if([_delegate respondsToSelector:@selector(restConnection:didFinishReturningResource:object:)]) {
-        [_delegate performSelectorOnMainThread:@selector(restConnection:didFinishReturningResource:object:) withObject:connection withObject:results withObject:_object];
+        [_delegate performSelectorOnMainThread:@selector(restConnection:didFinishReturningResource:object:) withObjects:connection, results, _object];
     }
         
     [self finish];
