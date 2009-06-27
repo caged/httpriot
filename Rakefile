@@ -3,10 +3,6 @@ require 'rubygems'
 require 'rake/packagetask'
 require 'osx/plist'
 
-
-# HTTPRIOT_ROOT = File.expand_path(File.dirname(__FILE__))
-# HTTPRIOT_PLIST = File.join(HTTPRIOT_ROOT, 'Info.plist')
-
 desc 'Run Clang'
 task :analyze do
   FileUtils.rm_r(Project.build_dir)
@@ -24,7 +20,8 @@ end
 namespace :iphone do
   desc 'Build 2.0 - 3.0 Release Versions of the static library for the simulator and device'
   task :build_all => :clean_all do
-    %w(2.0 2.1 2.2 2.2.1 3.0).each do |version|
+    rm_r(Project.build_dir) if File.exists?(Project.build_dir)
+    Project.targets.each do |version|
       system("xcodebuild -target libhttpriot -configuration Release -sdk iphonesimulator#{version}")
       system("xcodebuild -target libhttpriot -configuration Release -sdk iphoneos#{version}")
     end
@@ -69,6 +66,7 @@ end
 
 task :default => "osx:test"
 
+# Used to build SDKSettings.plist files for iPhoneOS or iPhoneSimulator
 class SDKSettings
   def initialize(name, version, sdk, target)
     @name = name
@@ -138,7 +136,6 @@ class SDKSettings
 end
 
 class Project
-  
   def self.out
     @out ||= %x[xcodebuild -list]
   end
@@ -181,6 +178,20 @@ class Project
 end
 
 
+# Creates iPhone friendly SDKs for static libraries and archives them for distribution.  
+# Can also bundle frameworks if any .framework files are present in the build directory.
+# By default the package task will create an SDK for every target (2.0, 2.1, 2.2, 2.2.1, 3.0) 
+# for both the simulator and the device.  An SDK is simply a collection of files laid out in a 
+# specific fasion with an included SDKSettings.plist file.
+#
+#  /iphoneos3.0.sdk
+#    SDKSettings.plist
+#    /usr/local/lib/lib{LIBRARY_NAME}.a
+#    /usr/local/include/{PROJECT_NAME}/{HEADERS}
+#
+# Any project can link to these sdks using the "Additional SDks" settings in the build settings 
+# of a project and setting additional linker flags to the project name -l{PROJECT_NAME}
+#
 class SDKPackage < Rake::PackageTask
   
   # Project root directory unless provided
@@ -225,6 +236,7 @@ class SDKPackage < Rake::PackageTask
       desc 'Build the iPhoneOS and iPhoneSimulator SDK package'
       task :package do
         package_root = File.join(package_dir, package_name)
+        rm_r(package_root) if File.exists?(package_root)
         mkdir_p package_root
         cd package_root
         @targets.each do |target|
@@ -286,7 +298,7 @@ class SDKPackage < Rake::PackageTask
       end
       
       desc 'Clean and package again'
-      task :repackage => [:clean, :package]
+      task :repackage => [:clean, :package_all]
     end
   end
 end
