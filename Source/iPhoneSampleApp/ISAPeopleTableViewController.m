@@ -61,7 +61,7 @@
     self.tableView.delegate = self;
     
     [HRRestModel setDelegate:self];
-    [HRRestModel getPath:@"/people" withOptions:nil object:nil];
+    [HRRestModel getPath:@"/people" withOptions:nil object:self];
 }
 
 - (void)didReceiveMemoryWarning {
