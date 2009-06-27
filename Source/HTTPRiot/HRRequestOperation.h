@@ -23,6 +23,7 @@
     NSTimeInterval  _timeout;
     HRRequestMethod _requestMethod;
     id              _formatter;
+    id              _object;
     
     BOOL _isFinished;
     BOOL _isExecuting;
@@ -65,5 +66,5 @@
 /**
  * Returns an HRRequestOperation
  */
-+ (HRRequestOperation *)requestWithMethod:(HRRequestMethod)method path:(NSString*)urlPath options:(NSDictionary*)requestOptions;
++ (HRRequestOperation *)requestWithMethod:(HRRequestMethod)method path:(NSString*)urlPath options:(NSDictionary*)requestOptions object:(id)obj;
 @end

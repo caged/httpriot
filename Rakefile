@@ -243,7 +243,7 @@ class SDKPackage < Rake::PackageTask
             end
           
             # Copy the header files over
-            built_sdk_dir = File.join(@build_dir, "#{@configuration}-#{sdk}")
+            built_sdk_dir = File.join(@build_dir, "#{@configuration}-#{sdk}#{target}")
             cp_r File.join(built_sdk_dir, "usr"), "./"
           
             # Create the lib directory and copy over the static library

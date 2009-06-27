@@ -44,7 +44,7 @@ static NSOperationQueue *HROperationQueue;
     [super dealloc];
 }
 
-- (id)initWithMethod:(HRRequestMethod)method path:(NSString*)urlPath options:(NSDictionary*)opts {
+- (id)initWithMethod:(HRRequestMethod)method path:(NSString*)urlPath options:(NSDictionary*)opts object:(id)obj {
                  
     if(self = [super init]) {
         _isExecuting    = NO;
@@ -52,6 +52,7 @@ static NSOperationQueue *HROperationQueue;
         _requestMethod  = method;
         _path           = [urlPath copy];
         _options        = [opts retain];
+        _object         = obj;
         _delegate       = [opts valueForKey:@"delegate"];
         _formatter      = [[self formatterFromFormat] retain];
         
@@ -78,7 +79,6 @@ static NSOperationQueue *HROperationQueue;
             theFormatter = [HRFormatJSON class];
         break;   
     }
-    
     
     NSString *errorMessage = [NSString stringWithFormat:@"Invalid Formatter %@", NSStringFromClass(theFormatter)];
     NSAssert([theFormatter conformsToProtocol:@protocol(HRFormatterProtocol)], errorMessage); 
@@ -227,8 +227,8 @@ static NSOperationQueue *HROperationQueue;
     [[self class] handleResponse:(NSHTTPURLResponse *)response error:&error];
     
     if(error) {
-        if([_delegate respondsToSelector:@selector(restConnection:didReceiveError:response:)]) {
-            [_delegate performSelectorOnMainThread:@selector(restConnection:didReceiveError:response:) withObject:connection withObject:error withObject:response];
+        if([_delegate respondsToSelector:@selector(restConnection:didReceiveError:response:object:)]) {
+            [_delegate performSelectorOnMainThread:@selector(restConnection:didReceiveError:response:object:) withObject:connection withObject:error withObject:response withObject:_object];
             [connection cancel];
             [self finish];
         }
@@ -242,8 +242,8 @@ static NSOperationQueue *HROperationQueue;
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    if([_delegate respondsToSelector:@selector(restConnection:didFailWithError:)]) {        
-        [_delegate performSelectorOnMainThread:@selector(restConnection:didFailWithError:) withObject:connection withObject:error];
+    if([_delegate respondsToSelector:@selector(restConnection:didFailWithError:object:)]) {        
+        [_delegate performSelectorOnMainThread:@selector(restConnection:didFailWithError:object:) withObject:connection withObject:error withObject:_object];
     }
     
     [self finish];
@@ -255,70 +255,21 @@ static NSOperationQueue *HROperationQueue;
         results = [[self formatter] decode:_responseData];        
     }
     
-    if([_delegate respondsToSelector:@selector(restConnection:didFinishReturningResource:)]) {
-        [_delegate performSelectorOnMainThread:@selector(restConnection:didFinishReturningResource:) withObject:connection withObject:results];
+    if([_delegate respondsToSelector:@selector(restConnection:didFinishReturningResource:object:)]) {
+        [_delegate performSelectorOnMainThread:@selector(restConnection:didFinishReturningResource:object:) withObject:connection withObject:results withObject:_object];
     }
         
     [self finish];
 }
-
-// - (void)main {
-//     NSAutoreleasePool *pool = [NSAutoreleasePool new];
-//     
-//     NSError *error = nil, *responseError = nil;
-//     id results = nil;
-//     NSData *body;
-//     NSDictionary *info;
-//     
-//     NSMutableURLRequest *request = [self configuredRequest];
-//     NSError *connectionError = nil;
-//     NSHTTPURLResponse *response;
-//     body = [NSURLConnection sendSynchronousRequest:request
-//                                  returningResponse:&response
-//                                              error:&connectionError];
-//     
-//     if(connectionError) {        
-//         error = connectionError;
-//         if([target respondsToSelector:didEndSelector]) {
-//             info = [[[NSDictionary alloc] initWithObjectsAndKeys:error, @"error", nil] autorelease];            
-//             [target performSelectorOnMainThread:didEndSelector withObject:info waitUntilDone:YES];
-//             
-//             [pool drain];
-//             return;
-//         }
-//     }
-//     
-//     [[self class] handleResponse:response error:&responseError];
-//     
-//     if(responseError && connectionError == nil) {
-//         error = responseError;
-//     } 
-// 
-//     if([body length] > 0) {
-//         results = [[self formatter] decode:body];        
-//     }
-//     
-//     if([target respondsToSelector:didEndSelector]) {   
-//         info = [NSDictionary dictionaryWithObjectsAndKeys:results, @"results", 
-//                             obj, @"object",
-//                             response, @"response", 
-//                             error, @"error", 
-//                             nil];
-//         
-//         [target performSelectorOnMainThread:didEndSelector withObject:info waitUntilDone:YES];
-//     }
-//     
-//     [pool drain];
-// }
 
 - (BOOL)isConcurrent {
     return YES;
 }
 
 #pragma mark - Class Methods
-+ (HRRequestOperation *)requestWithMethod:(HRRequestMethod)method path:(NSString*)urlPath options:(NSDictionary*)requestOptions {
++ (HRRequestOperation *)requestWithMethod:(HRRequestMethod)method path:(NSString*)urlPath options:(NSDictionary*)requestOptions object:(id)obj {
                              
-    id operation = [[self alloc] initWithMethod:method path:urlPath options:requestOptions];
+    id operation = [[self alloc] initWithMethod:method path:urlPath options:requestOptions object:obj];
     [HROperationQueue addOperation:operation];
     return [operation autorelease];
 }

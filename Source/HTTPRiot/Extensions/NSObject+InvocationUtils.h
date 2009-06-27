@@ -12,4 +12,5 @@
 @interface NSObject (InvocationUtils)
 - (void)performSelectorOnMainThread:(SEL)selector withObject:(id)obj1 withObject:(id)obj2;
 - (void)performSelectorOnMainThread:(SEL)selector withObject:(id)obj1 withObject:(id)obj2 withObject:(id)obj3;
+- (void)performSelectorOnMainThread:(SEL)selector withObject:(id)obj1 withObject:(id)obj2 withObject:(id)obj3 withObject:(id)obj4;
 @end

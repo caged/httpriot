@@ -35,7 +35,7 @@
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)restConnection:(NSURLConnection *)connection didFinishReturningResource:(id)resource {
+- (void)restConnection:(NSURLConnection *)connection didFinishReturningResource:(id)resource object:(id)object {
     if(_isDeleting) {
         [_people removeObjectAtIndex:_indexPathOfItemToDelete.row];
         [self.tableView beginUpdates];
@@ -51,7 +51,7 @@
     }
 }
 
-- (void)restConnection:(NSURLConnection *)connection didFailWithError:(NSError *)error { 
+- (void)restConnection:(NSURLConnection *)connection didFailWithError:(NSError *)error object:(id)object { 
     if([error code] == -1004)
         ISAAlertWithMessage([NSString stringWithFormat:@"%@: Start the test server `ruby Source/Tests/Server/testserver.rb`", [error localizedDescription]]);
 }
@@ -61,7 +61,7 @@
     self.tableView.delegate = self;
     
     [HRRestModel setDelegate:self];
-    [HRRestModel getPath:@"/people" withOptions:nil];
+    [HRRestModel getPath:@"/people" withOptions:nil object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -76,7 +76,7 @@
     _indexPathOfItemToDelete = indexPath;
     _isDeleting = YES;
     
-    [HRRestModel deletePath:[NSString stringWithFormat:@"person/delete/%@", [person valueForKey:@"id"]] withOptions:nil];
+    [HRRestModel deletePath:[NSString stringWithFormat:@"person/delete/%@", [person valueForKey:@"id"]] withOptions:nil object:nil];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

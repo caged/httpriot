@@ -67,26 +67,26 @@
 		D03DB6660F3163BB00F18796 /* HTTPRiot.h in Headers */ = {isa = PBXBuildFile; fileRef = D03DB6650F3163BB00F18796 /* HTTPRiot.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D03DB66C0F31654200F18796 /* HRRestModel.h in Headers */ = {isa = PBXBuildFile; fileRef = D03DB66A0F31654200F18796 /* HRRestModel.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D03DB66D0F31654200F18796 /* HRRestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D03DB66B0F31654200F18796 /* HRRestModel.m */; };
-		D04EF1110F65C50A003C6240 /* AIXMLDocumentSerialize.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF10C0F65C50A003C6240 /* AIXMLDocumentSerialize.h */; };
+		D04EF1110F65C50A003C6240 /* AIXMLDocumentSerialize.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF10C0F65C50A003C6240 /* AIXMLDocumentSerialize.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D04EF1120F65C50A003C6240 /* AIXMLDocumentSerialize.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF10D0F65C50A003C6240 /* AIXMLDocumentSerialize.m */; };
-		D04EF1130F65C50A003C6240 /* AIXMLElementSerialize.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF10E0F65C50A003C6240 /* AIXMLElementSerialize.h */; };
+		D04EF1130F65C50A003C6240 /* AIXMLElementSerialize.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF10E0F65C50A003C6240 /* AIXMLElementSerialize.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D04EF1140F65C50A003C6240 /* AIXMLElementSerialize.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF10F0F65C50A003C6240 /* AIXMLElementSerialize.m */; };
-		D04EF1150F65C50A003C6240 /* AIXMLSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF1100F65C50A003C6240 /* AIXMLSerialization.h */; settings = {ATTRIBUTES = (); }; };
+		D04EF1150F65C50A003C6240 /* AIXMLSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF1100F65C50A003C6240 /* AIXMLSerialization.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D04EF1160F65C50A003C6240 /* AIXMLDocumentSerialize.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF10C0F65C50A003C6240 /* AIXMLDocumentSerialize.h */; };
 		D04EF1170F65C50A003C6240 /* AIXMLDocumentSerialize.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF10D0F65C50A003C6240 /* AIXMLDocumentSerialize.m */; };
 		D04EF1180F65C50A003C6240 /* AIXMLElementSerialize.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF10E0F65C50A003C6240 /* AIXMLElementSerialize.h */; };
 		D04EF1190F65C50A003C6240 /* AIXMLElementSerialize.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF10F0F65C50A003C6240 /* AIXMLElementSerialize.m */; };
 		D04EF11A0F65C50A003C6240 /* AIXMLSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF1100F65C50A003C6240 /* AIXMLSerialization.h */; };
-		D04EF12D0F65C52D003C6240 /* DDXML.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF1210F65C52D003C6240 /* DDXML.h */; };
-		D04EF12E0F65C52D003C6240 /* DDXMLDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF1220F65C52D003C6240 /* DDXMLDocument.h */; };
+		D04EF12D0F65C52D003C6240 /* DDXML.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF1210F65C52D003C6240 /* DDXML.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D04EF12E0F65C52D003C6240 /* DDXMLDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF1220F65C52D003C6240 /* DDXMLDocument.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D04EF12F0F65C52D003C6240 /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF1230F65C52D003C6240 /* DDXMLDocument.m */; };
-		D04EF1300F65C52D003C6240 /* DDXMLElement.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF1240F65C52D003C6240 /* DDXMLElement.h */; };
+		D04EF1300F65C52D003C6240 /* DDXMLElement.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF1240F65C52D003C6240 /* DDXMLElement.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D04EF1310F65C52D003C6240 /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF1250F65C52D003C6240 /* DDXMLElement.m */; };
-		D04EF1320F65C52D003C6240 /* DDXMLElementAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF1260F65C52D003C6240 /* DDXMLElementAdditions.h */; };
+		D04EF1320F65C52D003C6240 /* DDXMLElementAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF1260F65C52D003C6240 /* DDXMLElementAdditions.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D04EF1330F65C52D003C6240 /* DDXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF1270F65C52D003C6240 /* DDXMLElementAdditions.m */; };
-		D04EF1340F65C52D003C6240 /* DDXMLNode.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF1280F65C52D003C6240 /* DDXMLNode.h */; };
+		D04EF1340F65C52D003C6240 /* DDXMLNode.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF1280F65C52D003C6240 /* DDXMLNode.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D04EF1350F65C52D003C6240 /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF1290F65C52D003C6240 /* DDXMLNode.m */; };
-		D04EF1360F65C52D003C6240 /* DDXMLPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF12A0F65C52D003C6240 /* DDXMLPrivate.h */; };
+		D04EF1360F65C52D003C6240 /* DDXMLPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF12A0F65C52D003C6240 /* DDXMLPrivate.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D04EF1370F65C52D003C6240 /* NSStringAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF12B0F65C52D003C6240 /* NSStringAdditions.h */; };
 		D04EF1380F65C52D003C6240 /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF12C0F65C52D003C6240 /* NSStringAdditions.m */; };
 		D05A45070FF29C4300C672A5 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05A45060FF29C4300C672A5 /* MainWindow.xib */; };
@@ -970,6 +970,7 @@
 				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
 				INFOPLIST_FILE = "iPhoneSampleApp-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)$(IPHONEOS_DEPLOYMENT_TARGET)/**";
 				OTHER_LDFLAGS = (
 					"-lhttpriot",
 					"-lxml2",
@@ -997,6 +998,7 @@
 				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
 				INFOPLIST_FILE = "iPhoneSampleApp-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)$(IPHONEOS_DEPLOYMENT_TARGET)/**";
 				OTHER_LDFLAGS = (
 					"-lhttpriot",
 					"-lxml2",

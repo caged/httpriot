@@ -41,17 +41,17 @@
     [params setObject:[[cells objectAtIndex:3] valueField].text forKey:@"telephone"];
 
     NSDictionary *bodyData = [NSDictionary dictionaryWithObjectsAndKeys:[params JSONRepresentation], @"body", nil];
-    [HRRestModel putPath:[NSString stringWithFormat:@"/person/%@", [self.person valueForKey:@"id"]] withOptions:bodyData];
+    [HRRestModel putPath:[NSString stringWithFormat:@"/person/%@", [self.person valueForKey:@"id"]] withOptions:bodyData object:nil];
 }
 
 
 #pragma mark - HRResponseDelegate Methods
-- (void)restConnection:(NSURLConnection *)connection didReceiveError:(NSError *)error response:(NSHTTPURLResponse *)response {
+- (void)restConnection:(NSURLConnection *)connection didReceiveError:(NSError *)error response:(NSHTTPURLResponse *)response object:(id)object {
     NSLog(@"RESPONSE:%@", response);
     ISAAlertWithMessage([error localizedDescription]);
 }
 
-- (void)restConnection:(NSURLConnection *)connection didFinishReturningResource:(id)resource {
+- (void)restConnection:(NSURLConnection *)connection didFinishReturningResource:(id)resource object:(id)object {
     [resource retain];
     [_person release];
     _person = resource;

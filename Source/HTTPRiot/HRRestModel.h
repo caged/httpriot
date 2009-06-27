@@ -154,7 +154,7 @@
  * @param options The options for this request.
  *
  */
-+ (NSOperation *)getPath:(NSString *)path withOptions:(NSDictionary *)options;
++ (NSOperation *)getPath:(NSString *)path withOptions:(NSDictionary *)options object:(id)obj;
 
 /**
  * Send a POST request
@@ -168,7 +168,7 @@
  * option will cause the <tt>params</tt> option to be ignored.
  *
  */
-+ (NSOperation *)postPath:(NSString *)path withOptions:(NSDictionary *)options;
++ (NSOperation *)postPath:(NSString *)path withOptions:(NSDictionary *)options object:(id)obj;
 
 /**
  * Send a PUT request
@@ -180,7 +180,7 @@
  * option will cause the <tt>params</tt> option to be ignored.
  *
  */
-+ (NSOperation *)putPath:(NSString *)path withOptions:(NSDictionary *)options;
++ (NSOperation *)putPath:(NSString *)path withOptions:(NSDictionary *)options object:(id)obj;
 
 /**
  * Send a DELETE request
@@ -189,6 +189,6 @@
  * @param options The options for this request.
  *
  */
-+ (NSOperation *)deletePath:(NSString *)path withOptions:(NSDictionary *)options;
++ (NSOperation *)deletePath:(NSString *)path withOptions:(NSDictionary *)options object:(id)obj;
 //@}
 @end

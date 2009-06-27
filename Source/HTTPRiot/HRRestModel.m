@@ -13,7 +13,7 @@
 + (void)setAttributeValue:(id)attr forKey:(NSString *)key;
 + (NSMutableDictionary *)classAttributes;
 + (NSMutableDictionary *)mergedOptions:(NSDictionary *)options;
-+ (NSOperation *)requestWithMethod:(HRRequestMethod)method path:(NSString *)path options:(NSDictionary *)options;
++ (NSOperation *)requestWithMethod:(HRRequestMethod)method path:(NSString *)path options:(NSDictionary *)options object:(id)obj;
 @end
 
 @implementation HRRestModel
@@ -100,26 +100,26 @@ static NSMutableDictionary *attributes;
 }
 
 #pragma mark - REST Methods
-+ (NSOperation *)getPath:(NSString *)path withOptions:(NSDictionary *)options {
-    return [self requestWithMethod:HRRequestMethodGet path:path options:options];               
++ (NSOperation *)getPath:(NSString *)path withOptions:(NSDictionary *)options object:(id)obj {
+    return [self requestWithMethod:HRRequestMethodGet path:path options:options object:obj];               
 }
 
-+ (NSOperation *)postPath:(NSString *)path withOptions:(NSDictionary *)options {
-    return [self requestWithMethod:HRRequestMethodPost path:path options:options];                
++ (NSOperation *)postPath:(NSString *)path withOptions:(NSDictionary *)options object:(id)obj {
+    return [self requestWithMethod:HRRequestMethodPost path:path options:options object:obj];                
 }
 
-+ (NSOperation *)putPath:(NSString *)path withOptions:(NSDictionary *)options {
-    return [self requestWithMethod:HRRequestMethodPut path:path options:options];              
++ (NSOperation *)putPath:(NSString *)path withOptions:(NSDictionary *)options object:(id)obj {
+    return [self requestWithMethod:HRRequestMethodPut path:path options:options object:obj];              
 }
 
-+ (NSOperation *)deletePath:(NSString *)path withOptions:(NSDictionary *)options {
-    return [self requestWithMethod:HRRequestMethodDelete path:path options:options];        
++ (NSOperation *)deletePath:(NSString *)path withOptions:(NSDictionary *)options object:(id)obj {
+    return [self requestWithMethod:HRRequestMethodDelete path:path options:options object:obj];        
 }
 
 #pragma mark - Private Methods
-+ (NSOperation *)requestWithMethod:(HRRequestMethod)method path:(NSString *)path options:(NSDictionary *)options {
++ (NSOperation *)requestWithMethod:(HRRequestMethod)method path:(NSString *)path options:(NSDictionary *)options object:(id)obj {
     NSMutableDictionary *opts = [self mergedOptions:options];
-    return [HRRequestOperation requestWithMethod:method path:path options:opts];
+    return [HRRequestOperation requestWithMethod:method path:path options:opts object:obj];
 }
 
 + (NSMutableDictionary *)mergedOptions:(NSDictionary *)options {
