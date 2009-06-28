@@ -18,15 +18,23 @@
     return @"application/json";
 }
 
-+ (id)decode:(NSData *)data {
-    NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    id jsonVal = [json JSONValue];
-    [json release];
++ (id)decode:(NSData *)data error:(NSError **)error {
+    NSString *rawString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     
-    return jsonVal;
+    NSError *parseError = nil;
+    SBJSON *parser = [[SBJSON alloc] init];
+    id results = [parser objectWithString:rawString error:&parseError];
+    [parser release];
+    
+    if(parseError && !results) {
+        *error = parseError;
+        return nil;
+    }
+    
+    return results;
 }
 
-+ (NSString *)encode:(id)data {
++ (NSString *)encode:(id)data error:(NSError **)error {
     return [data JSONRepresentation];
 }
 @end

@@ -50,7 +50,7 @@ namespace :sdk do
   end
   
   desc 'Install the SDK in ~/Library/SDks'
-  task :install => ['sdk:repackage'] do
+  task :install do
     cd Project.project_dir
     sdk = Dir.entries('pkg').detect {|e| e =~ /[^\.|\.\.|zip|tgz|tar|gz]$/i}
 

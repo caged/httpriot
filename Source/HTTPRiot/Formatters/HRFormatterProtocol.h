@@ -10,6 +10,6 @@
 @protocol HRFormatterProtocol 
 + (NSString *)extension;
 + (NSString *)mimeType;
-+ (id)decode:(NSData *)data;
-+ (NSString *)encode:(id)data;
++ (id)decode:(NSData *)data error:(NSError **)error;
++ (NSString *)encode:(id)data error:(NSError **)error;
 @end

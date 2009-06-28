@@ -172,7 +172,7 @@ static NSOperationQueue *HROperationQueue;
 - (NSURL *)composedURI {
     NSURL *tmpURI = [NSURL URLWithString:_path];
     NSURL *baseURI = [_options objectForKey:@"baseURI"];
-    NSLog(@"OPTIONS:%@", _options);    
+
     if([tmpURI host] == nil && [baseURI host] == nil)
         [NSException raise:@"UnspecifiedHost" format:@"host wasn't provided in baseURI or path"];
     
@@ -251,8 +251,20 @@ static NSOperationQueue *HROperationQueue;
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     id results;
+    NSError *parseError = nil;
+    
     if([_responseData length] > 0) {
-        results = [[self formatter] decode:_responseData];        
+        results = [[self formatter] decode:_responseData error:&parseError];
+        
+        if(parseError) {
+            NSString *rawString = [[NSString alloc] initWithData:_responseData encoding:NSUTF8StringEncoding];
+            if([_delegate respondsToSelector:@selector(restConnection:didReceiveParseError:responseBody:)]) {
+                [_delegate performSelectorOnMainThread:@selector(restConnection:didReceiveParseError:responseBody:) withObjects:connection, parseError, rawString, nil];
+                [rawString release];
+                
+                return [self finish];
+            }
+        }
     }
     
     if([_delegate respondsToSelector:@selector(restConnection:didFinishReturningResource:object:)]) {

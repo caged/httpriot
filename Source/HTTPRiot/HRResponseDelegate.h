@@ -13,4 +13,5 @@
 - (void)restConnection:(NSURLConnection *)connection didReturnResource:(id)resource object:(id)obj;
 - (void)restConnection:(NSURLConnection *)connection didFailWithError:(NSError *)error object:(id)obj;
 - (void)restConnection:(NSURLConnection *)connection didReceiveError:(NSError *)error response:(NSHTTPURLResponse *)response object:(id)obj;
+- (void)restConnection:(NSURLConnection *)connection didReceiveParseError:(NSError *)error responseBody:(NSString *)string;
 @end
