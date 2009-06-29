@@ -70,7 +70,7 @@
  * url here.  You can also provide a path and port if you wish.  This 
  * url is prepended to the path argument of the request methods.
  *
- * @param uri The base uri used in all request
+ * @param url The base uri used in all request
  */
 + (void)setBaseURL:(NSURL *)url;
 

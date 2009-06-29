@@ -51,7 +51,7 @@
     ISAAlertWithMessage([error localizedDescription]);
 }
 
-- (void)restConnection:(NSURLConnection *)connection didFinishReturningResource:(id)resource object:(id)object {
+- (void)restConnection:(NSURLConnection *)connection didReturnResource:(id)resource object:(id)object {
     [resource retain];
     [_person release];
     _person = resource;

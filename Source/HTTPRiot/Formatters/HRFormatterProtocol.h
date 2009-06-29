@@ -18,6 +18,7 @@
  * Formatters should be able to encode and decode a specific data type.
  */
 @protocol HRFormatterProtocol 
+
 /**
  * The file extension.  Example: json, xml, plist, n3, etc.
  */

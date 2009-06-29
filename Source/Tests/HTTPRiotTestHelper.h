@@ -15,12 +15,6 @@
 #import "GHUnit.h"
 #endif
 
-@interface HRTestHelper : NSObject {
-    
-} 
-
-- (id)returnedResults:(id)info;
-@end
 
 // Get the compiler to STFU when testing private methods
 @interface HRRestModel (STFU)

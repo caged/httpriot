@@ -64,16 +64,6 @@ NSDictionary *opts = [NSDictionary dictionaroyWithObject:[person JSONRepresentat
 [HRRestModel postPath:@"/person" withOptions:opts target:self selector:@selector(personCreated:)];
 @endcode
 
-
-<h3>Posting Form Data</h3>
-HTTPRiot supports POSTing basic form-encoded data.  When you specify the <tt>params</tt> option for a POST 
-request <tt>HTTPRiot</tt> will treat this as form encoded data.
-
-@code
-NSDictionary *formParams = [NSDictionary dictionaryWithObjectsAndKeys:@"bob", @"name", @"01/02/03", @"birthday", nil];
-[HRRestModel postPath:@"http://localhost:1234/some/form/submission" options:[NSDictionary dictionaryWithObject:formParams forKey:@"params"]];
-@endcode
-
 <h4>Send a PUT request</h4>
 @code
 NSDictionary *opts = [NSDictionary dictionaroyWithObject:[updatedPerson JSONRepresentation] forKey:@"body"];

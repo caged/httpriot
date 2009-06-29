@@ -136,6 +136,16 @@ static NSOperationQueue *HROperationQueue;
     [self finish];
 }
 
+// - (NSURLRequest *)connection:(NSURLConnection *)connection willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)redirectResponse {
+//     NSURLRequest *newRequest = request;
+//     NSLog(@"CONNECTION REDIRECT:%@", [request allHTTPHeaderFields]);
+//     if (redirectResponse) {
+//         newRequest = nil;
+//     }
+// 
+//     return newRequest;
+// }
+
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     id results;
     NSError *parseError = nil;
@@ -145,17 +155,18 @@ static NSOperationQueue *HROperationQueue;
         
         if(parseError) {
             NSString *rawString = [[NSString alloc] initWithData:_responseData encoding:NSUTF8StringEncoding];
-            if([_delegate respondsToSelector:@selector(restConnection:didReceiveParseError:responseBody:)]) {
-                [_delegate performSelectorOnMainThread:@selector(restConnection:didReceiveParseError:responseBody:) withObjects:connection, parseError, rawString, nil];
-                [rawString release];
+            if([_delegate respondsToSelector:@selector(restConnection:didReceiveParseError:responseBody:object:)]) {
+                [_delegate performSelectorOnMainThread:@selector(restConnection:didReceiveParseError:responseBody:object:) withObjects:connection, parseError, rawString, _object, nil];
                 
                 return [self finish];
             }
+            
+            [rawString release];
         }
     }
     
-    if([_delegate respondsToSelector:@selector(restConnection:didFinishReturningResource:object:)]) {
-        [_delegate performSelectorOnMainThread:@selector(restConnection:didFinishReturningResource:object:) withObjects:connection, results, _object, nil];
+    if([_delegate respondsToSelector:@selector(restConnection:didReturnResource:object:)]) {
+        [_delegate performSelectorOnMainThread:@selector(restConnection:didReturnResource:object:) withObjects:connection, results, _object, nil];
     }
         
     [self finish];
@@ -172,14 +183,14 @@ static NSOperationQueue *HROperationQueue;
     NSDictionary *authDict = [_options valueForKey:@"basicAuth"];
     NSString *username = [authDict valueForKey:@"username"];
     NSString *password = [authDict valueForKey:@"password"];
-
+    
     if(username || password) {
         username = [username stringByPreparingForURL];
         password = [password stringByPreparingForURL];
         
         NSString *userPass = [NSString stringWithFormat:@"%@:%@", username, password];
-        NSData *b64 = [userPass dataUsingEncoding:NSUTF8StringEncoding];
-        NSString *encodedUserPass = [b64 base64Encoding];
+        NSData   *upData = [userPass dataUsingEncoding:NSUTF8StringEncoding];
+        NSString *encodedUserPass = [upData base64Encoding];
         NSString *basicHeader = [NSString stringWithFormat:@"Basic %@", encodedUserPass];
         [request setValue:basicHeader forHTTPHeaderField:@"Authorization"];
     }
@@ -212,27 +223,19 @@ static NSOperationQueue *HROperationQueue;
             
     } else if(_requestMethod == HRRequestMethodPost || _requestMethod == HRRequestMethodPut) {
         
-        NSData *bodyData = nil;
-        
-        if(params && [params isKindOfClass:[NSDictionary class]] && body == nil) {   
-            bodyData = [[params toQueryString] dataUsingEncoding:NSUTF8StringEncoding];
-            [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-            [request setHTTPBody:bodyData];
-        } else {            
-            if([body isKindOfClass:[NSDictionary class]])
-                bodyData = [[body toQueryString] dataUsingEncoding:NSUTF8StringEncoding];
-            else if([body isKindOfClass:[NSString class]])
-                bodyData = [body dataUsingEncoding:NSUTF8StringEncoding];
-            else if([body isKindOfClass:[NSData class]])
-                bodyData = body;
-            else
-                [NSException exceptionWithName:@"InvalidBodyData"
-                                        reason:@"The body must be an NSDictionary, NSString, or NSData"
-                                      userInfo:nil];
+        NSData *bodyData = nil;   
+        if([body isKindOfClass:[NSDictionary class]])
+            bodyData = [[body toQueryString] dataUsingEncoding:NSUTF8StringEncoding];
+        else if([body isKindOfClass:[NSString class]])
+            bodyData = [body dataUsingEncoding:NSUTF8StringEncoding];
+        else if([body isKindOfClass:[NSData class]])
+            bodyData = body;
+        else
+            [NSException exceptionWithName:@"InvalidBodyData"
+                                    reason:@"The body must be an NSDictionary, NSString, or NSData"
+                                  userInfo:nil];
             
-            [request setHTTPBody:bodyData];
-        }
-        
+        [request setHTTPBody:bodyData];
         [request setURL:composedURL];
         
         if(_requestMethod == HRRequestMethodPost)
@@ -292,7 +295,7 @@ static NSOperationQueue *HROperationQueue;
 + (id)handleResponse:(NSHTTPURLResponse *)response error:(NSError **)error {
     NSInteger code = [response statusCode];
     NSUInteger ucode = [[NSNumber numberWithInt:code] unsignedIntValue];
-    NSRange okRange = NSMakeRange(200, 200);
+    NSRange okRange = NSMakeRange(200, 201);
     NSRange clientErrorRange = NSMakeRange(401, 99);
     NSRange serverErrorRange = NSMakeRange(500, 100);
     

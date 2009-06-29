@@ -1077,11 +1077,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(PROJECT_DIR)/Source/Vendor";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Source/Vendor/gh-unit-iphone\"",
+					"\"$(SRCROOT)/Source/$(PROJECT)/Vendor/gh-unit-iphone\"",
 					"$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)$(IPHONEOS_DEPLOYMENT_TARGET)",
 				);
 				OTHER_LDFLAGS = (
-					"-all_load",
 					"-framework",
 					Foundation,
 					"-framework",
@@ -1089,6 +1088,7 @@
 					"-ObjC",
 					"-lxml2",
 					"-lhttpriot",
+					"-all_load",
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = iPhoneUnitTestsRunner;

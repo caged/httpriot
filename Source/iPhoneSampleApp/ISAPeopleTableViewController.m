@@ -35,7 +35,7 @@
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)restConnection:(NSURLConnection *)connection didFinishReturningResource:(id)resource object:(id)object {
+- (void)restConnection:(NSURLConnection *)connection didReturnResource:(id)resource object:(id)object {
     if(_isDeleting) {
         [_people removeObjectAtIndex:_indexPathOfItemToDelete.row];
         [self.tableView beginUpdates];
