@@ -17,7 +17,7 @@
  *  + (void)initialize
  *  {
  *     NSDictionary *params = [NSDictionary dictionaryWithObject:@"1234567" forKey:@"api_key"];
- *     [self setBaseURI:[NSURL URLWithString:@"http://localhost:1234/api"]];    
+ *     [self setBaseURL:[NSURL URLWithString:@"http://localhost:1234/api"]];    
  *     [self setFormat:kHTTPFormatJSON];
  *     [self setDefaultParameters:params];
  *  }
@@ -61,7 +61,7 @@
 /**
  * The base url to use in every request
  */
-+ (NSURL *)baseURI;
++ (NSURL *)baseURL;
 
 /** 
  * Set the base URL to be used in every request.
@@ -72,7 +72,7 @@
  *
  * @param uri The base uri used in all request
  */
-+ (void)setBaseURI:(NSURL *)uri;
++ (void)setBaseURL:(NSURL *)url;
 
 /**
  * Default headers sent with every request
@@ -149,18 +149,20 @@
  
 /**
  * Send a GET request
- * @param path The path to get.  If you haven't setup the baseURI option you'll need to provide a 
+ * @param path The path to get.  If you haven't setup the baseURL option you'll need to provide a 
  *        full url. 
  * @param options The options for this request.
+ * @param object An object to be passed to the delegate methods
  *
  */
-+ (NSOperation *)getPath:(NSString *)path withOptions:(NSDictionary *)options object:(id)obj;
++ (NSOperation *)getPath:(NSString *)path withOptions:(NSDictionary *)options object:(id)object;
 
 /**
  * Send a POST request
- * @param path The path to POST to.  If you haven't setup the baseURI option you'll need to provide a 
+ * @param path The path to POST to.  If you haven't setup the baseURL option you'll need to provide a 
  *        full url. 
  * @param options The options for this request.
+ * @param object An object to be passed to the delegate methods
  *
  * <strong>Note:</strong>  There are two important options you can set on post request.  Setting the 
  * <tt>params</tt> option will cause the request to be posted as <tt>application/x-www-form-urlencoded</tt> data.
@@ -168,27 +170,29 @@
  * option will cause the <tt>params</tt> option to be ignored.
  *
  */
-+ (NSOperation *)postPath:(NSString *)path withOptions:(NSDictionary *)options object:(id)obj;
++ (NSOperation *)postPath:(NSString *)path withOptions:(NSDictionary *)options object:(id)object;
 
 /**
  * Send a PUT request
- * @param path The path to PUT to.  If you haven't setup the baseURI option you'll need to provide a 
+ * @param path The path to PUT to.  If you haven't setup the baseURL option you'll need to provide a 
  *        full url. 
  * @param options The options for this request.
+ * @param object An object to be passed to the delegate methods
  *
- * <strong>Note:</strong>  All data found in the <tt>body</tt> option will be PUT.  Setting the <tt>body</tt>
+ * @remarks <strong>Note:</strong>  All data found in the <tt>body</tt> option will be PUT.  Setting the <tt>body</tt>
  * option will cause the <tt>params</tt> option to be ignored.
  *
  */
-+ (NSOperation *)putPath:(NSString *)path withOptions:(NSDictionary *)options object:(id)obj;
++ (NSOperation *)putPath:(NSString *)path withOptions:(NSDictionary *)options object:(id)object;
 
 /**
  * Send a DELETE request
- * @param path The path to DELETE.  If you haven't setup the baseURI option you'll need to provide a 
+ * @param path The path to DELETE.  If you haven't setup the baseURL option you'll need to provide a 
  *        full url. 
  * @param options The options for this request.
+ * @param object An object to be passed to the delegate methods
  *
  */
-+ (NSOperation *)deletePath:(NSString *)path withOptions:(NSDictionary *)options object:(id)obj;
++ (NSOperation *)deletePath:(NSString *)path withOptions:(NSDictionary *)options object:(id)object;
 //@}
 @end

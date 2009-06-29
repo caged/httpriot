@@ -3,6 +3,8 @@ require 'rubygems'
 require 'rake/packagetask'
 require 'osx/plist'
 
+BUILD_TARGETS = %w(2.2.1 3.0)
+
 desc 'Run Clang'
 task :analyze do
   FileUtils.rm_r(Project.build_dir)
@@ -21,7 +23,7 @@ namespace :iphone do
   desc 'Build 2.0 - 3.0 Release Versions of the static library for the simulator and device'
   task :build_all => :clean_all do
     rm_r(Project.build_dir) if File.exists?(Project.build_dir)
-    Project.targets.each do |version|
+    BUILD_TARGETS.each do |version|
       system("xcodebuild -target libhttpriot -configuration Release -sdk iphonesimulator#{version}")
       system("xcodebuild -target libhttpriot -configuration Release -sdk iphoneos#{version}")
     end
@@ -204,7 +206,7 @@ class SDKPackage < Rake::PackageTask
   attr_accessor :configuration
   
   # Deployment target (2.0, 2.1, 2.2, 2.2.1, 3.0).  Contains all by default.
-  attr_accessor :target
+  attr_accessor :targets
   
   # SDKs to package.  iphonesimulator, iphoneos by default
   attr_accessor :sdks
@@ -306,4 +308,5 @@ end
 SDKPackage.new do |sdk|
   sdk.need_tar_gz = true
   sdk.need_zip = true
+  sdk.targets  = BUILD_TARGETS
 end

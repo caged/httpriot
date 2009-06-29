@@ -7,6 +7,7 @@
  * @see HRRequestOperation
  */
 typedef enum {
+    /// Unknown
     HRRequestMethodUnknown = -1,
     /// GET
     HRRequestMethodGet,
@@ -23,6 +24,7 @@ typedef enum {
  @see HRRestModel#setFormat
  */
 typedef enum {
+    /// Unknown
     HRDataFormatUnknown = -1,
     /// JSON Format
     HRDataFormatJSON,
@@ -30,9 +32,13 @@ typedef enum {
     HRDataFormatXML
 } HRDataFormat;
 
-#define HTTPRiotErrorDomain @"com.alternateidea.HTTPRiot.ErroDomain"
+/// HTTPRiot's error domain
+#define HTTPRiotErrorDomain @"com.labratrevenge.HTTPRiot.ErroDomain"
+
 #ifdef DEBUG
+/// Determines if request information should be printed to the console.
 #define HTTPRIOT_DEBUG_REQUESTS 1
 #else
+/// Determines if request information should be printed to the console 
 #define HTTPRIOT_DEBUG_REQUESTS 0
 #endif

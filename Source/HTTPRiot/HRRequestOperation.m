@@ -23,7 +23,7 @@ static NSOperationQueue *HROperationQueue;
 - (void)setAuthHeadersForRequest:(NSMutableURLRequest *)request;
 - (NSMutableURLRequest *)configuredRequest;
 - (id)formatterFromFormat;
-- (NSURL *)composedURI;
+- (NSURL *)composedURL;
 + (id)handleResponse:(NSHTTPURLResponse *)response error:(NSError **)error;
 + (NSString *)buildQueryStringFromParams:(NSDictionary *)params;
 - (void)finish;
@@ -63,125 +63,7 @@ static NSOperationQueue *HROperationQueue;
     return self;
 }
 
-- (id)formatterFromFormat
-{
-    NSNumber *format = [[self options] objectForKey:@"format"];
-    id theFormatter = nil;
-    
-    switch([format intValue]) {
-        case HRDataFormatJSON:
-            theFormatter = [HRFormatJSON class];
-        break;
-        case HRDataFormatXML:
-            theFormatter = [HRFormatXML class];
-        break;
-        default:
-            theFormatter = [HRFormatJSON class];
-        break;   
-    }
-    
-    NSString *errorMessage = [NSString stringWithFormat:@"Invalid Formatter %@", NSStringFromClass(theFormatter)];
-    NSAssert([theFormatter conformsToProtocol:@protocol(HRFormatterProtocol)], errorMessage); 
-    
-    return theFormatter;
-}
-
-- (void)setDefaultHeadersForRequest:(NSMutableURLRequest *)request {
-    NSDictionary *headers = [[self options] valueForKey:@"headers"];
-    if(headers)
-        [request setAllHTTPHeaderFields:headers];
-}
-
-- (void)setAuthHeadersForRequest:(NSMutableURLRequest *)request {
-    NSDictionary *authDict = [_options valueForKey:@"basicAuth"];
-    NSString *username = [authDict valueForKey:@"username"];
-    NSString *password = [authDict valueForKey:@"password"];
-
-    if(username || password) {
-        username = [username stringByPreparingForURL];
-        password = [password stringByPreparingForURL];
-        
-        NSString *userPass = [NSString stringWithFormat:@"%@:%@", username, password];
-        NSData *b64 = [userPass dataUsingEncoding:NSUTF8StringEncoding];
-        NSString *encodedUserPass = [b64 base64Encoding];
-        NSString *basicHeader = [NSString stringWithFormat:@"Basic %@", encodedUserPass];
-        [request setValue:basicHeader forHTTPHeaderField:@"Authorization"];
-    }
-}
-
-- (NSMutableURLRequest *)configuredRequest {
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
-    [request setTimeoutInterval:30.0];
-    [self setDefaultHeadersForRequest:request];
-    [self setAuthHeadersForRequest:request];
-    
-    NSURL *composedURL = [self composedURI];
-    NSDictionary *params = [[self options] valueForKey:@"params"];
-    id body = [[self options] valueForKey:@"body"];
-    NSString *queryString = [[self class] buildQueryStringFromParams:params];
-    
-    if(_requestMethod == HRRequestMethodGet || _requestMethod == HRRequestMethodDelete) {
-        NSString *urlString = [[composedURL absoluteString] stringByAppendingString:queryString];
-        NSLog(@"URL:%@", urlString);
-        NSURL *url = [NSURL URLWithString:urlString];
-        [request setURL:url];
-        [request setValue:[[self formatter] mimeType] forHTTPHeaderField:@"Content-Type"];  
-        [request addValue:[[self formatter] mimeType] forHTTPHeaderField:@"Accept"];
-        
-        if(_requestMethod == HRRequestMethodGet)
-            [request setHTTPMethod:@"GET"];
-        else
-            [request setHTTPMethod:@"DELETE"];
-            
-    } else if(_requestMethod == HRRequestMethodPost || _requestMethod == HRRequestMethodPut) {
-        
-        NSData *bodyData = nil;
-        
-        if(params && [params isKindOfClass:[NSDictionary class]] && body == nil) {   
-            bodyData = [[params toQueryString] dataUsingEncoding:NSUTF8StringEncoding];
-            [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-            [request setHTTPBody:bodyData];
-        } else {            
-            if([body isKindOfClass:[NSDictionary class]])
-                bodyData = [[body toQueryString] dataUsingEncoding:NSUTF8StringEncoding];
-            else if([body isKindOfClass:[NSString class]])
-                bodyData = [body dataUsingEncoding:NSUTF8StringEncoding];
-            else if([body isKindOfClass:[NSData class]])
-                bodyData = body;
-            else
-                [NSException exceptionWithName:@"InvalidBodyData"
-                                        reason:@"The body must be an NSDictionary, NSString, or NSData"
-                                      userInfo:nil];
-            
-            [request setHTTPBody:bodyData];
-        }
-        
-        [request setURL:composedURL];
-        
-        if(_requestMethod == HRRequestMethodPost)
-            [request setHTTPMethod:@"POST"];
-        else
-            [request setHTTPMethod:@"PUT"];
-            
-    }
-    
-    return request;
-}
-
-- (NSURL *)composedURI {
-    NSURL *tmpURI = [NSURL URLWithString:_path];
-    NSURL *baseURI = [_options objectForKey:@"baseURI"];
-
-    if([tmpURI host] == nil && [baseURI host] == nil)
-        [NSException raise:@"UnspecifiedHost" format:@"host wasn't provided in baseURI or path"];
-    
-    if([tmpURI host])
-        return tmpURI;
-        
-    return [NSURL URLWithString:[[baseURI absoluteString] stringByAppendingPathComponent:_path]];
-}
-
+#pragma mark - Concurrent NSOperation Methods
 - (void)start {
     [self willChangeValueForKey:@"isExecuting"];
     _isExecuting = YES;
@@ -222,6 +104,11 @@ static NSOperationQueue *HROperationQueue;
    return _isFinished;
 }
 
+- (BOOL)isConcurrent {
+    return YES;
+}
+
+#pragma mark - NSURLConnection delegates
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     NSError *error = nil;
     [[self class] handleResponse:(NSHTTPURLResponse *)response error:&error];
@@ -274,9 +161,125 @@ static NSOperationQueue *HROperationQueue;
     [self finish];
 }
 
-- (BOOL)isConcurrent {
-    return YES;
+#pragma mark - Configuration
+- (void)setDefaultHeadersForRequest:(NSMutableURLRequest *)request {
+    NSDictionary *headers = [[self options] valueForKey:@"headers"];
+    if(headers)
+        [request setAllHTTPHeaderFields:headers];
 }
+
+- (void)setAuthHeadersForRequest:(NSMutableURLRequest *)request {
+    NSDictionary *authDict = [_options valueForKey:@"basicAuth"];
+    NSString *username = [authDict valueForKey:@"username"];
+    NSString *password = [authDict valueForKey:@"password"];
+
+    if(username || password) {
+        username = [username stringByPreparingForURL];
+        password = [password stringByPreparingForURL];
+        
+        NSString *userPass = [NSString stringWithFormat:@"%@:%@", username, password];
+        NSData *b64 = [userPass dataUsingEncoding:NSUTF8StringEncoding];
+        NSString *encodedUserPass = [b64 base64Encoding];
+        NSString *basicHeader = [NSString stringWithFormat:@"Basic %@", encodedUserPass];
+        [request setValue:basicHeader forHTTPHeaderField:@"Authorization"];
+    }
+}
+
+- (NSMutableURLRequest *)configuredRequest {
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    [request setTimeoutInterval:30.0];
+    [self setDefaultHeadersForRequest:request];
+    [self setAuthHeadersForRequest:request];
+    
+    NSURL *composedURL = [self composedURL];
+    NSDictionary *params = [[self options] valueForKey:@"params"];
+    id body = [[self options] valueForKey:@"body"];
+    NSString *queryString = [[self class] buildQueryStringFromParams:params];
+    
+    if(_requestMethod == HRRequestMethodGet || _requestMethod == HRRequestMethodDelete) {
+        NSString *urlString = [[composedURL absoluteString] stringByAppendingString:queryString];
+        NSLog(@"URL:%@", urlString);
+        NSURL *url = [NSURL URLWithString:urlString];
+        [request setURL:url];
+        [request setValue:[[self formatter] mimeType] forHTTPHeaderField:@"Content-Type"];  
+        [request addValue:[[self formatter] mimeType] forHTTPHeaderField:@"Accept"];
+        
+        if(_requestMethod == HRRequestMethodGet)
+            [request setHTTPMethod:@"GET"];
+        else
+            [request setHTTPMethod:@"DELETE"];
+            
+    } else if(_requestMethod == HRRequestMethodPost || _requestMethod == HRRequestMethodPut) {
+        
+        NSData *bodyData = nil;
+        
+        if(params && [params isKindOfClass:[NSDictionary class]] && body == nil) {   
+            bodyData = [[params toQueryString] dataUsingEncoding:NSUTF8StringEncoding];
+            [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+            [request setHTTPBody:bodyData];
+        } else {            
+            if([body isKindOfClass:[NSDictionary class]])
+                bodyData = [[body toQueryString] dataUsingEncoding:NSUTF8StringEncoding];
+            else if([body isKindOfClass:[NSString class]])
+                bodyData = [body dataUsingEncoding:NSUTF8StringEncoding];
+            else if([body isKindOfClass:[NSData class]])
+                bodyData = body;
+            else
+                [NSException exceptionWithName:@"InvalidBodyData"
+                                        reason:@"The body must be an NSDictionary, NSString, or NSData"
+                                      userInfo:nil];
+            
+            [request setHTTPBody:bodyData];
+        }
+        
+        [request setURL:composedURL];
+        
+        if(_requestMethod == HRRequestMethodPost)
+            [request setHTTPMethod:@"POST"];
+        else
+            [request setHTTPMethod:@"PUT"];
+            
+    }
+    
+    return request;
+}
+
+- (NSURL *)composedURL {
+    NSURL *tmpURI = [NSURL URLWithString:_path];
+    NSURL *baseURL = [_options objectForKey:@"baseURL"];
+
+    if([tmpURI host] == nil && [baseURL host] == nil)
+        [NSException raise:@"UnspecifiedHost" format:@"host wasn't provided in baseURL or path"];
+    
+    if([tmpURI host])
+        return tmpURI;
+        
+    return [NSURL URLWithString:[[baseURL absoluteString] stringByAppendingPathComponent:_path]];
+}
+
+- (id)formatterFromFormat {
+    NSNumber *format = [[self options] objectForKey:@"format"];
+    id theFormatter = nil;
+    
+    switch([format intValue]) {
+        case HRDataFormatJSON:
+            theFormatter = [HRFormatJSON class];
+        break;
+        case HRDataFormatXML:
+            theFormatter = [HRFormatXML class];
+        break;
+        default:
+            theFormatter = [HRFormatJSON class];
+        break;   
+    }
+    
+    NSString *errorMessage = [NSString stringWithFormat:@"Invalid Formatter %@", NSStringFromClass(theFormatter)];
+    NSAssert([theFormatter conformsToProtocol:@protocol(HRFormatterProtocol)], errorMessage); 
+    
+    return theFormatter;
+}
+
 
 #pragma mark - Class Methods
 + (HRRequestOperation *)requestWithMethod:(HRRequestMethod)method path:(NSString*)urlPath options:(NSDictionary*)requestOptions object:(id)obj {

@@ -54,12 +54,12 @@ static NSMutableDictionary *attributes;
     [self setAttributeValue:del forKey:@"delegate"];
 }
 
-+ (NSURL *)baseURI {
-   return [[self classAttributes] objectForKey:@"baseURI"];
++ (NSURL *)baseURL {
+   return [[self classAttributes] objectForKey:@"baseURL"];
 }
 
-+ (void)setBaseURI:(NSURL *)uri {
-    [self setAttributeValue:uri forKey:@"baseURI"];
++ (void)setBaseURL:(NSURL *)uri {
+    [self setAttributeValue:uri forKey:@"baseURL"];
 }
 
 + (NSDictionary *)headers {

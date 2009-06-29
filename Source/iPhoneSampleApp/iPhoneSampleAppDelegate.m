@@ -22,7 +22,7 @@
     // Override point for customization after app launch  
     ISAPeopleTableViewController *peopleController = [[[ISAPeopleTableViewController alloc] init] autorelease];
     navigationController.viewControllers = [NSArray arrayWithObjects:peopleController, nil];
-    [HRRestModel setBaseURI:[NSURL URLWithString:@"http://localhost:4567"]];
+    [HRRestModel setBaseURL:[NSURL URLWithString:@"http://localhost:4567"]];
     
 	[window addSubview:[navigationController view]];
     [window makeKeyAndVisible];
@@ -32,7 +32,6 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
 	// Save data if appropriate
 }
-
 
 #pragma mark -
 #pragma mark Memory management
