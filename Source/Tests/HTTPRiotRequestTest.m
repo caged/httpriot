@@ -65,6 +65,19 @@
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
 }
 
+- (void)testShouldHandleTimeOut {
+    [self prepare];
+    [HRTestPerson2 getPath:@"/timeout" withOptions:nil object:@"TimeOut"];
+    [self waitForStatus:kGHUnitWaitStatusFailure timeout:40.0];
+}
+
+- (void)testShouldHandleCanceledRequest {
+    NSOperation *op = [HRTestPerson2 getPath:@"/timeout" withOptions:nil object:@"CanceledRequest"];
+    [op cancel];
+    GHAssertTrue([op isCancelled], nil); 
+}
+
+
 - (void)restConnection:(NSURLConnection *)connection didReturnResource:(id)resource object:(id)method {
     NSString *prefix = @"testShouldHandle";
     NSString *selector = [prefix stringByAppendingString:method];

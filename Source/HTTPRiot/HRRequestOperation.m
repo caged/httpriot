@@ -49,10 +49,12 @@ static NSOperationQueue *HROperationQueue;
     if(self = [super init]) {
         _isExecuting    = NO;
         _isFinished     = NO;
+        _isCancelled    = NO;
         _requestMethod  = method;
         _path           = [urlPath copy];
         _options        = [opts retain];
         _object         = obj;
+        _timeout        = 30.0;
         _delegate       = [opts valueForKey:@"delegate"];
         _formatter      = [[self formatterFromFormat] retain];
         
@@ -96,12 +98,27 @@ static NSOperationQueue *HROperationQueue;
     [self didChangeValueForKey:@"isFinished"];
 }
 
+- (void)cancel {
+    [self willChangeValueForKey:@"isCancelled"];
+    
+    [_connection cancel];    
+    _isCancelled = YES;
+    
+    [self didChangeValueForKey:@"isCancelled"];
+    
+    [self finish];
+}
+
 - (BOOL)isExecuting {
    return _isExecuting;
 }
 
 - (BOOL)isFinished {
    return _isFinished;
+}
+
+- (BOOL)isCancelled {
+   return _isCancelled;
 }
 
 - (BOOL)isConcurrent {
@@ -199,7 +216,7 @@ static NSOperationQueue *HROperationQueue;
 - (NSMutableURLRequest *)configuredRequest {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
-    [request setTimeoutInterval:30.0];
+    [request setTimeoutInterval:_timeout];
     [self setDefaultHeadersForRequest:request];
     [self setAuthHeadersForRequest:request];
     

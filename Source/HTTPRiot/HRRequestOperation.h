@@ -47,6 +47,9 @@
     
     /// Determines whether the operation is executing
     BOOL _isExecuting;
+    
+    /// Determines whether the connection is cancelled
+    BOOL _isCancelled;
 }
 
 /// The HRResponseDelegate

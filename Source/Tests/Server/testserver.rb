@@ -177,6 +177,11 @@ delete '/person/delete/:id' do
   end
 end
 
+# Timeout
+get '/timeout' do
+  sleep 40
+end
+
 include Sinatra::Authorization
 #BASIC AUTH
 get '/auth' do

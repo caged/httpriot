@@ -1,5 +1,2 @@
-* Allow passing object to REST methods.
-* Support redirection
 * Update documentation to match new api
-* Look into gh-unit's mocking support
 * Subclass NSOperationQueue, allow setting maxConcurrentConnections
