@@ -85,21 +85,13 @@ NSDictionary *opts = [NSDictionary dictionaroyWithObject:[updatedPerson JSONRepr
 [HRRestModel deletePath:@"/person/1" withOptions:nil];
 @endcode
 
-<h3>Creating Your Own Models</h3>
-You can use HTTPRiot straight out of the box by itself.  You can customize default properties that 
-will be shared by all requests or you can subclass HRRestModel and customize options per-class.
+<h3>Subclassing HRRestModel</h3>
+Although you can use HTTPRiot straight out of the box by itself, this approach has some pitfals.
+Every request will share the same configuation options. By subclassing HRRestModel you can have 
+per-class configuation options meaning that all requests generating from your subclass share a 
+local set of configuation options and will not affect other requests not originating from your subclass.
 
 @include Tweet.m
-
-<h3>Handling Errors</h3>
-If any errors are present, the error will be included in the info dictionary passed to the callback.
-@li <strong><tt>code</tt></strong> - The status code returned by the server.
-@li <strong><tt>localizedFailureReason</tt></strong> - The reason the request failed.
-@li <strong><tt>localizedDescription</tt></strong> - Description of the failure.
-@li <strong><tt>domain</tt></strong> - The error domain.
-@li <strong><tt>userInfo</tt></strong> - The userInfo dictionary with error infomration in addition to 
-    to any <strong><tt>headers</tt></strong> returned by the server.  This dictionary also contains the full 
-    <strong><tt>url</tt></strong> used in the request.
 
 @page iphone-setup Using the HTTPRiot Framework in your iPhone Applications
 

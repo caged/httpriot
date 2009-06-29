@@ -7,7 +7,7 @@
 // Set default options here
 + (void)initialize {
     [self setDelegate:self];
-    [self setBaseURI:[NSURL URLWithString:@"http://twitter.com"]];
+    [self setBaseURL:[NSURL URLWithString:@"http://twitter.com"]];
 }
 
 - (void)initWithDictionary:(NSDictionary *)dict {
@@ -21,52 +21,38 @@
     return self;
 }
 
-+ (id)timelineForUser:(NSString *)user
-{
-    NSDictionary *targetAction = [NSDictionary dictionaryWithObjectsAndKeys:target, @"target", NSStringFromSelector(sel), @"selector", nil];
++ (id)timelineForUser:(NSString *)user delegate:(id)delegate {
     NSDictionary *params = [NSDictionary dictionaryWithObject:user forKey:@"screen_name"];
     NSDictionary *opts = [NSDictionary dictionaryWithObject:params forKey:@"params"];
     
-    [self getPath:@"/statuses/user_timeline.json" withOptions:opts];
+    [self getPath:@"/statuses/user_timeline.json" withOptions:opts object:delegate];
 }
 
-+ (id)publicTimeline {
-    [self getPath:@"/statuses/public_timeline.json" withOptions:nil];
++ (id)publicTimelineWithDelegate:(id)delegate {
+    [self getPath:@"/statuses/public_timeline.json" withOptions:nil object:delegate];
 }
 
 #pragma mark - HRRequestOperation Delegates
-+ (void)restConnection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
++ (void)restConnection:(NSURLConnection *)connection didFailWithError:(NSError *)error object:(id)object {
     // Handle connection errors.  Failures to connect to the server, etc.
 }
 
-+ (void)restConnection:(NSURLConnection *)connection didReceiveError:(NSError *)error response:(NSHTTPURLResponse *)response {
++ (void)restConnection:(NSURLConnection *)connection didReceiveError:(NSError *)error response:(NSHTTPURLResponse *)response object:(id)object {
     // Handle invalid responses, 404, 500, etc.
 }
 
-+ (void)restConnection:(NSURLConnection *)connection didFinishReturningResource:(id)resource {
-
++ (void)restConnection:(NSURLConnection *)connection didReceiveParseError:(NSError *)error responseBody:(NSString *)string {
+    // Request was successful, but couldn't parse the data returned by the server. 
 }
 
-+ (void)tweetsLoaded:(NSDictionary *)info
-{
-    NSMutableArray *tweets = [[NSMutableArray alloc] init];
-    NSError *error = [info valueForKey:@"error"];
-    NSArray *results = [info valueForKey:@"results"];
-    id obj = [info valueForKey:@"object"];
++ (void)restConnection:(NSURLConnection *)connection didFinishReturningResource:(id)resource  object:(id)object {
+    NSMutableArray *tweets = [[[NSMutableArray alloc] init] autorelease];
     
-    if(error == nil)
-    {
-        for(id item in results)
-        {
-            [tweets addItem:[[Tweet alloc] initWithDictionary:item]];
-        }
+    for(id item in resource) {
+        [tweets addItem:[[Tweet alloc] initWithDictionary:item]];
     }
     
-    id target = [obj valueForKey:@"target"];
-    SEL selector = NSSelectorFromString([obj valueForKey:@"selector"]);
-    
-    if([target respondsToSelector:selector])
-        [target performSelector:selector withObject:tweets withObject:error];
+    [object performSelector:@selector(tweetsLoaded:) withObject:tweets];
 }
 @end
 
