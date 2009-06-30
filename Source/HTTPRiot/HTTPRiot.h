@@ -55,24 +55,24 @@ HTTPRiot was inspired by John Nunemaker's excellent
 
 <h4>Send a GET request</h4>
 @code
-[HRRestModel getPath:@"/person.json" withOptions:nil];
+[HRRestModel getPath:@"/person.json" withOptions:nil object:nil];
 @endcode
 
 <h4>Send a POST request with JSON body data</h4>
 @code
 NSDictionary *opts = [NSDictionary dictionaroyWithObject:[person JSONRepresentation] forKey:@"body"];
-[HRRestModel postPath:@"/person" withOptions:opts target:self selector:@selector(personCreated:)];
+[HRRestModel postPath:@"/person" withOptions:opts object:nil];
 @endcode
 
 <h4>Send a PUT request</h4>
 @code
 NSDictionary *opts = [NSDictionary dictionaroyWithObject:[updatedPerson JSONRepresentation] forKey:@"body"];
-[HRRestModel postPath:@"/person" withOptions:opts];
+[HRRestModel postPath:@"/person" withOptions:opts object:nil];
 @endcode
 
 <h4>Send a DELETE request</h4>
 @code
-[HRRestModel deletePath:@"/person/1" withOptions:nil];
+[HRRestModel deletePath:@"/person/1" withOptions:nil object:nil];
 @endcode
 
 <h3>Subclassing HRRestModel</h3>
@@ -94,18 +94,18 @@ can share it with all your iPhone projects.
    where it can be shared.
 -# Create a new project or open an existing project in XCode.  Select your application's target and 
    press<strong class="key"> ⌘i</strong> to bring up the properties window.  Set the <strong><tt>Additional SDKs</tt></strong>
-   property to <strong><tt>~/Library/SDKs/httpriot-0.1.0/\$(PLATFORM_NAME).sdk</tt></strong>.
+   property to <strong><tt>~/Library/SDKs/httpriot-0.4.0/\$(PLATFORM_NAME)\$(IPHONEOS_DEPLOYMENT_TARGET).sdk</tt></strong>.
    @image html additional-sdks.png
--# Set the <strong><tt>Additional Linker Flags</tt></strong> to <tt>-lhttpriot -ObjC</tt></strong> 
+-# Set the <strong><tt>Additional Linker Flags</tt></strong> to <tt>-lhttpriot -lxml2 -ObjC -all_load</tt></strong> 
    @image html other-linker-flags.png
--# Use <strong><tt>\#include "HTTPRiot/HTTPRiot.h"</tt></strong> in one of your application's files. 
+-# Use <strong><tt>\#include <HTTPRiot/HTTPRiot.h></tt></strong> in one of your application's files. 
    That's it!  Now you're ready to use HTTPRiot!
 
 @page cocoa-setup Using the HTTPRiot Framework in your Desktop Applications
 
 -# Right click Other Frameworks in XCode and select <tt>Add &rarr; Existing Frameworks</tt>.  Select 
    the <strong><tt>HTTPRiot.framework</tt></strong> and press <tt>Add</tt>. @image html httpriot-framework.png
--# Include the framework <HTTPRiot/HTTPRiot.h> in your project.  That's it!
+-# Include the framework <strong><tt>\#include <HTTPRiot/HTTPRiot.h></tt></strong> in your project.  That's it!
 
 <h3>Embedding HTTPRiot.framework in your application</h3>
 If you want to distribute HTTPRiot.framework with your application you'll need to do another step.
