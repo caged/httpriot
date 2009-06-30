@@ -6,30 +6,39 @@
 //  Copyright 2009 LabratRevenge LLC.. All rights reserved.
 //
 #import <Foundation/Foundation.h>
-#import "HRConstants.h"
+#import "HRGlobal.h"
 /**
- * You can either subclass this class or use it directly to make requests.
- * It's recommended that you subclass it and setup default properties in your 
- * classes <tt>initialize</tt> method.
+ * This class allows you to easily interact with RESTful resources.  Responses are automatically
+ * converted to the proper Objective-C type.  You can use this class directly or subclass it.
+ * 
+ * Using this class directly means that all requests share the same configuration 
+ * (including delegate).  This works fine for simple situations but when you start dealing 
+ * with different resource types it's best to subclass HRRestModel, giving each class its 
+ * own set of configuation options.
+ *
+ *
+ * In the code below all requests originating from <tt>Person</tt> will have an <tt>api_key</tt> 
+ * default parameter, the same base url, and the same delegate.  See HRResponseDelegate for the 
+ * the delegate methods available to you.
  *
  * @code
  *  @implementation Person
- *  + (void)initialize
- *  {
+ *  + (void)initialize {
+ *     [self setDelegate:self];
  *     NSDictionary *params = [NSDictionary dictionaryWithObject:@"1234567" forKey:@"api_key"];
  *     [self setBaseURL:[NSURL URLWithString:@"http://localhost:1234/api"]];    
- *     [self setFormat:kHTTPFormatJSON];
  *     [self setDefaultParameters:params];
  *  }
  *
- *  -(void)personLoaded:(NSDictionary *)info
- *  {
- *      NSDictionary *person = [info valueForKey:@"results"];   
+ * - (void)restConnection:(NSURLConnection *)connection didReturnResource:(id)resource object:(id)object {
+ *      for(id person in resource) {
+ *          // do something with a person dictionary   
+ *      }  
  *  }
  *  @end
  *
  *  // Would send a request to http://localhost:1234/api/people/1?api_key=1234567
- *  [Person getPath:@"/people/1" withOptions:nil target:self selector:@selector(personLoaded:)];
+ *  [Person getPath:@"/people/1" withOptions:nil object:nil];
  * @endcode
  *
  * <h3>A note on default properties and subclassing</h3>

@@ -30,7 +30,7 @@
 		D00D8C720FF160810077F798 /* RunTests.sh in Resources */ = {isa = PBXBuildFile; fileRef = D00D8C700FF160810077F798 /* RunTests.sh */; };
 		D02988310F3F7BCE00EC8C01 /* HRRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = D09E4B350F33EB0E00C9E26E /* HRRequestOperation.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D02988640F3F7F1200EC8C01 /* HTTPRiot_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = D02988630F3F7F1200EC8C01 /* HTTPRiot_Prefix.pch */; };
-		D02988FF0F3FB63F00EC8C01 /* HRConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = D02988FE0F3FB63F00EC8C01 /* HRConstants.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D02988FF0F3FB63F00EC8C01 /* HRGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = D02988FE0F3FB63F00EC8C01 /* HRGlobal.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D02989390F3FBEDC00EC8C01 /* NSData+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = D02989310F3FBEDC00EC8C01 /* NSData+Base64.h */; };
 		D029893A0F3FBEDC00EC8C01 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = D02989320F3FBEDC00EC8C01 /* NSData+Base64.m */; };
 		D029893B0F3FBEDC00EC8C01 /* NSDictionary+URI.h in Headers */ = {isa = PBXBuildFile; fileRef = D02989330F3FBEDC00EC8C01 /* NSDictionary+URI.h */; };
@@ -100,7 +100,7 @@
 		D077448B0F4885DA00190554 /* NSString+URI.m in Sources */ = {isa = PBXBuildFile; fileRef = D02989380F3FBEDC00EC8C01 /* NSString+URI.m */; };
 		D077455F0F48913800190554 /* HTTPRiot.h in Headers */ = {isa = PBXBuildFile; fileRef = D03DB6650F3163BB00F18796 /* HTTPRiot.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D07745600F48917400190554 /* HTTPRiot_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = D02988630F3F7F1200EC8C01 /* HTTPRiot_Prefix.pch */; settings = {ATTRIBUTES = (Private, ); }; };
-		D07745610F48917400190554 /* HRConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = D02988FE0F3FB63F00EC8C01 /* HRConstants.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D07745610F48917400190554 /* HRGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = D02988FE0F3FB63F00EC8C01 /* HRGlobal.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D07745620F48917400190554 /* HRFormatJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A2D0F3FF4FD00EC8C01 /* HRFormatJSON.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D07745630F48917400190554 /* HRFormatterProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A280F3FCA8800EC8C01 /* HRFormatterProtocol.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D07745640F48917400190554 /* HRFormatXML.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A320F3FF50800EC8C01 /* HRFormatXML.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -149,7 +149,7 @@
 		D00D8C6F0FF160810077F798 /* libGHUnitIPhone2_1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGHUnitIPhone2_1.a; sourceTree = "<group>"; };
 		D00D8C700FF160810077F798 /* RunTests.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = RunTests.sh; sourceTree = "<group>"; };
 		D02988630F3F7F1200EC8C01 /* HTTPRiot_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRiot_Prefix.pch; sourceTree = "<group>"; };
-		D02988FE0F3FB63F00EC8C01 /* HRConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRConstants.h; sourceTree = "<group>"; };
+		D02988FE0F3FB63F00EC8C01 /* HRGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRGlobal.h; sourceTree = "<group>"; };
 		D02989310F3FBEDC00EC8C01 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 		D02989320F3FBEDC00EC8C01 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		D02989330F3FBEDC00EC8C01 /* NSDictionary+URI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+URI.h"; sourceTree = "<group>"; };
@@ -420,7 +420,7 @@
 				D09E4B350F33EB0E00C9E26E /* HRRequestOperation.h */,
 				D09E4B360F33EB0E00C9E26E /* HRRequestOperation.m */,
 				D02988630F3F7F1200EC8C01 /* HTTPRiot_Prefix.pch */,
-				D02988FE0F3FB63F00EC8C01 /* HRConstants.h */,
+				D02988FE0F3FB63F00EC8C01 /* HRGlobal.h */,
 				D038BD850FF28B960041F570 /* HRResponseDelegate.h */,
 			);
 			path = HTTPRiot;
@@ -516,7 +516,7 @@
 			files = (
 				D03DB6660F3163BB00F18796 /* HTTPRiot.h in Headers */,
 				D02988640F3F7F1200EC8C01 /* HTTPRiot_Prefix.pch in Headers */,
-				D02988FF0F3FB63F00EC8C01 /* HRConstants.h in Headers */,
+				D02988FF0F3FB63F00EC8C01 /* HRGlobal.h in Headers */,
 				D0298A300F3FF4FD00EC8C01 /* HRFormatJSON.h in Headers */,
 				D0298A2B0F3FCA8800EC8C01 /* HRFormatterProtocol.h in Headers */,
 				D0298A350F3FF50800EC8C01 /* HRFormatXML.h in Headers */,
@@ -542,7 +542,7 @@
 				D02E8D9E0FF2C17E00F754AC /* HRResponseDelegate.h in Headers */,
 				D077455F0F48913800190554 /* HTTPRiot.h in Headers */,
 				D07745600F48917400190554 /* HTTPRiot_Prefix.pch in Headers */,
-				D07745610F48917400190554 /* HRConstants.h in Headers */,
+				D07745610F48917400190554 /* HRGlobal.h in Headers */,
 				D07745620F48917400190554 /* HRFormatJSON.h in Headers */,
 				D07745630F48917400190554 /* HRFormatterProtocol.h in Headers */,
 				D07745640F48917400190554 /* HRFormatXML.h in Headers */,

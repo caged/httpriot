@@ -517,13 +517,15 @@ h2 {
 }
 
 h3 {
-  font-size: 110%;
+  font-size: 130%;
   margin-bottom: 5px;
   margin-top: 20px;
 }
 
 .contents p {
   margin-bottom: 10px;
+  font-size: 120%;
+  line-height: 150%;
 }
 
 div.groupHeader {

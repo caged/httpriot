@@ -1,5 +1,5 @@
 /**
- * @file HRConstants.h Shared types and constants.
+ * @file HRGlobal.h Shared types and constants.
  */
  
 /**
@@ -7,7 +7,7 @@
  * @see HRRequestOperation
  */
 typedef enum {
-    /// Unknown
+    /// Unknown [NOT USED]
     HRRequestMethodUnknown = -1,
     /// GET
     HRRequestMethodGet,
@@ -24,7 +24,7 @@ typedef enum {
  @see HRRestModel#setFormat
  */
 typedef enum {
-    /// Unknown
+    /// Unknown [NOT USED]
     HRDataFormatUnknown = -1,
     /// JSON Format
     HRDataFormatJSON,
@@ -36,9 +36,9 @@ typedef enum {
 #define HTTPRiotErrorDomain @"com.labratrevenge.HTTPRiot.ErroDomain"
 
 #ifdef DEBUG
-/// Determines if request information should be printed to the console.
-#define HTTPRIOT_DEBUG_REQUESTS 1
+/// Logging Helper
+#define HRLog NSLog
 #else
-/// Determines if request information should be printed to the console 
-#define HTTPRIOT_DEBUG_REQUESTS 0
+/// Logging Helper
+#define HRLog    
 #endif

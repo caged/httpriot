@@ -37,9 +37,7 @@
 @li <a href="http://twitter.com/Caged">Twitter</a>
 
 HTTPRiot is a simple REST library designed to make interacting with REST services 
-much easier.  It supports GET, POST, PUSH and DELETE requests, HTTP Basic Authentication and 
-the ability to post form-encoded data.
-
+much easier.  It supports GET, POST, PUSH and DELETE requests and HTTP Basic Authentication.
 HTTPRiot was inspired by John Nunemaker's excellent 
 <a href="http://github.com/jnunemaker/httparty/tree/master">httparty</a> Ruby library.
 

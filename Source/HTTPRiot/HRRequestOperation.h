@@ -6,7 +6,7 @@
 //  Copyright 2009 LabratRevenge LLC.. All rights reserved.
 //
 #import <Foundation/Foundation.h>
-#import "HRConstants.h"
+#import "HRGlobal.h"
 #import "HRResponseDelegate.h"
 
 /**
