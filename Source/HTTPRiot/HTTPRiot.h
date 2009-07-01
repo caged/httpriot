@@ -92,7 +92,7 @@ can share it with all your iPhone projects.
    where it can be shared.
 -# Create a new project or open an existing project in XCode.  Select your application's target and 
    press<strong class="key"> ⌘i</strong> to bring up the properties window.  Set the <strong><tt>Additional SDKs</tt></strong>
-   property to <strong><tt>~/Library/SDKs/httpriot-0.4.0/\$(PLATFORM_NAME)\$(IPHONEOS_DEPLOYMENT_TARGET).sdk</tt></strong>.
+   property to <strong><tt>~/Library/SDKs/httpriot-0.4.0/\$(PLATFORM_NAME)\$(IPHONEOS_DEPLOYMENT_TARGET).sdk</tt></strong>
    @image html additional-sdks.png
 -# Set the <strong><tt>Additional Linker Flags</tt></strong> to <tt>-lhttpriot -lxml2 -ObjC -all_load</tt></strong> 
    @image html other-linker-flags.png
