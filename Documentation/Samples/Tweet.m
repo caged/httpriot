@@ -45,7 +45,7 @@
     // Request was successful, but couldn't parse the data returned by the server. 
 }
 
-+ (void)restConnection:(NSURLConnection *)connection didFinishReturningResource:(id)resource  object:(id)object {
++ (void)restConnection:(NSURLConnection *)connection didReturnResource:(id)resource  object:(id)object {
     NSMutableArray *tweets = [[[NSMutableArray alloc] init] autorelease];
     
     for(id item in resource) {

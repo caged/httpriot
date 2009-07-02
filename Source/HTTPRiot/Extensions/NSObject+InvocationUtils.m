@@ -16,6 +16,7 @@
     if(obj1 != nil) {
         [objects addObject:obj1];
         va_start(args, obj1);         
+        
         while (arg = va_arg(args, id)) {
             [objects addObject:arg];               
         }

@@ -12,9 +12,8 @@
 #import "NSObject+InvocationUtils.h"
 #import "NSString+URI.h"
 #import "NSDictionary+URI.h"
-#import "NSData+Base64.h"
-
-static NSOperationQueue *HROperationQueue;
+#import "HRBase64.h"
+#import "HROperationQueue.h"
 
 @interface HRRequestOperation (PrivateMethods)
 - (NSMutableURLRequest *)http;
@@ -57,9 +56,6 @@ static NSOperationQueue *HROperationQueue;
         _timeout        = 30.0;
         _delegate       = [opts valueForKey:@"delegate"];
         _formatter      = [[self formatterFromFormat] retain];
-        
-        if(!HROperationQueue)
-            HROperationQueue = [[NSOperationQueue alloc] init];
     }
 
     return self;
@@ -153,16 +149,6 @@ static NSOperationQueue *HROperationQueue;
     [self finish];
 }
 
-// - (NSURLRequest *)connection:(NSURLConnection *)connection willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)redirectResponse {
-//     NSURLRequest *newRequest = request;
-//     NSLog(@"CONNECTION REDIRECT:%@", [request allHTTPHeaderFields]);
-//     if (redirectResponse) {
-//         newRequest = nil;
-//     }
-// 
-//     return newRequest;
-// }
-
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     id results;
     NSError *parseError = nil;
@@ -207,7 +193,7 @@ static NSOperationQueue *HROperationQueue;
         
         NSString *userPass = [NSString stringWithFormat:@"%@:%@", username, password];
         NSData   *upData = [userPass dataUsingEncoding:NSUTF8StringEncoding];
-        NSString *encodedUserPass = [upData base64Encoding];
+        NSString *encodedUserPass = [HRBase64 encode:upData];
         NSString *basicHeader = [NSString stringWithFormat:@"Basic %@", encodedUserPass];
         [request setValue:basicHeader forHTTPHeaderField:@"Authorization"];
     }
@@ -303,9 +289,8 @@ static NSOperationQueue *HROperationQueue;
 
 #pragma mark - Class Methods
 + (HRRequestOperation *)requestWithMethod:(HRRequestMethod)method path:(NSString*)urlPath options:(NSDictionary*)requestOptions object:(id)obj {
-                             
     id operation = [[self alloc] initWithMethod:method path:urlPath options:requestOptions object:obj];
-    [HROperationQueue addOperation:operation];
+    [[HROperationQueue sharedOperationQueue] addOperation:operation];
     return [operation autorelease];
 }
 

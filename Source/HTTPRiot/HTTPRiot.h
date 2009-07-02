@@ -118,6 +118,7 @@ If you want to distribute HTTPRiot.framework with your application you'll need t
 #import "AIXMLSerialization.h"
 #import "JSON.h"
 
+#import "HROperationQueue.h"
 #import "HRRequestOperation.h"
 #import "HRRestModel.h"
 #import "HRResponseDelegate.h"

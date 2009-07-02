@@ -10,13 +10,12 @@
 #import "NSString+URI.h"
 
 @implementation NSDictionary (URI)
-- (NSString *)toQueryString
-{
-    NSMutableString *tmpString = [NSMutableString string];
-    for(id key in self) 
-    {
+- (NSString *)toQueryString {
+    NSMutableString *tmpString = [[NSMutableString alloc] init];
+    for(id key in self) {
         [tmpString appendFormat:@"%@=%@&", key, [[self objectForKey:key] stringByPreparingForURL]];
     }
-    return tmpString;
+    
+    return [tmpString autorelease];
 }
 @end
