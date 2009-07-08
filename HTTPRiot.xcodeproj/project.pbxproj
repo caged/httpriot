@@ -26,7 +26,6 @@
 		D00047610FF31D4D00CCAF1B /* ISAEditableTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D00047600FF31D4D00CCAF1B /* ISAEditableTextFieldCell.m */; };
 		D00048240FF35B0E00CCAF1B /* NSObject+InvocationUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D00048220FF35B0E00CCAF1B /* NSObject+InvocationUtils.h */; };
 		D00048250FF35B0E00CCAF1B /* NSObject+InvocationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D00048230FF35B0E00CCAF1B /* NSObject+InvocationUtils.m */; };
-		D00D8C710FF160810077F798 /* libGHUnitIPhone2_1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D00D8C6F0FF160810077F798 /* libGHUnitIPhone2_1.a */; };
 		D00D8C720FF160810077F798 /* RunTests.sh in Resources */ = {isa = PBXBuildFile; fileRef = D00D8C700FF160810077F798 /* RunTests.sh */; };
 		D02988310F3F7BCE00EC8C01 /* HRRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = D09E4B350F33EB0E00C9E26E /* HRRequestOperation.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D02988640F3F7F1200EC8C01 /* HTTPRiot_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = D02988630F3F7F1200EC8C01 /* HTTPRiot_Prefix.pch */; };
@@ -117,6 +116,7 @@
 		D0A6E4140FFD39F100012097 /* HRBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A6E4120FFD39F100012097 /* HRBase64.m */; };
 		D0A6E4150FFD39F100012097 /* HRBase64.h in Headers */ = {isa = PBXBuildFile; fileRef = D0A6E4110FFD39F100012097 /* HRBase64.h */; };
 		D0A6E4160FFD39F100012097 /* HRBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A6E4120FFD39F100012097 /* HRBase64.m */; };
+		D0ADB5E410025AA8005C1371 /* libGHUnitIPhone2_1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0ADB5E310025AA8005C1371 /* libGHUnitIPhone2_1.a */; };
 		D0C7131E0FF2A3310083905B /* ISAPeopleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C7131D0FF2A3310083905B /* ISAPeopleTableViewController.m */; };
 		D0D9669B0F65C7C300F1347A /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D0D9669A0F65C7C300F1347A /* libxml2.2.dylib */; };
 /* End PBXBuildFile section */
@@ -216,6 +216,7 @@
 		D09E4B360F33EB0E00C9E26E /* HRRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRRequestOperation.m; sourceTree = "<group>"; };
 		D0A6E4110FFD39F100012097 /* HRBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRBase64.h; sourceTree = "<group>"; };
 		D0A6E4120FFD39F100012097 /* HRBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRBase64.m; sourceTree = "<group>"; };
+		D0ADB5E310025AA8005C1371 /* libGHUnitIPhone2_1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGHUnitIPhone2_1.a; path = "Source/HTTPRiot/Vendor/gh-unit-iphone/libGHUnitIPhone2_1.a"; sourceTree = SOURCE_ROOT; };
 		D0C7131C0FF2A3310083905B /* ISAPeopleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISAPeopleTableViewController.h; sourceTree = "<group>"; };
 		D0C7131D0FF2A3310083905B /* ISAPeopleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISAPeopleTableViewController.m; sourceTree = "<group>"; };
 		D0D9669A0F65C7C300F1347A /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
@@ -267,8 +268,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D00D8C710FF160810077F798 /* libGHUnitIPhone2_1.a in Frameworks */,
 				D038BBED0FF162320041F570 /* CoreGraphics.framework in Frameworks */,
+				D0ADB5E410025AA8005C1371 /* libGHUnitIPhone2_1.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,6 +468,7 @@
 		D09E4A0F0F339D5200C9E26E /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				D0ADB5E310025AA8005C1371 /* libGHUnitIPhone2_1.a */,
 				D0F6D8CE0FAB732B006DE022 /* GHUnitTestMain.m */,
 				D0298B370F4038C500EC8C01 /* Server */,
 				D09E4A1D0F339E0600C9E26E /* HTTPRiotRestModelTest.m */,
@@ -1054,12 +1056,13 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
 				INFOPLIST_FILE = "iPhoneUnitTestsRunner-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LD_RUNPATH_SEARCH_PATHS = "$(PROJECT_DIR)/Source/Vendor";
 				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Source/Vendor/gh-unit-iphone\"",
+					"$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)$(IPHONEOS_DEPLOYMENT_TARGET)",
+					"\"$(SRCROOT)/Source/HTTPRiot/Vendor/gh-unit-iphone\"",
 				);
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -1096,9 +1099,8 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				LD_RUNPATH_SEARCH_PATHS = "$(PROJECT_DIR)/Source/Vendor";
 				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Source/$(PROJECT)/Vendor/gh-unit-iphone\"",
 					"$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)$(IPHONEOS_DEPLOYMENT_TARGET)",
+					"\"$(SRCROOT)/Source/HTTPRiot/Vendor/gh-unit-iphone\"",
 				);
 				OTHER_LDFLAGS = (
 					"-framework",

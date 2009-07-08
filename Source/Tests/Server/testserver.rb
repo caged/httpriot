@@ -146,8 +146,7 @@ put '/person/:id' do
   pp person
   data = JSON.parse(request.body.read)
   if person.update(data)
-    status 200 
-    return person.values.to_json
+    person.values.to_json
   end
 end
  

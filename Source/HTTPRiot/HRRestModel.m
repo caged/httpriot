@@ -24,7 +24,9 @@ static NSMutableDictionary *attributes;
         attributes = [[NSMutableDictionary dictionary] retain];
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Class Attributes
+
 // Given that we want to allow classes to define default attributes we need to create 
 // a classname-based dictionary store that maps a subclass name to a dictionary 
 // containing its attributes.
@@ -44,13 +46,11 @@ static NSMutableDictionary *attributes;
     return newDict;
 }
 
-+ (id)delegate
-{
++ (NSObject *)delegate {
    return [[self classAttributes] objectForKey:@"delegate"];
 }
 
-+ (void)setDelegate:(id)del
-{
++ (void)setDelegate:(NSObject *)del {
     [self setAttributeValue:del forKey:@"delegate"];
 }
 
@@ -99,7 +99,9 @@ static NSMutableDictionary *attributes;
     [[self classAttributes] setObject:attr forKey:key];
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - REST Methods
+
 + (NSOperation *)getPath:(NSString *)path withOptions:(NSDictionary *)options object:(id)obj {
     return [self requestWithMethod:HRRequestMethodGet path:path options:options object:obj];               
 }
@@ -116,7 +118,9 @@ static NSMutableDictionary *attributes;
     return [self requestWithMethod:HRRequestMethodDelete path:path options:options object:obj];        
 }
 
-#pragma mark - Private Methods
+////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Private
+
 + (NSOperation *)requestWithMethod:(HRRequestMethod)method path:(NSString *)path options:(NSDictionary *)options object:(id)obj {
     NSMutableDictionary *opts = [self mergedOptions:options];
     return [HRRequestOperation requestWithMethod:method path:path options:opts object:obj];

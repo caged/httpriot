@@ -11,14 +11,14 @@
 
 @implementation NSObject (InvocationUtils)
 - (void)performSelectorOnMainThread:(SEL)selector withObjects:(id)obj1, ... {
-    id arg; va_list args;
+    id argitem; va_list args;
     NSMutableArray *objects = [[[NSMutableArray alloc] init] autorelease];
     if(obj1 != nil) {
         [objects addObject:obj1];
         va_start(args, obj1);         
         
-        while (arg = va_arg(args, id)) {
-            [objects addObject:arg];               
+        while (argitem = va_arg(args, id)) {
+            [objects addObject:argitem];               
         }
         
         va_end(args);

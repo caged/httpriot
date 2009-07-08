@@ -61,6 +61,7 @@
     return self;
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Concurrent NSOperation Methods
 - (void)start {
     [self willChangeValueForKey:@"isExecuting"];
@@ -121,6 +122,7 @@
     return YES;
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - NSURLConnection delegates
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     NSError *error = nil;
@@ -137,11 +139,11 @@
     [_responseData setLength:0];
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {    
     [_responseData appendData:data];
 }
 
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {    
     if([_delegate respondsToSelector:@selector(restConnection:didFailWithError:object:)]) {        
         [_delegate performSelectorOnMainThread:@selector(restConnection:didFailWithError:object:) withObjects:connection, error, _object, nil];
     }
@@ -149,8 +151,8 @@
     [self finish];
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    id results;
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {    
+    id results = [NSNull null];
     NSError *parseError = nil;
     
     if([_responseData length] > 0) {
@@ -159,22 +161,24 @@
         if(parseError) {
             NSString *rawString = [[NSString alloc] initWithData:_responseData encoding:NSUTF8StringEncoding];
             if([_delegate respondsToSelector:@selector(restConnection:didReceiveParseError:responseBody:object:)]) {
-                [_delegate performSelectorOnMainThread:@selector(restConnection:didReceiveParseError:responseBody:object:) withObjects:connection, parseError, rawString, _object, nil];
-                
-                return [self finish];
+                [_delegate performSelectorOnMainThread:@selector(restConnection:didReceiveParseError:responseBody:object:) withObjects:connection, parseError, rawString, _object, nil];                
             }
             
             [rawString release];
-        }
+            [self finish];
+            
+            return;
+        }  
     }
-    
-    if([_delegate respondsToSelector:@selector(restConnection:didReturnResource:object:)]) {
+
+    if([_delegate respondsToSelector:@selector(restConnection:didReturnResource:object:)]) {        
         [_delegate performSelectorOnMainThread:@selector(restConnection:didReturnResource:object:) withObjects:connection, results, _object, nil];
     }
         
     [self finish];
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Configuration
 - (void)setDefaultHeadersForRequest:(NSMutableURLRequest *)request {
     NSDictionary *headers = [[self options] valueForKey:@"headers"];
@@ -213,7 +217,6 @@
     
     if(_requestMethod == HRRequestMethodGet || _requestMethod == HRRequestMethodDelete) {
         NSString *urlString = [[composedURL absoluteString] stringByAppendingString:queryString];
-        NSLog(@"URL:%@", urlString);
         NSURL *url = [NSURL URLWithString:urlString];
         [request setURL:url];
         [request setValue:[[self formatter] mimeType] forHTTPHeaderField:@"Content-Type"];  
@@ -267,7 +270,6 @@
 - (id)formatterFromFormat {
     NSNumber *format = [[self options] objectForKey:@"format"];
     id theFormatter = nil;
-    
     switch([format intValue]) {
         case HRDataFormatJSON:
             theFormatter = [HRFormatJSON class];
@@ -286,7 +288,7 @@
     return theFormatter;
 }
 
-
+////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Class Methods
 + (HRRequestOperation *)requestWithMethod:(HRRequestMethod)method path:(NSString*)urlPath options:(NSDictionary*)requestOptions object:(id)obj {
     id operation = [[self alloc] initWithMethod:method path:urlPath options:requestOptions object:obj];
@@ -354,11 +356,10 @@
     return nil;
 }
 
-+ (NSString *)buildQueryStringFromParams:(NSDictionary *)theParams
-{
++ (NSString *)buildQueryStringFromParams:(NSDictionary *)theParams {
     if(theParams) {
-         if([theParams count] > 0)
-             return [NSString stringWithFormat:@"?%@", [theParams toQueryString]];
+        if([theParams count] > 0)
+            return [NSString stringWithFormat:@"?%@", [theParams toQueryString]];
     }
     
     return @"";

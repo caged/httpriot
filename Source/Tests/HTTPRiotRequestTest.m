@@ -19,73 +19,90 @@
     [HRTestPerson2 setDelegate:self];
 }
 
-- (void)testShouldHandleGET {
+// - (void)testShouldHandleGET {
+//     [self prepare];
+//     [HRTestPerson2 getPath:@"/people.json" withOptions:nil object:@"GET"];
+//     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
+// }
+// 
+// - (void)testShouldHandlePOST {
+//     [self prepare];
+//     NSDictionary *body = [NSDictionary dictionaryWithObjectsAndKeys:@"bob", @"name", 
+//                                 @"foo@email.com", @"email", 
+//                                 @"101 Cherry Lane", @"address", nil];
+//     id bodyData = [HRFormatJSON encode:body error:nil];
+//     NSDictionary *opts = [NSDictionary dictionaryWithObject:bodyData forKey:@"body"];
+//     
+//     [HRTestPerson2 postPath:@"/person" withOptions:opts object:@"POST"];
+//     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
+// }
+// 
+// - (void)testShouldHandlePUT {
+//     [self prepare];
+//     NSDictionary *body = [NSDictionary dictionaryWithObjectsAndKeys:@"bob", @"name", 
+//                                 @"foo@email.com", @"email", 
+//                                 @"101 Cherry Lane", @"address", nil];
+//     NSString *bodyData = [[HRFormatJSON encode:body error:nil] copy];
+//     NSDictionary *opts = [[NSDictionary alloc ] initWithObjectsAndKeys:bodyData, @"body", nil];
+//     
+//     [HRTestPerson2 putPath:@"/person/1" withOptions:opts object:@"PUT"];
+//     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
+//     [opts release];
+// }
+// 
+// - (void)testShouldHandleDELETE {
+//     [self prepare];
+//     [HRTestPerson2 deletePath:@"/person/delete/5" withOptions:nil object:@"DELETE"];
+//     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
+// }
+// 
+// - (void)testShouldHandleBasicAuth {
+//     [self prepare];
+//     
+//     NSDictionary *auth = [NSDictionary dictionaryWithObjectsAndKeys:@"user", @"username", @"pass", @"password", nil];
+//     NSDictionary *opts = [NSDictionary dictionaryWithObject:auth forKey:@"basicAuth"];
+//     
+//     [HRTestPerson2 getPath:@"/auth" withOptions:opts object:@"BasicAuth"];
+//     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
+// }
+// 
+// // - (void)testShouldHandleTimeOut {
+// //     [self prepare];
+// //     [HRTestPerson2 getPath:@"/timeout" withOptions:nil object:@"TimeOut"];
+// //     [self waitForStatus:kGHUnitWaitStatusFailure timeout:40.0];
+// // }
+// 
+// - (void)testShouldHandleCanceledRequest {
+//     NSOperation *op = [HRTestPerson2 getPath:@"/timeout" withOptions:nil object:@"CanceledRequest"];
+//     [op cancel];
+//     GHAssertTrue([op isCancelled], nil); 
+// }
+// 
+// - (void)testShouldCancelAllRequests {
+//     [HRTestPerson2 getPath:@"/timeout" withOptions:nil object:nil];
+//     [HRTestPerson2 getPath:@"/timeout" withOptions:nil object:nil];
+//     [HRTestPerson2 getPath:@"/timeout" withOptions:nil object:nil];
+//     
+//     [[HROperationQueue sharedOperationQueue] cancelAllOperations];
+//     GHAssertTrue([[[HROperationQueue sharedOperationQueue] operations] count] == 0, nil); 
+// }
+
+- (void)testShouldHandleFormattingXML {
     [self prepare];
-    [HRTestPerson2 getPath:@"/people.json" withOptions:nil object:@"GET"];
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
+    NSDictionary *opts = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:1] forKey:@"format"];
+    [HRTestPerson2 getPath:@"/people.xml" withOptions:opts object:@"FormattingXML"];
+    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:30.0];
 }
-
-- (void)testShouldHandlePOST {
-    [self prepare];
-    NSDictionary *body = [NSDictionary dictionaryWithObjectsAndKeys:@"bob", @"name", 
-                                @"foo@email.com", @"email", 
-                                @"101 Cherry Lane", @"address", nil];
-    id bodyData = [HRFormatJSON encode:body error:nil];
-    NSDictionary *opts = [NSDictionary dictionaryWithObject:bodyData forKey:@"body"];
-    
-    [HRTestPerson2 postPath:@"/person" withOptions:opts object:@"POST"];
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
-}
-
-- (void)testShouldHandlePUT {
-    [self prepare];
-    NSDictionary *body = [NSDictionary dictionaryWithObjectsAndKeys:@"bob", @"name", 
-                                @"foo@email.com", @"email", 
-                                @"101 Cherry Lane", @"address", nil];
-    id bodyData = [HRFormatJSON encode:body error:nil];
-    NSDictionary *opts = [NSDictionary dictionaryWithObject:bodyData forKey:@"body"];
-    
-    [HRTestPerson2 putPath:@"/person/1" withOptions:opts object:@"PUT"];
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
-}
-
-- (void)testShouldHandleDELETE {
-    [self prepare];
-    [HRTestPerson2 deletePath:@"/person/delete/5" withOptions:nil object:@"DELETE"];
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
-}
-
-- (void)testShouldHandleBasicAuth {
-    [self prepare];
-    
-    NSDictionary *auth = [NSDictionary dictionaryWithObjectsAndKeys:@"user", @"username", @"pass", @"password", nil];
-    NSDictionary *opts = [NSDictionary dictionaryWithObject:auth forKey:@"basicAuth"];
-    
-    [HRTestPerson2 getPath:@"/auth" withOptions:opts object:@"BasicAuth"];
-    [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
-}
-
-- (void)testShouldHandleTimeOut {
-    [self prepare];
-    [HRTestPerson2 getPath:@"/timeout" withOptions:nil object:@"TimeOut"];
-    [self waitForStatus:kGHUnitWaitStatusFailure timeout:40.0];
-}
-
-- (void)testShouldHandleCanceledRequest {
-    NSOperation *op = [HRTestPerson2 getPath:@"/timeout" withOptions:nil object:@"CanceledRequest"];
-    [op cancel];
-    GHAssertTrue([op isCancelled], nil); 
-}
-
 
 - (void)restConnection:(NSURLConnection *)connection didReturnResource:(id)resource object:(id)method {
     NSString *prefix = @"testShouldHandle";
+    NSLog(@"RESOURCE:%@", resource);
     NSString *selector = [prefix stringByAppendingString:method];
     [self notify:kGHUnitWaitStatusSuccess forSelector:NSSelectorFromString(selector)];
 }
 
 - (void)restConnection:(NSURLConnection *)connection didFailWithError:(NSError *)error object:(id)method {
-    NSString *prefix = @"testShouldHandle";
+    NSString *prefix = @"testShouldHandle";    
     NSString *selector = [prefix stringByAppendingString:method];
     [self notify:kGHUnitWaitStatusFailure forSelector:NSSelectorFromString(selector)];
 }
@@ -155,35 +172,5 @@
 //     error = nil;
 //     [HTTPRiotRequestOperation requestWithMethod:HRRequestMethodGet path:[host stringByAppendingString:@"/status/999"] options:defaultOptions error:&error];        
 //     GHAssertEquals(999, [error code], nil);
-// }
-// 
-// - (void)testHeadersReturnedWithError
-// {
-//     NSError *error = nil;
-//     NSString *tserver = [HTTPRiotTestServer stringByAppendingString:@"/foobared-path"];
-//     GHTestLog(@"DL%@", defaultOptions);
-//     [HTTPRiotRequestOperation requestWithMethod:HRRequestMethodGet
-//                                   path:tserver
-//                                options:defaultOptions
-//                                  error:&error];
-// 
-//     NSDictionary *headers = [[error userInfo] valueForKey:@"headers"];
-//     GHAssertTrue([headers count] > 0, nil);
-// 
-// }
-
-// 
-// - (void) testBasicAuth 
-// {
-//     NSError *error = nil;
-//     NSDictionary *auth = [NSDictionary dictionaryWithObjectsAndKeys:@"user", @"username", @"pass", @"password", nil];
-//     NSMutableDictionary *opts = [NSMutableDictionary dictionaryWithDictionary:defaultOptions];
-//     [opts addEntriesFromDictionary:[NSDictionary dictionaryWithObject:auth forKey:@"basicAuth"]];
-//     id person = [HTTPRiotRequestOperation requestWithMethod:HRRequestMethodGet
-//                                               path:[HTTPRiotTestServer stringByAppendingString:@"/auth"]
-//                                            options:opts
-//                                              error:&error];
-//     GHAssertNotNil(person, nil);
-//     GHAssertNil(error, nil);
 // }
 @end

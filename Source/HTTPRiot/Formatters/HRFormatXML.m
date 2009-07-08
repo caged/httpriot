@@ -20,8 +20,9 @@
 
 + (id)decode:(NSData *)data error:(NSError **)error {
     NSXMLDocument *doc = [[NSXMLDocument alloc] initWithData:data options:NSXMLDocumentTidyXML error:error];
-    
     if(error != nil) {
+        NSLog(@"ERROR NOT NIL:%@", [parseError localizedDescription]);
+        [doc release];
         return nil;
     }
     

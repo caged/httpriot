@@ -25,6 +25,7 @@
     SBJSON *parser = [[SBJSON alloc] init];
     id results = [parser objectWithString:rawString error:&parseError];
     [parser release];
+    [rawString release];
     
     if(parseError && !results) {
         *error = parseError;
