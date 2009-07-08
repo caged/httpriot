@@ -10,8 +10,8 @@
 #import "HRFormatJSON.h"
 #import "HRFormatXML.h"
 #import "NSObject+InvocationUtils.h"
-#import "NSString+URI.h"
-#import "NSDictionary+URI.h"
+#import "NSString+EscapingUtils.h"
+#import "NSDictionary+ParamUtils.h"
 #import "HRBase64.h"
 #import "HROperationQueue.h"
 

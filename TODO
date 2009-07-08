@@ -1,1 +1,2 @@
 * Update documentation to match new api
+* XML encode support - conversion from NSDictionary/NSArray to NSXMLDocument

@@ -30,10 +30,10 @@
 		D02988310F3F7BCE00EC8C01 /* HRRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = D09E4B350F33EB0E00C9E26E /* HRRequestOperation.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D02988640F3F7F1200EC8C01 /* HTTPRiot_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = D02988630F3F7F1200EC8C01 /* HTTPRiot_Prefix.pch */; };
 		D02988FF0F3FB63F00EC8C01 /* HRGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = D02988FE0F3FB63F00EC8C01 /* HRGlobal.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		D029893B0F3FBEDC00EC8C01 /* NSDictionary+URI.h in Headers */ = {isa = PBXBuildFile; fileRef = D02989330F3FBEDC00EC8C01 /* NSDictionary+URI.h */; };
-		D029893C0F3FBEDC00EC8C01 /* NSDictionary+URI.m in Sources */ = {isa = PBXBuildFile; fileRef = D02989340F3FBEDC00EC8C01 /* NSDictionary+URI.m */; };
-		D029893F0F3FBEDC00EC8C01 /* NSString+URI.h in Headers */ = {isa = PBXBuildFile; fileRef = D02989370F3FBEDC00EC8C01 /* NSString+URI.h */; };
-		D02989400F3FBEDC00EC8C01 /* NSString+URI.m in Sources */ = {isa = PBXBuildFile; fileRef = D02989380F3FBEDC00EC8C01 /* NSString+URI.m */; };
+		D029893B0F3FBEDC00EC8C01 /* NSDictionary+ParamUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D02989330F3FBEDC00EC8C01 /* NSDictionary+ParamUtils.h */; };
+		D029893C0F3FBEDC00EC8C01 /* NSDictionary+ParamUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D02989340F3FBEDC00EC8C01 /* NSDictionary+ParamUtils.m */; };
+		D029893F0F3FBEDC00EC8C01 /* NSString+EscapingUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D02989370F3FBEDC00EC8C01 /* NSString+EscapingUtils.h */; };
+		D02989400F3FBEDC00EC8C01 /* NSString+EscapingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D02989380F3FBEDC00EC8C01 /* NSString+EscapingUtils.m */; };
 		D0298A2B0F3FCA8800EC8C01 /* HRFormatterProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A280F3FCA8800EC8C01 /* HRFormatterProtocol.h */; };
 		D0298A300F3FF4FD00EC8C01 /* HRFormatJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A2D0F3FF4FD00EC8C01 /* HRFormatJSON.h */; };
 		D0298A310F3FF4FD00EC8C01 /* HRFormatJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A2E0F3FF4FD00EC8C01 /* HRFormatJSON.m */; };
@@ -78,7 +78,6 @@
 		D04EF1180F65C50A003C6240 /* AIXMLElementSerialize.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF10E0F65C50A003C6240 /* AIXMLElementSerialize.h */; };
 		D04EF1190F65C50A003C6240 /* AIXMLElementSerialize.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF10F0F65C50A003C6240 /* AIXMLElementSerialize.m */; };
 		D04EF11A0F65C50A003C6240 /* AIXMLSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF1100F65C50A003C6240 /* AIXMLSerialization.h */; };
-		D04EF12D0F65C52D003C6240 /* DDXML.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF1210F65C52D003C6240 /* DDXML.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D04EF12E0F65C52D003C6240 /* DDXMLDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF1220F65C52D003C6240 /* DDXMLDocument.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D04EF12F0F65C52D003C6240 /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF1230F65C52D003C6240 /* DDXMLDocument.m */; };
 		D04EF1300F65C52D003C6240 /* DDXMLElement.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF1240F65C52D003C6240 /* DDXMLElement.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -96,8 +95,8 @@
 		D07744860F4885DA00190554 /* HRFormatJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A2E0F3FF4FD00EC8C01 /* HRFormatJSON.m */; };
 		D07744870F4885DA00190554 /* HRFormatXML.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A330F3FF50800EC8C01 /* HRFormatXML.m */; };
 		D07744880F4885DA00190554 /* HRRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4B360F33EB0E00C9E26E /* HRRequestOperation.m */; };
-		D077448A0F4885DA00190554 /* NSDictionary+URI.m in Sources */ = {isa = PBXBuildFile; fileRef = D02989340F3FBEDC00EC8C01 /* NSDictionary+URI.m */; };
-		D077448B0F4885DA00190554 /* NSString+URI.m in Sources */ = {isa = PBXBuildFile; fileRef = D02989380F3FBEDC00EC8C01 /* NSString+URI.m */; };
+		D077448A0F4885DA00190554 /* NSDictionary+ParamUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D02989340F3FBEDC00EC8C01 /* NSDictionary+ParamUtils.m */; };
+		D077448B0F4885DA00190554 /* NSString+EscapingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D02989380F3FBEDC00EC8C01 /* NSString+EscapingUtils.m */; };
 		D077455F0F48913800190554 /* HTTPRiot.h in Headers */ = {isa = PBXBuildFile; fileRef = D03DB6650F3163BB00F18796 /* HTTPRiot.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D07745600F48917400190554 /* HTTPRiot_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = D02988630F3F7F1200EC8C01 /* HTTPRiot_Prefix.pch */; settings = {ATTRIBUTES = (Private, ); }; };
 		D07745610F48917400190554 /* HRGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = D02988FE0F3FB63F00EC8C01 /* HRGlobal.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -105,12 +104,14 @@
 		D07745630F48917400190554 /* HRFormatterProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A280F3FCA8800EC8C01 /* HRFormatterProtocol.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D07745640F48917400190554 /* HRFormatXML.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A320F3FF50800EC8C01 /* HRFormatXML.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D07745650F48917400190554 /* HRRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = D09E4B350F33EB0E00C9E26E /* HRRequestOperation.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		D07745670F48917400190554 /* NSDictionary+URI.h in Headers */ = {isa = PBXBuildFile; fileRef = D02989330F3FBEDC00EC8C01 /* NSDictionary+URI.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		D07745680F48917400190554 /* NSString+URI.h in Headers */ = {isa = PBXBuildFile; fileRef = D02989370F3FBEDC00EC8C01 /* NSString+URI.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D07745670F48917400190554 /* NSDictionary+ParamUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D02989330F3FBEDC00EC8C01 /* NSDictionary+ParamUtils.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D07745680F48917400190554 /* NSString+EscapingUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D02989370F3FBEDC00EC8C01 /* NSString+EscapingUtils.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D0788AFC0FABAC8D00C3207D /* GHUnitIPhoneTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6D9C50FAB83B1006DE022 /* GHUnitIPhoneTestMain.m */; };
 		D0788B050FABAD3800C3207D /* HTTPRiotTestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D029906A0F43422E00EC8C01 /* HTTPRiotTestHelper.m */; };
 		D0788B090FABAD4600C3207D /* HTTPRiotRestModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4A1D0F339E0600C9E26E /* HTTPRiotRestModelTest.m */; };
 		D0788B0D0FABAD6F00C3207D /* HTTPRiotRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D02990280F433C1800EC8C01 /* HTTPRiotRequestTest.m */; };
+		D0869053100543900061BA64 /* DDXML.h in Headers */ = {isa = PBXBuildFile; fileRef = D0869052100543900061BA64 /* DDXML.h */; };
+		D09754381005092500E0E499 /* NSStringURLTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D09754371005092500E0E499 /* NSStringURLTest.m */; };
 		D09E4B390F33EB1D00C9E26E /* HRRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4B360F33EB0E00C9E26E /* HRRequestOperation.m */; };
 		D0A6E4130FFD39F100012097 /* HRBase64.h in Headers */ = {isa = PBXBuildFile; fileRef = D0A6E4110FFD39F100012097 /* HRBase64.h */; };
 		D0A6E4140FFD39F100012097 /* HRBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A6E4120FFD39F100012097 /* HRBase64.m */; };
@@ -154,10 +155,10 @@
 		D00D8C700FF160810077F798 /* RunTests.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = RunTests.sh; sourceTree = "<group>"; };
 		D02988630F3F7F1200EC8C01 /* HTTPRiot_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRiot_Prefix.pch; sourceTree = "<group>"; };
 		D02988FE0F3FB63F00EC8C01 /* HRGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRGlobal.h; sourceTree = "<group>"; };
-		D02989330F3FBEDC00EC8C01 /* NSDictionary+URI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+URI.h"; sourceTree = "<group>"; };
-		D02989340F3FBEDC00EC8C01 /* NSDictionary+URI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+URI.m"; sourceTree = "<group>"; };
-		D02989370F3FBEDC00EC8C01 /* NSString+URI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URI.h"; sourceTree = "<group>"; };
-		D02989380F3FBEDC00EC8C01 /* NSString+URI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URI.m"; sourceTree = "<group>"; };
+		D02989330F3FBEDC00EC8C01 /* NSDictionary+ParamUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+ParamUtils.h"; sourceTree = "<group>"; };
+		D02989340F3FBEDC00EC8C01 /* NSDictionary+ParamUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+ParamUtils.m"; sourceTree = "<group>"; };
+		D02989370F3FBEDC00EC8C01 /* NSString+EscapingUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+EscapingUtils.h"; sourceTree = "<group>"; };
+		D02989380F3FBEDC00EC8C01 /* NSString+EscapingUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+EscapingUtils.m"; sourceTree = "<group>"; };
 		D0298A280F3FCA8800EC8C01 /* HRFormatterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRFormatterProtocol.h; sourceTree = "<group>"; };
 		D0298A2D0F3FF4FD00EC8C01 /* HRFormatJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRFormatJSON.h; sourceTree = "<group>"; };
 		D0298A2E0F3FF4FD00EC8C01 /* HRFormatJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRFormatJSON.m; sourceTree = "<group>"; };
@@ -196,7 +197,6 @@
 		D04EF10E0F65C50A003C6240 /* AIXMLElementSerialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIXMLElementSerialize.h; sourceTree = "<group>"; };
 		D04EF10F0F65C50A003C6240 /* AIXMLElementSerialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIXMLElementSerialize.m; sourceTree = "<group>"; };
 		D04EF1100F65C50A003C6240 /* AIXMLSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIXMLSerialization.h; sourceTree = "<group>"; };
-		D04EF1210F65C52D003C6240 /* DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXML.h; sourceTree = "<group>"; };
 		D04EF1220F65C52D003C6240 /* DDXMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLDocument.h; sourceTree = "<group>"; };
 		D04EF1230F65C52D003C6240 /* DDXMLDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLDocument.m; sourceTree = "<group>"; };
 		D04EF1240F65C52D003C6240 /* DDXMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLElement.h; sourceTree = "<group>"; };
@@ -211,6 +211,8 @@
 		D05A45060FF29C4300C672A5 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		D0788AE80FABAB3600C3207D /* iPhoneUnitTestsRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPhoneUnitTestsRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0788AEB0FABAB3600C3207D /* iPhoneUnitTestsRunner-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iPhoneUnitTestsRunner-Info.plist"; sourceTree = "<group>"; };
+		D0869052100543900061BA64 /* DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXML.h; sourceTree = "<group>"; };
+		D09754371005092500E0E499 /* NSStringURLTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringURLTest.m; sourceTree = "<group>"; };
 		D09E4A1D0F339E0600C9E26E /* HTTPRiotRestModelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRiotRestModelTest.m; sourceTree = "<group>"; };
 		D09E4B350F33EB0E00C9E26E /* HRRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRRequestOperation.h; sourceTree = "<group>"; };
 		D09E4B360F33EB0E00C9E26E /* HRRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRRequestOperation.m; sourceTree = "<group>"; };
@@ -339,10 +341,10 @@
 		D029892F0F3FBEAD00EC8C01 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				D02989330F3FBEDC00EC8C01 /* NSDictionary+URI.h */,
-				D02989340F3FBEDC00EC8C01 /* NSDictionary+URI.m */,
-				D02989370F3FBEDC00EC8C01 /* NSString+URI.h */,
-				D02989380F3FBEDC00EC8C01 /* NSString+URI.m */,
+				D02989330F3FBEDC00EC8C01 /* NSDictionary+ParamUtils.h */,
+				D02989340F3FBEDC00EC8C01 /* NSDictionary+ParamUtils.m */,
+				D02989370F3FBEDC00EC8C01 /* NSString+EscapingUtils.h */,
+				D02989380F3FBEDC00EC8C01 /* NSString+EscapingUtils.m */,
 				D00048220FF35B0E00CCAF1B /* NSObject+InvocationUtils.h */,
 				D00048230FF35B0E00CCAF1B /* NSObject+InvocationUtils.m */,
 			);
@@ -449,7 +451,7 @@
 		D04EF1200F65C52D003C6240 /* KissXML */ = {
 			isa = PBXGroup;
 			children = (
-				D04EF1210F65C52D003C6240 /* DDXML.h */,
+				D0869052100543900061BA64 /* DDXML.h */,
 				D04EF1220F65C52D003C6240 /* DDXMLDocument.h */,
 				D04EF1230F65C52D003C6240 /* DDXMLDocument.m */,
 				D04EF1240F65C52D003C6240 /* DDXMLElement.h */,
@@ -475,6 +477,7 @@
 				D02990280F433C1800EC8C01 /* HTTPRiotRequestTest.m */,
 				D02990380F433D1900EC8C01 /* HTTPRiotTestHelper.h */,
 				D029906A0F43422E00EC8C01 /* HTTPRiotTestHelper.m */,
+				D09754371005092500E0E499 /* NSStringURLTest.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -541,10 +544,10 @@
 				D02988310F3F7BCE00EC8C01 /* HRRequestOperation.h in Headers */,
 				D03DB66C0F31654200F18796 /* HRRestModel.h in Headers */,
 				D0298A8D0F3FFF2E00EC8C01 /* JSON.h in Headers */,
-				D029893B0F3FBEDC00EC8C01 /* NSDictionary+URI.h in Headers */,
+				D029893B0F3FBEDC00EC8C01 /* NSDictionary+ParamUtils.h in Headers */,
 				D0298A8E0F3FFF2E00EC8C01 /* NSObject+SBJSON.h in Headers */,
 				D0298A900F3FFF2E00EC8C01 /* NSString+SBJSON.h in Headers */,
-				D029893F0F3FBEDC00EC8C01 /* NSString+URI.h in Headers */,
+				D029893F0F3FBEDC00EC8C01 /* NSString+EscapingUtils.h in Headers */,
 				D0298A920F3FFF2E00EC8C01 /* SBJSON.h in Headers */,
 				D04EF1160F65C50A003C6240 /* AIXMLDocumentSerialize.h in Headers */,
 				D04EF1180F65C50A003C6240 /* AIXMLElementSerialize.h in Headers */,
@@ -568,15 +571,14 @@
 				D07745650F48917400190554 /* HRRequestOperation.h in Headers */,
 				D07744840F4885A700190554 /* HRRestModel.h in Headers */,
 				D0298A940F3FFF2E00EC8C01 /* JSON.h in Headers */,
-				D07745670F48917400190554 /* NSDictionary+URI.h in Headers */,
+				D07745670F48917400190554 /* NSDictionary+ParamUtils.h in Headers */,
 				D0298A950F3FFF2E00EC8C01 /* NSObject+SBJSON.h in Headers */,
 				D0298A970F3FFF2E00EC8C01 /* NSString+SBJSON.h in Headers */,
-				D07745680F48917400190554 /* NSString+URI.h in Headers */,
+				D07745680F48917400190554 /* NSString+EscapingUtils.h in Headers */,
 				D0298A990F3FFF2E00EC8C01 /* SBJSON.h in Headers */,
 				D04EF1110F65C50A003C6240 /* AIXMLDocumentSerialize.h in Headers */,
 				D04EF1130F65C50A003C6240 /* AIXMLElementSerialize.h in Headers */,
 				D04EF1150F65C50A003C6240 /* AIXMLSerialization.h in Headers */,
-				D04EF12D0F65C52D003C6240 /* DDXML.h in Headers */,
 				D04EF12E0F65C52D003C6240 /* DDXMLDocument.h in Headers */,
 				D04EF1300F65C52D003C6240 /* DDXMLElement.h in Headers */,
 				D04EF1320F65C52D003C6240 /* DDXMLElementAdditions.h in Headers */,
@@ -586,6 +588,7 @@
 				D00048240FF35B0E00CCAF1B /* NSObject+InvocationUtils.h in Headers */,
 				D0A6E4150FFD39F100012097 /* HRBase64.h in Headers */,
 				D03982E70FFD6385005FECE7 /* HROperationQueue.h in Headers */,
+				D0869053100543900061BA64 /* DDXML.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -764,8 +767,8 @@
 			files = (
 				D03DB66D0F31654200F18796 /* HRRestModel.m in Sources */,
 				D09E4B390F33EB1D00C9E26E /* HRRequestOperation.m in Sources */,
-				D029893C0F3FBEDC00EC8C01 /* NSDictionary+URI.m in Sources */,
-				D02989400F3FBEDC00EC8C01 /* NSString+URI.m in Sources */,
+				D029893C0F3FBEDC00EC8C01 /* NSDictionary+ParamUtils.m in Sources */,
+				D02989400F3FBEDC00EC8C01 /* NSString+EscapingUtils.m in Sources */,
 				D0298A310F3FF4FD00EC8C01 /* HRFormatJSON.m in Sources */,
 				D0298A360F3FF50800EC8C01 /* HRFormatXML.m in Sources */,
 				D0298A8F0F3FFF2E00EC8C01 /* NSObject+SBJSON.m in Sources */,
@@ -786,10 +789,10 @@
 				D07744870F4885DA00190554 /* HRFormatXML.m in Sources */,
 				D07744880F4885DA00190554 /* HRRequestOperation.m in Sources */,
 				D07744850F4885AE00190554 /* HRRestModel.m in Sources */,
-				D077448A0F4885DA00190554 /* NSDictionary+URI.m in Sources */,
+				D077448A0F4885DA00190554 /* NSDictionary+ParamUtils.m in Sources */,
 				D0298A960F3FFF2E00EC8C01 /* NSObject+SBJSON.m in Sources */,
 				D0298A980F3FFF2E00EC8C01 /* NSString+SBJSON.m in Sources */,
-				D077448B0F4885DA00190554 /* NSString+URI.m in Sources */,
+				D077448B0F4885DA00190554 /* NSString+EscapingUtils.m in Sources */,
 				D0298A9A0F3FFF2E00EC8C01 /* SBJSON.m in Sources */,
 				D04EF1120F65C50A003C6240 /* AIXMLDocumentSerialize.m in Sources */,
 				D04EF1140F65C50A003C6240 /* AIXMLElementSerialize.m in Sources */,
@@ -825,6 +828,7 @@
 				D0788B050FABAD3800C3207D /* HTTPRiotTestHelper.m in Sources */,
 				D0788B090FABAD4600C3207D /* HTTPRiotRestModelTest.m in Sources */,
 				D0788B0D0FABAD6F00C3207D /* HTTPRiotRequestTest.m in Sources */,
+				D09754381005092500E0E499 /* NSStringURLTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

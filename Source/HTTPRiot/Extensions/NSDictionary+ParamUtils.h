@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 
-@interface NSDictionary (URI)
+@interface NSDictionary (ParamUtils)
 - (NSString*) toQueryString;
 @end
 

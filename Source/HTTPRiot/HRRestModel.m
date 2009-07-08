@@ -9,6 +9,16 @@
 #import "HRRestModel.h"
 #import "HRRequestOperation.h"
 
+NSString *kHRClassAttributesDelegateKey         = @"delegate";
+NSString *kHRClassAttributesBaseURLKey          = @"baseURL";
+NSString *kHRClassAttributesHeadersKey          = @"headers";
+NSString *kHRClassAttributesBasicAuthKey        = @"basicAuth";
+NSString *kHRClassAttributesUsernameKey         = @"username";
+NSString *kHRClassAttributesPasswordKey         = @"password";
+NSString *kHRClassAttributesFormatKey           = @"format";
+NSString *kHRClassAttributesDefaultParamsKey    = @"defaultParams";
+NSString *kHRClassAttributesParamsKeys          = @"params";
+
 @interface HRRestModel (PrivateMethods)
 + (void)setAttributeValue:(id)attr forKey:(NSString *)key;
 + (NSMutableDictionary *)classAttributes;
@@ -18,7 +28,6 @@
 
 @implementation HRRestModel
 static NSMutableDictionary *attributes;
-
 + (void)initialize {    
     if(!attributes)
         attributes = [[NSMutableDictionary dictionary] retain];
@@ -47,52 +56,52 @@ static NSMutableDictionary *attributes;
 }
 
 + (NSObject *)delegate {
-   return [[self classAttributes] objectForKey:@"delegate"];
+   return [[self classAttributes] objectForKey:kHRClassAttributesDelegateKey];
 }
 
 + (void)setDelegate:(NSObject *)del {
-    [self setAttributeValue:del forKey:@"delegate"];
+    [self setAttributeValue:del forKey:kHRClassAttributesDelegateKey];
 }
 
 + (NSURL *)baseURL {
-   return [[self classAttributes] objectForKey:@"baseURL"];
+   return [[self classAttributes] objectForKey:kHRClassAttributesBaseURLKey];
 }
 
 + (void)setBaseURL:(NSURL *)uri {
-    [self setAttributeValue:uri forKey:@"baseURL"];
+    [self setAttributeValue:uri forKey:kHRClassAttributesBaseURLKey];
 }
 
 + (NSDictionary *)headers {
-    return [[self classAttributes] objectForKey:@"headers"];
+    return [[self classAttributes] objectForKey:kHRClassAttributesHeadersKey];
 }
 
 + (void)setHeaders:(NSDictionary *)hdrs {
-    [self setAttributeValue:hdrs forKey:@"headers"];
+    [self setAttributeValue:hdrs forKey:kHRClassAttributesHeadersKey];
 }
 
 + (NSDictionary *)basicAuth {
-    return [[self classAttributes] objectForKey:@"basicAuth"];
+    return [[self classAttributes] objectForKey:kHRClassAttributesBasicAuthKey];
 }
 
 + (void)setBasicAuthWithUsername:(NSString *)username password:(NSString *)password {
-    NSDictionary *authDict = [NSDictionary dictionaryWithObjectsAndKeys:username, @"username", password, @"password", nil];
-    [self setAttributeValue:authDict forKey:@"basicAuth"];
+    NSDictionary *authDict = [NSDictionary dictionaryWithObjectsAndKeys:username, kHRClassAttributesUsernameKey, password, kHRClassAttributesPasswordKey, nil];
+    [self setAttributeValue:authDict forKey:kHRClassAttributesBasicAuthKey];
 }
 
 + (HRDataFormat)format {
-    return [[[self classAttributes] objectForKey:@"format"] intValue];
+    return [[[self classAttributes] objectForKey:kHRClassAttributesFormatKey] intValue];
 }
 
 + (void)setFormat:(HRDataFormat)format {
-    [[self classAttributes] setValue:[NSNumber numberWithInt:format] forKey:@"format"];
+    [[self classAttributes] setValue:[NSNumber numberWithInt:format] forKey:kHRClassAttributesFormatKey];
 }
 
 + (NSDictionary *)defaultParams {
-    return [[self classAttributes] objectForKey:@"defaultParams"];
+    return [[self classAttributes] objectForKey:kHRClassAttributesDefaultParamsKey];
 }
 
 + (void)setDefaultParams:(NSDictionary *)params {
-    [self setAttributeValue:params forKey:@"defaultParams"];
+    [self setAttributeValue:params forKey:kHRClassAttributesDefaultParamsKey];
 }
 
 + (void)setAttributeValue:(id)attr forKey:(NSString *)key {
@@ -128,13 +137,14 @@ static NSMutableDictionary *attributes;
 
 + (NSMutableDictionary *)mergedOptions:(NSDictionary *)options {
     NSMutableDictionary *defaultParams = [NSMutableDictionary dictionaryWithDictionary:[self defaultParams]];
-    [defaultParams addEntriesFromDictionary:[options valueForKey:@"params"]];
+    [defaultParams addEntriesFromDictionary:[options valueForKey:kHRClassAttributesParamsKeys]];
+    
     options = [NSMutableDictionary dictionaryWithDictionary:options];
-    [(NSMutableDictionary *)options setObject:defaultParams forKey:@"params"];
+    [(NSMutableDictionary *)options setObject:defaultParams forKey:kHRClassAttributesParamsKeys];
     NSMutableDictionary *opts = [NSMutableDictionary dictionaryWithDictionary:[self classAttributes]];
     [opts addEntriesFromDictionary:options];
-    [opts removeObjectForKey:@"defaultParams"];
-    NSLog(@"opts:%@", opts);
+    [opts removeObjectForKey:kHRClassAttributesDefaultParamsKey];
+
     return opts;
 }
 @end

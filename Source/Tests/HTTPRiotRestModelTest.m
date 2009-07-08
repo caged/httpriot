@@ -20,7 +20,7 @@
     GHAssertEquals([HRTestPerson format], HRDataFormatJSON, nil);
 }
 
-- (void) testShouldSetFormat  {
+- (void)testShouldSetFormat  {
     [HRTestPerson4 setFormat:HRDataFormatXML];
     GHAssertEquals([HRTestPerson4 format], HRDataFormatXML, nil);
 }
@@ -37,7 +37,7 @@
     GHAssertEqualObjects(@"bing", [params objectForKey:@"bada"], nil);
 }
 
-- (void) testShouldSetBasicAuthCredentials  {
+- (void)testShouldSetBasicAuthCredentials  {
     NSDictionary *expectedAuth = [NSDictionary dictionaryWithObjectsAndKeys:@"user", @"username", @"pass", @"password", nil];
     NSDictionary *basicAuth = [HRTestPerson basicAuth];
     GHAssertEqualObjects(basicAuth, expectedAuth, nil);

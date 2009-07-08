@@ -12,8 +12,7 @@
 @implementation HROperationQueue
 static HROperationQueue *sharedHROperationQueue = nil;
 - (id)init {
-   if(self = [super init])
-   {
+   if(self = [super init]) {
        [self setMaxConcurrentOperationCount:3];
    }
    
