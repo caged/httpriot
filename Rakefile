@@ -222,7 +222,7 @@ class SDKPackage < Rake::PackageTask
     @properties = OSX::PropertyList.load(File.read(Project.plist), format = false)
     @product_name = File.basename(Project.project_dir)
     @name = name || @product_name.downcase.gsub(/\s*/, '')
-    @version = version || @properties['CFBundleVersion']
+    @version = version || `agvtool vers -terse`.strip
     @project_dir = Project.project_dir
     @package_dir = File.join(@project_dir, 'pkg')
     @build_dir = Project.build_dir
