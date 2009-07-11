@@ -1,4 +1,4 @@
-#HTTPRiot - Easily consume REST services
+#HTTPRiot - Easily Consume REST Services
 
 **NOTE:** Alpha Quality. I've been using this for a few months and it's being used by some people
 in production code, this library should still be considered alpha.  With that out of the way, 
@@ -20,23 +20,21 @@ delegate methods that handle responses/errors/etc.
 * Sample app and server included with the source
 
 ## Quick Examples
-<pre><code>
-// GET
-[model getPath:@"/foo/bar.json" withOptions:nil object:nil];
+    // GET
+    [model getPath:@"/foo/bar.json" withOptions:nil object:nil];
 
-// POST
-NSDictionary *opts = [NSDictionary dictionaryWithObject:[obj JSONRepresentation] forKey:@"body"];
-[model postPath:@"/foo" withOptions:params object:nil];
+    // POST
+    NSDictionary *opts = [NSDictionary dictionaryWithObject:[obj JSONRepresentation] forKey:@"body"];
+    [model postPath:@"/foo" withOptions:params object:nil];
 
-// PUT
-NSDictionary *opts = [NSDictionary dictionaryWithObject:[obj JSONRepresentation] forKey:@"body"];
-[model putPath:@"/foo/1" withOptions:params object:nil];
+    // PUT
+    NSDictionary *opts = [NSDictionary dictionaryWithObject:[obj JSONRepresentation] forKey:@"body"];
+    [model putPath:@"/foo/1" withOptions:params object:nil];
 
-// DELETE
-[model deletePath:@"/foo/1" withOptions:nil object:nil];
-</code></pre>
+    // DELETE
+    [model deletePath:@"/foo/1" withOptions:nil object:nil];
 
-## Similar Projects
+##Similar Projects
 HTTPRiot was inspired by the <a href="http://github.com/jnunemaker/httparty/tree/master">httparty</a> Ruby library.
 There are also numerous other HTTP libraries for Cocoa:
 
