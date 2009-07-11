@@ -13,8 +13,10 @@ It offers a lot of flexibility with the data returned, but the tradeoff is that 
 the data returned because if you initiate two requests from one model both will be routed through the same 
 delegate methods that handle responses/errors/etc.
 
-See the primary documentation and Samples:
-* http://labratrevenge.com/httpriot/
+## Documentation and Samples:
+
+* [Online Documentation](http://labratrevenge.com/httpriot)
+* [Support & Community](http://justin.tenderapp.com)
 * Sample app and server included with the source
 
 ## Quick Examples
