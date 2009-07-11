@@ -110,7 +110,7 @@
 		D0788B050FABAD3800C3207D /* HTTPRiotTestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D029906A0F43422E00EC8C01 /* HTTPRiotTestHelper.m */; };
 		D0788B090FABAD4600C3207D /* HTTPRiotRestModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4A1D0F339E0600C9E26E /* HTTPRiotRestModelTest.m */; };
 		D0788B0D0FABAD6F00C3207D /* HTTPRiotRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D02990280F433C1800EC8C01 /* HTTPRiotRequestTest.m */; };
-		D0869053100543900061BA64 /* DDXML.h in Headers */ = {isa = PBXBuildFile; fileRef = D0869052100543900061BA64 /* DDXML.h */; };
+		D0869053100543900061BA64 /* DDXML.h in Headers */ = {isa = PBXBuildFile; fileRef = D0869052100543900061BA64 /* DDXML.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D09754381005092500E0E499 /* NSStringURLTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D09754371005092500E0E499 /* NSStringURLTest.m */; };
 		D09E4B390F33EB1D00C9E26E /* HRRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4B360F33EB0E00C9E26E /* HRRequestOperation.m */; };
 		D0A6E4130FFD39F100012097 /* HRBase64.h in Headers */ = {isa = PBXBuildFile; fileRef = D0A6E4110FFD39F100012097 /* HRBase64.h */; };
