@@ -194,6 +194,10 @@ end
 # Any project can link to these sdks using the "Additional SDks" settings in the build settings 
 # of a project and setting additional linker flags to the project name -l{PROJECT_NAME}
 #
+# IMPORTANT NOTE: This package tool uses `agvtool` to determine the version of your library.
+# If you plan on using it in your own projects you'll need to make sure it's setup to use 
+# `agvtool`.  You can get a run down on it here: http://chanson.livejournal.com/125568.html
+#
 class SDKPackage < Rake::PackageTask
   
   # Project root directory unless provided
@@ -219,7 +223,6 @@ class SDKPackage < Rake::PackageTask
   
   def init(name, version)
     super
-    @properties = OSX::PropertyList.load(File.read(Project.plist), format = false)
     @product_name = File.basename(Project.project_dir)
     @name = name || @product_name.downcase.gsub(/\s*/, '')
     @version = version || `agvtool vers -terse`.strip

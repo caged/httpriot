@@ -21,6 +21,10 @@
     return self;
 }
 
+// NOTE: The `delegate` object isn't neccissary here, but there is an important reason why
+// I'm using this approach.  I want to give my controller fully initialized models instead of 
+// raw NSDIctionary  objects.  On that note I pass the controller as the <tt>object</tt> to the 
+// request so I can call back to it in the delegate methods handling the responses.
 + (id)timelineForUser:(NSString *)user delegate:(id)delegate {
     NSDictionary *params = [NSDictionary dictionaryWithObject:user forKey:@"screen_name"];
     NSDictionary *opts = [NSDictionary dictionaryWithObject:params forKey:@"params"];
@@ -45,6 +49,8 @@
     // Request was successful, but couldn't parse the data returned by the server. 
 }
 
+// Given I've passed the controller as the <tt>object</tt> here, I can call any method I want to on it
+// giving it a collection of models I've initialized.
 + (void)restConnection:(NSURLConnection *)connection didReturnResource:(id)resource  object:(id)object {
     NSMutableArray *tweets = [[[NSMutableArray alloc] init] autorelease];
     

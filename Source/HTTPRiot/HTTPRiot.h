@@ -96,6 +96,7 @@ can share it with all your iPhone projects.
    @image html additional-sdks.png
 -# Set the <strong><tt>Additional Linker Flags</tt></strong> to <tt>-lhttpriot -lxml2 -ObjC -all_load</tt></strong> 
    @image html other-linker-flags.png
+-# Set <strong><tt>Header Search Paths</tt></strong> to <strong><tt>/usr/include/libxml2/**</tt></strong>
 -# Use <strong><tt>\#include <HTTPRiot/HTTPRiot.h></tt></strong> in one of your application's files. 
    That's it!  Now you're ready to use HTTPRiot!
 
