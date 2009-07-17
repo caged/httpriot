@@ -41,7 +41,7 @@ extern NSString *kHRClassAttributesParamsKeys;
  *     [self setDefaultParameters:params];
  *  }
  *
- * - (void)restConnection:(NSURLConnection *)connection didReturnResource:(id)resource object:(id)object {
+ * + (void)restConnection:(NSURLConnection *)connection didReturnResource:(id)resource object:(id)object {
  *      for(id person in resource) {
  *          // do something with a person dictionary   
  *      }  

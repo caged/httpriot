@@ -3,7 +3,7 @@ require 'rubygems'
 require 'rake/packagetask'
 require 'osx/plist'
 
-BUILD_TARGETS = %w(2.2.1 3.0)
+BUILD_TARGETS = %w(3.0)
 
 desc 'Run Clang'
 task :analyze do

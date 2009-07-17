@@ -87,6 +87,8 @@ HTTPRiot comes with a simple SDK package that makes it very easy to get up and r
 on the iphone.  You'll need to put this SDK package somewhere where it won't get deleted and you 
 can share it with all your iPhone projects.
 
+<p><strong>NOTE:  Make sure you select "All Configurations" in the Build tab before changing any settings.</strong></p>
+
 -# Move the httpriot-* directory to <strong><tt>~/Library/SDKs</tt></strong>.  You might need to create this directory.
    It's not mandatory that it lives in this location, but it's a good idea that you put it somewhere 
    where it can be shared.
