@@ -60,6 +60,10 @@
     ISAAlertWithMessage([error localizedDescription]);
 }
 
+- (void)restConnection:(NSURLConnection *)connection didReceiveError:(NSError *)error response:(NSHTTPURLResponse *)response object:(id)object {
+    ISAAlertWithMessage([error localizedDescription]);
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.tableView.delegate = self;
