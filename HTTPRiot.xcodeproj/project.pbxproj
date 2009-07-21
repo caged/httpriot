@@ -28,23 +28,23 @@
 		D00048250FF35B0E00CCAF1B /* NSObject+InvocationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D00048230FF35B0E00CCAF1B /* NSObject+InvocationUtils.m */; };
 		D00D8C720FF160810077F798 /* RunTests.sh in Resources */ = {isa = PBXBuildFile; fileRef = D00D8C700FF160810077F798 /* RunTests.sh */; };
 		D02988310F3F7BCE00EC8C01 /* HRRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = D09E4B350F33EB0E00C9E26E /* HRRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D02988640F3F7F1200EC8C01 /* HTTPRiot_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = D02988630F3F7F1200EC8C01 /* HTTPRiot_Prefix.pch */; };
-		D02988FF0F3FB63F00EC8C01 /* HRGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = D02988FE0F3FB63F00EC8C01 /* HRGlobal.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		D029893B0F3FBEDC00EC8C01 /* NSDictionary+ParamUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D02989330F3FBEDC00EC8C01 /* NSDictionary+ParamUtils.h */; };
+		D02988640F3F7F1200EC8C01 /* HTTPRiot_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = D02988630F3F7F1200EC8C01 /* HTTPRiot_Prefix.pch */; settings = {ATTRIBUTES = (Private, ); }; };
+		D02988FF0F3FB63F00EC8C01 /* HRGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = D02988FE0F3FB63F00EC8C01 /* HRGlobal.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D029893B0F3FBEDC00EC8C01 /* NSDictionary+ParamUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D02989330F3FBEDC00EC8C01 /* NSDictionary+ParamUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D029893C0F3FBEDC00EC8C01 /* NSDictionary+ParamUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D02989340F3FBEDC00EC8C01 /* NSDictionary+ParamUtils.m */; };
-		D029893F0F3FBEDC00EC8C01 /* NSString+EscapingUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D02989370F3FBEDC00EC8C01 /* NSString+EscapingUtils.h */; };
+		D029893F0F3FBEDC00EC8C01 /* NSString+EscapingUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D02989370F3FBEDC00EC8C01 /* NSString+EscapingUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D02989400F3FBEDC00EC8C01 /* NSString+EscapingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D02989380F3FBEDC00EC8C01 /* NSString+EscapingUtils.m */; };
-		D0298A2B0F3FCA8800EC8C01 /* HRFormatterProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A280F3FCA8800EC8C01 /* HRFormatterProtocol.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		D0298A300F3FF4FD00EC8C01 /* HRFormatJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A2D0F3FF4FD00EC8C01 /* HRFormatJSON.h */; };
+		D0298A2B0F3FCA8800EC8C01 /* HRFormatterProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A280F3FCA8800EC8C01 /* HRFormatterProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D0298A300F3FF4FD00EC8C01 /* HRFormatJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A2D0F3FF4FD00EC8C01 /* HRFormatJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0298A310F3FF4FD00EC8C01 /* HRFormatJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A2E0F3FF4FD00EC8C01 /* HRFormatJSON.m */; };
-		D0298A350F3FF50800EC8C01 /* HRFormatXML.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A320F3FF50800EC8C01 /* HRFormatXML.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D0298A350F3FF50800EC8C01 /* HRFormatXML.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A320F3FF50800EC8C01 /* HRFormatXML.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0298A360F3FF50800EC8C01 /* HRFormatXML.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A330F3FF50800EC8C01 /* HRFormatXML.m */; };
-		D0298A8D0F3FFF2E00EC8C01 /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A810F3FFF2E00EC8C01 /* JSON.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		D0298A8E0F3FFF2E00EC8C01 /* NSObject+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A820F3FFF2E00EC8C01 /* NSObject+SBJSON.h */; };
+		D0298A8D0F3FFF2E00EC8C01 /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A810F3FFF2E00EC8C01 /* JSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D0298A8E0F3FFF2E00EC8C01 /* NSObject+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A820F3FFF2E00EC8C01 /* NSObject+SBJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0298A8F0F3FFF2E00EC8C01 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A830F3FFF2E00EC8C01 /* NSObject+SBJSON.m */; };
-		D0298A900F3FFF2E00EC8C01 /* NSString+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A840F3FFF2E00EC8C01 /* NSString+SBJSON.h */; };
+		D0298A900F3FFF2E00EC8C01 /* NSString+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A840F3FFF2E00EC8C01 /* NSString+SBJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0298A910F3FFF2E00EC8C01 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A850F3FFF2E00EC8C01 /* NSString+SBJSON.m */; };
-		D0298A920F3FFF2E00EC8C01 /* SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A860F3FFF2E00EC8C01 /* SBJSON.h */; };
+		D0298A920F3FFF2E00EC8C01 /* SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A860F3FFF2E00EC8C01 /* SBJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0298A930F3FFF2E00EC8C01 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A870F3FFF2E00EC8C01 /* SBJSON.m */; };
 		D0298A940F3FFF2E00EC8C01 /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A810F3FFF2E00EC8C01 /* JSON.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D0298A950F3FFF2E00EC8C01 /* NSObject+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A820F3FFF2E00EC8C01 /* NSObject+SBJSON.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -66,18 +66,18 @@
 		D03982E90FFD6385005FECE7 /* HROperationQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = D03982E50FFD6385005FECE7 /* HROperationQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D03982EA0FFD6385005FECE7 /* HROperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = D03982E60FFD6385005FECE7 /* HROperationQueue.m */; };
 		D03DB6660F3163BB00F18796 /* HTTPRiot.h in Headers */ = {isa = PBXBuildFile; fileRef = D03DB6650F3163BB00F18796 /* HTTPRiot.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D03DB66C0F31654200F18796 /* HRRestModel.h in Headers */ = {isa = PBXBuildFile; fileRef = D03DB66A0F31654200F18796 /* HRRestModel.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D03DB66C0F31654200F18796 /* HRRestModel.h in Headers */ = {isa = PBXBuildFile; fileRef = D03DB66A0F31654200F18796 /* HRRestModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D03DB66D0F31654200F18796 /* HRRestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D03DB66B0F31654200F18796 /* HRRestModel.m */; };
 		D04EF1110F65C50A003C6240 /* AIXMLDocumentSerialize.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF10C0F65C50A003C6240 /* AIXMLDocumentSerialize.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D04EF1120F65C50A003C6240 /* AIXMLDocumentSerialize.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF10D0F65C50A003C6240 /* AIXMLDocumentSerialize.m */; };
 		D04EF1130F65C50A003C6240 /* AIXMLElementSerialize.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF10E0F65C50A003C6240 /* AIXMLElementSerialize.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D04EF1140F65C50A003C6240 /* AIXMLElementSerialize.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF10F0F65C50A003C6240 /* AIXMLElementSerialize.m */; };
 		D04EF1150F65C50A003C6240 /* AIXMLSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF1100F65C50A003C6240 /* AIXMLSerialization.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		D04EF1160F65C50A003C6240 /* AIXMLDocumentSerialize.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF10C0F65C50A003C6240 /* AIXMLDocumentSerialize.h */; };
+		D04EF1160F65C50A003C6240 /* AIXMLDocumentSerialize.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF10C0F65C50A003C6240 /* AIXMLDocumentSerialize.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D04EF1170F65C50A003C6240 /* AIXMLDocumentSerialize.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF10D0F65C50A003C6240 /* AIXMLDocumentSerialize.m */; };
-		D04EF1180F65C50A003C6240 /* AIXMLElementSerialize.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF10E0F65C50A003C6240 /* AIXMLElementSerialize.h */; };
+		D04EF1180F65C50A003C6240 /* AIXMLElementSerialize.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF10E0F65C50A003C6240 /* AIXMLElementSerialize.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D04EF1190F65C50A003C6240 /* AIXMLElementSerialize.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF10F0F65C50A003C6240 /* AIXMLElementSerialize.m */; };
-		D04EF11A0F65C50A003C6240 /* AIXMLSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF1100F65C50A003C6240 /* AIXMLSerialization.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D04EF11A0F65C50A003C6240 /* AIXMLSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF1100F65C50A003C6240 /* AIXMLSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D04EF12E0F65C52D003C6240 /* DDXMLDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF1220F65C52D003C6240 /* DDXMLDocument.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D04EF12F0F65C52D003C6240 /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF1230F65C52D003C6240 /* DDXMLDocument.m */; };
 		D04EF1300F65C52D003C6240 /* DDXMLElement.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF1240F65C52D003C6240 /* DDXMLElement.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -111,9 +111,12 @@
 		D0788B090FABAD4600C3207D /* HTTPRiotRestModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4A1D0F339E0600C9E26E /* HTTPRiotRestModelTest.m */; };
 		D0788B0D0FABAD6F00C3207D /* HTTPRiotRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D02990280F433C1800EC8C01 /* HTTPRiotRequestTest.m */; };
 		D0869053100543900061BA64 /* DDXML.h in Headers */ = {isa = PBXBuildFile; fileRef = D0869052100543900061BA64 /* DDXML.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D08B9AF7101685AF00351DC4 /* HRResponseDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = D038BD850FF28B960041F570 /* HRResponseDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D08B9AF8101685B000351DC4 /* NSObject+InvocationUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D00048220FF35B0E00CCAF1B /* NSObject+InvocationUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D08B9AF9101685B200351DC4 /* NSObject+InvocationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D00048230FF35B0E00CCAF1B /* NSObject+InvocationUtils.m */; };
 		D09754381005092500E0E499 /* NSStringURLTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D09754371005092500E0E499 /* NSStringURLTest.m */; };
 		D09E4B390F33EB1D00C9E26E /* HRRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4B360F33EB0E00C9E26E /* HRRequestOperation.m */; };
-		D0A6E4130FFD39F100012097 /* HRBase64.h in Headers */ = {isa = PBXBuildFile; fileRef = D0A6E4110FFD39F100012097 /* HRBase64.h */; };
+		D0A6E4130FFD39F100012097 /* HRBase64.h in Headers */ = {isa = PBXBuildFile; fileRef = D0A6E4110FFD39F100012097 /* HRBase64.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0A6E4140FFD39F100012097 /* HRBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A6E4120FFD39F100012097 /* HRBase64.m */; };
 		D0A6E4150FFD39F100012097 /* HRBase64.h in Headers */ = {isa = PBXBuildFile; fileRef = D0A6E4110FFD39F100012097 /* HRBase64.h */; };
 		D0A6E4160FFD39F100012097 /* HRBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A6E4120FFD39F100012097 /* HRBase64.m */; };
@@ -554,6 +557,8 @@
 				D04EF11A0F65C50A003C6240 /* AIXMLSerialization.h in Headers */,
 				D0A6E4130FFD39F100012097 /* HRBase64.h in Headers */,
 				D03982E90FFD6385005FECE7 /* HROperationQueue.h in Headers */,
+				D08B9AF7101685AF00351DC4 /* HRResponseDelegate.h in Headers */,
+				D08B9AF8101685B000351DC4 /* NSObject+InvocationUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -778,6 +783,7 @@
 				D04EF1190F65C50A003C6240 /* AIXMLElementSerialize.m in Sources */,
 				D0A6E4140FFD39F100012097 /* HRBase64.m in Sources */,
 				D03982EA0FFD6385005FECE7 /* HROperationQueue.m in Sources */,
+				D08B9AF9101685B200351DC4 /* NSObject+InvocationUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
