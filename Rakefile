@@ -17,6 +17,11 @@ namespace :osx do
     system("xcodebuild -target TestRunner -configuration #{Project.active_config}")
     system("open #{File.join(Project.product_dir, 'TestRunner')}.app")
   end
+  
+  desc 'Build OSX SDK'
+  task :build_sdk do
+    system("xcodebuild -target libhttpriot -configuration Release -sdk macosx10.5")
+  end
 end
 
 namespace :iphone do
@@ -110,12 +115,17 @@ class SDKSettings
         "GCC_THUMB_SUPPORT"             => "YES",
         "IPHONEOS_DEPLOYMENT_TARGET"    => @target
       }
-     else
+     elsif simulator?
        {
          "GCC_PRODUCT_TYPE_PREPROCESSOR_DEFINITIONS" => " __IPHONE_OS_VERSION_MIN_REQUIRED=20000",
          "PLATFORM_NAME"                             => "iphonesimulator",
          "MACOSX_DEPLOYMENT_TARGET"                  => "10.5"
        }
+     else
+       {
+          "PLATFORM_NAME"                             => "macosx",
+          "MACOSX_DEPLOYMENT_TARGET"                  => "10.5"
+        }
      end
   end
   
@@ -230,7 +240,7 @@ class SDKPackage < Rake::PackageTask
     @package_dir = File.join(@project_dir, 'pkg')
     @build_dir = Project.build_dir
     @relative_user_dir = "usr/local"
-    @sdks = %w(iphoneos iphonesimulator)
+    @sdks = %w(iphoneos iphonesimulator macosx10.5)
     @configuration = 'Release'
     @targets = Project.targets
   end
@@ -248,6 +258,8 @@ class SDKPackage < Rake::PackageTask
           @sdks.each do |sdk|
             # Create the SDK dir
             cd package_root
+            
+            target = '' if sdk == 'macosx10.5'
             sdk_dir = "#{sdk}#{target}.sdk"
             mkdir sdk_dir
           
@@ -260,7 +272,13 @@ class SDKPackage < Rake::PackageTask
             end
           
             # Copy the header files over
-            built_sdk_dir = File.join(@build_dir, "#{@configuration}-#{sdk}#{target}")
+            puts "BUiLD DIR:#{@build_dir}"
+            if sdk == 'macosx10.5' && File.exists?(File.join(@build_dir, @configuration, "usr"))
+              built_sdk_dir = File.join(@build_dir, @configuration)
+            else
+              built_sdk_dir = File.join(@build_dir, "#{@configuration}-#{sdk}#{target}")
+            end
+            
             cp_r File.join(built_sdk_dir, "usr"), "./"
           
             # Create the lib directory and copy over the static library

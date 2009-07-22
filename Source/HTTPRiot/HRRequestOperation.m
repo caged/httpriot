@@ -69,6 +69,7 @@
     [self didChangeValueForKey:@"isExecuting"];
     
     NSURLRequest *request = [self configuredRequest];
+    NSLog(@"FETCHING:%@ HEADERS:%@", [[request URL] absoluteString], [request allHTTPHeaderFields]);
     _connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
     
     if(_connection) {
@@ -180,10 +181,21 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Configuration
+
 - (void)setDefaultHeadersForRequest:(NSMutableURLRequest *)request {
     NSDictionary *headers = [[self options] valueForKey:@"headers"];
-    if(headers)
-        [request setAllHTTPHeaderFields:headers];
+    [request setValue:[[self formatter] mimeType] forHTTPHeaderField:@"Content-Type"];  
+    [request addValue:[[self formatter] mimeType] forHTTPHeaderField:@"Accept"];
+    if(headers) {
+        for(NSString *header in headers) {
+            NSString *value = [header valueForKey:header];
+            if([header isEqualToString:@"Accept"]) {
+                [request addValue:value forHTTPHeaderField:header];
+            } else {
+                [request setValue:value forHTTPHeaderField:header];
+            }
+        }        
+    }
 }
 
 - (void)setAuthHeadersForRequest:(NSMutableURLRequest *)request {
@@ -219,27 +231,27 @@
         NSString *urlString = [[composedURL absoluteString] stringByAppendingString:queryString];
         NSURL *url = [NSURL URLWithString:urlString];
         [request setURL:url];
-        [request setValue:[[self formatter] mimeType] forHTTPHeaderField:@"Content-Type"];  
-        [request addValue:[[self formatter] mimeType] forHTTPHeaderField:@"Accept"];
         
-        if(_requestMethod == HRRequestMethodGet)
+        if(_requestMethod == HRRequestMethodGet) {
             [request setHTTPMethod:@"GET"];
-        else
+        } else {
             [request setHTTPMethod:@"DELETE"];
+        }
             
     } else if(_requestMethod == HRRequestMethodPost || _requestMethod == HRRequestMethodPut) {
         
         NSData *bodyData = nil;   
-        if([body isKindOfClass:[NSDictionary class]])
+        if([body isKindOfClass:[NSDictionary class]]) {
             bodyData = [[body toQueryString] dataUsingEncoding:NSUTF8StringEncoding];
-        else if([body isKindOfClass:[NSString class]])
+        } else if([body isKindOfClass:[NSString class]]) {
             bodyData = [body dataUsingEncoding:NSUTF8StringEncoding];
-        else if([body isKindOfClass:[NSData class]])
+        } else if([body isKindOfClass:[NSData class]]) {
             bodyData = body;
-        else
+        } else {
             [NSException exceptionWithName:@"InvalidBodyData"
                                     reason:@"The body must be an NSDictionary, NSString, or NSData"
                                   userInfo:nil];
+        }
             
         [request setHTTPBody:bodyData];
         [request setURL:composedURL];
