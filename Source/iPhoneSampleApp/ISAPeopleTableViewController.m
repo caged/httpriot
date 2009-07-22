@@ -64,6 +64,10 @@
     ISAAlertWithMessage([error localizedDescription]);
 }
 
+- (void)restConnection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)response object:(id)object {
+    NSLog(@"RESPONSE STATUS WAS:%i", [response statusCode]);
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.tableView.delegate = self;

@@ -126,6 +126,10 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - NSURLConnection delegates
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    if ([_delegate respondsToSelector:@selector(restConnection:didReceiveResponse:object:)]) {
+        [_delegate performSelectorOnMainThread:@selector(restConnection:didReceiveResponse:object:) withObjects:connection, response, _object, nil];
+    }
+    
     NSError *error = nil;
     [[self class] handleResponse:(NSHTTPURLResponse *)response error:&error];
     

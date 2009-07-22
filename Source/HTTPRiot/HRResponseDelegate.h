@@ -36,6 +36,15 @@
 - (void)restConnection:(NSURLConnection *)connection didFailWithError:(NSError *)error object:(id)object;
 
 /**
+ * Called when the connection receieves any type of response
+ *
+ * @param connection The connection object for the current request
+ * @param response The response object returned by the server.
+ * @param object Any custom object you passed in while making the request.
+ */
+- (void)restConnection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)response object:(id)object;
+
+/**
  * Called when the connection receieves a statusCode that isn't a success code.
  *
  * @param connection The connection object for the current request
