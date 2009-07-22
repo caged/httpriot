@@ -90,6 +90,10 @@ class SDKSettings
     @sdk == 'iphonesimulator'
   end
   
+  def osx?
+    !iphone? && !simulator?
+  end
+  
   def minimal_display_name
     iphone? ? 'Device' : 'Simulator'
   end
@@ -130,20 +134,22 @@ class SDKSettings
   end
   
   def to_plist
-    {
+    pl = {
       "MinimalDisplayName"            => minimal_display_name,
-      "Version"                       => @target,
-      "FamilyIdentifier"              => "iphoneos",
-      "DisplayName"                   => display_name,
+      "Version"                       => (osx? ? "10.5" : @target),
+      "FamilyIdentifier"              => (osx? ? "macosx" : "iphoneos"),
+      "DisplayName"                   => (osx? ? "Mac OS X 10.5" : display_name),
       "MaximumOSDeploymentTarget"     => "10.5",
-      "AlternateSDK"                  => alternate_sdk,
       "MinimumSupportedToolsVersion"  => "3.1",
       "CustomProperties"              => {},
-      "FamilyName"                    => "iPhone OS",
+      "FamilyName"                    => (osx? ? "Mac OS X" : "iPhone OS"),
       "IsBaseSDK"                     => "NO",
       "DefaultProperties"             => default_properties,
-      "CanonicalName"                 => alternate_sdk
-    }.to_plist
+      "CanonicalName"                 => (osx? ? "macosx10.5" : alternate_sdk)
+    }
+    
+    pl.merge("AlternateSDK" => alternate_sdk) if !osx?
+    pl.to_plist
   end
 end
 
@@ -240,7 +246,7 @@ class SDKPackage < Rake::PackageTask
     @package_dir = File.join(@project_dir, 'pkg')
     @build_dir = Project.build_dir
     @relative_user_dir = "usr/local"
-    @sdks = %w(iphoneos iphonesimulator macosx10.5)
+    @sdks = %w(iphoneos iphonesimulator macosx)
     @configuration = 'Release'
     @targets = Project.targets
   end
@@ -259,7 +265,7 @@ class SDKPackage < Rake::PackageTask
             # Create the SDK dir
             cd package_root
             
-            target = '' if sdk == 'macosx10.5'
+            target = '' if sdk == 'macosx'
             sdk_dir = "#{sdk}#{target}.sdk"
             mkdir sdk_dir
           
@@ -273,7 +279,7 @@ class SDKPackage < Rake::PackageTask
           
             # Copy the header files over
             puts "BUiLD DIR:#{@build_dir}"
-            if sdk == 'macosx10.5' && File.exists?(File.join(@build_dir, @configuration, "usr"))
+            if sdk == 'macosx' && File.exists?(File.join(@build_dir, @configuration, "usr"))
               built_sdk_dir = File.join(@build_dir, @configuration)
             else
               built_sdk_dir = File.join(@build_dir, "#{@configuration}-#{sdk}#{target}")
