@@ -5,7 +5,6 @@ require 'json'
 require 'faker'
 require 'pp'
 require 'builder'
-require 'cgi'
 
 require File.join(File.dirname(__FILE__), 'lib/authorization')
 
@@ -191,7 +190,6 @@ get '/auth' do
 end
 
 def authorize(username, password)
-  username = CGI.unescape(username)
   username == "username@email.com" && password == "test"
 end
 

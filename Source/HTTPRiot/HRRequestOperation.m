@@ -204,9 +204,6 @@
     NSString *password = [authDict valueForKey:@"password"];
     
     if(username || password) {
-        username = [username stringByPreparingForURL];
-        password = [password stringByPreparingForURL];
-        
         NSString *userPass = [NSString stringWithFormat:@"%@:%@", username, password];
         NSData   *upData = [userPass dataUsingEncoding:NSUTF8StringEncoding];
         NSString *encodedUserPass = [HRBase64 encode:upData];
