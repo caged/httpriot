@@ -17,11 +17,7 @@ namespace :osx do
     system("xcodebuild -target TestRunner -configuration #{Project.active_config}")
     system("open #{File.join(Project.product_dir, 'TestRunner')}.app")
   end
-  
-  desc 'Build OSX SDK'
-  task :build_sdk do
-    system("xcodebuild -target libhttpriot -configuration Release -sdk macosx10.5")
-  end
+
 end
 
 namespace :iphone do
@@ -32,6 +28,7 @@ namespace :iphone do
       system("xcodebuild -target libhttpriot -configuration Release -sdk iphonesimulator#{version}")
       system("xcodebuild -target libhttpriot -configuration Release -sdk iphoneos#{version}")
     end
+    system("xcodebuild -target libhttpriot -configuration Release -sdk macosx10.5")
   end
   
   desc 'Clean all targets'
