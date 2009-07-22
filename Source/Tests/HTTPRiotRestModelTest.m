@@ -38,7 +38,7 @@
 }
 
 - (void)testShouldSetBasicAuthCredentials  {
-    NSDictionary *expectedAuth = [NSDictionary dictionaryWithObjectsAndKeys:@"user", @"username", @"pass", @"password", nil];
+    NSDictionary *expectedAuth = [NSDictionary dictionaryWithObjectsAndKeys:@"username@email.com", @"username", @"test", @"password", nil];
     NSDictionary *basicAuth = [HRTestPerson basicAuth];
     GHAssertEqualObjects(basicAuth, expectedAuth, nil);
 }

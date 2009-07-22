@@ -11,7 +11,7 @@
 @implementation HRTestPerson
 + (void)initialize  { 
     [self setBaseURL:[NSURL URLWithString:HTTPRiotTestServer]];
-    [self setBasicAuthWithUsername:@"user" password:@"pass"]; 
+    [self setBasicAuthWithUsername:@"username@email.com" password:@"test"]; 
 }
 @end
 

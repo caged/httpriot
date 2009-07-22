@@ -65,7 +65,7 @@
 - (void)testShouldHandleBasicAuth {
     [self prepare];
     
-    NSDictionary *auth = [NSDictionary dictionaryWithObjectsAndKeys:@"user", @"username", @"pass", @"password", nil];
+    NSDictionary *auth = [NSDictionary dictionaryWithObjectsAndKeys:@"username@email.com", @"username", @"test", @"password", nil];
     NSDictionary *opts = [NSDictionary dictionaryWithObject:auth forKey:@"basicAuth"];
     
     [HRTestPerson2 getPath:@"/auth" withOptions:opts object:@"BasicAuth"];
@@ -109,18 +109,21 @@
 
 - (void)restConnection:(NSURLConnection *)connection didFailWithError:(NSError *)error object:(id)method {
     NSString *prefix = @"testShouldHandle";    
+    NSLog(@"ERROR ERROR ERROR:%@", error);
     NSString *selector = [prefix stringByAppendingString:method];
     [self notify:kGHUnitWaitStatusFailure forSelector:NSSelectorFromString(selector)];
 }
 
 - (void)restConnection:(NSURLConnection *)connection didReceiveError:(NSError *)error response:(NSHTTPURLResponse *)response object:(id)method {
     NSString *prefix = @"testShouldHandle";
+    NSLog(@"ERROR ERROR ERROR:%@", error);
     NSString *selector = [prefix stringByAppendingString:method];
     [self notify:kGHUnitWaitStatusFailure forSelector:NSSelectorFromString(selector)];
 }
 
 - (void)restConnection:(NSURLConnection *)connection didReceiveParseError:(NSError *)error responseBody:(NSString *)string object:(id)method {
     NSString *prefix = @"testShouldHandle";
+    NSLog(@"ERROR ERROR ERROR:%@", error);
     NSString *selector = [prefix stringByAppendingString:method];
     [self notify:kGHUnitWaitStatusFailure forSelector:NSSelectorFromString(selector)];
 }

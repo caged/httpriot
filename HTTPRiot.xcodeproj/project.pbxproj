@@ -116,6 +116,7 @@
 		D08B9AF9101685B200351DC4 /* NSObject+InvocationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D00048230FF35B0E00CCAF1B /* NSObject+InvocationUtils.m */; };
 		D09754381005092500E0E499 /* NSStringURLTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D09754371005092500E0E499 /* NSStringURLTest.m */; };
 		D09E4B390F33EB1D00C9E26E /* HRRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4B360F33EB0E00C9E26E /* HRRequestOperation.m */; };
+		D0A06A091016F779007B95C9 /* HRUtilitiesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A06A081016F779007B95C9 /* HRUtilitiesTest.m */; };
 		D0A6E4130FFD39F100012097 /* HRBase64.h in Headers */ = {isa = PBXBuildFile; fileRef = D0A6E4110FFD39F100012097 /* HRBase64.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0A6E4140FFD39F100012097 /* HRBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A6E4120FFD39F100012097 /* HRBase64.m */; };
 		D0A6E4150FFD39F100012097 /* HRBase64.h in Headers */ = {isa = PBXBuildFile; fileRef = D0A6E4110FFD39F100012097 /* HRBase64.h */; };
@@ -219,6 +220,7 @@
 		D09E4A1D0F339E0600C9E26E /* HTTPRiotRestModelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRiotRestModelTest.m; sourceTree = "<group>"; };
 		D09E4B350F33EB0E00C9E26E /* HRRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRRequestOperation.h; sourceTree = "<group>"; };
 		D09E4B360F33EB0E00C9E26E /* HRRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRRequestOperation.m; sourceTree = "<group>"; };
+		D0A06A081016F779007B95C9 /* HRUtilitiesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRUtilitiesTest.m; sourceTree = "<group>"; };
 		D0A6E4110FFD39F100012097 /* HRBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRBase64.h; sourceTree = "<group>"; };
 		D0A6E4120FFD39F100012097 /* HRBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRBase64.m; sourceTree = "<group>"; };
 		D0ADB5E310025AA8005C1371 /* libGHUnitIPhone2_1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGHUnitIPhone2_1.a; path = "Source/HTTPRiot/Vendor/gh-unit-iphone/libGHUnitIPhone2_1.a"; sourceTree = SOURCE_ROOT; };
@@ -481,6 +483,7 @@
 				D02990380F433D1900EC8C01 /* HTTPRiotTestHelper.h */,
 				D029906A0F43422E00EC8C01 /* HTTPRiotTestHelper.m */,
 				D09754371005092500E0E499 /* NSStringURLTest.m */,
+				D0A06A081016F779007B95C9 /* HRUtilitiesTest.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -835,6 +838,7 @@
 				D0788B090FABAD4600C3207D /* HTTPRiotRestModelTest.m in Sources */,
 				D0788B0D0FABAD6F00C3207D /* HTTPRiotRequestTest.m in Sources */,
 				D09754381005092500E0E499 /* NSStringURLTest.m in Sources */,
+				D0A06A091016F779007B95C9 /* HRUtilitiesTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
