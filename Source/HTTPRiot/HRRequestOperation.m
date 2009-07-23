@@ -54,7 +54,7 @@
         _options        = [opts retain];
         _object         = obj;
         _timeout        = 30.0;
-        _delegate       = [opts valueForKey:@"delegate"];
+        _delegate       = [[opts valueForKey:@"delegate"] nonretainedObjectValue];
         _formatter      = [[self formatterFromFormat] retain];
     }
 

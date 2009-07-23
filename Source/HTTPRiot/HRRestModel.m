@@ -60,7 +60,7 @@ static NSMutableDictionary *attributes;
 }
 
 + (void)setDelegate:(NSObject *)del {
-    [self setAttributeValue:del forKey:kHRClassAttributesDelegateKey];
+    [self setAttributeValue:[NSValue valueWithNonretainedObject:del] forKey:kHRClassAttributesDelegateKey];
 }
 
 + (NSURL *)baseURL {
