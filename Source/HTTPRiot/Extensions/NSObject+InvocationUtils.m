@@ -12,7 +12,7 @@
 @implementation NSObject (InvocationUtils)
 - (void)performSelectorOnMainThread:(SEL)selector withObjects:(id)obj1, ... {
     id argitem; va_list args;
-    NSMutableArray *objects = [[[NSMutableArray alloc] init] autorelease];
+    NSMutableArray *objects = [[NSMutableArray alloc] init];
     if(obj1 != nil) {
         [objects addObject:obj1];
         va_start(args, obj1);         
@@ -24,7 +24,8 @@
         va_end(args);
     }
     
-    return [self performSelectorOnMainThread:selector withObjectArray:objects];
+    [self performSelectorOnMainThread:selector withObjectArray:objects];
+    [objects release];
 }
 
 - (void)performSelectorOnMainThread:(SEL)selector withObjectArray:(NSArray *)objects {

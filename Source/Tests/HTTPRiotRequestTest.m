@@ -109,77 +109,19 @@
 
 - (void)restConnection:(NSURLConnection *)connection didFailWithError:(NSError *)error object:(id)method {
     NSString *prefix = @"testShouldHandle";    
-    NSLog(@"ERROR ERROR ERROR:%@", error);
     NSString *selector = [prefix stringByAppendingString:method];
     [self notify:kGHUnitWaitStatusFailure forSelector:NSSelectorFromString(selector)];
 }
 
 - (void)restConnection:(NSURLConnection *)connection didReceiveError:(NSError *)error response:(NSHTTPURLResponse *)response object:(id)method {
     NSString *prefix = @"testShouldHandle";
-    NSLog(@"ERROR ERROR ERROR:%@", error);
     NSString *selector = [prefix stringByAppendingString:method];
     [self notify:kGHUnitWaitStatusFailure forSelector:NSSelectorFromString(selector)];
 }
 
 - (void)restConnection:(NSURLConnection *)connection didReceiveParseError:(NSError *)error responseBody:(NSString *)string object:(id)method {
     NSString *prefix = @"testShouldHandle";
-    NSLog(@"ERROR ERROR ERROR:%@", error);
     NSString *selector = [prefix stringByAppendingString:method];
     [self notify:kGHUnitWaitStatusFailure forSelector:NSSelectorFromString(selector)];
 }
-
-// - (void) testShouldThrowExceptionIfHostIsNotGiven 
-// {
-//     NSError *error = nil;
-//     GHAssertThrows([HTTPRiotRequestOperation requestWithMethod:HRRequestMethodGet path:@"/status/400" options:defaultOptions error:&error], nil);
-// }
-// 
-// - (void) testShouldHandleResponse 
-// {   
-//     NSString *host = HTTPRiotTestServer;
-//     //BadRequest
-//     NSError *error = nil;
-//     [HTTPRiotRequestOperation requestWithMethod:HRRequestMethodGet path:[host stringByAppendingString:@"/status/400"] options:defaultOptions error:&error];    
-//     GHAssertEquals(400, [error code], nil);
-//     
-//     //ForbiddenAccess
-//     error = nil;
-//     [HTTPRiotRequestOperation requestWithMethod:HRRequestMethodGet path:[host stringByAppendingString:@"/status/403"] options:defaultOptions error:&error];        
-//     GHAssertEquals(403, [error code], nil);
-//     
-//     //ResourceNotFound
-//     error = nil;
-//     [HTTPRiotRequestOperation requestWithMethod:HRRequestMethodGet path:[host stringByAppendingString:@"/status/404"] options:defaultOptions error:&error];        
-//     GHAssertEquals(404, [error code], nil);
-//     
-//     //MethodNotAllowed
-//     error = nil;
-//     [HTTPRiotRequestOperation requestWithMethod:HRRequestMethodGet path:[host stringByAppendingString:@"/status/405"] options:defaultOptions error:&error];        
-//     GHAssertEquals(405, [error code], nil);
-//     
-//     //ResourceConflict
-//     error = nil;
-//     [HTTPRiotRequestOperation requestWithMethod:HRRequestMethodGet path:[host stringByAppendingString:@"/status/409"] options:defaultOptions error:&error];        
-//     GHAssertEquals(409, [error code], nil);
-//     
-//     //ResourceInvalid
-//     error = nil;
-//     [HTTPRiotRequestOperation requestWithMethod:HRRequestMethodGet path:[host stringByAppendingString:@"/status/422"] options:defaultOptions error:&error];        
-//     GHAssertEquals(422, [error code], nil);
-//     
-//     //ClientError
-//     error = nil;
-//     [HTTPRiotRequestOperation requestWithMethod:HRRequestMethodGet path:[host stringByAppendingString:@"/status/420"] options:defaultOptions error:&error];        
-//     GHAssertEquals(420, [error code], nil);
-//     
-//     //ServerError
-//     error = nil;
-//     [HTTPRiotRequestOperation requestWithMethod:HRRequestMethodGet path:[host stringByAppendingString:@"/status/500"] options:defaultOptions error:&error];        
-//     GHAssertEquals(500, [error code], nil);
-//     
-//     //ConnectionError
-//     error = nil;
-//     [HTTPRiotRequestOperation requestWithMethod:HRRequestMethodGet path:[host stringByAppendingString:@"/status/999"] options:defaultOptions error:&error];        
-//     GHAssertEquals(999, [error code], nil);
-// }
 @end

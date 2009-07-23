@@ -30,7 +30,7 @@ NSString *kHRClassAttributesParamsKeys          = @"params";
 static NSMutableDictionary *attributes;
 + (void)initialize {    
     if(!attributes)
-        attributes = [[NSMutableDictionary dictionary] retain];
+        attributes = [[NSMutableDictionary alloc] init];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
