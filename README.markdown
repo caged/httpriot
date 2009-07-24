@@ -1,10 +1,6 @@
 #HTTPRiot - Easily Consume REST Services
 
-**NOTE:** Alpha Quality. I've been using this for a few months and it's being used by some people
-in production code, this library should still be considered alpha.  With that out of the way, 
-please try it, and better yet, contribute!
-
-HTTPRiot is a "dumb" HTTP library that works on the iPhone and Cocoa Apps.  It tries to abstract as much as possible 
+HTTPRiot is a simple HTTP library that works on the iPhone and Cocoa Apps.  It tries to abstract as much as possible 
 in the beginning.  This means you don't spend a lot of time up front setting things up and staying on a golden path, but 
 this also means it makes no assumptions about the data returned.  It will convert JSON and XML automatically to NSDictionary or NSArray objects, 
 allowing you to do what you want to with the data, but it's up to you to create your own models if you wish.
