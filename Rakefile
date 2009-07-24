@@ -22,7 +22,7 @@ end
 
 namespace :iphone do
   desc 'Build 2.0 - 3.0 Release Versions of the static library for the simulator and device'
-  task :build_all => :clean_all do
+  task :build => :clean do
     rm_r(Project.build_dir) if File.exists?(Project.build_dir)
     BUILD_TARGETS.each do |version|
       system("xcodebuild -target libhttpriot -configuration Release -sdk iphonesimulator#{version}")
@@ -32,7 +32,7 @@ namespace :iphone do
   end
   
   desc 'Clean all targets'
-  task :clean_all do
+  task :clean do
     system("xcodebuild clean -alltargets")
   end
   
@@ -46,7 +46,7 @@ end
 
 namespace :sdk do  
   desc 'Build and package all SDKs' 
-  task :package_all => ['iphone:build_all', 'sdk:package']
+  task :dist => ['iphone:build', 'sdk:package']
   
   desc 'Generate the documentation'
   task :doc do
@@ -58,13 +58,17 @@ namespace :sdk do
     cd Project.project_dir
     sdk = Dir.entries('pkg').detect {|e| e =~ /[^\.|\.\.|zip|tgz|tar|gz]$/i}
 
-    sdk_base_dir = File.join(File.expand_path("~"), 'Library', 'SDKs')
-    sdk_install_location = File.join(sdk_base_dir, sdk)
+    if sdk
+      sdk_base_dir = File.join(File.expand_path("~"), 'Library', 'SDKs')
+      sdk_install_location = File.join(sdk_base_dir, sdk)
 
-    mkdir(sdk_base_dir) unless File.exists?(sdk_base_dir)
-    rm_r(sdk_install_location) if File.exists?(sdk_install_location)
-    cd 'pkg'
-    mv sdk, sdk_install_location
+      mkdir(sdk_base_dir) unless File.exists?(sdk_base_dir)
+      rm_r(sdk_install_location) if File.exists?(sdk_install_location)
+      cd 'pkg'
+      mv sdk, sdk_install_location
+    else
+      puts "Nothing to install"
+    end
   end
 end
 
