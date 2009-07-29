@@ -69,7 +69,7 @@
     [self didChangeValueForKey:@"isExecuting"];
     
     NSURLRequest *request = [self configuredRequest];
-    NSLog(@"FETCHING:%@ HEADERS:%@", [[request URL] absoluteString], [request allHTTPHeaderFields]);
+    HRLog(@"FETCHING:%@ \nHEADERS:%@", [[request URL] absoluteString], [request allHTTPHeaderFields]);
     _connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
     
     if(_connection) {
