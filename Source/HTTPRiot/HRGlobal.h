@@ -37,8 +37,8 @@ typedef enum {
 
 #ifdef DEBUG
 /// Logging Helper
-#define HRLog NSLog
+#define HRLOG NSLog
 #else
 /// Logging Helper
-#define HRLog    
+#define HRLOG    
 #endif

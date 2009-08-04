@@ -69,7 +69,7 @@
     [self didChangeValueForKey:@"isExecuting"];
     
     NSURLRequest *request = [self configuredRequest];
-    HRLog(@"FETCHING:%@ \nHEADERS:%@", [[request URL] absoluteString], [request allHTTPHeaderFields]);
+    HRLOG(@"FETCHING:%@ \nHEADERS:%@", [[request URL] absoluteString], [request allHTTPHeaderFields]);
     _connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
     
     if(_connection) {
@@ -126,6 +126,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - NSURLConnection delegates
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)response {    
+    HRLOG(@"GOT RESPONSE CODE:%i", [response statusCode]);
     if ([_delegate respondsToSelector:@selector(restConnection:didReceiveResponse:object:)]) {
         [_delegate performSelectorOnMainThread:@selector(restConnection:didReceiveResponse:object:) withObjects:connection, response, _object, nil];
     }

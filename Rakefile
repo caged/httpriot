@@ -4,6 +4,7 @@ require 'rake/packagetask'
 require 'osx/plist'
 
 BUILD_TARGETS = %w(3.0 2.2.1)
+CONFIGURATION = "Debug"
 
 desc 'Run Clang'
 task :analyze do
@@ -25,10 +26,10 @@ namespace :iphone do
   task :build => :clean do
     rm_r(Project.build_dir) if File.exists?(Project.build_dir)
     BUILD_TARGETS.each do |version|
-      system("xcodebuild -target libhttpriot -configuration Release -sdk iphonesimulator#{version}")
-      system("xcodebuild -target libhttpriot -configuration Release -sdk iphoneos#{version}")
+      system("xcodebuild -target libhttpriot -configuration #{CONFIGURATION} -sdk iphonesimulator#{version}")
+      system("xcodebuild -target libhttpriot -configuration #{CONFIGURATION} -sdk iphoneos#{version}")
     end
-    system("xcodebuild -target libhttpriot -configuration Release -sdk macosx10.5")
+    system("xcodebuild -target libhttpriot -configuration #{CONFIGURATION} -sdk macosx10.5")
   end
   
   desc 'Clean all targets'
@@ -50,7 +51,7 @@ namespace :sdk do
   
   desc 'Generate the documentation'
   task :doc do
-    system("xcodebuild -target Documentation -configuration Release -sdk macosx10.5")
+    system("xcodebuild -target Documentation -configuration #{CONFIGURATION} -sdk macosx10.5")
   end
   
   desc 'Install the SDK in ~/Library/SDks'
@@ -268,6 +269,8 @@ class SDKPackage < Rake::PackageTask
             
             target = '' if sdk == 'macosx'
             sdk_dir = "#{sdk}#{target}.sdk"
+            
+            next if File.exists?(sdk_dir)            
             mkdir sdk_dir
           
           
@@ -279,7 +282,6 @@ class SDKPackage < Rake::PackageTask
             end
           
             # Copy the header files over
-            puts "BUiLD DIR:#{@build_dir}"
             if sdk == 'macosx' && File.exists?(File.join(@build_dir, @configuration, "usr"))
               built_sdk_dir = File.join(@build_dir, @configuration)
             else
@@ -287,7 +289,7 @@ class SDKPackage < Rake::PackageTask
             end
             
             cp_r File.join(built_sdk_dir, "usr"), "./"
-          
+            
             # Create the lib directory and copy over the static library
             lib_dir = File.join(pwd, 'usr', 'local', 'lib')
             mkdir lib_dir
@@ -337,4 +339,5 @@ SDKPackage.new do |sdk|
   sdk.need_tar_gz = true
   sdk.need_zip = true
   sdk.targets  = BUILD_TARGETS
+  sdk.configuration = CONFIGURATION
 end
