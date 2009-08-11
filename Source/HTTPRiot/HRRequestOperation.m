@@ -54,7 +54,7 @@
         _options        = [opts retain];
         _object         = obj;
         _timeout        = 30.0;
-        _delegate       = [[opts valueForKey:@"delegate"] nonretainedObjectValue];
+        _delegate       = [[opts valueForKey:kHRClassAttributesDelegateKey] nonretainedObjectValue];
         _formatter      = [[self formatterFromFormat] retain];
     }
 
@@ -188,7 +188,7 @@
 #pragma mark - Configuration
 
 - (void)setDefaultHeadersForRequest:(NSMutableURLRequest *)request {
-    NSDictionary *headers = [[self options] valueForKey:@"headers"];
+    NSDictionary *headers = [[self options] valueForKey:kHRClassAttributesHeadersKey];
     [request setValue:[[self formatter] mimeType] forHTTPHeaderField:@"Content-Type"];  
     [request addValue:[[self formatter] mimeType] forHTTPHeaderField:@"Accept"];
     if(headers) {
@@ -204,9 +204,9 @@
 }
 
 - (void)setAuthHeadersForRequest:(NSMutableURLRequest *)request {
-    NSDictionary *authDict = [_options valueForKey:@"basicAuth"];
-    NSString *username = [authDict valueForKey:@"username"];
-    NSString *password = [authDict valueForKey:@"password"];
+    NSDictionary *authDict = [_options valueForKey:kHRClassAttributesBasicAuthKey];
+    NSString *username = [authDict valueForKey:kHRClassAttributesUsernameKey];
+    NSString *password = [authDict valueForKey:kHRClassAttributesPasswordKey];
     
     if(username || password) {
         NSString *userPass = [NSString stringWithFormat:@"%@:%@", username, password];
@@ -225,8 +225,8 @@
     [self setAuthHeadersForRequest:request];
     
     NSURL *composedURL = [self composedURL];
-    NSDictionary *params = [[self options] valueForKey:@"params"];
-    id body = [[self options] valueForKey:@"body"];
+    NSDictionary *params = [[self options] valueForKey:kHRClassAttributesParamsKey];
+    id body = [[self options] valueForKey:kHRClassAttributesBodyKey];
     NSString *queryString = [[self class] buildQueryStringFromParams:params];
     
     if(_requestMethod == HRRequestMethodGet || _requestMethod == HRRequestMethodDelete) {
@@ -270,7 +270,7 @@
 
 - (NSURL *)composedURL {
     NSURL *tmpURI = [NSURL URLWithString:_path];
-    NSURL *baseURL = [_options objectForKey:@"baseURL"];
+    NSURL *baseURL = [_options objectForKey:kHRClassAttributesBaseURLKey];
 
     if([tmpURI host] == nil && [baseURL host] == nil)
         [NSException raise:@"UnspecifiedHost" format:@"host wasn't provided in baseURL or path"];
@@ -282,7 +282,7 @@
 }
 
 - (id)formatterFromFormat {
-    NSNumber *format = [[self options] objectForKey:@"format"];
+    NSNumber *format = [[self options] objectForKey:kHRClassAttributesFormatKey];
     id theFormatter = nil;
     switch([format intValue]) {
         case HRDataFormatJSON:
@@ -362,7 +362,7 @@
         NSDictionary *userInfo = [[[NSDictionary dictionaryWithObjectsAndKeys:
                                    errorReason, NSLocalizedFailureReasonErrorKey,
                                    errorDescription, NSLocalizedDescriptionKey, 
-                                   headers, @"headers", 
+                                   headers, kHRClassAttributesHeadersKey, 
                                    [[response URL] absoluteString], @"url", nil] retain] autorelease];
         *error = [NSError errorWithDomain:HTTPRiotErrorDomain code:code userInfo:userInfo];
     }

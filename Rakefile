@@ -4,7 +4,7 @@ require 'rake/packagetask'
 require 'osx/plist'
 
 BUILD_TARGETS = %w(3.0 2.2.1)
-CONFIGURATION = "Debug"
+CONFIGURATION = "Release"
 
 desc 'Run Clang'
 task :analyze do
@@ -199,7 +199,6 @@ end
 
 
 # Creates iPhone friendly SDKs for static libraries and archives them for distribution.  
-# Can also bundle frameworks if any .framework files are present in the build directory.
 # By default the package task will create an SDK for every target (2.0, 2.1, 2.2, 2.2.1, 3.0) 
 # for both the simulator and the device.  An SDK is simply a collection of files laid out in a 
 # specific fasion with an included SDKSettings.plist file.

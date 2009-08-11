@@ -8,16 +8,6 @@
 #import <Foundation/Foundation.h>
 #import "HRGlobal.h"
 
-extern NSString *kHRClassAttributesDelegateKey;
-extern NSString *kHRClassAttributesBaseURLKey;
-extern NSString *kHRClassAttributesHeadersKey;
-extern NSString *kHRClassAttributesBasicAuthKey;
-extern NSString *kHRClassAttributesUsernameKey;
-extern NSString *kHRClassAttributesPasswordKey;
-extern NSString *kHRClassAttributesFormatKey;
-extern NSString *kHRClassAttributesDefaultParamsKey;
-extern NSString *kHRClassAttributesParamsKeys;
-
 /**
  * This class allows you to easily interact with RESTful resources.  Responses are automatically
  * converted to the proper Objective-C type.  You can use this class directly or subclass it.

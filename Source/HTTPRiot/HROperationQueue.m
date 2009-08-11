@@ -7,7 +7,7 @@
 //
 
 #import "HROperationQueue.h"
-
+#import "HRGlobal.h"
 
 @implementation HROperationQueue
 static HROperationQueue *sharedHROperationQueue = nil;

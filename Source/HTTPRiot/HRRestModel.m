@@ -8,16 +8,7 @@
 
 #import "HRRestModel.h"
 #import "HRRequestOperation.h"
-
-NSString *kHRClassAttributesDelegateKey         = @"delegate";
-NSString *kHRClassAttributesBaseURLKey          = @"baseURL";
-NSString *kHRClassAttributesHeadersKey          = @"headers";
-NSString *kHRClassAttributesBasicAuthKey        = @"basicAuth";
-NSString *kHRClassAttributesUsernameKey         = @"username";
-NSString *kHRClassAttributesPasswordKey         = @"password";
-NSString *kHRClassAttributesFormatKey           = @"format";
-NSString *kHRClassAttributesDefaultParamsKey    = @"defaultParams";
-NSString *kHRClassAttributesParamsKeys          = @"params";
+#import "HRGlobal.h"
 
 @interface HRRestModel (PrivateMethods)
 + (void)setAttributeValue:(id)attr forKey:(NSString *)key;
@@ -137,10 +128,10 @@ static NSMutableDictionary *attributes;
 
 + (NSMutableDictionary *)mergedOptions:(NSDictionary *)options {
     NSMutableDictionary *defaultParams = [NSMutableDictionary dictionaryWithDictionary:[self defaultParams]];
-    [defaultParams addEntriesFromDictionary:[options valueForKey:kHRClassAttributesParamsKeys]];
+    [defaultParams addEntriesFromDictionary:[options valueForKey:kHRClassAttributesParamsKey]];
     
     options = [NSMutableDictionary dictionaryWithDictionary:options];
-    [(NSMutableDictionary *)options setObject:defaultParams forKey:kHRClassAttributesParamsKeys];
+    [(NSMutableDictionary *)options setObject:defaultParams forKey:kHRClassAttributesParamsKey];
     NSMutableDictionary *opts = [NSMutableDictionary dictionaryWithDictionary:[self classAttributes]];
     [opts addEntriesFromDictionary:options];
     [opts removeObjectForKey:kHRClassAttributesDefaultParamsKey];

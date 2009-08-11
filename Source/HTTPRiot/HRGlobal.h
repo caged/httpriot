@@ -1,6 +1,19 @@
 /**
  * @file HRGlobal.h Shared types and constants.
  */
+#import <Foundation/Foundation.h>
+
+extern NSString *kHRClassAttributesDelegateKey;
+extern NSString *kHRClassAttributesBaseURLKey;
+extern NSString *kHRClassAttributesHeadersKey;
+extern NSString *kHRClassAttributesBasicAuthKey;
+extern NSString *kHRClassAttributesUsernameKey;
+extern NSString *kHRClassAttributesPasswordKey;
+extern NSString *kHRClassAttributesFormatKey;
+extern NSString *kHRClassAttributesDefaultParamsKey;
+extern NSString *kHRClassAttributesParamsKey;
+extern NSString *kHRClassAttributesBodyKey;
+
  
 /**
  * Supported REST methods.
