@@ -3,15 +3,25 @@
  */
 #import <Foundation/Foundation.h>
 
+/// Key for delgate
 extern NSString *kHRClassAttributesDelegateKey;
+/// Key for base url
 extern NSString *kHRClassAttributesBaseURLKey;
+/// Key for headers
 extern NSString *kHRClassAttributesHeadersKey;
+/// Key for basic auth
 extern NSString *kHRClassAttributesBasicAuthKey;
+/// Key for username
 extern NSString *kHRClassAttributesUsernameKey;
+/// Key for password
 extern NSString *kHRClassAttributesPasswordKey;
+/// Key for format
 extern NSString *kHRClassAttributesFormatKey;
+/// Key for default params
 extern NSString *kHRClassAttributesDefaultParamsKey;
+/// Key for params
 extern NSString *kHRClassAttributesParamsKey;
+/// Key for body
 extern NSString *kHRClassAttributesBodyKey;
 
  
