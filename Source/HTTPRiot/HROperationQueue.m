@@ -22,7 +22,7 @@ static HROperationQueue *sharedHROperationQueue = nil;
 + (HROperationQueue *)sharedOperationQueue {
     @synchronized(self) {
         if (sharedHROperationQueue == nil) {
-            [[self alloc] init];
+            sharedHROperationQueue = [[self alloc] init];
         }
     }
     return sharedHROperationQueue;
