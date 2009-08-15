@@ -19,15 +19,13 @@
 #pragma mark -
 #pragma mark Application lifecycle
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
-    // Override point for customization after app launch  
     ISAPeopleTableViewController *peopleController = [[[ISAPeopleTableViewController alloc] init] autorelease];
     navigationController.viewControllers = [NSArray arrayWithObjects:peopleController, nil];
     [HRRestModel setBaseURL:[NSURL URLWithString:@"http://localhost:4567"]];
-    
-	[window addSubview:[navigationController view]];
+
+    [window addSubview:[navigationController view]];
     [window makeKeyAndVisible];
 }
-
 
 - (void)applicationWillTerminate:(UIApplication *)application {
 	// Save data if appropriate

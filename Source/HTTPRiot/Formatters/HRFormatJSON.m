@@ -20,6 +20,10 @@
 
 + (id)decode:(NSData *)data error:(NSError **)error {
     NSString *rawString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    // If we failed to decode the data using UTF8 attempt to use ASCII encoding.
+    if(rawString == nil && ([data length] > 0)) {
+        rawString = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+    }
     
     NSError *parseError = nil;
     SBJSON *parser = [[SBJSON alloc] init];
