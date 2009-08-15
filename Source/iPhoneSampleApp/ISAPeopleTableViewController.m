@@ -60,12 +60,13 @@
     ISAAlertWithMessage([error localizedDescription]);
 }
 
-- (void)restConnection:(NSURLConnection *)connection didReceiveError:(NSError *)error response:(NSHTTPURLResponse *)response object:(id)object {
+- (void)restConnection:(NSURLConnection *)connection didReceiveError:(NSError *)error response:(HRResponse *)response object:(id)object {
     ISAAlertWithMessage([error localizedDescription]);
 }
 
-- (void)restConnection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)response object:(id)object {
-    NSLog(@"RESPONSE STATUS WAS:%i", [response statusCode]);
+- (void)restConnection:(NSURLConnection *)connection didReceiveResponse:(HRResponse *)response object:(id)object {
+    NSLog(@"RESPONSE STATUS WAS:%i", response.statusCode);
+    NSLog(@"RESPONSE DATA WAS:%@", response.responseBody);
 }
 
 - (void)viewWillAppear:(BOOL)animated {

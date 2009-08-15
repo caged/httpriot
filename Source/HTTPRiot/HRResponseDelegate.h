@@ -10,6 +10,8 @@
 //  Copyright 2009 LabratRevenge LLC.. All rights reserved.
 //
 
+@class HRResponse;
+
 /**
  * @protocol HRResponseDelegate
  *
@@ -42,7 +44,7 @@
  * @param response The response object returned by the server.
  * @param object Any custom object you passed in while making the request.
  */
-- (void)restConnection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)response object:(id)object;
+- (void)restConnection:(NSURLConnection *)connection didReceiveResponse:(HRResponse *)response object:(id)object;
 
 /**
  * Called when the connection receieves a statusCode that isn't a success code.
@@ -52,7 +54,7 @@
  * @param response The response object returned by the server.
  * @param object Any custom object you passed in while making the request.
  */
-- (void)restConnection:(NSURLConnection *)connection didReceiveError:(NSError *)error response:(NSHTTPURLResponse *)response object:(id)object;
+- (void)restConnection:(NSURLConnection *)connection didReceiveError:(NSError *)error response:(HRResponse *)response object:(id)object;
 
 /**
  * Called when the HRFormatter recieved an error parsing the response data.

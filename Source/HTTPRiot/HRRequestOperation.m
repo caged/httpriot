@@ -14,6 +14,7 @@
 #import "NSDictionary+ParamUtils.h"
 #import "HRBase64.h"
 #import "HROperationQueue.h"
+#import "HRResponse.h"
 
 @interface HRRequestOperation (PrivateMethods)
 - (NSMutableURLRequest *)http;
@@ -23,9 +24,10 @@
 - (NSMutableURLRequest *)configuredRequest;
 - (id)formatterFromFormat;
 - (NSURL *)composedURL;
+- (void)finish;
+
 + (id)handleResponse:(NSHTTPURLResponse *)response error:(NSError **)error;
 + (NSString *)buildQueryStringFromParams:(NSDictionary *)params;
-- (void)finish;
 @end
 
 @implementation HRRequestOperation
@@ -82,7 +84,7 @@
 - (void)finish {
     [_connection release];
     _connection = nil;
-    
+
     [_responseData release];
     _responseData = nil;
 
@@ -125,18 +127,20 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - NSURLConnection delegates
+
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)response {    
     HRLOG(@"GOT RESPONSE CODE:%i", [response statusCode]);
+    
+    HRResponse *detailedResponse = [HRResponse responseWithHTTPResponse:response data:_responseData];
     if ([_delegate respondsToSelector:@selector(restConnection:didReceiveResponse:object:)]) {
-        [_delegate performSelectorOnMainThread:@selector(restConnection:didReceiveResponse:object:) withObjects:connection, response, _object, nil];
+        [_delegate performSelectorOnMainThread:@selector(restConnection:didReceiveResponse:object:) withObjects:connection, detailedResponse, _object, nil];
     }
     
     NSError *error = nil;
-    [[self class] handleResponse:(NSHTTPURLResponse *)response error:&error];
-    
+    [[self class] handleResponse:(NSHTTPURLResponse *)response error:&error];    
     if(error) {
         if([_delegate respondsToSelector:@selector(restConnection:didReceiveError:response:object:)]) {
-            [_delegate performSelectorOnMainThread:@selector(restConnection:didReceiveError:response:object:) withObjects:connection, error, response, _object, nil];
+            [_delegate performSelectorOnMainThread:@selector(restConnection:didReceiveError:response:object:) withObjects:connection, error, detailedResponse, _object, nil];
             [connection cancel];
             [self finish];
         }
@@ -273,7 +277,7 @@
     NSURL *baseURL = [_options objectForKey:kHRClassAttributesBaseURLKey];
 
     if([tmpURI host] == nil && [baseURL host] == nil)
-        [NSException raise:@"UnspecifiedHost" format:@"host wasn't provided in baseURL or path"];
+        [NSException raise:@"UnspecifiedHost" format:@"Host wasn't provided in baseURL or path"];
     
     if([tmpURI host])
         return tmpURI;

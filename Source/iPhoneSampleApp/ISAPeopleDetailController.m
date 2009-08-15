@@ -46,7 +46,7 @@
 
 
 #pragma mark - HRResponseDelegate Methods
-- (void)restConnection:(NSURLConnection *)connection didReceiveError:(NSError *)error response:(NSHTTPURLResponse *)response object:(id)object {
+- (void)restConnection:(NSURLConnection *)connection didReceiveError:(NSError *)error response:(HRResponse *)response object:(id)object {
     NSLog(@"RESPONSE:%@", response);
     ISAAlertWithMessage([error localizedDescription]);
 }
