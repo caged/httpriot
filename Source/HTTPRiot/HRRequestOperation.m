@@ -221,7 +221,7 @@
 }
 
 - (NSMutableURLRequest *)configuredRequest {
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
     [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
     [request setTimeoutInterval:_timeout];
     [self setDefaultHeadersForRequest:request];
