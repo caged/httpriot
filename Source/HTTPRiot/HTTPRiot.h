@@ -65,7 +65,7 @@ NSDictionary *opts = [NSDictionary dictionaroyWithObject:[person JSONRepresentat
 <h4>Send a PUT request</h4>
 @code
 NSDictionary *opts = [NSDictionary dictionaroyWithObject:[updatedPerson JSONRepresentation] forKey:@"body"];
-[HRRestModel postPath:@"/person" withOptions:opts object:nil];
+[HRRestModel putPath:@"/person" withOptions:opts object:nil];
 @endcode
 
 <h4>Send a DELETE request</h4>
