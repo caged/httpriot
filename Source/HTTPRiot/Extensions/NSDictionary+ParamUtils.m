@@ -22,7 +22,6 @@
         
         if([value isKindOfClass:[NSArray class]]) {
             for(id subvalue in value) {
-                NSLog(@"SUBVALUE:%@", subvalue);
                 [queryString appendFormat:@"%@=%@", key, [subvalue stringByPreparingForURL]];                
                 if(![subvalue isEqualToString:[value lastObject]] || (i < paramCount - 1)) {
                     [queryString appendString:@"&"];
