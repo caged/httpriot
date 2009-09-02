@@ -754,7 +754,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/usr/bin/env ruby";
-			shellScript = "require 'fileutils'\nlib = \"#{ENV['PROJECT_DIR']}/build/Debug/libhttpriot.a\"\nif File.exists?(lib)\n   existing = \"#{ENV['TARGET_BUILD_DIR']}/libhttpriot.a\"\n   FileUtils.rm(existing) if File.exists?(existing)\n   FileUtils.mv(lib, existing)\nend";
+			shellScript = "require 'fileutils'\nlib = \"#{ENV['PROJECT_DIR']}/build/Debug/libhttpriot.a\"\nif File.exists?(lib)\n   existing = \"#{ENV['TARGET_BUILD_DIR']}/libhttpriot.a\"\n   FileUtils.rm(existing) if File.exists?(existing)\n   FileUtils.mv(lib, existing)\nend\n\n#!/bin/sh\n\nexit if !ENV['GHUNIT_CLI']\n\n \nENV['DYLD_ROOT_PATH'] = ENV['SDKROOT']\nENV['DYLD_FRAMEWORK_PATH'] = ENV['CONFIGURATION_BUILD_DIR']\nENV['IPHONE_SIMULATOR_ROOT'] = ENV['SDKROOT']\n \nENV['MallocScribble'] = true\nENV['MallocPreScribble'] = true\nENV['MallocGuardEdges'] = true\nENV['MallocStackLogging'] = true\nENV['MallocStackLoggingNoCompact'] = true\nENV['NSAutoreleaseFreedObjectCheckEnabled'] = true\n  \nENV['CFZombieLevel'] = 3\nENV['NSZombieEnabled'] = true\n \nret = system(\"#{File.join(ENV['TARGET_BUILD_DIR'], ENV['EXECUTABLE_PATH'])} -RegisterForSystemEvents\")\nexit(ret)";
 		};
 		D0F484890F4CC03500160DD9 /* Generate and Install docs */ = {
 			isa = PBXShellScriptBuildPhase;

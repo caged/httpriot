@@ -1,24 +1,15 @@
 # requires osx/plist `sudo gem install osx-plist`
 require 'rubygems'
 require 'rake/packagetask'
-require 'osx/plist'
+require 'osx/cocoa'
 
-BUILD_TARGETS = %w(3.0 2.2.1)
+BUILD_TARGETS = %w(3.0)
 CONFIGURATION = "Release"
 
 desc 'Run Clang'
 task :analyze do
   FileUtils.rm_r(Project.build_dir)
   system("scan-build -k -V xcodebuild -target libhttpriot -configuration #{Project.active_config} -sdk iphonesimulator3.0")
-end
-
-namespace :osx do
-  desc 'Run Unit Tests'
-  task :test do
-    system("xcodebuild -target TestRunner -configuration #{Project.active_config}")
-    system("open #{File.join(Project.product_dir, 'TestRunner')}.app")
-  end
-
 end
 
 namespace :iphone do
@@ -40,8 +31,8 @@ namespace :iphone do
   # TODO Find out how to run a program on the Simulator programtically
   desc 'Run iPhone Unit Tests'
   task :test do
-    system("xcodebuild -target iPhoneUnitTestsRunner -configuration #{Project.active_config}")
-    system("open #{File.join("#{Project.product_dir}-iphonesimulator", 'iPhoneUnitTestsRunner')}.app")
+    system("GHUNIT_CLI=1 xcodebuild -target iPhoneUnitTestsRunner -configuration #{Project.active_config}")
+    # system("open #{File.join("#{Project.product_dir}-iphonesimulator", 'iPhoneUnitTestsRunner')}.app")
   end
 end
 
