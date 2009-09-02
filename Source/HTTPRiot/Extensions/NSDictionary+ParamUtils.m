@@ -10,6 +10,7 @@
 #import "NSString+EscapingUtils.h"
 
 @implementation NSDictionary (ParamUtils)
+
 - (NSString *)toQueryString {
     NSMutableString *queryString = [[NSMutableString alloc] initWithString:@""];
     NSArray *keys = [self allKeys];
@@ -18,13 +19,24 @@
     for(size_t i = 0; i < paramCount; i++) {
         NSString *key = [keys objectAtIndex:i];
         id value = [self objectForKey:key];
-        [queryString appendFormat:@"%@=%@", key, [value stringByPreparingForURL]];
         
-        if(i < paramCount - 1) {
-            [queryString appendString:@"&"];
+        if([value isKindOfClass:[NSArray class]]) {
+            for(id subvalue in value) {
+                NSLog(@"SUBVALUE:%@", subvalue);
+                [queryString appendFormat:@"%@=%@", key, [subvalue stringByPreparingForURL]];                
+                if(![subvalue isEqualToString:[value lastObject]] || (i < paramCount - 1)) {
+                    [queryString appendString:@"&"];
+                }
+            }
+        } else {
+            [queryString appendFormat:@"%@=%@", key, [value stringByPreparingForURL]];
+            
+            if(i < paramCount - 1) {
+                [queryString appendString:@"&"];
+            }
         }
     }
-
+ 
     return [queryString autorelease];
 }
 @end
