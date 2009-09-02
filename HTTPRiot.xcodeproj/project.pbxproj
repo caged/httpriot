@@ -188,7 +188,6 @@
 		D038BBEC0FF162320041F570 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D038BD850FF28B960041F570 /* HRResponseDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRResponseDelegate.h; sourceTree = "<group>"; };
 		D038BDCE0FF298330041F570 /* iPhoneSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPhoneSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D038BDD00FF298330041F570 /* iPhoneSampleApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "iPhoneSampleApp-Info.plist"; path = "../../iPhoneSampleApp-Info.plist"; sourceTree = "<group>"; };
 		D038BDF50FF2995D0041F570 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D038BDFF0FF29A420041F570 /* iPhoneSampleAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPhoneSampleAppDelegate.h; sourceTree = "<group>"; };
 		D038BE000FF29A420041F570 /* iPhoneSampleAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iPhoneSampleAppDelegate.m; sourceTree = "<group>"; };
@@ -214,9 +213,10 @@
 		D04EF12A0F65C52D003C6240 /* DDXMLPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLPrivate.h; sourceTree = "<group>"; };
 		D04EF12B0F65C52D003C6240 /* NSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringAdditions.h; sourceTree = "<group>"; };
 		D04EF12C0F65C52D003C6240 /* NSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringAdditions.m; sourceTree = "<group>"; };
+		D054C82B104F2B96008CC5EF /* iPhoneSampleApp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "iPhoneSampleApp-Info.plist"; sourceTree = "<group>"; };
+		D054C82D104F2BA1008CC5EF /* iPhoneUnitTestsRunner-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "iPhoneUnitTestsRunner-Info.plist"; path = "../../../../../Desktop/iPhoneUnitTestsRunner-Info.plist"; sourceTree = "<group>"; };
 		D05A45060FF29C4300C672A5 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		D0788AE80FABAB3600C3207D /* iPhoneUnitTestsRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPhoneUnitTestsRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D0788AEB0FABAB3600C3207D /* iPhoneUnitTestsRunner-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iPhoneUnitTestsRunner-Info.plist"; sourceTree = "<group>"; };
 		D0869052100543900061BA64 /* DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXML.h; sourceTree = "<group>"; };
 		D09754371005092500E0E499 /* HRExtensionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRExtensionsTest.m; sourceTree = "<group>"; };
 		D09C54E910321DE200097202 /* HRGlobal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRGlobal.m; sourceTree = "<group>"; };
@@ -305,7 +305,6 @@
 				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
 				034768DFFF38A50411DB9C8B /* Products */,
 				D0D9669A0F65C7C300F1347A /* libxml2.2.dylib */,
-				D0788AEB0FABAB3600C3207D /* iPhoneUnitTestsRunner-Info.plist */,
 				D038BBEC0FF162320041F570 /* CoreGraphics.framework */,
 			);
 			name = HTTPRiot;
@@ -324,9 +323,11 @@
 		089C1665FE841158C02AAC07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D054C82D104F2BA1008CC5EF /* iPhoneUnitTestsRunner-Info.plist */,
+				D054C82B104F2B96008CC5EF /* iPhoneSampleApp-Info.plist */,
 				8DC2EF5A0486A6940098B216 /* Info.plist */,
 			);
-			name = Resources;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		1058C7B0FEA5585E11CA2CBB /* Linked Frameworks */ = {
@@ -395,7 +396,6 @@
 		D038BDF40FF299500041F570 /* iPhoneSampleApp */ = {
 			isa = PBXGroup;
 			children = (
-				D038BDD00FF298330041F570 /* iPhoneSampleApp-Info.plist */,
 				D05A45060FF29C4300C672A5 /* MainWindow.xib */,
 				D038BDF50FF2995D0041F570 /* main.m */,
 				D038BDFF0FF29A420041F570 /* iPhoneSampleAppDelegate.h */,
@@ -1015,6 +1015,7 @@
 			buildSettings = {
 				ADDITIONAL_SDKS = "";
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "Don't Code Sign";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1022,7 +1023,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Source/iPhoneSampleApp/iPhoneSampleApp_Prefix.pch;
 				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
-				INFOPLIST_FILE = "iPhoneSampleApp-Info.plist";
+				INFOPLIST_FILE = "Resources/iPhoneSampleApp-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)$(IPHONEOS_DEPLOYMENT_TARGET)/**";
 				OTHER_LDFLAGS = (
@@ -1034,8 +1035,9 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = iPhoneSampleApp;
 				PROVISIONING_PROFILE = "";
-				SDKROOT = iphoneos3.0;
+				SDKROOT = iphonesimulator3.0;
 				SKIP_INSTALL = YES;
+				VALID_ARCHS = "i386 ppc ppc64 ppc7400 ppc970 x86_64";
 			};
 			name = Debug;
 		};
@@ -1044,13 +1046,14 @@
 			buildSettings = {
 				ADDITIONAL_SDKS = "";
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "Don't Code Sign";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Source/iPhoneSampleApp/iPhoneSampleApp_Prefix.pch;
 				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
-				INFOPLIST_FILE = "iPhoneSampleApp-Info.plist";
+				INFOPLIST_FILE = "Resources/iPhoneSampleApp-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)$(IPHONEOS_DEPLOYMENT_TARGET)/**";
 				OTHER_LDFLAGS = (
@@ -1062,8 +1065,9 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = iPhoneSampleApp;
 				PROVISIONING_PROFILE = "";
-				SDKROOT = iphoneos3.0;
+				SDKROOT = iphonesimulator3.0;
 				SKIP_INSTALL = YES;
+				VALID_ARCHS = "i386 ppc ppc64 ppc7400 ppc970 x86_64";
 			};
 			name = Release;
 		};
@@ -1083,7 +1087,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
-				INFOPLIST_FILE = "iPhoneUnitTestsRunner-Info.plist";
+				INFOPLIST_FILE = "Resources/iPhoneUnitTestsRunner-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LD_RUNPATH_SEARCH_PATHS = "$(PROJECT_DIR)/Source/Vendor";
 				LIBRARY_SEARCH_PATHS = (
@@ -1101,7 +1105,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = iPhoneUnitTestsRunner;
-				SDKROOT = iphonesimulator2.2.1;
+				SDKROOT = iphonesimulator3.0;
 			};
 			name = Debug;
 		};
@@ -1121,7 +1125,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
-				INFOPLIST_FILE = "iPhoneUnitTestsRunner-Info.plist";
+				INFOPLIST_FILE = "Resources/iPhoneUnitTestsRunner-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LD_RUNPATH_SEARCH_PATHS = "$(PROJECT_DIR)/Source/Vendor";
 				LIBRARY_SEARCH_PATHS = (
@@ -1140,7 +1144,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = iPhoneUnitTestsRunner;
-				SDKROOT = iphonesimulator2.2.1;
+				SDKROOT = iphonesimulator3.0;
 				ZERO_LINK = NO;
 			};
 			name = Release;
