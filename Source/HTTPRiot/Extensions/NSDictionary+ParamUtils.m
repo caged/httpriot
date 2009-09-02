@@ -11,31 +11,20 @@
 
 @implementation NSDictionary (ParamUtils)
 
+
+
 - (NSString *)toQueryString {
-    NSMutableString *queryString = [[NSMutableString alloc] initWithString:@""];
-    NSArray *keys = [self allKeys];
-    int paramCount = [keys count];
-    
-    for(size_t i = 0; i < paramCount; i++) {
-        NSString *key = [keys objectAtIndex:i];
-        id value = [self objectForKey:key];
-        
-        if([value isKindOfClass:[NSArray class]]) {
-            for(id subvalue in value) {
-                [queryString appendFormat:@"%@=%@", key, [subvalue stringByPreparingForURL]];                
-                if(![subvalue isEqualToString:[value lastObject]] || (i < paramCount - 1)) {
-                    [queryString appendString:@"&"];
-                }
-            }
-        } else {
-            [queryString appendFormat:@"%@=%@", key, [value stringByPreparingForURL]];
-            
-            if(i < paramCount - 1) {
-                [queryString appendString:@"&"];
-            }
-        }
-    }
- 
-    return [queryString autorelease];
+    NSMutableArray *pairs = [[[NSMutableArray alloc] init] autorelease]; 
+    for (id key in [self allKeys]) { 
+        id value = [self objectForKey:key]; 
+        if ([value isKindOfClass:[NSArray class]]) { 
+            for (id val in value) { 
+                [pairs addObject:[NSString stringWithFormat:@"%@=%@",key, [val stringByPreparingForURL]]];   
+            } 
+        } else { 
+            [pairs addObject:[NSString stringWithFormat:@"%@=%@",key, [value stringByPreparingForURL]]]; 
+        } 
+    } 
+    return [pairs componentsJoinedByString:@"&"]; 
 }
 @end
