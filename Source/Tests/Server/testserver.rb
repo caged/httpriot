@@ -37,11 +37,16 @@ end
 
 # simple person model
 class Person < Sequel::Model
-  validates_presence_of :name, :email, :address
+  plugin :validation_helpers
   
-  before_create do
+  def validate
+    validates_presence([:name, :email, :address], {})
+  end
+  
+  def before_create
     self.created_at = Time.now
   end
+
   
   def self.respond(params)
     #edit or create

@@ -82,6 +82,7 @@
 }
 
 - (void)finish {
+    HRLOG(@"Operation Finished. Releasing...");
     [_connection release];
     _connection = nil;
 
@@ -129,9 +130,9 @@
 #pragma mark - NSURLConnection delegates
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)response {    
-    HRLOG(@"GOT RESPONSE CODE:%i", [response statusCode]);
-    
     HRResponse *detailedResponse = [HRResponse responseWithHTTPResponse:response data:_responseData];
+    HRLOG(@"Server responded with:%i, %@", [response statusCode], [NSHTTPURLResponse localizedStringForStatusCode:[response statusCode]]);
+    
     if ([_delegate respondsToSelector:@selector(restConnection:didReceiveResponse:object:)]) {
         [_delegate performSelectorOnMainThread:@selector(restConnection:didReceiveResponse:object:) withObjects:connection, detailedResponse, _object, nil];
     }
@@ -149,11 +150,13 @@
     [_responseData setLength:0];
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {    
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {   
     [_responseData appendData:data];
 }
 
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {    
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {  
+    HRLOG(@"Connection failed: %@", [error localizedDescription]);
+      
     if([_delegate respondsToSelector:@selector(restConnection:didFailWithError:object:)]) {        
         [_delegate performSelectorOnMainThread:@selector(restConnection:didFailWithError:object:) withObjects:connection, error, _object, nil];
     }
@@ -164,10 +167,9 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {    
     id results = [NSNull null];
     NSError *parseError = nil;
-    
     if([_responseData length] > 0) {
         results = [[self formatter] decode:_responseData error:&parseError];
-        
+                
         if(parseError) {
             NSString *rawString = [[NSString alloc] initWithData:_responseData encoding:NSUTF8StringEncoding];
             if([_delegate respondsToSelector:@selector(restConnection:didReceiveParseError:responseBody:object:)]) {
@@ -222,7 +224,7 @@
 }
 
 - (NSMutableURLRequest *)configuredRequest {
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
     [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
     [request setTimeoutInterval:_timeout];
     [self setDefaultHeadersForRequest:request];

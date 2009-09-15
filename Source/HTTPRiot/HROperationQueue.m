@@ -46,7 +46,7 @@ static HROperationQueue *sharedHROperationQueue = nil;
     return self;
 }
  
-- (unsigned)retainCount {
+- (NSUInteger)retainCount {
     return NSUIntegerMax;
 }
  
