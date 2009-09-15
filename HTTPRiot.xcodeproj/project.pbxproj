@@ -1021,6 +1021,7 @@
 			buildSettings = {
 				ADDITIONAL_SDKS = "";
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "Don't Code Sign";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1040,7 +1041,7 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = iPhoneSampleApp;
 				PROVISIONING_PROFILE = "";
-				SDKROOT = iphoneos3.0;
+				SDKROOT = iphonesimulator3.0;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -1050,6 +1051,7 @@
 			buildSettings = {
 				ADDITIONAL_SDKS = "";
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "Don't Code Sign";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1068,7 +1070,7 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = iPhoneSampleApp;
 				PROVISIONING_PROFILE = "";
-				SDKROOT = iphoneos3.0;
+				SDKROOT = iphonesimulator3.0;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
