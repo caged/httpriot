@@ -131,7 +131,7 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)response {    
     HRResponse *detailedResponse = [HRResponse responseWithHTTPResponse:response data:_responseData];
-    HRLOG(@"Server responded with:%i, %@", [response statusCode], [NSHTTPURLResponse localizedStringForStatusCode:[response statusCode]]);
+    HRLOG(@"Server responded with:%i, %@", detailedResponse.statusCode, [NSHTTPURLResponse localizedStringForStatusCode:[response statusCode]]);
     
     if ([_delegate respondsToSelector:@selector(restConnection:didReceiveResponse:object:)]) {
         [_delegate performSelectorOnMainThread:@selector(restConnection:didReceiveResponse:object:) withObjects:connection, detailedResponse, _object, nil];

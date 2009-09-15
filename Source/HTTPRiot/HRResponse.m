@@ -28,6 +28,10 @@
     return [[[self alloc] initWithHTTPResponse:response data:data] autorelease];
 }
 
+- (NSString *)localizedFailureReason {
+   return [NSHTTPURLResponse localizedStringForStatusCode:_statusCode];
+}
+
 - (void)dealloc {
     [_responseBody release];
     [_headers release];

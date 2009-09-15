@@ -18,6 +18,8 @@
 @property (nonatomic, readonly, assign) NSInteger statusCode;
 @property (nonatomic, readonly, retain) NSDictionary *headers;
 
-- (id)initWithHTTPResponse:(NSHTTPURLResponse *)response data:(id)data;
 + (id)responseWithHTTPResponse:(NSHTTPURLResponse *)response data:(id)data;
+
+- (id)initWithHTTPResponse:(NSHTTPURLResponse *)response data:(id)data;
+- (NSString *)localizedFailureReason;
 @end
