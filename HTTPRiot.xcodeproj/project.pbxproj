@@ -879,13 +879,16 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Source/HTTPRiot/HTTPRiot_Prefix.pch;
-				INFOPLIST_FILE = Info.plist;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
+				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				OTHER_CFLAGS = "-DHTTPRIOT_FRAMEWORK_BUILD";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
+					"-lxml2",
 				);
 				PRODUCT_NAME = HTTPRiot;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -907,13 +910,16 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Source/HTTPRiot/HTTPRiot_Prefix.pch;
-				INFOPLIST_FILE = Info.plist;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
+				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				OTHER_CFLAGS = "-DHTTPRIOT_FRAMEWORK_BUILD";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
+					"-lxml2",
 				);
 				PRODUCT_NAME = HTTPRiot;
 				VERSIONING_SYSTEM = "apple-generic";
