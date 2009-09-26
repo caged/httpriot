@@ -979,7 +979,7 @@
 				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include/HTTPRiot;
 				PRODUCT_NAME = httpriot;
 				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/HTTPRiot;
-				SDKROOT = iphonesimulator2.2.1;
+				SDKROOT = iphonesimulator3.0;
 			};
 			name = Debug;
 		};
@@ -1008,7 +1008,7 @@
 				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include/HTTPRiot;
 				PRODUCT_NAME = httpriot;
 				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/HTTPRiot;
-				SDKROOT = iphonesimulator2.2.1;
+				SDKROOT = iphonesimulator3.0;
 				SKIP_INSTALL = NO;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = HTTPRIOT;

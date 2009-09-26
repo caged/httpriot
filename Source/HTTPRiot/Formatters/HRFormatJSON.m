@@ -31,8 +31,9 @@
     [parser release];
     [rawString release];
     
-    if(parseError && !results) {
-        *error = parseError;
+    if(parseError && !results) {  
+        if(error != nil)      
+            *error = parseError;
         return nil;
     }
     

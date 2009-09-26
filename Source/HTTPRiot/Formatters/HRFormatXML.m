@@ -20,18 +20,16 @@
 
 + (id)decode:(NSData *)data error:(NSError **)error {
     NSError *parseError = nil;
-    NSXMLDocument *doc = [[NSXMLDocument alloc] initWithData:data options:NSXMLDocumentTidyXML error:&parseError];
+    NSXMLDocument *doc = [[[NSXMLDocument alloc] initWithData:data options:NSXMLDocumentTidyXML error:&parseError] autorelease];
     
-    if(parseError != nil) {
-        [doc release];
-        *error = parseError;
+    if(parseError != nil) {        
+        if(error != nil)
+            *error = parseError;
+        
         return nil;
     }
     
-    NSDictionary *dict = [doc toDictionary];
-    [doc release];
-    
-    return dict;
+    return [doc toDictionary];
 }
 
 + (NSString *)encode:(id)data error:(NSError **)error {
