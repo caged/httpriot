@@ -121,6 +121,12 @@
 		D09A5D91106E9C3E00167242 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D09A5D8B106E9C3E00167242 /* SBJsonParser.m */; };
 		D09A5D92106E9C3E00167242 /* SBJsonWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = D09A5D8C106E9C3E00167242 /* SBJsonWriter.h */; };
 		D09A5D93106E9C3E00167242 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = D09A5D8D106E9C3E00167242 /* SBJsonWriter.m */; };
+		D09A5DD9106EA0CD00167242 /* SBJsonBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D09A5D88106E9C3E00167242 /* SBJsonBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D09A5DDA106EA0CE00167242 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D09A5D89106E9C3E00167242 /* SBJsonBase.m */; };
+		D09A5DDB106EA0CE00167242 /* SBJsonParser.h in Headers */ = {isa = PBXBuildFile; fileRef = D09A5D8A106E9C3E00167242 /* SBJsonParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D09A5DDC106EA0CF00167242 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D09A5D8B106E9C3E00167242 /* SBJsonParser.m */; };
+		D09A5DDD106EA0CF00167242 /* SBJsonWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = D09A5D8C106E9C3E00167242 /* SBJsonWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D09A5DDE106EA0D100167242 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = D09A5D8D106E9C3E00167242 /* SBJsonWriter.m */; };
 		D09C54EA10321DE200097202 /* HRGlobal.m in Sources */ = {isa = PBXBuildFile; fileRef = D09C54E910321DE200097202 /* HRGlobal.m */; };
 		D09C54EB10321DE200097202 /* HRGlobal.m in Sources */ = {isa = PBXBuildFile; fileRef = D09C54E910321DE200097202 /* HRGlobal.m */; };
 		D09E4B390F33EB1D00C9E26E /* HRRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4B360F33EB0E00C9E26E /* HRRequestOperation.m */; };
@@ -154,7 +160,7 @@
 /* Begin PBXFileReference section */
 		0867D69BFE84028FC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8DC2EF5B0486A6940098B216 /* HTTPRiot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HTTPRiot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DC2EF5B0486A6940098B216 /* HTTPRiot */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.framework; path = HTTPRiot; sourceTree = BUILT_PRODUCTS_DIR; };
 		D00045D50FF2D5DB00CCAF1B /* ISAPeopleDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISAPeopleDetailController.h; sourceTree = "<group>"; };
 		D00045D60FF2D5DB00CCAF1B /* ISAPeopleDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISAPeopleDetailController.m; sourceTree = "<group>"; };
 		D000475F0FF31D4D00CCAF1B /* ISAEditableTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISAEditableTextFieldCell.h; sourceTree = "<group>"; };
@@ -301,7 +307,7 @@
 		034768DFFF38A50411DB9C8B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8DC2EF5B0486A6940098B216 /* HTTPRiot.framework */,
+				8DC2EF5B0486A6940098B216 /* HTTPRiot */,
 				D0298A650F3FFBBD00EC8C01 /* libhttpriot.a */,
 				D0788AE80FABAB3600C3207D /* iPhoneUnitTestsRunner.app */,
 				D038BDCE0FF298330041F570 /* iPhoneSampleApp.app */,
@@ -584,6 +590,9 @@
 				D03982E90FFD6385005FECE7 /* HROperationQueue.h in Headers */,
 				D08B9AF7101685AF00351DC4 /* HRResponseDelegate.h in Headers */,
 				D08B9AF8101685B000351DC4 /* NSObject+InvocationUtils.h in Headers */,
+				D09A5DD9106EA0CD00167242 /* SBJsonBase.h in Headers */,
+				D09A5DDB106EA0CE00167242 /* SBJsonParser.h in Headers */,
+				D09A5DDD106EA0CF00167242 /* SBJsonWriter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -644,7 +653,7 @@
 			name = HTTPRiot;
 			productInstallPath = "$(HOME)/Library/Frameworks";
 			productName = HTTPRiot;
-			productReference = 8DC2EF5B0486A6940098B216 /* HTTPRiot.framework */;
+			productReference = 8DC2EF5B0486A6940098B216 /* HTTPRiot */;
 			productType = "com.apple.product-type.framework";
 		};
 		D0298A640F3FFBBD00EC8C01 /* libhttpriot */ = {
@@ -813,6 +822,9 @@
 				D03982EA0FFD6385005FECE7 /* HROperationQueue.m in Sources */,
 				D08B9AF9101685B200351DC4 /* NSObject+InvocationUtils.m in Sources */,
 				D09C54EA10321DE200097202 /* HRGlobal.m in Sources */,
+				D09A5DDA106EA0CE00167242 /* SBJsonBase.m in Sources */,
+				D09A5DDC106EA0CF00167242 /* SBJsonParser.m in Sources */,
+				D09A5DDE106EA0D100167242 /* SBJsonWriter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -895,7 +907,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 0.6.0;
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 0.6.0;
+				DYLIB_CURRENT_VERSION = 0.6.5;
 				FRAMEWORK_VERSION = A;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -928,7 +940,7 @@
 				CURRENT_PROJECT_VERSION = 0.6.0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_COMPATIBILITY_VERSION = 0.1.0;
-				DYLIB_CURRENT_VERSION = 0.6.0;
+				DYLIB_CURRENT_VERSION = 0.6.5;
 				FOO_BAR = 1;
 				FRAMEWORK_VERSION = A;
 				GCC_MODEL_TUNING = G5;
@@ -986,7 +998,7 @@
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)$(IPHONEOS_DEPLOYMENT_TARGET)";
 				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)$(IPHONEOS_DEPLOYMENT_TARGET)";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 0.6.0;
+				CURRENT_PROJECT_VERSION = 0.6.5;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_ENABLE_OBJC_GC = unsupported;
@@ -1015,7 +1027,7 @@
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)$(IPHONEOS_DEPLOYMENT_TARGET)";
 				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)$(IPHONEOS_DEPLOYMENT_TARGET)";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 0.6.0;
+				CURRENT_PROJECT_VERSION = 0.6.5;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_COMPATIBILITY_VERSION = 0.1.0;
 				DYLIB_CURRENT_VERSION = 0.6.0;
