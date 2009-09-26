@@ -10,29 +10,36 @@
 
 
 @implementation HRResponse
-@synthesize responseBody = _responseBody;
-@synthesize statusCode = _statusCode;
-@synthesize headers = _headers;
+@synthesize rawResponse             = _rawResponse;
+@synthesize responseBody            = _responseBody;
+@synthesize statusCode              = _statusCode;
+@synthesize headers                 = _headers;
+@synthesize localizedFailureReason  = _localizedFailureReason;
+@synthesize error                   = _error;
 
-- (id)initWithHTTPResponse:(NSHTTPURLResponse *)response data:(id)data {
++ (id)responseWithHTTPResponse:(NSHTTPURLResponse *)response data:(id)data error:(NSError *)error {
+    return [[[self alloc] initWithHTTPResponse:response data:data error:error] autorelease];
+}
+
+- (id)initWithHTTPResponse:(NSHTTPURLResponse *)response data:(id)data error:(NSError *)error {
    if(self = [super init]) {
-       _statusCode = [response statusCode];
-       _responseBody = [data retain];
-       _headers = [[response allHeaderFields] retain];
+       _rawResponse     = [response retain];
+       _statusCode      = [_rawResponse statusCode];
+       _headers         = [[_rawResponse allHeaderFields] retain];
+       _responseBody    = [data retain];
+       _error           = [error retain];
+       
+       if(_statusCode) {
+           _localizedFailureReason  = [NSHTTPURLResponse localizedStringForStatusCode:_statusCode];
+       }
    }
    
    return self;
 }
 
-+ (id)responseWithHTTPResponse:(NSHTTPURLResponse *)response data:(id)data {
-    return [[[self alloc] initWithHTTPResponse:response data:data] autorelease];
-}
-
-- (NSString *)localizedFailureReason {
-   return [NSHTTPURLResponse localizedStringForStatusCode:_statusCode];
-}
-
 - (void)dealloc {
+    [_error release];
+    [_localizedFailureReason release];
     [_responseBody release];
     [_headers release];
     [super dealloc];

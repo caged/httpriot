@@ -131,7 +131,7 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)response {    
     HRResponse *detailedResponse = [HRResponse responseWithHTTPResponse:response data:_responseData];
-    HRLOG(@"Server responded with:%i, %@", detailedResponse.statusCode, [NSHTTPURLResponse localizedStringForStatusCode:[response statusCode]]);
+    HRLOG(@"Server responded with:%i. REASON: %@", detailedResponse.statusCode, detailedResponse.localizedFailureReason);
     
     if ([_delegate respondsToSelector:@selector(restConnection:didReceiveResponse:object:)]) {
         [_delegate performSelectorOnMainThread:@selector(restConnection:didReceiveResponse:object:) withObjects:connection, detailedResponse, _object, nil];
@@ -170,10 +170,12 @@
     if([_responseData length] > 0) {
         results = [[self formatter] decode:_responseData error:&parseError];
                 
-        if(parseError) {
+        if(parseError) {            
             NSString *rawString = [[NSString alloc] initWithData:_responseData encoding:NSUTF8StringEncoding];
-            if([_delegate respondsToSelector:@selector(restConnection:didReceiveParseError:responseBody:object:)]) {
-                [_delegate performSelectorOnMainThread:@selector(restConnection:didReceiveParseError:responseBody:object:) withObjects:connection, parseError, rawString, _object, nil];                
+            HRResponse *detailedResponse = [HRResponse responseWithHTTPResponse:nil data:rawString error:parseError];
+            
+            if([_delegate respondsToSelector:@selector(restConnection:didReceiveParseError:response:object:)]) {
+                [_delegate performSelectorOnMainThread:@selector(restConnection:didReceiveParseError:response:object:) withObjects:connection, parseError, response, _object, nil];                
             }
             
             [rawString release];

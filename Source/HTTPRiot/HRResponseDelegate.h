@@ -61,8 +61,8 @@
  *
  * @param connection The connection object for the current request
  * @param error The parser error returned by the formatter.
- * @param body A string representation of the response body returned by the server.
+ * @param response The response from the server.
  * @param object Any custom object you passed in while making the request.
  */
-- (void)restConnection:(NSURLConnection *)connection didReceiveParseError:(NSError *)error responseBody:(NSString *)body object:(id)object;
+- (void)restConnection:(NSURLConnection *)connection didReceiveParseError:(NSError *)error response:(HRResponse *)response object:(id)object;
 @end
