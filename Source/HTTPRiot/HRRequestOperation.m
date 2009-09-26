@@ -196,7 +196,7 @@
     [request addValue:[[self formatter] mimeType] forHTTPHeaderField:@"Accept"];
     if(headers) {
         for(NSString *header in headers) {
-            NSString *value = [header valueForKey:header];
+            NSString *value = [headers valueForKey:header];
             if([header isEqualToString:@"Accept"]) {
                 [request addValue:value forHTTPHeaderField:header];
             } else {

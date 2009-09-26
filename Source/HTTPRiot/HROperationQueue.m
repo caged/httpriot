@@ -9,50 +9,18 @@
 #import "HROperationQueue.h"
 #import "HRGlobal.h"
 
-@implementation HROperationQueue
 static HROperationQueue *sharedHROperationQueue = nil;
-- (id)init {
-   if(self = [super init]) {
-       [self setMaxConcurrentOperationCount:3];
-   }
-   
-   return self;
-}
 
+
+@implementation HROperationQueue
 + (HROperationQueue *)sharedOperationQueue {
     @synchronized(self) {
         if (sharedHROperationQueue == nil) {
-            sharedHROperationQueue = [[self alloc] init];
+                sharedHROperationQueue = [[HROperationQueue alloc] init];
+                sharedHROperationQueue.maxConcurrentOperationCount = 3;
         }
     }
-    return sharedHROperationQueue;
-}
 
-+ (id)allocWithZone:(NSZone *)zone {
-    @synchronized(self) {
-        if (sharedHROperationQueue == nil) {
-            sharedHROperationQueue = [super allocWithZone:zone];
-            return sharedHROperationQueue;
-        }
-    }
-    return nil; 
-}
- 
-- (id)copyWithZone:(NSZone *)zone {
-    return self;
-}
- 
-- (id)retain {
-    return self;
-}
- 
-- (NSUInteger)retainCount {
-    return NSUIntegerMax;
-}
- 
-- (void)release {}
- 
-- (id)autorelease {
-    return self;
+    return sharedHROperationQueue;
 }
 @end
