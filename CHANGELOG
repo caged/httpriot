@@ -1,0 +1,6 @@
+= v0.6.5 2009-09-27 
+  * Support for iPhone OS 3.1
+  * Support for array parameters
+  * Attempt to use ASCII encoding if UTF8 fails
+  * Upgrade to the latest json-framework
+  * Fixes a typo which caused a crash when setting http headers
