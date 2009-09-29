@@ -1,6 +1,6 @@
 #import <TargetConditionals.h>
 
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 20100
+#if TARGET_OS_IPHONE
 
 #import "DDXML.h"
 
