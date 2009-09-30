@@ -1,3 +1,6 @@
+= v0.6.6 2009-09-30
+  * Fix NSXML compilation errors on some 3.1 devices
+  
 = v0.6.5 2009-09-27 
   * Support for iPhone OS 3.1
   * Support for array parameters
