@@ -64,6 +64,12 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Concurrent NSOperation Methods
 - (void)start {
+    // Snow Leopard Fix. See http://www.dribin.org/dave/blog/archives/2009/09/13/snowy_concurrent_operations/
+    if (![NSThread isMainThread]) {
+        [self performSelectorOnMainThread:@selector(start) withObject:nil waitUntilDone:NO];
+        return;
+    }
+    
     [self willChangeValueForKey:@"isExecuting"];
     _isExecuting = YES;
     [self didChangeValueForKey:@"isExecuting"];
@@ -153,7 +159,6 @@
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {  
     HRLOG(@"Connection failed: %@", [error localizedDescription]);
-      
     if([_delegate respondsToSelector:@selector(restConnection:didFailWithError:object:)]) {        
         [_delegate performSelectorOnMainThread:@selector(restConnection:didFailWithError:object:) withObjects:connection, error, _object, nil];
     }
