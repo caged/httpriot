@@ -3,7 +3,7 @@ require 'rubygems'
 require 'rake/packagetask'
 require 'osx/cocoa'
 
-IPHONE_BUILD_TARGETS = %w(3.0 3.1)
+IPHONE_BUILD_TARGETS = %w(3.0 3.1 3.1.2)
 OSX_BUILD_TARGETS    = %w(10.5)
 CONFIGURATION = "Release"
 
