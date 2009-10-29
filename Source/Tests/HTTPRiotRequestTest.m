@@ -108,9 +108,11 @@
 }
 
 - (void)restConnection:(NSURLConnection *)connection didFailWithError:(NSError *)error object:(id)method {
-    NSString *prefix = @"testShouldHandle";    
-    NSString *selector = [prefix stringByAppendingString:method];
-    [self notify:kGHUnitWaitStatusFailure forSelector:NSSelectorFromString(selector)];
+    if(method) {
+        NSString *prefix = @"testShouldHandle";    
+        NSString *selector = [prefix stringByAppendingString:method];
+        [self notify:kGHUnitWaitStatusFailure forSelector:NSSelectorFromString(selector)];   
+    }
 }
 
 - (void)restConnection:(NSURLConnection *)connection didReceiveError:(NSError *)error response:(NSHTTPURLResponse *)response object:(id)method {

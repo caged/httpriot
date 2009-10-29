@@ -104,6 +104,7 @@
 }
 
 - (void)cancel {
+    HRLOG(@"SHOULD CANCEL");
     [self willChangeValueForKey:@"isCancelled"];
     
     [_connection cancel];    
@@ -322,51 +323,15 @@
     NSInteger code = [response statusCode];
     NSUInteger ucode = [[NSNumber numberWithInt:code] unsignedIntValue];
     NSRange okRange = NSMakeRange(200, 201);
-    NSRange clientErrorRange = NSMakeRange(401, 99);
-    NSRange serverErrorRange = NSMakeRange(500, 100);
     
-    NSDictionary *headers = [response allHeaderFields];
-    NSString *errorReason = [NSString stringWithFormat:@"%d Error: ", code];
-    NSString *errorDescription;
-    
-    if(code == 300 || code == 302) {
-        errorReason = [errorReason stringByAppendingString:@"RedirectNotHandled"];
-        errorDescription = @"Redirection not handled";
-    } else if(NSLocationInRange(ucode, okRange)) {
+    if(NSLocationInRange(ucode, okRange)) {
         return response;
-    } else if(code == 400) {
-        errorReason = [errorReason stringByAppendingString:@"BadRequest"];
-        errorDescription = @"Bad request";
-    } else if(code == 401) {
-        errorReason = [errorReason stringByAppendingString:@"UnauthrizedAccess"];
-        errorDescription = @"Unauthorized access to resource";
-    } else if(code == 403) {
-        errorReason = [errorReason stringByAppendingString:@"ForbiddenAccess"];
-        errorDescription = @"Forbidden access to resource";
-    } else if(code == 404) {
-        errorReason = [errorReason stringByAppendingString:@"ResourceNotFound"];
-        errorDescription = @"Unable to locate resource";
-    } else if(code == 405) {
-        errorReason = [errorReason stringByAppendingString:@"MethodNotAllowed"];
-        errorDescription = @"Method not allowed";
-    } else if(code == 409) {
-        errorReason = [errorReason stringByAppendingString:@"ResourceConflict"];
-        errorDescription = @"Resource conflict";
-    } else if(code == 422) {
-        errorReason = [errorReason stringByAppendingString:@"ResourceInvalid"];
-        errorDescription = @"Invalid resource";
-    } else if(NSLocationInRange(ucode, clientErrorRange)) {
-        errorReason = [errorReason stringByAppendingString:@"ClientError"];
-        errorDescription = @"Unknown Client Error";
-    } else if(NSLocationInRange(ucode, serverErrorRange)) {
-        errorReason = [errorReason stringByAppendingString:@"ServerError"];
-        errorDescription = @"Unknown Server Error";
-    } else {
-        errorReason = [errorReason stringByAppendingString:@"ConnectionError"];
-        errorDescription = @"Unknown status code";
     }
-    
+
     if(error != nil) {
+        NSDictionary *headers = [response allHeaderFields];
+        NSString *errorReason = [NSString stringWithFormat:@"%d Error: ", code];
+        NSString *errorDescription = [NSHTTPURLResponse localizedStringForStatusCode:code];
         NSDictionary *userInfo = [[[NSDictionary dictionaryWithObjectsAndKeys:
                                    errorReason, NSLocalizedFailureReasonErrorKey,
                                    errorDescription, NSLocalizedDescriptionKey, 
