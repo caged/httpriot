@@ -56,7 +56,7 @@ typedef enum {
 } HRDataFormat;
 
 /// HTTPRiot's error domain
-#define HTTPRiotErrorDomain @"com.labratrevenge.HTTPRiot.ErroDomain"
+#define HTTPRiotErrorDomain @"com.labratrevenge.HTTPRiot.ErrorDomain"
 
 #ifdef DEBUG
 /// Logging Helper
