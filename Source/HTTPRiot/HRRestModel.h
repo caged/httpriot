@@ -174,10 +174,7 @@
  * @param options The options for this request.
  * @param object An object to be passed to the delegate methods
  *
- * <strong>Note:</strong>  There are two important options you can set on post request.  Setting the 
- * <tt>params</tt> option will cause the request to be posted as <tt>application/x-www-form-urlencoded</tt> data.
- * If you'd like to post raw data like JSON or XML you'll need to set the <tt>body</tt> option.  Setting the <tt>body</tt>
- * option will cause the <tt>params</tt> option to be ignored.
+ * <strong>Note:</strong> If you'd like to post raw data like JSON or XML you'll need to set the <tt>body</tt> option.
  *
  */
 + (NSOperation *)postPath:(NSString *)path withOptions:(NSDictionary *)options object:(id)object;

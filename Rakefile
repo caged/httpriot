@@ -14,7 +14,7 @@ task :analyze do
 end
 
 namespace :iphone do
-  desc 'Build 2.0 - 3.0 Release Versions of the static library for the simulator and device'
+  desc 'Build Release Versions (IPHONE_BUILD_TARGETS) of the static library for the simulator and device'
   task :build => :clean do
     rm_r(Project.build_dir) if File.exists?(Project.build_dir)
     IPHONE_BUILD_TARGETS.each do |version|
