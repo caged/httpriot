@@ -1,3 +1,10 @@
+= v0.6.7 2009-12-22
+  * Support for 3.1.2
+  * Fix documentation errors
+  * Fix error domain
+  * Update GHUnit to latest
+  * Optimize response handling to use built in status code strings
+  
 = v0.6.6 2009-09-30
   * Fix NSXML compilation errors on some 3.1 devices
   
