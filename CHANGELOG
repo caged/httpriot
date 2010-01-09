@@ -1,3 +1,7 @@
+= v0.6.8 2010-01-09
+  * Updates KissXML.  Fixes possible app store rejection due to isa-swizzling.
+  * XML parsing speedups (side effect of KissXML upgrade)
+  
 = v0.6.7 2009-12-22
   * Support for 3.1.2
   * Fix documentation errors
