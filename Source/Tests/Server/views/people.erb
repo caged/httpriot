@@ -12,7 +12,7 @@
   <tbody>
     <% @people.each do |person| %>
       <tr>
-        <td><%= person[:name] %></td>
+        <td><a href="/person/<%= person[:id] %>"><%= person[:name] %></a></td>
         <td><%= person[:email] %></td>
         <td><%= person[:telephone] %></td>
         <td><%= person[:address] %></td>

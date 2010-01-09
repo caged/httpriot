@@ -50,6 +50,7 @@
                                 @"101 Cherry Lane", @"address", nil];
     NSString *bodyData = [[HRFormatJSON encode:body error:nil] copy];
     NSDictionary *opts = [[NSDictionary alloc ] initWithObjectsAndKeys:bodyData, @"body", nil];
+    [bodyData release];
     
     [HRTestPerson2 putPath:@"/person/1" withOptions:opts object:@"PUT"];
     [self waitForStatus:kGHUnitWaitStatusSuccess timeout:10.0];
