@@ -2,37 +2,13 @@
 require 'rubygems'
 require 'rake/packagetask'
 require 'osx/cocoa'
+require 'versionomy'
 
-IPHONE_BUILD_TARGETS = %w(3.0 3.1 3.1.2)
-OSX_BUILD_TARGETS    = %w(10.5)
+IPHONE_BUILD_TARGETS = %w(3.0 3.1 3.1.2).collect {|v| Versionomy.parse(v)}
+OSX_BUILD_TARGETS    = %w(10.5 10.6).collect {|v| Versionomy.parse(v)}
 CONFIGURATION = "Release"
 
-desc 'Run Clang'
-task :analyze do
-  FileUtils.rm_r(Project.build_dir)
-  system("scan-build -k -V xcodebuild -target libhttpriot -configuration #{Project.active_config} -sdk iphonesimulator3.0")
-end
-
 namespace :iphone do
-  desc 'Build Release Versions (IPHONE_BUILD_TARGETS) of the static library for the simulator and device'
-  task :build => :clean do
-    rm_r(Project.build_dir) if File.exists?(Project.build_dir)
-    IPHONE_BUILD_TARGETS.each do |version|
-      system("xcodebuild -target libhttpriot -configuration #{CONFIGURATION} -sdk iphonesimulator#{version}")
-      system("xcodebuild -target libhttpriot -configuration #{CONFIGURATION} -sdk iphoneos#{version}")
-    end
-    
-    OSX_BUILD_TARGETS.each do |version|
-      system("xcodebuild -target libhttpriot -configuration #{CONFIGURATION} -sdk macosx#{version}")
-      system("xcodebuild -target HTTPRiot -configuration #{CONFIGURATION} -sdk macosx#{version}")
-    end
-  end
-  
-  desc 'Clean all targets'
-  task :clean do
-    system("xcodebuild clean -alltargets")
-  end
-  
   # TODO Find out how to run a program on the Simulator programtically
   desc 'Run iPhone Unit Tests'
   task :test do
@@ -44,6 +20,25 @@ end
 namespace :sdk do  
   desc 'Build and package all SDKs' 
   task :dist => ['iphone:build', 'sdk:package']
+  
+  desc "Build Release Versions (iphone: #{IPHONE_BUILD_TARGETS.join(', ')}) (osx:#{OSX_BUILD_TARGETS.join(', ')}) of the static library for the simulator and device"
+  task :build => :clean do
+    rm_r(Project.build_dir) if File.exists?(Project.build_dir)
+    IPHONE_BUILD_TARGETS.each do |version|
+      system("xcodebuild -target libhttpriot -configuration #{CONFIGURATION} -sdk iphonesimulator#{version}")
+      system("xcodebuild -target libhttpriot -configuration #{CONFIGURATION} -sdk iphoneos#{version}")
+    end
+    
+    OSX_BUILD_TARGETS.each do |version|
+      system("ARCHS='i386' xcodebuild -target libhttpriot -configuration #{CONFIGURATION} -sdk macosx#{version}")
+      system("ARCHS='i386' xcodebuild -target HTTPRiot -configuration #{CONFIGURATION} -sdk macosx#{version}")
+    end
+  end
+  
+  desc 'Clean all targets'
+  task :clean do
+    system("xcodebuild clean -alltargets")
+  end
   
   desc 'Generate the documentation'
   task :doc do
@@ -77,7 +72,7 @@ class SDKSettings
     @name = name
     @version = version
     @sdk = sdk
-    @target = target
+    @target = target.to_s
   end
   
   def iphone?
@@ -90,6 +85,14 @@ class SDKSettings
   
   def osx?
     !iphone? && !simulator?
+  end
+  
+  def osx_minimum_build_target
+    OSX_BUILD_TARGETS.min
+  end
+  
+  def iphone_minimum_build_target
+    IPHONE_BUILD_TARGETS.min
   end
   
   def minimal_display_name
@@ -113,20 +116,20 @@ class SDKSettings
         "CODE_SIGN_RESOURCE_RULES_PATH" => "$(SDKROOT)/ResourceRules.plist",
         "AD_HOC_CODE_SIGNING_ALLOWED"   => "NO",
         "PLATFORM_NAME"                 => "iphoneos",
-        "MACOSX_DEPLOYMENT_TARGET"      => "10.5",
+        "MACOSX_DEPLOYMENT_TARGET"      => @target,
         "GCC_THUMB_SUPPORT"             => "YES",
         "IPHONEOS_DEPLOYMENT_TARGET"    => @target
       }
      elsif simulator?
        {
-         "GCC_PRODUCT_TYPE_PREPROCESSOR_DEFINITIONS" => " __IPHONE_OS_VERSION_MIN_REQUIRED=20000",
+         "GCC_PRODUCT_TYPE_PREPROCESSOR_DEFINITIONS" => " __IPHONE_OS_VERSION_MIN_REQUIRED=30000",
          "PLATFORM_NAME"                             => "iphonesimulator",
-         "MACOSX_DEPLOYMENT_TARGET"                  => "10.5"
+         "MACOSX_DEPLOYMENT_TARGET"                  => @target
        }
      else
        {
           "PLATFORM_NAME"                             => "macosx",
-          "MACOSX_DEPLOYMENT_TARGET"                  => "10.5"
+          "MACOSX_DEPLOYMENT_TARGET"                  => @target
         }
      end
   end
@@ -134,16 +137,16 @@ class SDKSettings
   def to_plist
     pl = {
       "MinimalDisplayName"            => minimal_display_name,
-      "Version"                       => (osx? ? "10.5" : @target),
+      "Version"                       => @target,
       "FamilyIdentifier"              => (osx? ? "macosx" : "iphoneos"),
-      "DisplayName"                   => (osx? ? "Mac OS X 10.5" : display_name),
-      "MaximumOSDeploymentTarget"     => "10.5",
-      "MinimumSupportedToolsVersion"  => "3.1",
+      "DisplayName"                   => (osx? ? "Mac OS X #{@target}" : display_name),
+      "MaximumOSDeploymentTarget"     => OSX_BUILD_TARGETS.max.to_s,
+      "MinimumSupportedToolsVersion"  => iphone_minimum_build_target.to_s,
       "CustomProperties"              => {},
       "FamilyName"                    => (osx? ? "Mac OS X" : "iPhone OS"),
       "IsBaseSDK"                     => "NO",
       "DefaultProperties"             => default_properties,
-      "CanonicalName"                 => (osx? ? "macosx10.5" : alternate_sdk)
+      "CanonicalName"                 => (osx? ? "macosx#{@target}" : alternate_sdk)
     }
     
     pl.merge("AlternateSDK" => alternate_sdk) if !osx?
@@ -189,7 +192,7 @@ class Project
   end
   
   def self.targets
-    %w(2.0 2.1 2.2 2.2.1 3.0)
+    IPHONE_BUILD_TARGETS.collect { |t| t.to_s }
   end
 end
 
@@ -242,7 +245,6 @@ class SDKPackage < Rake::PackageTask
     @project_dir = Project.project_dir
     @package_dir = File.join(@project_dir, 'pkg')
     @build_dir = Project.build_dir
-    @relative_user_dir = "usr/local"
     @sdks = %w(iphoneos iphonesimulator macosx)
     @configuration = 'Release'
     @targets = Project.targets
@@ -333,6 +335,6 @@ end
 SDKPackage.new do |sdk|
   sdk.need_tar_gz = true
   sdk.need_zip = true
-  sdk.targets  = IPHONE_BUILD_TARGETS
+  sdk.targets  = [IPHONE_BUILD_TARGETS.first]
   sdk.configuration = CONFIGURATION
 end
