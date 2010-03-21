@@ -1,7 +1,7 @@
 # requires osx/plist `sudo gem install osx-plist`
 require 'rubygems'
 require 'rake/packagetask'
-require 'osx/cocoa'
+require 'plist' 
 require 'versionomy'
 
 IPHONE_BUILD_TARGETS = %w(3.0 3.1 3.1.2 3.1.3).collect {|v| Versionomy.parse(v)}
@@ -335,6 +335,5 @@ end
 SDKPackage.new do |sdk|
   sdk.need_tar_gz = true
   sdk.need_zip = true
-  sdk.targets  = [IPHONE_BUILD_TARGETS.first]
   sdk.configuration = CONFIGURATION
 end
