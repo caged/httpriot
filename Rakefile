@@ -4,7 +4,7 @@ require 'rake/packagetask'
 require 'osx/cocoa'
 require 'versionomy'
 
-IPHONE_BUILD_TARGETS = %w(3.0 3.1 3.1.2).collect {|v| Versionomy.parse(v)}
+IPHONE_BUILD_TARGETS = %w(3.0 3.1 3.1.2 3.1.3).collect {|v| Versionomy.parse(v)}
 OSX_BUILD_TARGETS    = %w(10.5 10.6).collect {|v| Versionomy.parse(v)}
 CONFIGURATION = "Release"
 
