@@ -116,7 +116,6 @@ class SDKSettings
         "CODE_SIGN_RESOURCE_RULES_PATH" => "$(SDKROOT)/ResourceRules.plist",
         "AD_HOC_CODE_SIGNING_ALLOWED"   => "NO",
         "PLATFORM_NAME"                 => "iphoneos",
-        "MACOSX_DEPLOYMENT_TARGET"      => @target,
         "GCC_THUMB_SUPPORT"             => "YES",
         "IPHONEOS_DEPLOYMENT_TARGET"    => @target
       }
@@ -124,7 +123,7 @@ class SDKSettings
        {
          "GCC_PRODUCT_TYPE_PREPROCESSOR_DEFINITIONS" => " __IPHONE_OS_VERSION_MIN_REQUIRED=30000",
          "PLATFORM_NAME"                             => "iphonesimulator",
-         "MACOSX_DEPLOYMENT_TARGET"                  => @target
+         "IPHONEOS_DEPLOYMENT_TARGET"                => @target
        }
      else
        {
