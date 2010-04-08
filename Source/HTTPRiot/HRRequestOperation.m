@@ -40,6 +40,7 @@
     [_path release];
     [_options release];
     [_formatter release];
+    [_object release];
     [super dealloc];
 }
 
@@ -52,7 +53,7 @@
         _requestMethod  = method;
         _path           = [urlPath copy];
         _options        = [opts retain];
-        _object         = obj;
+        _object         = [obj retain];
         _timeout        = 30.0;
         _delegate       = [[opts valueForKey:kHRClassAttributesDelegateKey] nonretainedObjectValue];
         _formatter      = [[self formatterFromFormat] retain];

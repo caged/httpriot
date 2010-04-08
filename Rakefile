@@ -1,10 +1,10 @@
 # requires osx/plist `sudo gem install osx-plist`
 require 'rubygems'
 require 'rake/packagetask'
-require 'osx/cocoa'
+require 'plist' 
 require 'versionomy'
 
-IPHONE_BUILD_TARGETS = %w(3.0 3.1 3.1.2).collect {|v| Versionomy.parse(v)}
+IPHONE_BUILD_TARGETS = %w(3.0 3.1 3.1.2 3.1.3).collect {|v| Versionomy.parse(v)}
 OSX_BUILD_TARGETS    = %w(10.5 10.6).collect {|v| Versionomy.parse(v)}
 CONFIGURATION = "Release"
 
@@ -116,7 +116,6 @@ class SDKSettings
         "CODE_SIGN_RESOURCE_RULES_PATH" => "$(SDKROOT)/ResourceRules.plist",
         "AD_HOC_CODE_SIGNING_ALLOWED"   => "NO",
         "PLATFORM_NAME"                 => "iphoneos",
-        "MACOSX_DEPLOYMENT_TARGET"      => @target,
         "GCC_THUMB_SUPPORT"             => "YES",
         "IPHONEOS_DEPLOYMENT_TARGET"    => @target
       }
@@ -124,7 +123,7 @@ class SDKSettings
        {
          "GCC_PRODUCT_TYPE_PREPROCESSOR_DEFINITIONS" => " __IPHONE_OS_VERSION_MIN_REQUIRED=30000",
          "PLATFORM_NAME"                             => "iphonesimulator",
-         "MACOSX_DEPLOYMENT_TARGET"                  => @target
+         "IPHONEOS_DEPLOYMENT_TARGET"                => @target
        }
      else
        {
@@ -335,6 +334,5 @@ end
 SDKPackage.new do |sdk|
   sdk.need_tar_gz = true
   sdk.need_zip = true
-  sdk.targets  = [IPHONE_BUILD_TARGETS.first]
   sdk.configuration = CONFIGURATION
 end
