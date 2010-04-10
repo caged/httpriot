@@ -9,18 +9,18 @@
 #import "HROperationQueue.h"
 #import "HRGlobal.h"
 
-static HROperationQueue *sharedHROperationQueue = nil;
+static HROperationQueue *sharedOperationQueue = nil;
 
 
 @implementation HROperationQueue
 + (HROperationQueue *)sharedOperationQueue {
     @synchronized(self) {
-        if (sharedHROperationQueue == nil) {
-                sharedHROperationQueue = [[HROperationQueue alloc] init];
-                sharedHROperationQueue.maxConcurrentOperationCount = 3;
+        if (sharedOperationQueue == nil) {
+                sharedOperationQueue = [[HROperationQueue alloc] init];
+                sharedOperationQueue.maxConcurrentOperationCount = 3;
         }
     }
 
-    return sharedHROperationQueue;
+    return sharedOperationQueue;
 }
 @end

@@ -29,7 +29,7 @@ namespace :sdk do
     end
     
     OSX_BUILD_TARGETS.each do |version|
-      system("ARCHS='i386' xcodebuild -target libhttpriot -configuration #{CONFIGURATION} -sdk macosx#{version}")
+      #system("ARCHS='i386' xcodebuild -target libhttpriot -configuration #{CONFIGURATION} -sdk macosx#{version}")
       system("ARCHS='i386' xcodebuild -target HTTPRiot -configuration #{CONFIGURATION} -sdk macosx#{version}")
     end
   end
@@ -243,7 +243,7 @@ class SDKPackage < Rake::PackageTask
     @project_dir = Project.project_dir
     @package_dir = File.join(@project_dir, 'pkg')
     @build_dir = Project.build_dir
-    @sdks = %w(iphoneos iphonesimulator macosx)
+    @sdks = %w(iphoneos iphonesimulator)
     @configuration = 'Release'
     @targets = Project.targets
   end
@@ -277,7 +277,7 @@ class SDKPackage < Rake::PackageTask
             end
           
             # Copy the header files over
-            if sdk == 'macosx' && File.exists?(File.join(@build_dir, @configuration, "usr"))
+            if sdk == 'macosx' && File.exists?(File.join(@build_dir, @configuration))
               built_sdk_dir = File.join(@build_dir, @configuration)
             else
               built_sdk_dir = File.join(@build_dir, "#{@configuration}-#{sdk}#{target}")
