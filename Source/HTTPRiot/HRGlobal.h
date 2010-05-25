@@ -23,6 +23,8 @@ extern NSString *kHRClassAttributesDefaultParamsKey;
 extern NSString *kHRClassAttributesParamsKey;
 /// Key for body
 extern NSString *kHRClassAttributesBodyKey;
+/// Key for parent view controller
+extern NSString *kHRClassParentViewControllerKey;
 
  
 /**

@@ -9,12 +9,15 @@
 #import "HRGlobal.h"
 #import "HRResponseDelegate.h"
 
+#import "ChallengeHandler.h"
+
 /**
  * The object which all requests are routed through.  You shouldn't need to use 
  * this class directly, but instead use HRRestModel which wraps the method 
  * of this class neatly.
  */
-@interface HRRequestOperation : NSOperation {
+@interface HRRequestOperation : NSOperation <ChallengeHandlerDelegate> {
+@private
     /// HRResponse Delegate
     NSObject        <HRResponseDelegate>*_delegate;
     
@@ -50,6 +53,12 @@
     
     /// Determines whether the connection is cancelled
     BOOL _isCancelled;
+    
+    /// The current challenge handler
+    ChallengeHandler *_currentChallenge;
+    
+    /// Parent view controller used as root for modal subviews
+    UIViewController *_parentViewController;
 }
 
 /// The HRResponseDelegate
@@ -90,6 +99,12 @@
  Currently, only JSON is supported.
  */
 @property (nonatomic, readonly, retain) id formatter;
+
+/// This parent view controller
+/**
+ This view conttroller is used as root for modal subviews.
+ */
+@property (nonatomic, retain) UIViewController *parentViewController;
 
 /**
  * Returns an HRRequestOperation

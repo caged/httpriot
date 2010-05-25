@@ -29,12 +29,13 @@
 @end
 
 @implementation HRRequestOperation
-@synthesize timeout         = _timeout;
-@synthesize requestMethod   = _requestMethod;
-@synthesize path            = _path;
-@synthesize options         = _options;
-@synthesize formatter       = _formatter;
-@synthesize delegate        = _delegate;
+@synthesize timeout              = _timeout;
+@synthesize requestMethod        = _requestMethod;
+@synthesize path                 = _path;
+@synthesize options              = _options;
+@synthesize formatter            = _formatter;
+@synthesize delegate             = _delegate;
+@synthesize parentViewController = _parentViewController;
 
 - (void)dealloc {
     [_path release];
@@ -57,6 +58,7 @@
         _timeout        = 30.0;
         _delegate       = [[opts valueForKey:kHRClassAttributesDelegateKey] nonretainedObjectValue];
         _formatter      = [[self formatterFromFormat] retain];
+        self.parentViewController = [opts objectForKey:kHRClassParentViewControllerKey];
     }
 
     return self;
@@ -193,6 +195,60 @@
         
     [self finish];
 }
+
+// A delegate method called by the NSURLConnection when something happens with the 
+// connection security-wise.  We defer all of the logic for how to handle this to 
+// the ChallengeHandler module (and it's very custom subclasses).
+- (BOOL)connection:(NSURLConnection *)conn canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace
+{
+#pragma unused(conn)
+    BOOL    result;
+    
+    assert( conn == _connection );
+    assert( protectionSpace != nil );
+    
+    result = [ChallengeHandler supportsProtectionSpace:protectionSpace];
+    HRLOG(@"canAuthenticateAgainstProtectionSpace %@ -> %d", [protectionSpace authenticationMethod], result);
+    return result;
+}
+
+// A delegate method called by the NSURLConnection when you accept a specific 
+// authentication challenge by returning YES from -connection:canAuthenticateAgainstProtectionSpace:. 
+// Again, most of the logic has been shuffled off to the ChallengeHandler module; the only 
+// policy decision we make here is that, if the challenge handle doesn't get it right in 5 tries, 
+// we bail out.
+- (void)connection:(NSURLConnection *)conn didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
+{
+#pragma unused(conn)
+    assert( conn == _connection );
+    assert( challenge != nil );
+    
+    HRLOG(@"didReceiveAuthenticationChallenge %@ %zd", [[challenge protectionSpace] authenticationMethod], (ssize_t) [challenge previousFailureCount]);
+    
+    assert( _currentChallenge == nil );
+    assert( self.parentViewController != nil );
+    
+    // If not in debug mode: Provide warning if no view controller is available
+    if ( !self.parentViewController )
+    {
+    	NSLog( @"WARNING: No parent view controller is set. Now cancel authentication requests which may need a view" );
+    }
+    
+    if ( [challenge previousFailureCount] < 5 
+        && self.parentViewController )
+    {
+        _currentChallenge = [ChallengeHandler handlerForChallenge:challenge parentViewController:self.parentViewController];
+        if (_currentChallenge == nil) {
+            [[challenge sender] continueWithoutCredentialForAuthenticationChallenge:challenge];
+        } else {
+            _currentChallenge.delegate = self;
+            [_currentChallenge start];
+        }
+    } else {
+        [[challenge sender] cancelAuthenticationChallenge:challenge];
+    }
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Configuration
@@ -353,4 +409,34 @@
     
     return @"";
 }
+
+#pragma mark * Authentication challenge UI
+// Called by the authentication challenge handler once the challenge is 
+// resolved.  We twiddle our internal state and then call the -resolve method 
+// to apply the challenge results to the NSURLAuthenticationChallenge.
+- (void)challengeHandlerDidFinish:(ChallengeHandler *)handler
+{
+#pragma unused(handler)
+    ChallengeHandler *  challenge;
+    
+    assert(handler == _currentChallenge);
+    
+    // We want to nil out currentChallenge because we've really done with this 
+    // challenge now and, for example, if the next operation kicks up a new 
+    // challenge, we want to make sure that currentChallenge is ready to receive 
+    // it.
+    // 
+    // We want the challenge to hang around after we've nilled out currentChallenge, 
+    // so retain/autorelease it.
+    
+    challenge = [[_currentChallenge retain] autorelease];
+    _currentChallenge = nil;
+    
+    // If the credential isn't present, this will trigger a -connection:didFailWithError: 
+    // callback.
+    
+    HRLOG(@"resolve %@ -> %@", [[challenge.challenge protectionSpace] authenticationMethod], challenge.credential);
+    [challenge resolve];
+}
+
 @end

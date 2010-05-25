@@ -79,6 +79,11 @@ static NSMutableDictionary *attributes;
     [self setAttributeValue:authDict forKey:kHRClassAttributesBasicAuthKey];
 }
 
++ (void)setParentViewController:(UIViewController *)parentViewController
+{
+    [self setAttributeValue:parentViewController forKey:kHRClassParentViewControllerKey];
+}
+
 + (HRDataFormat)format {
     return [[[self classAttributes] objectForKey:kHRClassAttributesFormatKey] intValue];
 }

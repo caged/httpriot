@@ -71,7 +71,7 @@ static NSMutableDictionary * sAuthenticationMethodToHandlerClassArray;
     // Register all of our support challenge handlers.  There are various ways 
     // you can automate this (objc_getClassList anyone?), but I decided to just 
     // hardwire the classes right now.
-    
+    // TODO: Add handler registration!
     static BOOL sHaveRegistered;
     if ( ! sHaveRegistered ) {
         for (NSString * className in [NSArray arrayWithObjects:@"AuthenticationChallengeHandler", @"ServerTrustChallengeHandler", @"ClientIdentityChallengeHandler", nil]) {

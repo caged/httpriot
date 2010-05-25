@@ -138,6 +138,14 @@
 		D0C7131E0FF2A3310083905B /* ISAPeopleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C7131D0FF2A3310083905B /* ISAPeopleTableViewController.m */; };
 		D0D9669B0F65C7C300F1347A /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D0D9669A0F65C7C300F1347A /* libxml2.2.dylib */; };
 		D0DBB0361099FD8700FC0836 /* libGHUnitIPhone3_0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0DBB0331099FD8700FC0836 /* libGHUnitIPhone3_0.a */; };
+		F8014E7A11ABC91100F9DD53 /* ChallengeHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = F8014E7811ABC91100F9DD53 /* ChallengeHandler.h */; };
+		F8014E7B11ABC91100F9DD53 /* ChallengeHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F8014E7911ABC91100F9DD53 /* ChallengeHandler.m */; };
+		F8014E7C11ABC91100F9DD53 /* ChallengeHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = F8014E7811ABC91100F9DD53 /* ChallengeHandler.h */; };
+		F8014E7D11ABC91100F9DD53 /* ChallengeHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F8014E7911ABC91100F9DD53 /* ChallengeHandler.m */; };
+		F8014E7E11ABC91100F9DD53 /* ChallengeHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = F8014E7811ABC91100F9DD53 /* ChallengeHandler.h */; };
+		F8014E7F11ABC91100F9DD53 /* ChallengeHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F8014E7911ABC91100F9DD53 /* ChallengeHandler.m */; };
+		F8014E8011ABC91100F9DD53 /* ChallengeHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F8014E7911ABC91100F9DD53 /* ChallengeHandler.m */; };
+		F8014E8111ABC91100F9DD53 /* ChallengeHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F8014E7911ABC91100F9DD53 /* ChallengeHandler.m */; };
 		F8DE085A11A6C3F5001DA4FB /* HRResponseDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = D038BD850FF28B960041F570 /* HRResponseDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F8DE085B11A6C3F5001DA4FB /* HTTPRiot.h in Headers */ = {isa = PBXBuildFile; fileRef = D03DB6650F3163BB00F18796 /* HTTPRiot.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F8DE085C11A6C3F5001DA4FB /* HTTPRiot_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = D02988630F3F7F1200EC8C01 /* HTTPRiot_Prefix.pch */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -304,6 +312,8 @@
 		D0F6D9C40FAB83B1006DE022 /* GHUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUnit.h; sourceTree = "<group>"; };
 		D0F6D9C50FAB83B1006DE022 /* GHUnitIPhoneTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIPhoneTestMain.m; sourceTree = "<group>"; };
 		D0F6D9C60FAB83B1006DE022 /* GHUNSObject+Swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GHUNSObject+Swizzle.h"; sourceTree = "<group>"; };
+		F8014E7811ABC91100F9DD53 /* ChallengeHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengeHandler.h; sourceTree = "<group>"; };
+		F8014E7911ABC91100F9DD53 /* ChallengeHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengeHandler.m; sourceTree = "<group>"; };
 		F8DE089611A6C3F5001DA4FB /* libhttpriot.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libhttpriot.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -501,6 +511,7 @@
 		D03DB6640F31639000F18796 /* HTTPRiot */ = {
 			isa = PBXGroup;
 			children = (
+				F8014E7711ABC84600F9DD53 /* Authentication */,
 				D0A6E4100FFD39DC00012097 /* Utilities */,
 				D0298A1C0F3FC9A400EC8C01 /* Formatters */,
 				D029892F0F3FBEAD00EC8C01 /* Extensions */,
@@ -610,6 +621,15 @@
 			path = "gh-unit-iphone";
 			sourceTree = "<group>";
 		};
+		F8014E7711ABC84600F9DD53 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				F8014E7811ABC91100F9DD53 /* ChallengeHandler.h */,
+				F8014E7911ABC91100F9DD53 /* ChallengeHandler.m */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -641,6 +661,7 @@
 				D09A5DD9106EA0CD00167242 /* SBJsonBase.h in Headers */,
 				D09A5DDB106EA0CE00167242 /* SBJsonParser.h in Headers */,
 				D09A5DDD106EA0CF00167242 /* SBJsonWriter.h in Headers */,
+				F8014E7E11ABC91100F9DD53 /* ChallengeHandler.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -679,6 +700,7 @@
 				D09A5D8E106E9C3E00167242 /* SBJsonBase.h in Headers */,
 				D09A5D90106E9C3E00167242 /* SBJsonParser.h in Headers */,
 				D09A5D92106E9C3E00167242 /* SBJsonWriter.h in Headers */,
+				F8014E7C11ABC91100F9DD53 /* ChallengeHandler.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -710,6 +732,7 @@
 				F8DE087311A6C3F5001DA4FB /* HRBase64.h in Headers */,
 				F8DE087411A6C3F5001DA4FB /* HROperationQueue.h in Headers */,
 				F8DE087511A6C3F5001DA4FB /* DDXML.h in Headers */,
+				F8014E7A11ABC91100F9DD53 /* ChallengeHandler.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -922,6 +945,7 @@
 				D09A5DDA106EA0CE00167242 /* SBJsonBase.m in Sources */,
 				D09A5DDC106EA0CF00167242 /* SBJsonParser.m in Sources */,
 				D09A5DDE106EA0D100167242 /* SBJsonWriter.m in Sources */,
+				F8014E7F11ABC91100F9DD53 /* ChallengeHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -952,6 +976,7 @@
 				D09A5D8F106E9C3E00167242 /* SBJsonBase.m in Sources */,
 				D09A5D91106E9C3E00167242 /* SBJsonParser.m in Sources */,
 				D09A5D93106E9C3E00167242 /* SBJsonWriter.m in Sources */,
+				F8014E7D11ABC91100F9DD53 /* ChallengeHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -965,6 +990,7 @@
 				D00045D70FF2D5DB00CCAF1B /* ISAPeopleDetailController.m in Sources */,
 				D00047610FF31D4D00CCAF1B /* ISAEditableTextFieldCell.m in Sources */,
 				D02BB9530FF3EE95002EF1CF /* ISAAlertHelper.m in Sources */,
+				F8014E8011ABC91100F9DD53 /* ChallengeHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -978,6 +1004,7 @@
 				D0788B0D0FABAD6F00C3207D /* HTTPRiotRequestTest.m in Sources */,
 				D09754381005092500E0E499 /* HRExtensionsTest.m in Sources */,
 				D0A06A091016F779007B95C9 /* HRUtilitiesTest.m in Sources */,
+				F8014E8111ABC91100F9DD53 /* ChallengeHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1002,6 +1029,7 @@
 				F8DE088B11A6C3F5001DA4FB /* HRBase64.m in Sources */,
 				F8DE088C11A6C3F5001DA4FB /* HROperationQueue.m in Sources */,
 				F8DE088D11A6C3F5001DA4FB /* HRGlobal.m in Sources */,
+				F8014E7B11ABC91100F9DD53 /* ChallengeHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

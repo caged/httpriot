@@ -18,3 +18,4 @@ NSString *kHRClassAttributesFormatKey           = @"format";
 NSString *kHRClassAttributesDefaultParamsKey    = @"defaultParams";
 NSString *kHRClassAttributesParamsKey           = @"params";
 NSString *kHRClassAttributesBodyKey             = @"body";
+NSString *kHRClassParentViewControllerKey       = @"parentViewController";
