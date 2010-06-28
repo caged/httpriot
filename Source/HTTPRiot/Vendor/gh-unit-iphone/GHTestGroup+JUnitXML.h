@@ -1,9 +1,9 @@
 //
-//  GHUnitIPhoneAppDelegate.h
-//  GHUnitIPhone
+//  GHTestGroup+JUnitXML.h
+//  GHUnit
 //
-//  Created by Gabriel Handford on 1/25/09.
-//  Copyright 2009. All rights reserved.
+//  Created by Gabriel Handford on 6/4/10.
+//  Copyright 2010. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
@@ -27,13 +27,12 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
+#import "GHTestGroup.h"
 
-@interface GHUnitIPhoneAppDelegate : NSObject <UIApplicationDelegate> {
-  UIWindow *window_;
-  
-  UINavigationController *navigationController_;  
-}
+@interface GHTestGroup (JUnitXML)
+
+- (NSString *)JUnitXML;
+
+- (BOOL)writeJUnitXMLAtPath:(NSString *)documentsPath error:(NSError **)error;
 
 @end
-

@@ -3,8 +3,8 @@ require 'rake/packagetask'
 require 'plist' 
 require 'versionomy'
 
-IPHONE_BUILD_TARGETS = %w(3.0 3.1 3.1.2 3.1.3 3.2).collect {|v| Versionomy.parse(v)}
-OSX_BUILD_TARGETS    = %w(10.5 10.6).collect {|v| Versionomy.parse(v)}
+IPHONE_BUILD_TARGETS = %w(3.2 4.0).collect {|v| Versionomy.parse(v)}
+OSX_BUILD_TARGETS    = %w(10.6).collect {|v| Versionomy.parse(v)}
 CONFIGURATION = "Release"
 
 namespace :iphone do

@@ -26,25 +26,6 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-//
-// Portions of this file fall under the following license, marked with:
-// GTM_BEGIN : GTM_END
-//
-//  Copyright 2008 Google Inc.
-//
-//  Licensed under the Apache License, Version 2.0 (the "License"); you may not
-//  use this file except in compliance with the License.  You may obtain a copy
-//  of the License at
-// 
-//  http://www.apache.org/licenses/LICENSE-2.0
-// 
-//  Unless required by applicable law or agreed to in writing, software
-//  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
-//  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
-//  License for the specific language governing permissions and limitations under
-//  the License.
-//
-
 #import "GHTest.h"
 #import "GHTestCase.h"
 
@@ -80,38 +61,32 @@
  and this might represent a GHTestSuite.
  */
 @interface GHTestGroup : NSObject <GHTestDelegate, GHTestGroup> {
-	
-	NSObject<GHTestDelegate> *delegate_; // weak
-	id<GHTestGroup> parent_; // weak
-	
-	NSMutableArray *children_; // of id<GHTest>
-		
-	NSString *name_; // The name of the test group (usually the class name of the test case
-	NSTimeInterval interval_; // Total time of child tests
-	GHTestStatus status_; // Current status of the group (current status of running or completed child tests)
-	GHTestStats stats_; // Current stats for the group (aggregate of child test stats)
-	
-	BOOL didSetUpClass_;
-	
-	// Set if test is created from initWithTestCase:delegate:
-	// Allows use to perform setUpClass and tearDownClass (once per test case run)
-	id testCase_; 
-	
-	NSException *exception_; // If exception happens in group setUpClass/tearDownClass
+  
+  NSObject<GHTestDelegate> *delegate_; // weak
+  id<GHTestGroup> parent_; // weak
+  
+  NSMutableArray */*of id<GHTest>*/children_;
+    
+  NSString *name_; // The name of the test group (usually the class name of the test case
+  NSTimeInterval interval_; // Total time of child tests
+  GHTestStatus status_; // Current status of the group (current status of running or completed child tests)
+  GHTestStats stats_; // Current stats for the group (aggregate of child test stats)
+  
+  BOOL didSetUpClass_;
+  
+  GHTestOptions options_;
+  
+  // Set if test is created from initWithTestCase:delegate:
+  // Allows use to perform setUpClass and tearDownClass (once per test case run)
+  id testCase_; 
+  
+  NSException *exception_; // If exception happens in group setUpClass/tearDownClass
 }
 
 @property (readonly, nonatomic) NSArray */*of id<GHTest>*/children;
-@property (assign, nonatomic) NSObject<GHTestDelegate> *delegate;
 @property (assign, nonatomic) id<GHTestGroup> parent;
 @property (readonly, nonatomic) id testCase;
-
-@property (readonly, nonatomic) NSString *identifier;
-@property (readonly, nonatomic) NSString *name;
-@property (readonly, nonatomic) GHTestStatus status;
-
-@property (readonly, nonatomic) NSTimeInterval interval;
-@property (readonly, nonatomic) GHTestStats stats;
-@property (readonly, nonatomic) NSException *exception;
+@property (assign, nonatomic) GHTestOptions options;
 
 /*!
  Create an empty test group.
@@ -123,8 +98,6 @@
 
 /*!
  Create test group from a test case.
-
- A test group is a collection of GHTest. 
  @param testCase Test case, could be a subclass of SenTestCase or GHTestCase
  @param delegate Delegate, notifies of test start and end
  @result New test group
@@ -155,13 +128,24 @@
 
 - (void)addTestGroup:(GHTestGroup *)testGroup;
 
+- (void)addTests:(NSArray */*of id<GHTest>*/)tests;
+
+- (void)addTest:(id<GHTest>)test;
+
 - (BOOL)shouldRunOnMainThread;
+
+/*!
+ Get list of failed tests.
+ @result Failed tests
+ */
+- (NSArray */*of id<GHTest>*/)failedTests;
 
 /*!
  Run in operation queue.
  Tests from the group are added and will block until they have completed.
  @param operationQueue If nil, then runs as is
+ @param options Options
  */
-- (void)runInOperationQueue:(NSOperationQueue *)operationQueue;
+- (void)runInOperationQueue:(NSOperationQueue *)operationQueue options:(GHTestOptions)options;
 
 @end

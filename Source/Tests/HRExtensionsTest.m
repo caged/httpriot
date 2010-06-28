@@ -22,7 +22,7 @@
 
 - (void)testShouldBuildQueryStringFromDictionary {
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"Owyn", @"firstname", @"Lyons", @"lastname", nil];
-    GHAssertEqualStrings([params toQueryString], @"lastname=Lyons&firstname=Owyn", nil);
+    GHAssertEqualStrings([params toQueryString], @"firstname=Owyn&lastname=Lyons", nil);
 }
 
 - (void)testShouldBuildQueryStringWithDuplicateKeysIfParamHasNestedArray {
