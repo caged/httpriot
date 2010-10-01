@@ -304,7 +304,7 @@
 		D0F6D9C40FAB83B1006DE022 /* GHUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUnit.h; sourceTree = "<group>"; };
 		D0F6D9C50FAB83B1006DE022 /* GHUnitIPhoneTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIPhoneTestMain.m; sourceTree = "<group>"; };
 		D0F6D9C60FAB83B1006DE022 /* GHUNSObject+Swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GHUNSObject+Swizzle.h"; sourceTree = "<group>"; };
-		F8DE089611A6C3F5001DA4FB /* libhttpriot.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libhttpriot.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8DE089611A6C3F5001DA4FB /* libhttpriot_nojson.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libhttpriot_nojson.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -360,7 +360,7 @@
 				D0298A650F3FFBBD00EC8C01 /* libhttpriot.a */,
 				D0788AE80FABAB3600C3207D /* iPhoneUnitTestsRunner.app */,
 				D038BDCE0FF298330041F570 /* iPhoneSampleApp.app */,
-				F8DE089611A6C3F5001DA4FB /* libhttpriot.a */,
+				F8DE089611A6C3F5001DA4FB /* libhttpriot_nojson.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -803,7 +803,7 @@
 			);
 			name = libhttpriot_nojson;
 			productName = libhttpriot;
-			productReference = F8DE089611A6C3F5001DA4FB /* libhttpriot.a */;
+			productReference = F8DE089611A6C3F5001DA4FB /* libhttpriot_nojson.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -813,7 +813,11 @@
 			isa = PBXProject;
 			buildConfigurationList = 1DEB91B108733DA50010E9CD /* Build configuration list for PBXProject "HTTPRiot" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
 			mainGroup = 0867D691FE84028FC02AAC07 /* HTTPRiot */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
 			projectDirPath = "";
@@ -1094,12 +1098,13 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_VERSION = 4.2;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = YES;
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos4.1;
 			};
 			name = Debug;
 		};
@@ -1108,11 +1113,12 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos4.1;
 			};
 			name = Release;
 		};
@@ -1345,7 +1351,7 @@
 				);
 				PREBINDING = NO;
 				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include/HTTPRiot;
-				PRODUCT_NAME = httpriot;
+				PRODUCT_NAME = httpriot_nojson;
 				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/HTTPRiot;
 			};
 			name = Debug;
@@ -1368,7 +1374,7 @@
 				);
 				PREBINDING = NO;
 				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include/HTTPRiot;
-				PRODUCT_NAME = httpriot;
+				PRODUCT_NAME = httpriot_nojson;
 				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/HTTPRiot;
 				SKIP_INSTALL = NO;
 				VERSIONING_SYSTEM = "apple-generic";
