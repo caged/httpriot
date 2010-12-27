@@ -43,7 +43,7 @@ typedef enum {
 } HRRequestMethod;
 
 /**
- Supported formats.
+ Default Supported formats.
  @see HRRestModel#setFormat
  */
 typedef enum {

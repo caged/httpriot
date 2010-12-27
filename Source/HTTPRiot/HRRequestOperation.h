@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 #import "HRGlobal.h"
 #import "HRResponseDelegate.h"
+#import "HRFormatterProtocol.h"
 
 /**
  * The object which all requests are routed through.  You shouldn't need to use 
@@ -37,7 +38,7 @@
     HRRequestMethod _requestMethod;
     
     /// The HRFormatter object
-    id              _formatter;
+    id <HRFormatterProtocol>  _formatter;
     
     /// The object passed to all delegate methods
     id              _object;
@@ -89,7 +90,7 @@
 /**
  Currently, only JSON is supported.
  */
-@property (nonatomic, readonly, retain) id formatter;
+@property (nonatomic, readonly) id <HRFormatterProtocol> formatter;
 
 /**
  * Returns an HRRequestOperation

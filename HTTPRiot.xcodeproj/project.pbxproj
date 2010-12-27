@@ -22,6 +22,9 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		493DC16C12C8E47C001BDC20 /* HRFormatterFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 493DC16A12C8E47C001BDC20 /* HRFormatterFactory.h */; };
+		493DC16D12C8E47C001BDC20 /* HRFormatterFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 493DC16B12C8E47C001BDC20 /* HRFormatterFactory.m */; };
+		494AC0EA12C8F1F300420DBB /* HRFormatterFactoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 494AC0E912C8F1F300420DBB /* HRFormatterFactoryTest.m */; };
 		D00045D70FF2D5DB00CCAF1B /* ISAPeopleDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = D00045D60FF2D5DB00CCAF1B /* ISAPeopleDetailController.m */; };
 		D00047610FF31D4D00CCAF1B /* ISAEditableTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D00047600FF31D4D00CCAF1B /* ISAEditableTextFieldCell.m */; };
 		D00048240FF35B0E00CCAF1B /* NSObject+InvocationUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D00048220FF35B0E00CCAF1B /* NSObject+InvocationUtils.h */; };
@@ -158,6 +161,9 @@
 
 /* Begin PBXFileReference section */
 		0867D69BFE84028FC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		493DC16A12C8E47C001BDC20 /* HRFormatterFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRFormatterFactory.h; sourceTree = "<group>"; };
+		493DC16B12C8E47C001BDC20 /* HRFormatterFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRFormatterFactory.m; sourceTree = "<group>"; };
+		494AC0E912C8F1F300420DBB /* HRFormatterFactoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRFormatterFactoryTest.m; sourceTree = "<group>"; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* HTTPRiot */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.framework; path = HTTPRiot; sourceTree = BUILT_PRODUCTS_DIR; };
 		D00045D50FF2D5DB00CCAF1B /* ISAPeopleDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISAPeopleDetailController.h; sourceTree = "<group>"; };
@@ -385,6 +391,8 @@
 				D0298A2E0F3FF4FD00EC8C01 /* HRFormatJSON.m */,
 				D0298A320F3FF50800EC8C01 /* HRFormatXML.h */,
 				D0298A330F3FF50800EC8C01 /* HRFormatXML.m */,
+				493DC16A12C8E47C001BDC20 /* HRFormatterFactory.h */,
+				493DC16B12C8E47C001BDC20 /* HRFormatterFactory.m */,
 			);
 			path = Formatters;
 			sourceTree = "<group>";
@@ -511,6 +519,7 @@
 				D029906A0F43422E00EC8C01 /* HTTPRiotTestHelper.m */,
 				D09754371005092500E0E499 /* HRExtensionsTest.m */,
 				D0A06A081016F779007B95C9 /* HRUtilitiesTest.m */,
+				494AC0E912C8F1F300420DBB /* HRFormatterFactoryTest.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -630,6 +639,7 @@
 				D09A5D8E106E9C3E00167242 /* SBJsonBase.h in Headers */,
 				D09A5D90106E9C3E00167242 /* SBJsonParser.h in Headers */,
 				D09A5D92106E9C3E00167242 /* SBJsonWriter.h in Headers */,
+				493DC16C12C8E47C001BDC20 /* HRFormatterFactory.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -716,7 +726,14 @@
 			isa = PBXProject;
 			buildConfigurationList = 1DEB91B108733DA50010E9CD /* Build configuration list for PBXProject "HTTPRiot" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = 0867D691FE84028FC02AAC07 /* HTTPRiot */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
 			projectDirPath = "";
@@ -853,6 +870,7 @@
 				D09A5D8F106E9C3E00167242 /* SBJsonBase.m in Sources */,
 				D09A5D91106E9C3E00167242 /* SBJsonParser.m in Sources */,
 				D09A5D93106E9C3E00167242 /* SBJsonWriter.m in Sources */,
+				493DC16D12C8E47C001BDC20 /* HRFormatterFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -879,6 +897,7 @@
 				D09754381005092500E0E499 /* HRExtensionsTest.m in Sources */,
 				D0A06A091016F779007B95C9 /* HRUtilitiesTest.m in Sources */,
 				D0A0F49A11D91C7C0037652F /* GHUnitIPhoneTestMain.m in Sources */,
+				494AC0EA12C8F1F300420DBB /* HRFormatterFactoryTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1149,7 +1168,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = iPhoneUnitTestsRunner;
-				SDKROOT = iphonesimulator4.0;
+				SDKROOT = iphoneos4.2;
 			};
 			name = Debug;
 		};

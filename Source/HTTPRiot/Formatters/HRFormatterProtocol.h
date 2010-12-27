@@ -17,17 +17,17 @@
  * Formatters used in formatting response data
  * Formatters should be able to encode and decode a specific data type.
  */
-@protocol HRFormatterProtocol 
+@protocol HRFormatterProtocol <NSObject>
 
 /**
  * The file extension.  Example: json, xml, plist, n3, etc.
  */
-+ (NSString *)extension;
+- (NSString *)extension;
 
 /**
  * The mime-type represented by this formatter
  */
-+ (NSString *)mimeType;
+- (NSString *)mimeType;
 
 /**
  * Takes the format and turns it into the appropriate Obj-C data type.
@@ -35,7 +35,7 @@
  * @param data Raw data to be decoded.
  * @param error Returns any errors that happened while decoding.
  */
-+ (id)decode:(NSData *)data error:(NSError **)error;
+- (id)decode:(NSData *)data error:(NSError **)error;
 
 /**
  * Takes an Obj-C data type and turns it into the proper format.
@@ -43,5 +43,5 @@
  * @param object The Obj-C object to be encoded by the formatter.
  * @param error Returns any errors that happened while encoding.
  */
-+ (NSString *)encode:(id)object error:(NSError **)error;
+- (NSString *)encode:(id)object error:(NSError **)error;
 @end

@@ -36,7 +36,8 @@
     NSDictionary *body = [NSDictionary dictionaryWithObjectsAndKeys:@"bob", @"name", 
                                 @"foo@email.com", @"email", 
                                 @"101 Cherry Lane", @"address", nil];
-    id bodyData = [HRFormatJSON encode:body error:nil];
+    HRFormatJSON *json = [[[HRFormatJSON alloc] init] autorelease];
+    id bodyData = [json encode:body error:nil];
     NSDictionary *opts = [NSDictionary dictionaryWithObject:bodyData forKey:@"body"];
     
     [HRTestPerson2 postPath:@"/person" withOptions:opts object:@"POST"];
@@ -48,7 +49,8 @@
     NSDictionary *body = [NSDictionary dictionaryWithObjectsAndKeys:@"bob", @"name", 
                                 @"foo@email.com", @"email", 
                                 @"101 Cherry Lane", @"address", nil];
-    NSString *bodyData = [[HRFormatJSON encode:body error:nil] copy];
+    HRFormatJSON *json = [[[HRFormatJSON alloc] init] autorelease];
+    NSString *bodyData = [[json encode:body error:nil] copy];
     NSDictionary *opts = [[NSDictionary alloc ] initWithObjectsAndKeys:bodyData, @"body", nil];
     [bodyData release];
     
