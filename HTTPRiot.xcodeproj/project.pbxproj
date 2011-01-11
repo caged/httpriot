@@ -6,21 +6,6 @@
 	objectVersion = 45;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		D0F4848A0F4CC03500160DD9 /* Documentation */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = D0F4848D0F4CC05300160DD9 /* Build configuration list for PBXAggregateTarget "Documentation" */;
-			buildPhases = (
-				D0F484890F4CC03500160DD9 /* Generate and Install docs */,
-				D0315F340F4CFA8600AEFEB7 /* Cleanup doc info */,
-			);
-			dependencies = (
-			);
-			name = Documentation;
-			productName = Documentation;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		D00045D70FF2D5DB00CCAF1B /* ISAPeopleDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = D00045D60FF2D5DB00CCAF1B /* ISAPeopleDetailController.m */; };
 		D00047610FF31D4D00CCAF1B /* ISAEditableTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D00047600FF31D4D00CCAF1B /* ISAEditableTextFieldCell.m */; };
@@ -813,7 +798,14 @@
 			isa = PBXProject;
 			buildConfigurationList = 1DEB91B108733DA50010E9CD /* Build configuration list for PBXProject "HTTPRiot" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = 0867D691FE84028FC02AAC07 /* HTTPRiot */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
 			projectDirPath = "";
@@ -823,7 +815,6 @@
 				D038BDCD0FF298330041F570 /* iPhoneSampleApp */,
 				D0788AE70FABAB3600C3207D /* iPhoneUnitTestsRunner */,
 				8DC2EF4F0486A6940098B216 /* HTTPRiot */,
-				D0F4848A0F4CC03500160DD9 /* Documentation */,
 				F8DE085811A6C3F5001DA4FB /* libhttpriot_nojson */,
 			);
 		};
@@ -856,20 +847,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		D0315F340F4CFA8600AEFEB7 /* Cleanup doc info */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Cleanup doc info";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = "/usr/bin/env ruby";
-			shellScript = "#!/usr/bin/env ruby\n#!/usr/bin/env ruby\n# The documentation gets generated with a bad info.plist file so this fixes it\n# until I can find a better solution\n#\nrequire 'rubygems'\nrequire 'fileutils'\nrequire 'osx/cocoa'\n\ninclude FileUtils\n\n# Get the main target's version number\nplist = OSX::NSDictionary.dictionaryWithContentsOfFile(File.join(ENV['PROJECT_DIR'], \"Info.plist\"))\nversion = `agvtool vers -terse`.strip || plist['CFBundleVersion']\n\ncontents = <<-CONTENTS\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\"\n\"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n<plist version=\"1.0\">\n<dict>\n     <key>CFBundleName</key>\n     <string>#{ENV['PROJECT']} #{version}</string>\n     <key>CFBundleIdentifier</key>\n     <string>com.labratrevenge.#{ENV['PROJECT']}.docset</string>\n     <key>DocSetFeedName</key>\n     <string>#{ENV['PROJECT']} Documentation</string>\n</dict>\n</plist>\nCONTENTS\n\ndoc_dir = \"/Users/#{ENV['USER']}/Library/Developer/Shared/Documentation/DocSets/com.labratrevenge.#{ENV['PROJECT']}.docset/Contents\"\nplist = File.join(doc_dir, \"Info.plist\")\nresource_dir = File.join(doc_dir, \"Resources\", \"Documents\")\n\nif File.exists?(plist)\n  File.open(plist, 'w+') do |f|\n    f << contents\n  end\nend\n\ncp_r(File.join(ENV['PROJECT_DIR'], 'Documentation', 'slate', 'images'), resource_dir)\n\n# Script to tell XCode to load up our new documentation\nscript = <<-OSA \ntell application \"Xcode\"\n\tload documentation set with path \"/Users/$USER/Library/Developer/Shared/Documentation/DocSets/com.labratrevenge.#{ENV['PROJECT']}.docset/\"\nend tell\nOSA\n\n# Run the load-docset applescript command.\nsystem(\"osascript -e #{script}\")";
-		};
 		D0788C1E0FABC91900C3207D /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -882,20 +859,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/usr/bin/env ruby";
 			shellScript = "require 'fileutils'\nlib = \"#{ENV['PROJECT_DIR']}/build/Debug/libhttpriot.a\"\nif File.exists?(lib)\n   existing = \"#{ENV['TARGET_BUILD_DIR']}/libhttpriot.a\"\n   FileUtils.rm(existing) if File.exists?(existing)\n   FileUtils.mv(lib, existing)\nend\n\n#!/bin/sh\n\nexit if !ENV['GHUNIT_CLI']\n\n \nENV['DYLD_ROOT_PATH'] = ENV['SDKROOT']\nENV['DYLD_FRAMEWORK_PATH'] = ENV['CONFIGURATION_BUILD_DIR']\nENV['IPHONE_SIMULATOR_ROOT'] = ENV['SDKROOT']\n \nENV['MallocScribble'] = true\nENV['MallocPreScribble'] = true\nENV['MallocGuardEdges'] = true\nENV['MallocStackLogging'] = true\nENV['MallocStackLoggingNoCompact'] = true\nENV['NSAutoreleaseFreedObjectCheckEnabled'] = true\n  \nENV['CFZombieLevel'] = 3\nENV['NSZombieEnabled'] = true\n \nret = system(\"#{File.join(ENV['TARGET_BUILD_DIR'], ENV['EXECUTABLE_PATH'])} -RegisterForSystemEvents\")\nexit(ret)";
-		};
-		D0F484890F4CC03500160DD9 /* Generate and Install docs */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Generate and Install docs";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# See also http://developer.apple.com/tools/creatingdocsetswithdoxygen.html \n\nVERS=$(agvtool vers -terse)\n\nDOXYFILE=$DERIVED_FILES_DIR/Doxyfile\nDOXYGEN=/Applications/Doxygen.app/Contents/Resources/doxygen\nDOCSET=$DSTROOT/Documentation\n\nmkdir -p $DERIVED_FILES_DIR || exit 1\nmkdir -p $DOCSET || exit 1\n\nif ! test -x $DOXYGEN ; then\n\tDOXYGEN=`which doxygen`;\nfi\n\nif ! test -x $DOXYGEN ; then\n\techo \"*** Install Doxygen to get documentatino generated for you automatically ***\"\n\texit 0\nfi\n\n\n# Check that doxygen is present\ntest -f $DOXYGEN || exit 1\n\n# Create a doxygen configuration file with only the settings we care about\n\ncat <<EOF > $DOXYFILE\n\nPROJECT_NAME           = $PROJECT_NAME\nPROJECT_NUMBER         = $VERS\nDOCSET_FEEDNAME  \t    = \"$PROJECT $VERSION\"\nOUTPUT_DIRECTORY       = $DOCSET\nINPUT                  = $SOURCE_ROOT/Source/$PROJECT $SOURCE_ROOT/Documentation $SOURCE_ROOT/Source/$PROJECT $SOURCE_ROOT/Source/$PROJECT/Formatters\nEXAMPLE_PATH           = $SOURCE_ROOT/Documentation/Samples $SOURCE_ROOT/Documentation/Guides\nIMAGE_PATH             = $SOURCE_ROOT/Documentation/images\nFILE_PATTERNS          = *.h *.m *.doxygen\n\nHIDE_UNDOC_MEMBERS     = NO\nHIDE_UNDOC_CLASSES     = YES\nHIDE_UNDOC_RELATIONS   = YES\nREPEAT_BRIEF           = NO\n\nGENERATE_LATEX         = NO\nGENERATE_HTML          = YES\nGENERATE_DOCSET        = YES\nDOCSET_FEEDNAME        = \"$PROJECT Documentation\"\nDOCSET_BUNDLE_ID       = com.labratrevenge.$PROJECT\n\nQUIET                  = NO\n\nHTML_FOOTER \t\t\t= $SOURCE_ROOT/Documentation/slate/index.html\nHTML_STYLESHEET \t\t= $SOURCE_ROOT/Documentation/slate/slate.css\n\nEOF\n\n#  Run doxygen on the updated config file.\n#  doxygen creates a Makefile that does most of the heavy lifting.\n\n$DOXYGEN $DOXYFILE\n\n\n#  make will invoke docsetutil. Take a look at the Makefile to see how this is done.\nmake -C $DOCSET/html install";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1094,12 +1057,13 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_VERSION = 4.2;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = YES;
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -1108,11 +1072,12 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_VERSION = 4.2;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
@@ -1189,7 +1154,6 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = iPhoneSampleApp;
-				SDKROOT = iphonesimulator3.0;
 				SKIP_INSTALL = YES;
 				VALID_ARCHS = "i386 ppc ppc64 ppc7400 ppc970 x86_64";
 			};
@@ -1219,7 +1183,6 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = iPhoneSampleApp;
-				SDKROOT = iphonesimulator3.0;
 				SKIP_INSTALL = YES;
 				VALID_ARCHS = "i386 ppc ppc64 ppc7400 ppc970 x86_64";
 			};
@@ -1259,7 +1222,6 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = iPhoneUnitTestsRunner;
-				SDKROOT = iphonesimulator3.0;
 			};
 			name = Debug;
 		};
@@ -1298,30 +1260,6 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = iPhoneUnitTestsRunner;
-				SDKROOT = iphonesimulator3.0;
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
-		D0F4848B0F4CC03500160DD9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				INFOPLIST_FILE = documentation.plist;
-				PRODUCT_NAME = Documentation;
-			};
-			name = Debug;
-		};
-		D0F4848C0F4CC03500160DD9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				INFOPLIST_FILE = documentation.plist;
-				PRODUCT_NAME = Documentation;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -1421,15 +1359,6 @@
 			buildConfigurations = (
 				D0788AEC0FABAB3700C3207D /* Debug */,
 				D0788AED0FABAB3700C3207D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D0F4848D0F4CC05300160DD9 /* Build configuration list for PBXAggregateTarget "Documentation" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D0F4848B0F4CC03500160DD9 /* Debug */,
-				D0F4848C0F4CC03500160DD9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
