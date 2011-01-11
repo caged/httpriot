@@ -289,7 +289,7 @@
 		D0F6D9C40FAB83B1006DE022 /* GHUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUnit.h; sourceTree = "<group>"; };
 		D0F6D9C50FAB83B1006DE022 /* GHUnitIPhoneTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIPhoneTestMain.m; sourceTree = "<group>"; };
 		D0F6D9C60FAB83B1006DE022 /* GHUNSObject+Swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GHUNSObject+Swizzle.h"; sourceTree = "<group>"; };
-		F8DE089611A6C3F5001DA4FB /* libhttpriot.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libhttpriot.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8DE089611A6C3F5001DA4FB /* libhttpriot_nojson.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libhttpriot_nojson.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -345,7 +345,7 @@
 				D0298A650F3FFBBD00EC8C01 /* libhttpriot.a */,
 				D0788AE80FABAB3600C3207D /* iPhoneUnitTestsRunner.app */,
 				D038BDCE0FF298330041F570 /* iPhoneSampleApp.app */,
-				F8DE089611A6C3F5001DA4FB /* libhttpriot.a */,
+				F8DE089611A6C3F5001DA4FB /* libhttpriot_nojson.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -788,7 +788,7 @@
 			);
 			name = libhttpriot_nojson;
 			productName = libhttpriot;
-			productReference = F8DE089611A6C3F5001DA4FB /* libhttpriot.a */;
+			productReference = F8DE089611A6C3F5001DA4FB /* libhttpriot_nojson.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -1283,7 +1283,7 @@
 				);
 				PREBINDING = NO;
 				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include/HTTPRiot;
-				PRODUCT_NAME = httpriot;
+				PRODUCT_NAME = httpriot_nojson;
 				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/HTTPRiot;
 			};
 			name = Debug;
@@ -1306,7 +1306,7 @@
 				);
 				PREBINDING = NO;
 				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include/HTTPRiot;
-				PRODUCT_NAME = httpriot;
+				PRODUCT_NAME = httpriot_nojson;
 				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/HTTPRiot;
 				SKIP_INSTALL = NO;
 				VERSIONING_SYSTEM = "apple-generic";
