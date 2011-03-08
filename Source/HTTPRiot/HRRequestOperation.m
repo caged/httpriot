@@ -232,12 +232,14 @@
     if ( !self.parentViewController )
     {
     	NSLog( @"WARNING: No parent view controller is set. Now cancel authentication requests which may need a view" );
+        [[challenge sender] cancelAuthenticationChallenge:challenge];
+        return;
     }
     
     if ( [challenge previousFailureCount] < 5 
         && self.parentViewController )
     {
-        _currentChallenge = [ChallengeHandler handlerForChallenge:challenge parentViewController:self.parentViewController];
+        _currentChallenge = [[ChallengeHandler handlerForChallenge:challenge parentViewController:self.parentViewController] retain];
         if (_currentChallenge == nil) {
             [[challenge sender] continueWithoutCredentialForAuthenticationChallenge:challenge];
         } else {
@@ -429,7 +431,7 @@
     // We want the challenge to hang around after we've nilled out currentChallenge, 
     // so retain/autorelease it.
     
-    challenge = [[_currentChallenge retain] autorelease];
+    challenge = [_currentChallenge autorelease];
     _currentChallenge = nil;
     
     // If the credential isn't present, this will trigger a -connection:didFailWithError: 

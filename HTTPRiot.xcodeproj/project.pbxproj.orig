@@ -1,0 +1,1500 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		D0F4848A0F4CC03500160DD9 /* Documentation */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = D0F4848D0F4CC05300160DD9 /* Build configuration list for PBXAggregateTarget "Documentation" */;
+			buildPhases = (
+				D0F484890F4CC03500160DD9 /* Generate and Install docs */,
+				D0315F340F4CFA8600AEFEB7 /* Cleanup doc info */,
+			);
+			dependencies = (
+			);
+			name = Documentation;
+			productName = Documentation;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		D00045D70FF2D5DB00CCAF1B /* ISAPeopleDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = D00045D60FF2D5DB00CCAF1B /* ISAPeopleDetailController.m */; };
+		D00047610FF31D4D00CCAF1B /* ISAEditableTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D00047600FF31D4D00CCAF1B /* ISAEditableTextFieldCell.m */; };
+		D00048240FF35B0E00CCAF1B /* NSObject+InvocationUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D00048220FF35B0E00CCAF1B /* NSObject+InvocationUtils.h */; };
+		D00048250FF35B0E00CCAF1B /* NSObject+InvocationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D00048230FF35B0E00CCAF1B /* NSObject+InvocationUtils.m */; };
+		D00D8C720FF160810077F798 /* RunTests.sh in Resources */ = {isa = PBXBuildFile; fileRef = D00D8C700FF160810077F798 /* RunTests.sh */; };
+		D02988310F3F7BCE00EC8C01 /* HRRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = D09E4B350F33EB0E00C9E26E /* HRRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D02988640F3F7F1200EC8C01 /* HTTPRiot_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = D02988630F3F7F1200EC8C01 /* HTTPRiot_Prefix.pch */; settings = {ATTRIBUTES = (Private, ); }; };
+		D02988FF0F3FB63F00EC8C01 /* HRGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = D02988FE0F3FB63F00EC8C01 /* HRGlobal.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D029893B0F3FBEDC00EC8C01 /* NSDictionary+ParamUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D02989330F3FBEDC00EC8C01 /* NSDictionary+ParamUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D029893C0F3FBEDC00EC8C01 /* NSDictionary+ParamUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D02989340F3FBEDC00EC8C01 /* NSDictionary+ParamUtils.m */; };
+		D029893F0F3FBEDC00EC8C01 /* NSString+EscapingUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D02989370F3FBEDC00EC8C01 /* NSString+EscapingUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D02989400F3FBEDC00EC8C01 /* NSString+EscapingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D02989380F3FBEDC00EC8C01 /* NSString+EscapingUtils.m */; };
+		D0298A2B0F3FCA8800EC8C01 /* HRFormatterProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A280F3FCA8800EC8C01 /* HRFormatterProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D0298A300F3FF4FD00EC8C01 /* HRFormatJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A2D0F3FF4FD00EC8C01 /* HRFormatJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D0298A310F3FF4FD00EC8C01 /* HRFormatJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A2E0F3FF4FD00EC8C01 /* HRFormatJSON.m */; };
+		D0298A350F3FF50800EC8C01 /* HRFormatXML.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A320F3FF50800EC8C01 /* HRFormatXML.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D0298A360F3FF50800EC8C01 /* HRFormatXML.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A330F3FF50800EC8C01 /* HRFormatXML.m */; };
+		D0298A8D0F3FFF2E00EC8C01 /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A810F3FFF2E00EC8C01 /* JSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D0298A8E0F3FFF2E00EC8C01 /* NSObject+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A820F3FFF2E00EC8C01 /* NSObject+SBJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D0298A8F0F3FFF2E00EC8C01 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A830F3FFF2E00EC8C01 /* NSObject+SBJSON.m */; };
+		D0298A900F3FFF2E00EC8C01 /* NSString+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A840F3FFF2E00EC8C01 /* NSString+SBJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D0298A910F3FFF2E00EC8C01 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A850F3FFF2E00EC8C01 /* NSString+SBJSON.m */; };
+		D0298A920F3FFF2E00EC8C01 /* SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A860F3FFF2E00EC8C01 /* SBJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D0298A930F3FFF2E00EC8C01 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A870F3FFF2E00EC8C01 /* SBJSON.m */; };
+		D0298A940F3FFF2E00EC8C01 /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A810F3FFF2E00EC8C01 /* JSON.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D0298A950F3FFF2E00EC8C01 /* NSObject+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A820F3FFF2E00EC8C01 /* NSObject+SBJSON.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D0298A960F3FFF2E00EC8C01 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A830F3FFF2E00EC8C01 /* NSObject+SBJSON.m */; };
+		D0298A970F3FFF2E00EC8C01 /* NSString+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A840F3FFF2E00EC8C01 /* NSString+SBJSON.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D0298A980F3FFF2E00EC8C01 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A850F3FFF2E00EC8C01 /* NSString+SBJSON.m */; };
+		D0298A990F3FFF2E00EC8C01 /* SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A860F3FFF2E00EC8C01 /* SBJSON.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D0298A9A0F3FFF2E00EC8C01 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A870F3FFF2E00EC8C01 /* SBJSON.m */; };
+		D02BB9530FF3EE95002EF1CF /* ISAAlertHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D02BB9520FF3EE95002EF1CF /* ISAAlertHelper.m */; };
+		D02E8D9E0FF2C17E00F754AC /* HRResponseDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = D038BD850FF28B960041F570 /* HRResponseDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D03321480FF2A55700330F62 /* iPhoneSampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D038BE000FF29A420041F570 /* iPhoneSampleAppDelegate.m */; };
+		D03321890FF2AAEB00330F62 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D03321880FF2AAEB00330F62 /* UIKit.framework */; };
+		D03321940FF2AB8500330F62 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0867D69BFE84028FC02AAC07 /* Foundation.framework */; };
+		D038BBED0FF162320041F570 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D038BBEC0FF162320041F570 /* CoreGraphics.framework */; };
+		D038BDF60FF2995D0041F570 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D038BDF50FF2995D0041F570 /* main.m */; };
+		D038BE060FF29B8A0041F570 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D038BE050FF29B8A0041F570 /* CoreGraphics.framework */; };
+		D03982E70FFD6385005FECE7 /* HROperationQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = D03982E50FFD6385005FECE7 /* HROperationQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D03982E80FFD6385005FECE7 /* HROperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = D03982E60FFD6385005FECE7 /* HROperationQueue.m */; };
+		D03982E90FFD6385005FECE7 /* HROperationQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = D03982E50FFD6385005FECE7 /* HROperationQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D03982EA0FFD6385005FECE7 /* HROperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = D03982E60FFD6385005FECE7 /* HROperationQueue.m */; };
+		D03DB6660F3163BB00F18796 /* HTTPRiot.h in Headers */ = {isa = PBXBuildFile; fileRef = D03DB6650F3163BB00F18796 /* HTTPRiot.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D03DB66C0F31654200F18796 /* HRRestModel.h in Headers */ = {isa = PBXBuildFile; fileRef = D03DB66A0F31654200F18796 /* HRRestModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D03DB66D0F31654200F18796 /* HRRestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D03DB66B0F31654200F18796 /* HRRestModel.m */; };
+		D04EF1110F65C50A003C6240 /* AIXMLDocumentSerialize.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF10C0F65C50A003C6240 /* AIXMLDocumentSerialize.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D04EF1120F65C50A003C6240 /* AIXMLDocumentSerialize.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF10D0F65C50A003C6240 /* AIXMLDocumentSerialize.m */; };
+		D04EF1130F65C50A003C6240 /* AIXMLElementSerialize.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF10E0F65C50A003C6240 /* AIXMLElementSerialize.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D04EF1140F65C50A003C6240 /* AIXMLElementSerialize.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF10F0F65C50A003C6240 /* AIXMLElementSerialize.m */; };
+		D04EF1150F65C50A003C6240 /* AIXMLSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF1100F65C50A003C6240 /* AIXMLSerialization.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D04EF1160F65C50A003C6240 /* AIXMLDocumentSerialize.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF10C0F65C50A003C6240 /* AIXMLDocumentSerialize.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D04EF1170F65C50A003C6240 /* AIXMLDocumentSerialize.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF10D0F65C50A003C6240 /* AIXMLDocumentSerialize.m */; };
+		D04EF1180F65C50A003C6240 /* AIXMLElementSerialize.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF10E0F65C50A003C6240 /* AIXMLElementSerialize.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D04EF1190F65C50A003C6240 /* AIXMLElementSerialize.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF10F0F65C50A003C6240 /* AIXMLElementSerialize.m */; };
+		D04EF11A0F65C50A003C6240 /* AIXMLSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF1100F65C50A003C6240 /* AIXMLSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D04EF12E0F65C52D003C6240 /* DDXMLDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF1220F65C52D003C6240 /* DDXMLDocument.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D04EF12F0F65C52D003C6240 /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF1230F65C52D003C6240 /* DDXMLDocument.m */; };
+		D04EF1300F65C52D003C6240 /* DDXMLElement.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF1240F65C52D003C6240 /* DDXMLElement.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D04EF1310F65C52D003C6240 /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF1250F65C52D003C6240 /* DDXMLElement.m */; };
+		D04EF1320F65C52D003C6240 /* DDXMLElementAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF1260F65C52D003C6240 /* DDXMLElementAdditions.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D04EF1330F65C52D003C6240 /* DDXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF1270F65C52D003C6240 /* DDXMLElementAdditions.m */; };
+		D04EF1340F65C52D003C6240 /* DDXMLNode.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF1280F65C52D003C6240 /* DDXMLNode.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D04EF1350F65C52D003C6240 /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF1290F65C52D003C6240 /* DDXMLNode.m */; };
+		D04EF1360F65C52D003C6240 /* DDXMLPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF12A0F65C52D003C6240 /* DDXMLPrivate.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D04EF1370F65C52D003C6240 /* NSStringAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF12B0F65C52D003C6240 /* NSStringAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D04EF1380F65C52D003C6240 /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF12C0F65C52D003C6240 /* NSStringAdditions.m */; };
+		D05A45070FF29C4300C672A5 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05A45060FF29C4300C672A5 /* MainWindow.xib */; };
+		D07744840F4885A700190554 /* HRRestModel.h in Headers */ = {isa = PBXBuildFile; fileRef = D03DB66A0F31654200F18796 /* HRRestModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D07744850F4885AE00190554 /* HRRestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D03DB66B0F31654200F18796 /* HRRestModel.m */; };
+		D07744860F4885DA00190554 /* HRFormatJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A2E0F3FF4FD00EC8C01 /* HRFormatJSON.m */; };
+		D07744870F4885DA00190554 /* HRFormatXML.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A330F3FF50800EC8C01 /* HRFormatXML.m */; };
+		D07744880F4885DA00190554 /* HRRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4B360F33EB0E00C9E26E /* HRRequestOperation.m */; };
+		D077448A0F4885DA00190554 /* NSDictionary+ParamUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D02989340F3FBEDC00EC8C01 /* NSDictionary+ParamUtils.m */; };
+		D077448B0F4885DA00190554 /* NSString+EscapingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D02989380F3FBEDC00EC8C01 /* NSString+EscapingUtils.m */; };
+		D077455F0F48913800190554 /* HTTPRiot.h in Headers */ = {isa = PBXBuildFile; fileRef = D03DB6650F3163BB00F18796 /* HTTPRiot.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D07745600F48917400190554 /* HTTPRiot_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = D02988630F3F7F1200EC8C01 /* HTTPRiot_Prefix.pch */; settings = {ATTRIBUTES = (Private, ); }; };
+		D07745610F48917400190554 /* HRGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = D02988FE0F3FB63F00EC8C01 /* HRGlobal.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D07745620F48917400190554 /* HRFormatJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A2D0F3FF4FD00EC8C01 /* HRFormatJSON.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D07745630F48917400190554 /* HRFormatterProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A280F3FCA8800EC8C01 /* HRFormatterProtocol.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D07745640F48917400190554 /* HRFormatXML.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A320F3FF50800EC8C01 /* HRFormatXML.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D07745650F48917400190554 /* HRRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = D09E4B350F33EB0E00C9E26E /* HRRequestOperation.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D07745670F48917400190554 /* NSDictionary+ParamUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D02989330F3FBEDC00EC8C01 /* NSDictionary+ParamUtils.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D07745680F48917400190554 /* NSString+EscapingUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D02989370F3FBEDC00EC8C01 /* NSString+EscapingUtils.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D0788AFC0FABAC8D00C3207D /* GHUnitIPhoneTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F6D9C50FAB83B1006DE022 /* GHUnitIPhoneTestMain.m */; };
+		D0788B050FABAD3800C3207D /* HTTPRiotTestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D029906A0F43422E00EC8C01 /* HTTPRiotTestHelper.m */; };
+		D0788B090FABAD4600C3207D /* HTTPRiotRestModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4A1D0F339E0600C9E26E /* HTTPRiotRestModelTest.m */; };
+		D0788B0D0FABAD6F00C3207D /* HTTPRiotRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D02990280F433C1800EC8C01 /* HTTPRiotRequestTest.m */; };
+		D0869053100543900061BA64 /* DDXML.h in Headers */ = {isa = PBXBuildFile; fileRef = D0869052100543900061BA64 /* DDXML.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D08B9AF7101685AF00351DC4 /* HRResponseDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = D038BD850FF28B960041F570 /* HRResponseDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D08B9AF8101685B000351DC4 /* NSObject+InvocationUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D00048220FF35B0E00CCAF1B /* NSObject+InvocationUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D08B9AF9101685B200351DC4 /* NSObject+InvocationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D00048230FF35B0E00CCAF1B /* NSObject+InvocationUtils.m */; };
+		D09754381005092500E0E499 /* HRExtensionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D09754371005092500E0E499 /* HRExtensionsTest.m */; };
+		D09A5D8E106E9C3E00167242 /* SBJsonBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D09A5D88106E9C3E00167242 /* SBJsonBase.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D09A5D8F106E9C3E00167242 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D09A5D89106E9C3E00167242 /* SBJsonBase.m */; };
+		D09A5D90106E9C3E00167242 /* SBJsonParser.h in Headers */ = {isa = PBXBuildFile; fileRef = D09A5D8A106E9C3E00167242 /* SBJsonParser.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D09A5D91106E9C3E00167242 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D09A5D8B106E9C3E00167242 /* SBJsonParser.m */; };
+		D09A5D92106E9C3E00167242 /* SBJsonWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = D09A5D8C106E9C3E00167242 /* SBJsonWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D09A5D93106E9C3E00167242 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = D09A5D8D106E9C3E00167242 /* SBJsonWriter.m */; };
+		D09A5DD9106EA0CD00167242 /* SBJsonBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D09A5D88106E9C3E00167242 /* SBJsonBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D09A5DDA106EA0CE00167242 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D09A5D89106E9C3E00167242 /* SBJsonBase.m */; };
+		D09A5DDB106EA0CE00167242 /* SBJsonParser.h in Headers */ = {isa = PBXBuildFile; fileRef = D09A5D8A106E9C3E00167242 /* SBJsonParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D09A5DDC106EA0CF00167242 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D09A5D8B106E9C3E00167242 /* SBJsonParser.m */; };
+		D09A5DDD106EA0CF00167242 /* SBJsonWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = D09A5D8C106E9C3E00167242 /* SBJsonWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D09A5DDE106EA0D100167242 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = D09A5D8D106E9C3E00167242 /* SBJsonWriter.m */; };
+		D09C54EA10321DE200097202 /* HRGlobal.m in Sources */ = {isa = PBXBuildFile; fileRef = D09C54E910321DE200097202 /* HRGlobal.m */; };
+		D09C54EB10321DE200097202 /* HRGlobal.m in Sources */ = {isa = PBXBuildFile; fileRef = D09C54E910321DE200097202 /* HRGlobal.m */; };
+		D09E4B390F33EB1D00C9E26E /* HRRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4B360F33EB0E00C9E26E /* HRRequestOperation.m */; };
+		D0A06A091016F779007B95C9 /* HRUtilitiesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A06A081016F779007B95C9 /* HRUtilitiesTest.m */; };
+		D0A6E4130FFD39F100012097 /* HRBase64.h in Headers */ = {isa = PBXBuildFile; fileRef = D0A6E4110FFD39F100012097 /* HRBase64.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D0A6E4140FFD39F100012097 /* HRBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A6E4120FFD39F100012097 /* HRBase64.m */; };
+		D0A6E4150FFD39F100012097 /* HRBase64.h in Headers */ = {isa = PBXBuildFile; fileRef = D0A6E4110FFD39F100012097 /* HRBase64.h */; };
+		D0A6E4160FFD39F100012097 /* HRBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A6E4120FFD39F100012097 /* HRBase64.m */; };
+		D0C7131E0FF2A3310083905B /* ISAPeopleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C7131D0FF2A3310083905B /* ISAPeopleTableViewController.m */; };
+		D0D9669B0F65C7C300F1347A /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D0D9669A0F65C7C300F1347A /* libxml2.2.dylib */; };
+		D0DBB0361099FD8700FC0836 /* libGHUnitIPhone3_0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0DBB0331099FD8700FC0836 /* libGHUnitIPhone3_0.a */; };
+		F8014E7A11ABC91100F9DD53 /* ChallengeHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = F8014E7811ABC91100F9DD53 /* ChallengeHandler.h */; };
+		F8014E7B11ABC91100F9DD53 /* ChallengeHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F8014E7911ABC91100F9DD53 /* ChallengeHandler.m */; };
+		F8014E7C11ABC91100F9DD53 /* ChallengeHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = F8014E7811ABC91100F9DD53 /* ChallengeHandler.h */; };
+		F8014E7D11ABC91100F9DD53 /* ChallengeHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F8014E7911ABC91100F9DD53 /* ChallengeHandler.m */; };
+		F8014E7E11ABC91100F9DD53 /* ChallengeHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = F8014E7811ABC91100F9DD53 /* ChallengeHandler.h */; };
+		F8014E7F11ABC91100F9DD53 /* ChallengeHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F8014E7911ABC91100F9DD53 /* ChallengeHandler.m */; };
+		F8014E8011ABC91100F9DD53 /* ChallengeHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F8014E7911ABC91100F9DD53 /* ChallengeHandler.m */; };
+		F8014E8111ABC91100F9DD53 /* ChallengeHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F8014E7911ABC91100F9DD53 /* ChallengeHandler.m */; };
+		F8DE085A11A6C3F5001DA4FB /* HRResponseDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = D038BD850FF28B960041F570 /* HRResponseDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F8DE085B11A6C3F5001DA4FB /* HTTPRiot.h in Headers */ = {isa = PBXBuildFile; fileRef = D03DB6650F3163BB00F18796 /* HTTPRiot.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F8DE085C11A6C3F5001DA4FB /* HTTPRiot_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = D02988630F3F7F1200EC8C01 /* HTTPRiot_Prefix.pch */; settings = {ATTRIBUTES = (Private, ); }; };
+		F8DE085D11A6C3F5001DA4FB /* HRGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = D02988FE0F3FB63F00EC8C01 /* HRGlobal.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		F8DE085E11A6C3F5001DA4FB /* HRFormatJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A2D0F3FF4FD00EC8C01 /* HRFormatJSON.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		F8DE085F11A6C3F5001DA4FB /* HRFormatterProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A280F3FCA8800EC8C01 /* HRFormatterProtocol.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		F8DE086011A6C3F5001DA4FB /* HRFormatXML.h in Headers */ = {isa = PBXBuildFile; fileRef = D0298A320F3FF50800EC8C01 /* HRFormatXML.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		F8DE086111A6C3F5001DA4FB /* HRRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = D09E4B350F33EB0E00C9E26E /* HRRequestOperation.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		F8DE086211A6C3F5001DA4FB /* HRRestModel.h in Headers */ = {isa = PBXBuildFile; fileRef = D03DB66A0F31654200F18796 /* HRRestModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F8DE086411A6C3F5001DA4FB /* NSDictionary+ParamUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D02989330F3FBEDC00EC8C01 /* NSDictionary+ParamUtils.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		F8DE086711A6C3F5001DA4FB /* NSString+EscapingUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D02989370F3FBEDC00EC8C01 /* NSString+EscapingUtils.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		F8DE086911A6C3F5001DA4FB /* AIXMLDocumentSerialize.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF10C0F65C50A003C6240 /* AIXMLDocumentSerialize.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		F8DE086A11A6C3F5001DA4FB /* AIXMLElementSerialize.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF10E0F65C50A003C6240 /* AIXMLElementSerialize.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		F8DE086B11A6C3F5001DA4FB /* AIXMLSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF1100F65C50A003C6240 /* AIXMLSerialization.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		F8DE086C11A6C3F5001DA4FB /* DDXMLDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF1220F65C52D003C6240 /* DDXMLDocument.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		F8DE086D11A6C3F5001DA4FB /* DDXMLElement.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF1240F65C52D003C6240 /* DDXMLElement.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		F8DE086E11A6C3F5001DA4FB /* DDXMLElementAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF1260F65C52D003C6240 /* DDXMLElementAdditions.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		F8DE086F11A6C3F5001DA4FB /* DDXMLNode.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF1280F65C52D003C6240 /* DDXMLNode.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		F8DE087011A6C3F5001DA4FB /* DDXMLPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF12A0F65C52D003C6240 /* DDXMLPrivate.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		F8DE087111A6C3F5001DA4FB /* NSStringAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D04EF12B0F65C52D003C6240 /* NSStringAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F8DE087211A6C3F5001DA4FB /* NSObject+InvocationUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D00048220FF35B0E00CCAF1B /* NSObject+InvocationUtils.h */; };
+		F8DE087311A6C3F5001DA4FB /* HRBase64.h in Headers */ = {isa = PBXBuildFile; fileRef = D0A6E4110FFD39F100012097 /* HRBase64.h */; };
+		F8DE087411A6C3F5001DA4FB /* HROperationQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = D03982E50FFD6385005FECE7 /* HROperationQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F8DE087511A6C3F5001DA4FB /* DDXML.h in Headers */ = {isa = PBXBuildFile; fileRef = D0869052100543900061BA64 /* DDXML.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		F8DE087A11A6C3F5001DA4FB /* HRFormatJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A2E0F3FF4FD00EC8C01 /* HRFormatJSON.m */; };
+		F8DE087B11A6C3F5001DA4FB /* HRFormatXML.m in Sources */ = {isa = PBXBuildFile; fileRef = D0298A330F3FF50800EC8C01 /* HRFormatXML.m */; };
+		F8DE087C11A6C3F5001DA4FB /* HRRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D09E4B360F33EB0E00C9E26E /* HRRequestOperation.m */; };
+		F8DE087D11A6C3F5001DA4FB /* HRRestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D03DB66B0F31654200F18796 /* HRRestModel.m */; };
+		F8DE087E11A6C3F5001DA4FB /* NSDictionary+ParamUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D02989340F3FBEDC00EC8C01 /* NSDictionary+ParamUtils.m */; };
+		F8DE088111A6C3F5001DA4FB /* NSString+EscapingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D02989380F3FBEDC00EC8C01 /* NSString+EscapingUtils.m */; };
+		F8DE088311A6C3F5001DA4FB /* AIXMLDocumentSerialize.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF10D0F65C50A003C6240 /* AIXMLDocumentSerialize.m */; };
+		F8DE088411A6C3F5001DA4FB /* AIXMLElementSerialize.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF10F0F65C50A003C6240 /* AIXMLElementSerialize.m */; };
+		F8DE088511A6C3F5001DA4FB /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF1230F65C52D003C6240 /* DDXMLDocument.m */; };
+		F8DE088611A6C3F5001DA4FB /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF1250F65C52D003C6240 /* DDXMLElement.m */; };
+		F8DE088711A6C3F5001DA4FB /* DDXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF1270F65C52D003C6240 /* DDXMLElementAdditions.m */; };
+		F8DE088811A6C3F5001DA4FB /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF1290F65C52D003C6240 /* DDXMLNode.m */; };
+		F8DE088911A6C3F5001DA4FB /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D04EF12C0F65C52D003C6240 /* NSStringAdditions.m */; };
+		F8DE088A11A6C3F5001DA4FB /* NSObject+InvocationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D00048230FF35B0E00CCAF1B /* NSObject+InvocationUtils.m */; };
+		F8DE088B11A6C3F5001DA4FB /* HRBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A6E4120FFD39F100012097 /* HRBase64.m */; };
+		F8DE088C11A6C3F5001DA4FB /* HROperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = D03982E60FFD6385005FECE7 /* HROperationQueue.m */; };
+		F8DE088D11A6C3F5001DA4FB /* HRGlobal.m in Sources */ = {isa = PBXBuildFile; fileRef = D09C54E910321DE200097202 /* HRGlobal.m */; };
+		F8DE089211A6C3F5001DA4FB /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D0D9669A0F65C7C300F1347A /* libxml2.2.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D02E8D6F0FF2BECF00F754AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D0298A640F3FFBBD00EC8C01;
+			remoteInfo = libhttpriot;
+		};
+		D0788AF20FABAC3600C3207D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D0298A640F3FFBBD00EC8C01;
+			remoteInfo = libhttpriot;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0867D69BFE84028FC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8DC2EF5B0486A6940098B216 /* HTTPRiot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HTTPRiot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D00045D50FF2D5DB00CCAF1B /* ISAPeopleDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISAPeopleDetailController.h; sourceTree = "<group>"; };
+		D00045D60FF2D5DB00CCAF1B /* ISAPeopleDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISAPeopleDetailController.m; sourceTree = "<group>"; };
+		D000475F0FF31D4D00CCAF1B /* ISAEditableTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISAEditableTextFieldCell.h; sourceTree = "<group>"; };
+		D00047600FF31D4D00CCAF1B /* ISAEditableTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISAEditableTextFieldCell.m; sourceTree = "<group>"; };
+		D00048220FF35B0E00CCAF1B /* NSObject+InvocationUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+InvocationUtils.h"; sourceTree = "<group>"; };
+		D00048230FF35B0E00CCAF1B /* NSObject+InvocationUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+InvocationUtils.m"; sourceTree = "<group>"; };
+		D00D8C700FF160810077F798 /* RunTests.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = RunTests.sh; sourceTree = "<group>"; };
+		D02988630F3F7F1200EC8C01 /* HTTPRiot_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRiot_Prefix.pch; sourceTree = "<group>"; };
+		D02988FE0F3FB63F00EC8C01 /* HRGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRGlobal.h; sourceTree = "<group>"; };
+		D02989330F3FBEDC00EC8C01 /* NSDictionary+ParamUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+ParamUtils.h"; sourceTree = "<group>"; };
+		D02989340F3FBEDC00EC8C01 /* NSDictionary+ParamUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+ParamUtils.m"; sourceTree = "<group>"; };
+		D02989370F3FBEDC00EC8C01 /* NSString+EscapingUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+EscapingUtils.h"; sourceTree = "<group>"; };
+		D02989380F3FBEDC00EC8C01 /* NSString+EscapingUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+EscapingUtils.m"; sourceTree = "<group>"; };
+		D0298A280F3FCA8800EC8C01 /* HRFormatterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRFormatterProtocol.h; sourceTree = "<group>"; };
+		D0298A2D0F3FF4FD00EC8C01 /* HRFormatJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRFormatJSON.h; sourceTree = "<group>"; };
+		D0298A2E0F3FF4FD00EC8C01 /* HRFormatJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRFormatJSON.m; sourceTree = "<group>"; };
+		D0298A320F3FF50800EC8C01 /* HRFormatXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRFormatXML.h; sourceTree = "<group>"; };
+		D0298A330F3FF50800EC8C01 /* HRFormatXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRFormatXML.m; sourceTree = "<group>"; };
+		D0298A650F3FFBBD00EC8C01 /* libhttpriot.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libhttpriot.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0298A810F3FFF2E00EC8C01 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		D0298A820F3FFF2E00EC8C01 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		D0298A830F3FFF2E00EC8C01 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		D0298A840F3FFF2E00EC8C01 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		D0298A850F3FFF2E00EC8C01 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		D0298A860F3FFF2E00EC8C01 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		D0298A870F3FFF2E00EC8C01 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		D02990280F433C1800EC8C01 /* HTTPRiotRequestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRiotRequestTest.m; sourceTree = "<group>"; };
+		D02990380F433D1900EC8C01 /* HTTPRiotTestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRiotTestHelper.h; sourceTree = "<group>"; };
+		D029906A0F43422E00EC8C01 /* HTTPRiotTestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRiotTestHelper.m; sourceTree = "<group>"; };
+		D02BB9510FF3EE95002EF1CF /* ISAAlertHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISAAlertHelper.h; sourceTree = "<group>"; };
+		D02BB9520FF3EE95002EF1CF /* ISAAlertHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISAAlertHelper.m; sourceTree = "<group>"; };
+		D03321880FF2AAEB00330F62 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D033221D0FF2AD1000330F62 /* iPhoneSampleApp_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPhoneSampleApp_Prefix.pch; sourceTree = "<group>"; };
+		D038BBEC0FF162320041F570 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D038BD850FF28B960041F570 /* HRResponseDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRResponseDelegate.h; sourceTree = "<group>"; };
+		D038BDCE0FF298330041F570 /* iPhoneSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPhoneSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D038BDF50FF2995D0041F570 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D038BDFF0FF29A420041F570 /* iPhoneSampleAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPhoneSampleAppDelegate.h; sourceTree = "<group>"; };
+		D038BE000FF29A420041F570 /* iPhoneSampleAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iPhoneSampleAppDelegate.m; sourceTree = "<group>"; };
+		D038BE050FF29B8A0041F570 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D03982E50FFD6385005FECE7 /* HROperationQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HROperationQueue.h; sourceTree = "<group>"; };
+		D03982E60FFD6385005FECE7 /* HROperationQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HROperationQueue.m; sourceTree = "<group>"; };
+		D03DB6650F3163BB00F18796 /* HTTPRiot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRiot.h; sourceTree = "<group>"; };
+		D03DB66A0F31654200F18796 /* HRRestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRRestModel.h; sourceTree = "<group>"; };
+		D03DB66B0F31654200F18796 /* HRRestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRRestModel.m; sourceTree = "<group>"; };
+		D04EF10C0F65C50A003C6240 /* AIXMLDocumentSerialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIXMLDocumentSerialize.h; sourceTree = "<group>"; };
+		D04EF10D0F65C50A003C6240 /* AIXMLDocumentSerialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIXMLDocumentSerialize.m; sourceTree = "<group>"; };
+		D04EF10E0F65C50A003C6240 /* AIXMLElementSerialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIXMLElementSerialize.h; sourceTree = "<group>"; };
+		D04EF10F0F65C50A003C6240 /* AIXMLElementSerialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIXMLElementSerialize.m; sourceTree = "<group>"; };
+		D04EF1100F65C50A003C6240 /* AIXMLSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIXMLSerialization.h; sourceTree = "<group>"; };
+		D04EF1220F65C52D003C6240 /* DDXMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLDocument.h; sourceTree = "<group>"; };
+		D04EF1230F65C52D003C6240 /* DDXMLDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLDocument.m; sourceTree = "<group>"; };
+		D04EF1240F65C52D003C6240 /* DDXMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLElement.h; sourceTree = "<group>"; };
+		D04EF1250F65C52D003C6240 /* DDXMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLElement.m; sourceTree = "<group>"; };
+		D04EF1260F65C52D003C6240 /* DDXMLElementAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLElementAdditions.h; sourceTree = "<group>"; };
+		D04EF1270F65C52D003C6240 /* DDXMLElementAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLElementAdditions.m; sourceTree = "<group>"; };
+		D04EF1280F65C52D003C6240 /* DDXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLNode.h; sourceTree = "<group>"; };
+		D04EF1290F65C52D003C6240 /* DDXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLNode.m; sourceTree = "<group>"; };
+		D04EF12A0F65C52D003C6240 /* DDXMLPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLPrivate.h; sourceTree = "<group>"; };
+		D04EF12B0F65C52D003C6240 /* NSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringAdditions.h; sourceTree = "<group>"; };
+		D04EF12C0F65C52D003C6240 /* NSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringAdditions.m; sourceTree = "<group>"; };
+		D054C82B104F2B96008CC5EF /* iPhoneSampleApp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "iPhoneSampleApp-Info.plist"; sourceTree = "<group>"; };
+		D054C82D104F2BA1008CC5EF /* iPhoneUnitTestsRunner-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "iPhoneUnitTestsRunner-Info.plist"; path = "../../../../../Desktop/iPhoneUnitTestsRunner-Info.plist"; sourceTree = "<group>"; };
+		D05A45060FF29C4300C672A5 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		D0788AE80FABAB3600C3207D /* iPhoneUnitTestsRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPhoneUnitTestsRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0869052100543900061BA64 /* DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXML.h; sourceTree = "<group>"; };
+		D09754371005092500E0E499 /* HRExtensionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRExtensionsTest.m; sourceTree = "<group>"; };
+		D09A5D88106E9C3E00167242 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		D09A5D89106E9C3E00167242 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		D09A5D8A106E9C3E00167242 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		D09A5D8B106E9C3E00167242 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		D09A5D8C106E9C3E00167242 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		D09A5D8D106E9C3E00167242 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		D09C54E910321DE200097202 /* HRGlobal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRGlobal.m; sourceTree = "<group>"; };
+		D09E4A1D0F339E0600C9E26E /* HTTPRiotRestModelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRiotRestModelTest.m; sourceTree = "<group>"; };
+		D09E4B350F33EB0E00C9E26E /* HRRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRRequestOperation.h; sourceTree = "<group>"; };
+		D09E4B360F33EB0E00C9E26E /* HRRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRRequestOperation.m; sourceTree = "<group>"; };
+		D0A06A081016F779007B95C9 /* HRUtilitiesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRUtilitiesTest.m; sourceTree = "<group>"; };
+		D0A6E4110FFD39F100012097 /* HRBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRBase64.h; sourceTree = "<group>"; };
+		D0A6E4120FFD39F100012097 /* HRBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRBase64.m; sourceTree = "<group>"; };
+		D0ADB5E310025AA8005C1371 /* libGHUnitIPhone2_1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGHUnitIPhone2_1.a; path = "Source/HTTPRiot/Vendor/gh-unit-iphone/libGHUnitIPhone2_1.a"; sourceTree = SOURCE_ROOT; };
+		D0C7131C0FF2A3310083905B /* ISAPeopleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISAPeopleTableViewController.h; sourceTree = "<group>"; };
+		D0C7131D0FF2A3310083905B /* ISAPeopleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISAPeopleTableViewController.m; sourceTree = "<group>"; };
+		D0D9669A0F65C7C300F1347A /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		D0DBB0321099FD8700FC0836 /* GHUnitIPhoneAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUnitIPhoneAppDelegate.h; sourceTree = "<group>"; };
+		D0DBB0331099FD8700FC0836 /* libGHUnitIPhone3_0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGHUnitIPhone3_0.a; sourceTree = "<group>"; };
+		D0DBB0341099FD8700FC0836 /* NSException+GHTestFailureExceptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSException+GHTestFailureExceptions.h"; sourceTree = "<group>"; };
+		D0DBB0351099FD8700FC0836 /* NSValue+GHValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValue+GHValueFormatter.h"; sourceTree = "<group>"; };
+		D0F6D8C40FAB72D0006DE022 /* GHUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnit.framework; path = ../../../../Library/Frameworks/GHUnit.framework; sourceTree = SOURCE_ROOT; };
+		D0F6D8CE0FAB732B006DE022 /* GHUnitTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitTestMain.m; sourceTree = "<group>"; };
+		D0F6D9B90FAB83B1006DE022 /* GHAsyncTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHAsyncTestCase.h; sourceTree = "<group>"; };
+		D0F6D9BD0FAB83B1006DE022 /* GHTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTest.h; sourceTree = "<group>"; };
+		D0F6D9BE0FAB83B1006DE022 /* GHTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestCase.h; sourceTree = "<group>"; };
+		D0F6D9BF0FAB83B1006DE022 /* GHTestGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestGroup.h; sourceTree = "<group>"; };
+		D0F6D9C00FAB83B1006DE022 /* GHTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTesting.h; sourceTree = "<group>"; };
+		D0F6D9C10FAB83B1006DE022 /* GHTestMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestMacros.h; sourceTree = "<group>"; };
+		D0F6D9C20FAB83B1006DE022 /* GHTestRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestRunner.h; sourceTree = "<group>"; };
+		D0F6D9C30FAB83B1006DE022 /* GHTestSuite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestSuite.h; sourceTree = "<group>"; };
+		D0F6D9C40FAB83B1006DE022 /* GHUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUnit.h; sourceTree = "<group>"; };
+		D0F6D9C50FAB83B1006DE022 /* GHUnitIPhoneTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIPhoneTestMain.m; sourceTree = "<group>"; };
+		D0F6D9C60FAB83B1006DE022 /* GHUNSObject+Swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GHUNSObject+Swizzle.h"; sourceTree = "<group>"; };
+		F8014E7811ABC91100F9DD53 /* ChallengeHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengeHandler.h; sourceTree = "<group>"; };
+		F8014E7911ABC91100F9DD53 /* ChallengeHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengeHandler.m; sourceTree = "<group>"; };
+		F8DE089611A6C3F5001DA4FB /* libhttpriot.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libhttpriot.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8DC2EF560486A6940098B216 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0298A630F3FFBBD00EC8C01 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0D9669B0F65C7C300F1347A /* libxml2.2.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D038BDCC0FF298330041F570 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D03321940FF2AB8500330F62 /* Foundation.framework in Frameworks */,
+				D038BE060FF29B8A0041F570 /* CoreGraphics.framework in Frameworks */,
+				D03321890FF2AAEB00330F62 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0788AE60FABAB3600C3207D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D038BBED0FF162320041F570 /* CoreGraphics.framework in Frameworks */,
+				D0DBB0361099FD8700FC0836 /* libGHUnitIPhone3_0.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F8DE089111A6C3F5001DA4FB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F8DE089211A6C3F5001DA4FB /* libxml2.2.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		034768DFFF38A50411DB9C8B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8DC2EF5B0486A6940098B216 /* HTTPRiot.framework */,
+				D0298A650F3FFBBD00EC8C01 /* libhttpriot.a */,
+				D0788AE80FABAB3600C3207D /* iPhoneUnitTestsRunner.app */,
+				D038BDCE0FF298330041F570 /* iPhoneSampleApp.app */,
+				F8DE089611A6C3F5001DA4FB /* libhttpriot.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0867D691FE84028FC02AAC07 /* HTTPRiot */ = {
+			isa = PBXGroup;
+			children = (
+				D03DB6630F315F9E00F18796 /* Source */,
+				089C1665FE841158C02AAC07 /* Resources */,
+				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
+				034768DFFF38A50411DB9C8B /* Products */,
+				D0D9669A0F65C7C300F1347A /* libxml2.2.dylib */,
+				D038BBEC0FF162320041F570 /* CoreGraphics.framework */,
+			);
+			name = HTTPRiot;
+			sourceTree = "<group>";
+		};
+		0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				D038BE050FF29B8A0041F570 /* CoreGraphics.framework */,
+				1058C7B0FEA5585E11CA2CBB /* Linked Frameworks */,
+				1058C7B2FEA5585E11CA2CBB /* Other Frameworks */,
+			);
+			name = "External Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		089C1665FE841158C02AAC07 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D054C82D104F2BA1008CC5EF /* iPhoneUnitTestsRunner-Info.plist */,
+				D054C82B104F2B96008CC5EF /* iPhoneSampleApp-Info.plist */,
+				8DC2EF5A0486A6940098B216 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1058C7B0FEA5585E11CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D0F6D8C40FAB72D0006DE022 /* GHUnit.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7B2FEA5585E11CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D03321880FF2AAEB00330F62 /* UIKit.framework */,
+				0867D69BFE84028FC02AAC07 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		D029892F0F3FBEAD00EC8C01 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D02989330F3FBEDC00EC8C01 /* NSDictionary+ParamUtils.h */,
+				D02989340F3FBEDC00EC8C01 /* NSDictionary+ParamUtils.m */,
+				D02989370F3FBEDC00EC8C01 /* NSString+EscapingUtils.h */,
+				D02989380F3FBEDC00EC8C01 /* NSString+EscapingUtils.m */,
+				D00048220FF35B0E00CCAF1B /* NSObject+InvocationUtils.h */,
+				D00048230FF35B0E00CCAF1B /* NSObject+InvocationUtils.m */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D0298A1C0F3FC9A400EC8C01 /* Formatters */ = {
+			isa = PBXGroup;
+			children = (
+				D0298A280F3FCA8800EC8C01 /* HRFormatterProtocol.h */,
+				D0298A2D0F3FF4FD00EC8C01 /* HRFormatJSON.h */,
+				D0298A2E0F3FF4FD00EC8C01 /* HRFormatJSON.m */,
+				D0298A320F3FF50800EC8C01 /* HRFormatXML.h */,
+				D0298A330F3FF50800EC8C01 /* HRFormatXML.m */,
+			);
+			path = Formatters;
+			sourceTree = "<group>";
+		};
+		D0298A7F0F3FFF2E00EC8C01 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				D09A5D88106E9C3E00167242 /* SBJsonBase.h */,
+				D09A5D89106E9C3E00167242 /* SBJsonBase.m */,
+				D09A5D8A106E9C3E00167242 /* SBJsonParser.h */,
+				D09A5D8B106E9C3E00167242 /* SBJsonParser.m */,
+				D09A5D8C106E9C3E00167242 /* SBJsonWriter.h */,
+				D09A5D8D106E9C3E00167242 /* SBJsonWriter.m */,
+				D0298A810F3FFF2E00EC8C01 /* JSON.h */,
+				D0298A820F3FFF2E00EC8C01 /* NSObject+SBJSON.h */,
+				D0298A830F3FFF2E00EC8C01 /* NSObject+SBJSON.m */,
+				D0298A840F3FFF2E00EC8C01 /* NSString+SBJSON.h */,
+				D0298A850F3FFF2E00EC8C01 /* NSString+SBJSON.m */,
+				D0298A860F3FFF2E00EC8C01 /* SBJSON.h */,
+				D0298A870F3FFF2E00EC8C01 /* SBJSON.m */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		D0298B370F4038C500EC8C01 /* Server */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Server;
+			sourceTree = "<group>";
+		};
+		D038BDF40FF299500041F570 /* iPhoneSampleApp */ = {
+			isa = PBXGroup;
+			children = (
+				D05A45060FF29C4300C672A5 /* MainWindow.xib */,
+				D038BDF50FF2995D0041F570 /* main.m */,
+				D038BDFF0FF29A420041F570 /* iPhoneSampleAppDelegate.h */,
+				D038BE000FF29A420041F570 /* iPhoneSampleAppDelegate.m */,
+				D0C7131C0FF2A3310083905B /* ISAPeopleTableViewController.h */,
+				D0C7131D0FF2A3310083905B /* ISAPeopleTableViewController.m */,
+				D033221D0FF2AD1000330F62 /* iPhoneSampleApp_Prefix.pch */,
+				D00045D50FF2D5DB00CCAF1B /* ISAPeopleDetailController.h */,
+				D00045D60FF2D5DB00CCAF1B /* ISAPeopleDetailController.m */,
+				D000475F0FF31D4D00CCAF1B /* ISAEditableTextFieldCell.h */,
+				D00047600FF31D4D00CCAF1B /* ISAEditableTextFieldCell.m */,
+				D02BB9510FF3EE95002EF1CF /* ISAAlertHelper.h */,
+				D02BB9520FF3EE95002EF1CF /* ISAAlertHelper.m */,
+			);
+			path = iPhoneSampleApp;
+			sourceTree = "<group>";
+		};
+		D03DB6630F315F9E00F18796 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				D03DB6640F31639000F18796 /* HTTPRiot */,
+				D0F6D9B70FAB83B1006DE022 /* Vendor */,
+				D038BDF40FF299500041F570 /* iPhoneSampleApp */,
+				D09E4A0F0F339D5200C9E26E /* Tests */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		D03DB6640F31639000F18796 /* HTTPRiot */ = {
+			isa = PBXGroup;
+			children = (
+				F8014E7711ABC84600F9DD53 /* Authentication */,
+				D0A6E4100FFD39DC00012097 /* Utilities */,
+				D0298A1C0F3FC9A400EC8C01 /* Formatters */,
+				D029892F0F3FBEAD00EC8C01 /* Extensions */,
+				D03DB6650F3163BB00F18796 /* HTTPRiot.h */,
+				D03DB66A0F31654200F18796 /* HRRestModel.h */,
+				D03DB66B0F31654200F18796 /* HRRestModel.m */,
+				D09E4B350F33EB0E00C9E26E /* HRRequestOperation.h */,
+				D09E4B360F33EB0E00C9E26E /* HRRequestOperation.m */,
+				D02988630F3F7F1200EC8C01 /* HTTPRiot_Prefix.pch */,
+				D02988FE0F3FB63F00EC8C01 /* HRGlobal.h */,
+				D038BD850FF28B960041F570 /* HRResponseDelegate.h */,
+				D03982E50FFD6385005FECE7 /* HROperationQueue.h */,
+				D03982E60FFD6385005FECE7 /* HROperationQueue.m */,
+				D09C54E910321DE200097202 /* HRGlobal.m */,
+			);
+			path = HTTPRiot;
+			sourceTree = "<group>";
+		};
+		D04EF10B0F65C50A003C6240 /* AIXMLSerialization */ = {
+			isa = PBXGroup;
+			children = (
+				D04EF10C0F65C50A003C6240 /* AIXMLDocumentSerialize.h */,
+				D04EF10D0F65C50A003C6240 /* AIXMLDocumentSerialize.m */,
+				D04EF10E0F65C50A003C6240 /* AIXMLElementSerialize.h */,
+				D04EF10F0F65C50A003C6240 /* AIXMLElementSerialize.m */,
+				D04EF1100F65C50A003C6240 /* AIXMLSerialization.h */,
+			);
+			path = AIXMLSerialization;
+			sourceTree = "<group>";
+		};
+		D04EF1200F65C52D003C6240 /* KissXML */ = {
+			isa = PBXGroup;
+			children = (
+				D0869052100543900061BA64 /* DDXML.h */,
+				D04EF1220F65C52D003C6240 /* DDXMLDocument.h */,
+				D04EF1230F65C52D003C6240 /* DDXMLDocument.m */,
+				D04EF1240F65C52D003C6240 /* DDXMLElement.h */,
+				D04EF1250F65C52D003C6240 /* DDXMLElement.m */,
+				D04EF1260F65C52D003C6240 /* DDXMLElementAdditions.h */,
+				D04EF1270F65C52D003C6240 /* DDXMLElementAdditions.m */,
+				D04EF1280F65C52D003C6240 /* DDXMLNode.h */,
+				D04EF1290F65C52D003C6240 /* DDXMLNode.m */,
+				D04EF12A0F65C52D003C6240 /* DDXMLPrivate.h */,
+				D04EF12B0F65C52D003C6240 /* NSStringAdditions.h */,
+				D04EF12C0F65C52D003C6240 /* NSStringAdditions.m */,
+			);
+			path = KissXML;
+			sourceTree = "<group>";
+		};
+		D09E4A0F0F339D5200C9E26E /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				D0ADB5E310025AA8005C1371 /* libGHUnitIPhone2_1.a */,
+				D0F6D8CE0FAB732B006DE022 /* GHUnitTestMain.m */,
+				D0298B370F4038C500EC8C01 /* Server */,
+				D09E4A1D0F339E0600C9E26E /* HTTPRiotRestModelTest.m */,
+				D02990280F433C1800EC8C01 /* HTTPRiotRequestTest.m */,
+				D02990380F433D1900EC8C01 /* HTTPRiotTestHelper.h */,
+				D029906A0F43422E00EC8C01 /* HTTPRiotTestHelper.m */,
+				D09754371005092500E0E499 /* HRExtensionsTest.m */,
+				D0A06A081016F779007B95C9 /* HRUtilitiesTest.m */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		D0A6E4100FFD39DC00012097 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				D0A6E4110FFD39F100012097 /* HRBase64.h */,
+				D0A6E4120FFD39F100012097 /* HRBase64.m */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		D0F6D9B70FAB83B1006DE022 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				D04EF1200F65C52D003C6240 /* KissXML */,
+				D04EF10B0F65C50A003C6240 /* AIXMLSerialization */,
+				D0298A7F0F3FFF2E00EC8C01 /* JSON */,
+				D0F6D9B80FAB83B1006DE022 /* gh-unit-iphone */,
+			);
+			name = Vendor;
+			path = HTTPRiot/Vendor;
+			sourceTree = "<group>";
+		};
+		D0F6D9B80FAB83B1006DE022 /* gh-unit-iphone */ = {
+			isa = PBXGroup;
+			children = (
+				D0DBB0321099FD8700FC0836 /* GHUnitIPhoneAppDelegate.h */,
+				D0DBB0331099FD8700FC0836 /* libGHUnitIPhone3_0.a */,
+				D0DBB0341099FD8700FC0836 /* NSException+GHTestFailureExceptions.h */,
+				D0DBB0351099FD8700FC0836 /* NSValue+GHValueFormatter.h */,
+				D00D8C700FF160810077F798 /* RunTests.sh */,
+				D0F6D9B90FAB83B1006DE022 /* GHAsyncTestCase.h */,
+				D0F6D9BD0FAB83B1006DE022 /* GHTest.h */,
+				D0F6D9BE0FAB83B1006DE022 /* GHTestCase.h */,
+				D0F6D9BF0FAB83B1006DE022 /* GHTestGroup.h */,
+				D0F6D9C00FAB83B1006DE022 /* GHTesting.h */,
+				D0F6D9C10FAB83B1006DE022 /* GHTestMacros.h */,
+				D0F6D9C20FAB83B1006DE022 /* GHTestRunner.h */,
+				D0F6D9C30FAB83B1006DE022 /* GHTestSuite.h */,
+				D0F6D9C40FAB83B1006DE022 /* GHUnit.h */,
+				D0F6D9C50FAB83B1006DE022 /* GHUnitIPhoneTestMain.m */,
+				D0F6D9C60FAB83B1006DE022 /* GHUNSObject+Swizzle.h */,
+			);
+			path = "gh-unit-iphone";
+			sourceTree = "<group>";
+		};
+		F8014E7711ABC84600F9DD53 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				F8014E7811ABC91100F9DD53 /* ChallengeHandler.h */,
+				F8014E7911ABC91100F9DD53 /* ChallengeHandler.m */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		8DC2EF500486A6940098B216 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D03DB6660F3163BB00F18796 /* HTTPRiot.h in Headers */,
+				D02988640F3F7F1200EC8C01 /* HTTPRiot_Prefix.pch in Headers */,
+				D02988FF0F3FB63F00EC8C01 /* HRGlobal.h in Headers */,
+				D0298A300F3FF4FD00EC8C01 /* HRFormatJSON.h in Headers */,
+				D0298A2B0F3FCA8800EC8C01 /* HRFormatterProtocol.h in Headers */,
+				D0298A350F3FF50800EC8C01 /* HRFormatXML.h in Headers */,
+				D02988310F3F7BCE00EC8C01 /* HRRequestOperation.h in Headers */,
+				D03DB66C0F31654200F18796 /* HRRestModel.h in Headers */,
+				D0298A8D0F3FFF2E00EC8C01 /* JSON.h in Headers */,
+				D029893B0F3FBEDC00EC8C01 /* NSDictionary+ParamUtils.h in Headers */,
+				D0298A8E0F3FFF2E00EC8C01 /* NSObject+SBJSON.h in Headers */,
+				D0298A900F3FFF2E00EC8C01 /* NSString+SBJSON.h in Headers */,
+				D029893F0F3FBEDC00EC8C01 /* NSString+EscapingUtils.h in Headers */,
+				D0298A920F3FFF2E00EC8C01 /* SBJSON.h in Headers */,
+				D04EF1160F65C50A003C6240 /* AIXMLDocumentSerialize.h in Headers */,
+				D04EF1180F65C50A003C6240 /* AIXMLElementSerialize.h in Headers */,
+				D04EF11A0F65C50A003C6240 /* AIXMLSerialization.h in Headers */,
+				D0A6E4130FFD39F100012097 /* HRBase64.h in Headers */,
+				D03982E90FFD6385005FECE7 /* HROperationQueue.h in Headers */,
+				D08B9AF7101685AF00351DC4 /* HRResponseDelegate.h in Headers */,
+				D08B9AF8101685B000351DC4 /* NSObject+InvocationUtils.h in Headers */,
+				D09A5DD9106EA0CD00167242 /* SBJsonBase.h in Headers */,
+				D09A5DDB106EA0CE00167242 /* SBJsonParser.h in Headers */,
+				D09A5DDD106EA0CF00167242 /* SBJsonWriter.h in Headers */,
+				F8014E7E11ABC91100F9DD53 /* ChallengeHandler.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0298A610F3FFBBD00EC8C01 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D02E8D9E0FF2C17E00F754AC /* HRResponseDelegate.h in Headers */,
+				D077455F0F48913800190554 /* HTTPRiot.h in Headers */,
+				D07745600F48917400190554 /* HTTPRiot_Prefix.pch in Headers */,
+				D07745610F48917400190554 /* HRGlobal.h in Headers */,
+				D07745620F48917400190554 /* HRFormatJSON.h in Headers */,
+				D07745630F48917400190554 /* HRFormatterProtocol.h in Headers */,
+				D07745640F48917400190554 /* HRFormatXML.h in Headers */,
+				D07745650F48917400190554 /* HRRequestOperation.h in Headers */,
+				D07744840F4885A700190554 /* HRRestModel.h in Headers */,
+				D0298A940F3FFF2E00EC8C01 /* JSON.h in Headers */,
+				D07745670F48917400190554 /* NSDictionary+ParamUtils.h in Headers */,
+				D0298A950F3FFF2E00EC8C01 /* NSObject+SBJSON.h in Headers */,
+				D0298A970F3FFF2E00EC8C01 /* NSString+SBJSON.h in Headers */,
+				D07745680F48917400190554 /* NSString+EscapingUtils.h in Headers */,
+				D0298A990F3FFF2E00EC8C01 /* SBJSON.h in Headers */,
+				D04EF1110F65C50A003C6240 /* AIXMLDocumentSerialize.h in Headers */,
+				D04EF1130F65C50A003C6240 /* AIXMLElementSerialize.h in Headers */,
+				D04EF1150F65C50A003C6240 /* AIXMLSerialization.h in Headers */,
+				D04EF12E0F65C52D003C6240 /* DDXMLDocument.h in Headers */,
+				D04EF1300F65C52D003C6240 /* DDXMLElement.h in Headers */,
+				D04EF1320F65C52D003C6240 /* DDXMLElementAdditions.h in Headers */,
+				D04EF1340F65C52D003C6240 /* DDXMLNode.h in Headers */,
+				D04EF1360F65C52D003C6240 /* DDXMLPrivate.h in Headers */,
+				D04EF1370F65C52D003C6240 /* NSStringAdditions.h in Headers */,
+				D00048240FF35B0E00CCAF1B /* NSObject+InvocationUtils.h in Headers */,
+				D0A6E4150FFD39F100012097 /* HRBase64.h in Headers */,
+				D03982E70FFD6385005FECE7 /* HROperationQueue.h in Headers */,
+				D0869053100543900061BA64 /* DDXML.h in Headers */,
+				D09A5D8E106E9C3E00167242 /* SBJsonBase.h in Headers */,
+				D09A5D90106E9C3E00167242 /* SBJsonParser.h in Headers */,
+				D09A5D92106E9C3E00167242 /* SBJsonWriter.h in Headers */,
+				F8014E7C11ABC91100F9DD53 /* ChallengeHandler.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F8DE085911A6C3F5001DA4FB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F8DE085A11A6C3F5001DA4FB /* HRResponseDelegate.h in Headers */,
+				F8DE085B11A6C3F5001DA4FB /* HTTPRiot.h in Headers */,
+				F8DE085C11A6C3F5001DA4FB /* HTTPRiot_Prefix.pch in Headers */,
+				F8DE085D11A6C3F5001DA4FB /* HRGlobal.h in Headers */,
+				F8DE085E11A6C3F5001DA4FB /* HRFormatJSON.h in Headers */,
+				F8DE085F11A6C3F5001DA4FB /* HRFormatterProtocol.h in Headers */,
+				F8DE086011A6C3F5001DA4FB /* HRFormatXML.h in Headers */,
+				F8DE086111A6C3F5001DA4FB /* HRRequestOperation.h in Headers */,
+				F8DE086211A6C3F5001DA4FB /* HRRestModel.h in Headers */,
+				F8DE086411A6C3F5001DA4FB /* NSDictionary+ParamUtils.h in Headers */,
+				F8DE086711A6C3F5001DA4FB /* NSString+EscapingUtils.h in Headers */,
+				F8DE086911A6C3F5001DA4FB /* AIXMLDocumentSerialize.h in Headers */,
+				F8DE086A11A6C3F5001DA4FB /* AIXMLElementSerialize.h in Headers */,
+				F8DE086B11A6C3F5001DA4FB /* AIXMLSerialization.h in Headers */,
+				F8DE086C11A6C3F5001DA4FB /* DDXMLDocument.h in Headers */,
+				F8DE086D11A6C3F5001DA4FB /* DDXMLElement.h in Headers */,
+				F8DE086E11A6C3F5001DA4FB /* DDXMLElementAdditions.h in Headers */,
+				F8DE086F11A6C3F5001DA4FB /* DDXMLNode.h in Headers */,
+				F8DE087011A6C3F5001DA4FB /* DDXMLPrivate.h in Headers */,
+				F8DE087111A6C3F5001DA4FB /* NSStringAdditions.h in Headers */,
+				F8DE087211A6C3F5001DA4FB /* NSObject+InvocationUtils.h in Headers */,
+				F8DE087311A6C3F5001DA4FB /* HRBase64.h in Headers */,
+				F8DE087411A6C3F5001DA4FB /* HROperationQueue.h in Headers */,
+				F8DE087511A6C3F5001DA4FB /* DDXML.h in Headers */,
+				F8014E7A11ABC91100F9DD53 /* ChallengeHandler.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		8DC2EF4F0486A6940098B216 /* HTTPRiot */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB91AD08733DA50010E9CD /* Build configuration list for PBXNativeTarget "HTTPRiot" */;
+			buildPhases = (
+				8DC2EF500486A6940098B216 /* Headers */,
+				8DC2EF520486A6940098B216 /* Resources */,
+				8DC2EF540486A6940098B216 /* Sources */,
+				8DC2EF560486A6940098B216 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HTTPRiot;
+			productInstallPath = "$(HOME)/Library/Frameworks";
+			productName = HTTPRiot;
+			productReference = 8DC2EF5B0486A6940098B216 /* HTTPRiot.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D0298A640F3FFBBD00EC8C01 /* libhttpriot */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0298A680F3FFBE600EC8C01 /* Build configuration list for PBXNativeTarget "libhttpriot" */;
+			buildPhases = (
+				D0298A610F3FFBBD00EC8C01 /* Headers */,
+				D0298A620F3FFBBD00EC8C01 /* Sources */,
+				D0298A630F3FFBBD00EC8C01 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = libhttpriot;
+			productName = libhttpriot;
+			productReference = D0298A650F3FFBBD00EC8C01 /* libhttpriot.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		D038BDCD0FF298330041F570 /* iPhoneSampleApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D038BDD30FF298340041F570 /* Build configuration list for PBXNativeTarget "iPhoneSampleApp" */;
+			buildPhases = (
+				D038BDCA0FF298330041F570 /* Resources */,
+				D038BDCB0FF298330041F570 /* Sources */,
+				D038BDCC0FF298330041F570 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D02E8D700FF2BECF00F754AC /* PBXTargetDependency */,
+			);
+			name = iPhoneSampleApp;
+			productName = iPhoneSampleApp;
+			productReference = D038BDCE0FF298330041F570 /* iPhoneSampleApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D0788AE70FABAB3600C3207D /* iPhoneUnitTestsRunner */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0788AEE0FABAB3700C3207D /* Build configuration list for PBXNativeTarget "iPhoneUnitTestsRunner" */;
+			buildPhases = (
+				D0788AE40FABAB3600C3207D /* Resources */,
+				D0788AE50FABAB3600C3207D /* Sources */,
+				D0788AE60FABAB3600C3207D /* Frameworks */,
+				D0788C1E0FABC91900C3207D /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D0788AF30FABAC3600C3207D /* PBXTargetDependency */,
+			);
+			name = iPhoneUnitTestsRunner;
+			productName = iPhoneUnitTestsRunner;
+			productReference = D0788AE80FABAB3600C3207D /* iPhoneUnitTestsRunner.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F8DE085811A6C3F5001DA4FB /* libhttpriot_nojson */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F8DE089311A6C3F5001DA4FB /* Build configuration list for PBXNativeTarget "libhttpriot_nojson" */;
+			buildPhases = (
+				F8DE085911A6C3F5001DA4FB /* Headers */,
+				F8DE087911A6C3F5001DA4FB /* Sources */,
+				F8DE089111A6C3F5001DA4FB /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = libhttpriot_nojson;
+			productName = libhttpriot;
+			productReference = F8DE089611A6C3F5001DA4FB /* libhttpriot.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0867D690FE84028FC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB91B108733DA50010E9CD /* Build configuration list for PBXProject "HTTPRiot" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 0867D691FE84028FC02AAC07 /* HTTPRiot */;
+			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D0298A640F3FFBBD00EC8C01 /* libhttpriot */,
+				D038BDCD0FF298330041F570 /* iPhoneSampleApp */,
+				D0788AE70FABAB3600C3207D /* iPhoneUnitTestsRunner */,
+				8DC2EF4F0486A6940098B216 /* HTTPRiot */,
+				D0F4848A0F4CC03500160DD9 /* Documentation */,
+				F8DE085811A6C3F5001DA4FB /* libhttpriot_nojson */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8DC2EF520486A6940098B216 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D038BDCA0FF298330041F570 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D05A45070FF29C4300C672A5 /* MainWindow.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0788AE40FABAB3600C3207D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D00D8C720FF160810077F798 /* RunTests.sh in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D0315F340F4CFA8600AEFEB7 /* Cleanup doc info */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Cleanup doc info";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/usr/bin/env ruby";
+			shellScript = "#!/usr/bin/env ruby\n#!/usr/bin/env ruby\n# The documentation gets generated with a bad info.plist file so this fixes it\n# until I can find a better solution\n#\nrequire 'rubygems'\nrequire 'fileutils'\nrequire 'osx/cocoa'\n\ninclude FileUtils\n\n# Get the main target's version number\nplist = OSX::NSDictionary.dictionaryWithContentsOfFile(File.join(ENV['PROJECT_DIR'], \"Info.plist\"))\nversion = `agvtool vers -terse`.strip || plist['CFBundleVersion']\n\ncontents = <<-CONTENTS\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\"\n\"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n<plist version=\"1.0\">\n<dict>\n     <key>CFBundleName</key>\n     <string>#{ENV['PROJECT']} #{version}</string>\n     <key>CFBundleIdentifier</key>\n     <string>com.labratrevenge.#{ENV['PROJECT']}.docset</string>\n     <key>DocSetFeedName</key>\n     <string>#{ENV['PROJECT']} Documentation</string>\n</dict>\n</plist>\nCONTENTS\n\ndoc_dir = \"/Users/#{ENV['USER']}/Library/Developer/Shared/Documentation/DocSets/com.labratrevenge.#{ENV['PROJECT']}.docset/Contents\"\nplist = File.join(doc_dir, \"Info.plist\")\nresource_dir = File.join(doc_dir, \"Resources\", \"Documents\")\n\nif File.exists?(plist)\n  File.open(plist, 'w+') do |f|\n    f << contents\n  end\nend\n\ncp_r(File.join(ENV['PROJECT_DIR'], 'Documentation', 'slate', 'images'), resource_dir)\n\n# Script to tell XCode to load up our new documentation\nscript = <<-OSA \ntell application \"Xcode\"\n\tload documentation set with path \"/Users/$USER/Library/Developer/Shared/Documentation/DocSets/com.labratrevenge.#{ENV['PROJECT']}.docset/\"\nend tell\nOSA\n\n# Run the load-docset applescript command.\nsystem(\"osascript -e #{script}\")";
+		};
+		D0788C1E0FABC91900C3207D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/usr/bin/env ruby";
+			shellScript = "require 'fileutils'\nlib = \"#{ENV['PROJECT_DIR']}/build/Debug/libhttpriot.a\"\nif File.exists?(lib)\n   existing = \"#{ENV['TARGET_BUILD_DIR']}/libhttpriot.a\"\n   FileUtils.rm(existing) if File.exists?(existing)\n   FileUtils.mv(lib, existing)\nend\n\n#!/bin/sh\n\nexit if !ENV['GHUNIT_CLI']\n\n \nENV['DYLD_ROOT_PATH'] = ENV['SDKROOT']\nENV['DYLD_FRAMEWORK_PATH'] = ENV['CONFIGURATION_BUILD_DIR']\nENV['IPHONE_SIMULATOR_ROOT'] = ENV['SDKROOT']\n \nENV['MallocScribble'] = true\nENV['MallocPreScribble'] = true\nENV['MallocGuardEdges'] = true\nENV['MallocStackLogging'] = true\nENV['MallocStackLoggingNoCompact'] = true\nENV['NSAutoreleaseFreedObjectCheckEnabled'] = true\n  \nENV['CFZombieLevel'] = 3\nENV['NSZombieEnabled'] = true\n \nret = system(\"#{File.join(ENV['TARGET_BUILD_DIR'], ENV['EXECUTABLE_PATH'])} -RegisterForSystemEvents\")\nexit(ret)";
+		};
+		D0F484890F4CC03500160DD9 /* Generate and Install docs */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate and Install docs";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# See also http://developer.apple.com/tools/creatingdocsetswithdoxygen.html \n\nVERS=$(agvtool vers -terse)\n\nDOXYFILE=$DERIVED_FILES_DIR/Doxyfile\nDOXYGEN=/Applications/Doxygen.app/Contents/Resources/doxygen\nDOCSET=$DSTROOT/Documentation\n\nmkdir -p $DERIVED_FILES_DIR || exit 1\nmkdir -p $DOCSET || exit 1\n\nif ! test -x $DOXYGEN ; then\n\tDOXYGEN=`which doxygen`;\nfi\n\nif ! test -x $DOXYGEN ; then\n\techo \"*** Install Doxygen to get documentatino generated for you automatically ***\"\n\texit 0\nfi\n\n\n# Check that doxygen is present\ntest -f $DOXYGEN || exit 1\n\n# Create a doxygen configuration file with only the settings we care about\n\ncat <<EOF > $DOXYFILE\n\nPROJECT_NAME           = $PROJECT_NAME\nPROJECT_NUMBER         = $VERS\nDOCSET_FEEDNAME  \t    = \"$PROJECT $VERSION\"\nOUTPUT_DIRECTORY       = $DOCSET\nINPUT                  = $SOURCE_ROOT/Source/$PROJECT $SOURCE_ROOT/Documentation $SOURCE_ROOT/Source/$PROJECT $SOURCE_ROOT/Source/$PROJECT/Formatters\nEXAMPLE_PATH           = $SOURCE_ROOT/Documentation/Samples $SOURCE_ROOT/Documentation/Guides\nIMAGE_PATH             = $SOURCE_ROOT/Documentation/images\nFILE_PATTERNS          = *.h *.m *.doxygen\n\nHIDE_UNDOC_MEMBERS     = NO\nHIDE_UNDOC_CLASSES     = YES\nHIDE_UNDOC_RELATIONS   = YES\nREPEAT_BRIEF           = NO\n\nGENERATE_LATEX         = NO\nGENERATE_HTML          = YES\nGENERATE_DOCSET        = YES\nDOCSET_FEEDNAME        = \"$PROJECT Documentation\"\nDOCSET_BUNDLE_ID       = com.labratrevenge.$PROJECT\n\nQUIET                  = NO\n\nHTML_FOOTER \t\t\t= $SOURCE_ROOT/Documentation/slate/index.html\nHTML_STYLESHEET \t\t= $SOURCE_ROOT/Documentation/slate/slate.css\n\nEOF\n\n#  Run doxygen on the updated config file.\n#  doxygen creates a Makefile that does most of the heavy lifting.\n\n$DOXYGEN $DOXYFILE\n\n\n#  make will invoke docsetutil. Take a look at the Makefile to see how this is done.\nmake -C $DOCSET/html install";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8DC2EF540486A6940098B216 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D03DB66D0F31654200F18796 /* HRRestModel.m in Sources */,
+				D09E4B390F33EB1D00C9E26E /* HRRequestOperation.m in Sources */,
+				D029893C0F3FBEDC00EC8C01 /* NSDictionary+ParamUtils.m in Sources */,
+				D02989400F3FBEDC00EC8C01 /* NSString+EscapingUtils.m in Sources */,
+				D0298A310F3FF4FD00EC8C01 /* HRFormatJSON.m in Sources */,
+				D0298A360F3FF50800EC8C01 /* HRFormatXML.m in Sources */,
+				D0298A8F0F3FFF2E00EC8C01 /* NSObject+SBJSON.m in Sources */,
+				D0298A910F3FFF2E00EC8C01 /* NSString+SBJSON.m in Sources */,
+				D0298A930F3FFF2E00EC8C01 /* SBJSON.m in Sources */,
+				D04EF1170F65C50A003C6240 /* AIXMLDocumentSerialize.m in Sources */,
+				D04EF1190F65C50A003C6240 /* AIXMLElementSerialize.m in Sources */,
+				D0A6E4140FFD39F100012097 /* HRBase64.m in Sources */,
+				D03982EA0FFD6385005FECE7 /* HROperationQueue.m in Sources */,
+				D08B9AF9101685B200351DC4 /* NSObject+InvocationUtils.m in Sources */,
+				D09C54EA10321DE200097202 /* HRGlobal.m in Sources */,
+				D09A5DDA106EA0CE00167242 /* SBJsonBase.m in Sources */,
+				D09A5DDC106EA0CF00167242 /* SBJsonParser.m in Sources */,
+				D09A5DDE106EA0D100167242 /* SBJsonWriter.m in Sources */,
+				F8014E7F11ABC91100F9DD53 /* ChallengeHandler.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0298A620F3FFBBD00EC8C01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D07744860F4885DA00190554 /* HRFormatJSON.m in Sources */,
+				D07744870F4885DA00190554 /* HRFormatXML.m in Sources */,
+				D07744880F4885DA00190554 /* HRRequestOperation.m in Sources */,
+				D07744850F4885AE00190554 /* HRRestModel.m in Sources */,
+				D077448A0F4885DA00190554 /* NSDictionary+ParamUtils.m in Sources */,
+				D0298A960F3FFF2E00EC8C01 /* NSObject+SBJSON.m in Sources */,
+				D0298A980F3FFF2E00EC8C01 /* NSString+SBJSON.m in Sources */,
+				D077448B0F4885DA00190554 /* NSString+EscapingUtils.m in Sources */,
+				D0298A9A0F3FFF2E00EC8C01 /* SBJSON.m in Sources */,
+				D04EF1120F65C50A003C6240 /* AIXMLDocumentSerialize.m in Sources */,
+				D04EF1140F65C50A003C6240 /* AIXMLElementSerialize.m in Sources */,
+				D04EF12F0F65C52D003C6240 /* DDXMLDocument.m in Sources */,
+				D04EF1310F65C52D003C6240 /* DDXMLElement.m in Sources */,
+				D04EF1330F65C52D003C6240 /* DDXMLElementAdditions.m in Sources */,
+				D04EF1350F65C52D003C6240 /* DDXMLNode.m in Sources */,
+				D04EF1380F65C52D003C6240 /* NSStringAdditions.m in Sources */,
+				D00048250FF35B0E00CCAF1B /* NSObject+InvocationUtils.m in Sources */,
+				D0A6E4160FFD39F100012097 /* HRBase64.m in Sources */,
+				D03982E80FFD6385005FECE7 /* HROperationQueue.m in Sources */,
+				D09C54EB10321DE200097202 /* HRGlobal.m in Sources */,
+				D09A5D8F106E9C3E00167242 /* SBJsonBase.m in Sources */,
+				D09A5D91106E9C3E00167242 /* SBJsonParser.m in Sources */,
+				D09A5D93106E9C3E00167242 /* SBJsonWriter.m in Sources */,
+				F8014E7D11ABC91100F9DD53 /* ChallengeHandler.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D038BDCB0FF298330041F570 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D038BDF60FF2995D0041F570 /* main.m in Sources */,
+				D0C7131E0FF2A3310083905B /* ISAPeopleTableViewController.m in Sources */,
+				D03321480FF2A55700330F62 /* iPhoneSampleAppDelegate.m in Sources */,
+				D00045D70FF2D5DB00CCAF1B /* ISAPeopleDetailController.m in Sources */,
+				D00047610FF31D4D00CCAF1B /* ISAEditableTextFieldCell.m in Sources */,
+				D02BB9530FF3EE95002EF1CF /* ISAAlertHelper.m in Sources */,
+				F8014E8011ABC91100F9DD53 /* ChallengeHandler.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0788AE50FABAB3600C3207D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0788AFC0FABAC8D00C3207D /* GHUnitIPhoneTestMain.m in Sources */,
+				D0788B050FABAD3800C3207D /* HTTPRiotTestHelper.m in Sources */,
+				D0788B090FABAD4600C3207D /* HTTPRiotRestModelTest.m in Sources */,
+				D0788B0D0FABAD6F00C3207D /* HTTPRiotRequestTest.m in Sources */,
+				D09754381005092500E0E499 /* HRExtensionsTest.m in Sources */,
+				D0A06A091016F779007B95C9 /* HRUtilitiesTest.m in Sources */,
+				F8014E8111ABC91100F9DD53 /* ChallengeHandler.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F8DE087911A6C3F5001DA4FB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F8DE087A11A6C3F5001DA4FB /* HRFormatJSON.m in Sources */,
+				F8DE087B11A6C3F5001DA4FB /* HRFormatXML.m in Sources */,
+				F8DE087C11A6C3F5001DA4FB /* HRRequestOperation.m in Sources */,
+				F8DE087D11A6C3F5001DA4FB /* HRRestModel.m in Sources */,
+				F8DE087E11A6C3F5001DA4FB /* NSDictionary+ParamUtils.m in Sources */,
+				F8DE088111A6C3F5001DA4FB /* NSString+EscapingUtils.m in Sources */,
+				F8DE088311A6C3F5001DA4FB /* AIXMLDocumentSerialize.m in Sources */,
+				F8DE088411A6C3F5001DA4FB /* AIXMLElementSerialize.m in Sources */,
+				F8DE088511A6C3F5001DA4FB /* DDXMLDocument.m in Sources */,
+				F8DE088611A6C3F5001DA4FB /* DDXMLElement.m in Sources */,
+				F8DE088711A6C3F5001DA4FB /* DDXMLElementAdditions.m in Sources */,
+				F8DE088811A6C3F5001DA4FB /* DDXMLNode.m in Sources */,
+				F8DE088911A6C3F5001DA4FB /* NSStringAdditions.m in Sources */,
+				F8DE088A11A6C3F5001DA4FB /* NSObject+InvocationUtils.m in Sources */,
+				F8DE088B11A6C3F5001DA4FB /* HRBase64.m in Sources */,
+				F8DE088C11A6C3F5001DA4FB /* HROperationQueue.m in Sources */,
+				F8DE088D11A6C3F5001DA4FB /* HRGlobal.m in Sources */,
+				F8014E7B11ABC91100F9DD53 /* ChallengeHandler.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D02E8D700FF2BECF00F754AC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D0298A640F3FFBBD00EC8C01 /* libhttpriot */;
+			targetProxy = D02E8D6F0FF2BECF00F754AC /* PBXContainerItemProxy */;
+		};
+		D0788AF30FABAC3600C3207D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D0298A640F3FFBBD00EC8C01 /* libhttpriot */;
+			targetProxy = D0788AF20FABAC3600C3207D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB91AE08733DA50010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 0.6.10;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 0.6.10;
+				FRAMEWORK_VERSION = A;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Source/HTTPRiot/HTTPRiot_Prefix.pch;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
+				INFOPLIST_FILE = Resources/Info.plist;
+				INSTALL_PATH = "@rpath";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				OTHER_CFLAGS = "-DHTTPRIOT_FRAMEWORK_BUILD";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-lxml2",
+					"-fobjc-exceptions",
+				);
+				PRODUCT_NAME = HTTPRiot;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = HTTPRIOT;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		1DEB91AF08733DA50010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CURRENT_PROJECT_VERSION = 0.6.10;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_COMPATIBILITY_VERSION = 0.1.0;
+				DYLIB_CURRENT_VERSION = 0.6.10;
+				FOO_BAR = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Source/HTTPRiot/HTTPRiot_Prefix.pch;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
+				INFOPLIST_FILE = Resources/Info.plist;
+				INSTALL_PATH = "@rpath";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				OTHER_CFLAGS = "-DHTTPRIOT_FRAMEWORK_BUILD";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-lxml2",
+					"-fobjc-exceptions",
+				);
+				PRODUCT_NAME = HTTPRiot;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = HTTPRIOT;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		1DEB91B208733DA50010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = YES;
+				SDKROOT = "";
+			};
+			name = Debug;
+		};
+		1DEB91B308733DA50010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = "";
+			};
+			name = Release;
+		};
+		D0298A660F3FFBBE00EC8C01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)$(IPHONEOS_DEPLOYMENT_TARGET)";
+				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)$(IPHONEOS_DEPLOYMENT_TARGET)";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 0.6.10;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_ENABLE_OBJC_GC = unsupported;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_VERSION = 4.2;
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+				);
+				PREBINDING = NO;
+				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include/HTTPRiot;
+				PRODUCT_NAME = httpriot;
+				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/HTTPRiot;
+				SDKROOT = iphonesimulator3.0;
+			};
+			name = Debug;
+		};
+		D0298A670F3FFBBE00EC8C01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)$(IPHONEOS_DEPLOYMENT_TARGET)";
+				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)$(IPHONEOS_DEPLOYMENT_TARGET)";
+				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 0.6.10;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_COMPATIBILITY_VERSION = 0.1.0;
+				DYLIB_CURRENT_VERSION = 0.6.10;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_GC = unsupported;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_VERSION = 4.2;
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+				);
+				PREBINDING = NO;
+				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include/HTTPRiot;
+				PRODUCT_NAME = httpriot;
+				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/HTTPRiot;
+				SDKROOT = iphonesimulator3.0;
+				SKIP_INSTALL = NO;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = HTTPRIOT;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		D038BDD10FF298340041F570 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ADDITIONAL_SDKS = "";
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Justin Palmer (4EA3Q3VD5E)";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Source/iPhoneSampleApp/iPhoneSampleApp_Prefix.pch;
+				GCC_VERSION = 4.2;
+				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
+				INFOPLIST_FILE = "Resources/iPhoneSampleApp-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)$(IPHONEOS_DEPLOYMENT_TARGET)/**";
+				OTHER_LDFLAGS = (
+					"-lhttpriot",
+					"-lxml2",
+					"-all_load",
+					"-ObjC",
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = iPhoneSampleApp;
+				SDKROOT = iphonesimulator3.0;
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "i386 ppc ppc64 ppc7400 ppc970 x86_64";
+			};
+			name = Debug;
+		};
+		D038BDD20FF298340041F570 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ADDITIONAL_SDKS = "";
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Justin Palmer (4EA3Q3VD5E)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Source/iPhoneSampleApp/iPhoneSampleApp_Prefix.pch;
+				GCC_VERSION = 4.2;
+				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
+				INFOPLIST_FILE = "Resources/iPhoneSampleApp-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)$(IPHONEOS_DEPLOYMENT_TARGET)/**";
+				OTHER_LDFLAGS = (
+					"-lhttpriot",
+					"-lxml2",
+					"-all_load",
+					"-ObjC",
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = iPhoneSampleApp;
+				SDKROOT = iphonesimulator3.0;
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "i386 ppc ppc64 ppc7400 ppc970 x86_64";
+			};
+			name = Release;
+		};
+		D0788AEC0FABAB3700C3207D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "Don't Code Sign";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Source/Vendor\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
+				INFOPLIST_FILE = "Resources/iPhoneUnitTestsRunner-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LD_RUNPATH_SEARCH_PATHS = "$(PROJECT_DIR)/Source/Vendor";
+				LIBRARY_SEARCH_PATHS = (
+					"$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)$(IPHONEOS_DEPLOYMENT_TARGET)",
+					"\"$(SRCROOT)/Source/HTTPRiot/Vendor/gh-unit-iphone\"",
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+					"-ObjC",
+					"-lxml2",
+					"-lhttpriot",
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = iPhoneUnitTestsRunner;
+				SDKROOT = iphonesimulator3.0;
+			};
+			name = Debug;
+		};
+		D0788AED0FABAB3700C3207D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "Don't Code Sign";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Source/Vendor\"",
+				);
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
+				INFOPLIST_FILE = "Resources/iPhoneUnitTestsRunner-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LD_RUNPATH_SEARCH_PATHS = "$(PROJECT_DIR)/Source/Vendor";
+				LIBRARY_SEARCH_PATHS = (
+					"$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)$(IPHONEOS_DEPLOYMENT_TARGET)",
+					"\"$(SRCROOT)/Source/HTTPRiot/Vendor/gh-unit-iphone\"",
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+					"-ObjC",
+					"-lxml2",
+					"-lhttpriot",
+					"-all_load",
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = iPhoneUnitTestsRunner;
+				SDKROOT = iphonesimulator3.0;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		D0F4848B0F4CC03500160DD9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INFOPLIST_FILE = documentation.plist;
+				PRODUCT_NAME = Documentation;
+			};
+			name = Debug;
+		};
+		D0F4848C0F4CC03500160DD9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				INFOPLIST_FILE = documentation.plist;
+				PRODUCT_NAME = Documentation;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		F8DE089411A6C3F5001DA4FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)$(IPHONEOS_DEPLOYMENT_TARGET)";
+				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)$(IPHONEOS_DEPLOYMENT_TARGET)";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 0.6.10;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_ENABLE_OBJC_GC = unsupported;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_VERSION = 4.2;
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+				);
+				PREBINDING = NO;
+				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include/HTTPRiot;
+				PRODUCT_NAME = httpriot;
+				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/HTTPRiot;
+				SDKROOT = iphonesimulator3.0;
+			};
+			name = Debug;
+		};
+		F8DE089511A6C3F5001DA4FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)$(IPHONEOS_DEPLOYMENT_TARGET)";
+				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)$(IPHONEOS_DEPLOYMENT_TARGET)";
+				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 0.6.10;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_COMPATIBILITY_VERSION = 0.1.0;
+				DYLIB_CURRENT_VERSION = 0.6.10;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_GC = unsupported;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_VERSION = 4.2;
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+				);
+				PREBINDING = NO;
+				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include/HTTPRiot;
+				PRODUCT_NAME = httpriot;
+				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/HTTPRiot;
+				SDKROOT = iphonesimulator3.0;
+				SKIP_INSTALL = NO;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = HTTPRIOT;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB91AD08733DA50010E9CD /* Build configuration list for PBXNativeTarget "HTTPRiot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB91AE08733DA50010E9CD /* Debug */,
+				1DEB91AF08733DA50010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB91B108733DA50010E9CD /* Build configuration list for PBXProject "HTTPRiot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB91B208733DA50010E9CD /* Debug */,
+				1DEB91B308733DA50010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0298A680F3FFBE600EC8C01 /* Build configuration list for PBXNativeTarget "libhttpriot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0298A660F3FFBBE00EC8C01 /* Debug */,
+				D0298A670F3FFBBE00EC8C01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D038BDD30FF298340041F570 /* Build configuration list for PBXNativeTarget "iPhoneSampleApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D038BDD10FF298340041F570 /* Debug */,
+				D038BDD20FF298340041F570 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0788AEE0FABAB3700C3207D /* Build configuration list for PBXNativeTarget "iPhoneUnitTestsRunner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0788AEC0FABAB3700C3207D /* Debug */,
+				D0788AED0FABAB3700C3207D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0F4848D0F4CC05300160DD9 /* Build configuration list for PBXAggregateTarget "Documentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0F4848B0F4CC03500160DD9 /* Debug */,
+				D0F4848C0F4CC03500160DD9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F8DE089311A6C3F5001DA4FB /* Build configuration list for PBXNativeTarget "libhttpriot_nojson" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F8DE089411A6C3F5001DA4FB /* Debug */,
+				F8DE089511A6C3F5001DA4FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0867D690FE84028FC02AAC07 /* Project object */;
+}
