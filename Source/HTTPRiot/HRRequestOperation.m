@@ -7,8 +7,7 @@
 //
 
 #import "HRRequestOperation.h"
-#import "HRFormatJSON.h"
-#import "HRFormatXML.h"
+#import "HRFormatterFactory.h"
 #import "NSObject+InvocationUtils.h"
 #import "NSString+EscapingUtils.h"
 #import "NSDictionary+ParamUtils.h"
@@ -294,23 +293,7 @@
 
 - (id)formatterFromFormat {
     NSNumber *format = [[self options] objectForKey:kHRClassAttributesFormatKey];
-    id theFormatter = nil;
-    switch([format intValue]) {
-        case HRDataFormatJSON:
-            theFormatter = [HRFormatJSON class];
-        break;
-        case HRDataFormatXML:
-            theFormatter = [HRFormatXML class];
-        break;
-        default:
-            theFormatter = [HRFormatJSON class];
-        break;   
-    }
-    
-    NSString *errorMessage = [NSString stringWithFormat:@"Invalid Formatter %@", NSStringFromClass(theFormatter)];
-    NSAssert([theFormatter conformsToProtocol:@protocol(HRFormatterProtocol)], errorMessage); 
-    
-    return theFormatter;
+    return [HRFormatterFactory formatterForFormat:[format integerValue]];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

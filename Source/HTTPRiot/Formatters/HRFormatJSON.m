@@ -10,15 +10,15 @@
 #import "JSON.h"
 
 @implementation HRFormatJSON
-+ (NSString *)extension {
+- (NSString *)extension {
     return @"json";
 }
 
-+ (NSString *)mimeType {
+- (NSString *)mimeType {
     return @"application/json";
 }
 
-+ (id)decode:(NSData *)data error:(NSError **)error {
+- (id)decode:(NSData *)data error:(NSError **)error {
     NSString *rawString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     // If we failed to decode the data using UTF8 attempt to use ASCII encoding.
     if(rawString == nil && ([data length] > 0)) {
@@ -40,7 +40,7 @@
     return results;
 }
 
-+ (NSString *)encode:(id)data error:(NSError **)error {
+- (NSString *)encode:(id)data error:(NSError **)error {
     return [data JSONRepresentation];
 }
 @end
