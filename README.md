@@ -1,4 +1,4 @@
-#HTTPRiot - Easily Consume REST Services
+# HTTPRiot - Easily Consume REST Services
 
 HTTPRiot is a simple HTTP library that works on the iPhone and Cocoa Apps.  It tries to abstract as much as possible 
 in the beginning.  This means you don't spend a lot of time up front setting things up and staying on a golden path, but 
@@ -30,7 +30,7 @@ delegate methods that handle responses/errors/etc.
     // DELETE
     [model deletePath:@"/foo/1" withOptions:nil object:nil];
 
-##Similar Projects
+## Similar Projects
 HTTPRiot was inspired by the <a href="http://github.com/jnunemaker/httparty/tree/master">httparty</a> Ruby library.
 There are also numerous other HTTP libraries for Cocoa:
 
